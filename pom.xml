@@ -29,27 +29,22 @@
           <!-- ===== Modules ===== -->
           <dependency>
               <groupId>org.exemple.demo</groupId>
-              <artifactId>ticket-batch</artifactId>
+              <artifactId>escalade-webapp</artifactId>
               <version>1.0-SNAPSHOT</version>
           </dependency>
           <dependency>
               <groupId>org.exemple.demo</groupId>
-              <artifactId>ticket-webapp</artifactId>
+              <artifactId>escalade-business</artifactId>
               <version>1.0-SNAPSHOT</version>
           </dependency>
           <dependency>
               <groupId>org.exemple.demo</groupId>
-              <artifactId>ticket-business</artifactId>
+              <artifactId>escalade-consumer</artifactId>
               <version>1.0-SNAPSHOT</version>
           </dependency>
           <dependency>
               <groupId>org.exemple.demo</groupId>
-              <artifactId>ticket-consumer</artifactId>
-              <version>1.0-SNAPSHOT</version>
-          </dependency>
-          <dependency>
-              <groupId>org.exemple.demo</groupId>
-              <artifactId>ticket-model</artifactId>
+              <artifactId>escalade-model</artifactId>
               <version>1.0-SNAPSHOT</version>
           </dependency>
 

@@ -3,7 +3,7 @@ package org.exemple.demo.model.bean;
 public class Site {
 
 	String nomSite;
-	String descriptSite;
+	String descripSite;
 	String cotationSite;
 	String[] listeSecteur;
 	String[] listeBloc;
@@ -19,12 +19,12 @@ public class Site {
 		this.nomSite = nomSite;
 	}
 
-	public String getDescriptSite() {
-		return descriptSite;
+	public String getDescripSite() {
+		return descripSite;
 	}
 
-	public void setDescriptSite(String descriptSite) {
-		this.descriptSite = descriptSite;
+	public void setDescripSite(String descriptSite) {
+		this.descripSite = descriptSite;
 	}
 
 	public String getCotationSite() {

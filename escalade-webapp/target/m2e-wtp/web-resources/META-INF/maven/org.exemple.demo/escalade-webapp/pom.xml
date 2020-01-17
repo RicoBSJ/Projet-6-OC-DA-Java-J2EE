@@ -29,11 +29,7 @@
 		<!-- ===== Modules ===== -->
 		<dependency>
 			<groupId>org.exemple.demo</groupId>
-			<artifactId>ticket-business</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.exemple.demo</groupId>
-			<artifactId>ticket-model</artifactId>
+			<artifactId>escalade-business</artifactId>
 		</dependency>
 
 		<!-- ===== Bibliothèques tierces ===== -->
@@ -43,6 +39,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
 		</dependency>
 	</dependencies>
 
@@ -56,10 +57,7 @@
 					<version>3.1.0</version>
 				</plugin>
 				<!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
+
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>

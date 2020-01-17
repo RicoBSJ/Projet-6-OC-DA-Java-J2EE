@@ -1,1 +1,11 @@
+org/exemple/demo/model/bean/Utilisateur.class
+org/exemple/demo/model/bean/Photo.class
+org/exemple/demo/model/bean/Longueur.class
+org/exemple/demo/model/bean/Voie.class
+org/exemple/demo/model/bean/Topo.class
 org/exemple/demo/model/App.class
+org/exemple/demo/model/bean/Secteur.class
+org/exemple/demo/model/bean/Bloc.class
+org/exemple/demo/model/bean/Site.class
+org/exemple/demo/model/bean/Reservation.class
+org/exemple/demo/model/bean/Commentaire.class
