@@ -1,10 +1,10 @@
-package com.aubrun.eric.projet6.business;
+package com.aubrun.eric.projet6.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.aubrun.eric.projet6.business.dto.SiteDto;
-import com.aubrun.eric.projet6.business.dto.SiteDtoMapper;
+import com.aubrun.eric.projet6.business.mapper.SiteDtoMapper;
 import com.aubrun.eric.projet6.consumer.DAO.SiteDAO;
 import com.aubrun.eric.projet6.model.bean.Site;
 

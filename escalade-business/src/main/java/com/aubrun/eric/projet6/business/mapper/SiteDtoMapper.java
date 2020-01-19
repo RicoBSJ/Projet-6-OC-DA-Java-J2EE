@@ -1,5 +1,6 @@
-package com.aubrun.eric.projet6.business.dto;
+package com.aubrun.eric.projet6.business.mapper;
 
+import com.aubrun.eric.projet6.business.dto.SiteDto;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDtoMapper {

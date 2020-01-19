@@ -30,13 +30,9 @@ public class SiteDAO {
 			// Récupération des données
 			while (resultat.next()) {
 				String nomSite = resultat.getString("nomSite");
-//				String descripSite = resultat.getString("descripSite");
-//				String cotationSite = resultat.getString("cotationSite");
 
 				Site site = new Site();
 				site.setNomSite(nomSite);
-//				site.setDescripSite(descripSite);
-//				site.setCotationSite(cotationSite);
 
 				utilisateurs.add(site);
 			}
@@ -75,11 +71,8 @@ public class SiteDAO {
 		loadDatabase();
 
 		try {
-			PreparedStatement preparedStatement = connexion
-					.prepareStatement("INSERT INTO site(nomSite, descripSite, cotationSite) VALUES(?, ?, ?);");
+			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO site(nomSite) VALUES(?);");
 			preparedStatement.setString(1, site.getNomSite());
-//			preparedStatement.setString(2, site.getDescripSite());
-//			preparedStatement.setString(3, site.getCotationSite());
 
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
