@@ -32,10 +32,10 @@ public class Test extends HttpServlet {
 		Site site = new Site();
 		site.setNomSite(request.getParameter("nomSite"));
 
-        SiteDAO tableSiteDAO = new SiteDAO();
-        tableSiteDAO.ajouterSite(site);
-        
-        request.setAttribute("sites", tableSiteDAO.recupererSites());
+		SiteDAO tableSiteDAO = new SiteDAO();
+		tableSiteDAO.ajouterSite(site);
+
+		request.setAttribute("sites", tableSiteDAO.recupererSites());
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/bonjour.jsp").forward(request, response);
 	}

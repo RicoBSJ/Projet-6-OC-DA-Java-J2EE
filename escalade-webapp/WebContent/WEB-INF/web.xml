@@ -7,9 +7,18 @@
 		<servlet-name>Test</servlet-name>
 		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Test</servlet-class>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>Test</servlet-name>
-		<url-pattern>/bonjour</url-pattern>
+		<url-pattern>/accueil</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Test</servlet-name>
+		<url-pattern>/ajouterSite</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Test</servlet-name>
+		<url-pattern>/listerSite</url-pattern>
 	</servlet-mapping>
 
 	<jsp-config>
