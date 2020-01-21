@@ -52,7 +52,7 @@ public class Topo {
 		this.dateParution = dateParution;
 	}
 
-	public Boolean getReserve() {
+	public Boolean isReserve() {
 		return reserve;
 	}
 

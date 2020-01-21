@@ -23,7 +23,7 @@ public class Reservation {
 		this.numReservation = numReservation;
 	}
 
-	public Boolean getTopoDisponible() {
+	public Boolean isTopoDisponible() {
 		return topoDisponible;
 	}
 

@@ -49,7 +49,7 @@ public class Voie {
 		this.listeLongueur = listeLongueur;
 	}
 
-	public Boolean getVoieEquipee() {
+	public Boolean isVoieEquipee() {
 		return voieEquipee;
 	}
 

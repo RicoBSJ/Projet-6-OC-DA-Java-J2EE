@@ -49,7 +49,7 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
-	public Boolean getInscrit() {
+	public Boolean isInscrit() {
 		return inscrit;
 	}
 
