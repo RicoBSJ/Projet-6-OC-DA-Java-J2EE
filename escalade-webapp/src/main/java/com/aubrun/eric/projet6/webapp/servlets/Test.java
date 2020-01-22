@@ -29,7 +29,7 @@ public class Test extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setAttribute("sites", siteService.createSite());
+//		request.setAttribute("sites", siteService.createSite());
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/bonjour.jsp").forward(request, response);
 	}

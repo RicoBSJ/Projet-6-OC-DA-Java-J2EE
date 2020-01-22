@@ -11,7 +11,7 @@
 				name="nomSite" id="nomSite" />
 		</p>
 
-		<input type="submit" name="Enregistrer site" id="Enregistrer site" />
+		<input type="submit" name="enregistrerSite" id="enregistrerSite" />
 
 		<ul>
 			<c:forEach var="site" items="${ sites }">
