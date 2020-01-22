@@ -23,4 +23,15 @@ public class SiteService {
 		return dto;
 	}
 
+	public List<SiteDto> createSite() {
+
+		List<Site> site = siteDAO.ajouterSites();
+		List<SiteDto> dto = new ArrayList<SiteDto>();
+
+//		for (Site s : site) {
+//			SiteDto siteDto = MapperDtoSite.toDto(s);
+//			dto.add(siteDto);
+//		}
+		return dto;
+	}
 }

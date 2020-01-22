@@ -5,19 +5,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDAO {
+
 	private Connection connexion;
+	private List<Site> sites = new ArrayList<Site>();
+	private Statement statement = null;
+	private ResultSet resultat = null;
 
 	public List<Site> recupererSites() {
-		List<Site> utilisateurs = new ArrayList<Site>();
-		Statement statement = null;
-		ResultSet resultat = null;
 
 		loadDatabase();
 
@@ -34,7 +34,7 @@ public class SiteDAO {
 				Site site = new Site();
 				site.setNomSite(nomSite);
 
-				utilisateurs.add(site);
+				sites.add(site);
 			}
 		} catch (SQLException e) {
 		} finally {
@@ -50,7 +50,7 @@ public class SiteDAO {
 			}
 		}
 
-		return utilisateurs;
+		return sites;
 	}
 
 	private void loadDatabase() {
@@ -67,16 +67,52 @@ public class SiteDAO {
 		}
 	}
 
-	public void ajouterSite(Site site) {
+	public List<Site> ajouterSites() {
+
 		loadDatabase();
 
 		try {
-			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO site(nomSite) VALUES(?);");
-			preparedStatement.setString(1, site.getNomSite());
+			statement = connexion.createStatement();
 
-			preparedStatement.executeUpdate();
+			// Exécution de la requête
+			resultat = statement.executeQuery("INSERT INTO site(nomSite) VALUES(?);");
+
+			// Récupération des données
+			while (resultat.next()) {
+
+				String nomSite = resultat.getString("nomSite");
+
+				Site site = new Site();
+				site.setNomSite(nomSite);
+
+				sites.add(site);
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+		} finally {
+			// Fermeture de la connexion
+			try {
+				if (resultat != null)
+					resultat.close();
+				if (statement != null)
+					statement.close();
+				if (connexion != null)
+					connexion.close();
+			} catch (SQLException ignore) {
+			}
 		}
+		return sites;
 	}
 }
+//	public void ajouterSite(Site site) {
+//		loadDatabase();
+//
+//		try {
+//			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO site(nomSite) VALUES(?);");
+//			preparedStatement.setString(1, site.getNomSite());
+//
+//			preparedStatement.executeUpdate();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//}
