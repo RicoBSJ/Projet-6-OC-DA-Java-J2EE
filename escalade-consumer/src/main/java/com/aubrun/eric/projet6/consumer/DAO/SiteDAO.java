@@ -80,10 +80,10 @@ public class SiteDAO {
 			// Récupération des données
 			while (resultat.next()) {
 
-				String nomSite = resultat.getString("nomSite");
+//				String nomSite = resultat.getString("nomSite");
 
 				Site site = new Site();
-				site.setNomSite(nomSite);
+				site.getNomSite();
 
 				sites.add(site);
 			}

@@ -5,13 +5,13 @@
 <title>Lister sites</title>
 </head>
 <body>
-	<form method="post" action="ajouterSite">
+<!-- 	<form method="post" action="listerSite"> -->
 
 		<ul>
-			<c:forEach var="site" items="${ sites }">
+<%-- 			<c:forEach var="site" items="${ sites }"> --%>
 				<li><c:out value="${ site.nomSite }" /></li>
-			</c:forEach>
+<%-- 			</c:forEach> --%>
 		</ul>
-	</form>
+<!-- 	</form> -->
 </body>
 </html>
