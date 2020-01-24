@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.consumer.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -49,12 +50,11 @@ public class SiteDAO {
 			} catch (SQLException ignore) {
 			}
 		}
-
 		return sites;
 	}
 
 	private void loadDatabase() {
-		// Chargement du driver
+
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
@@ -67,52 +67,18 @@ public class SiteDAO {
 		}
 	}
 
-	public List<Site> ajouterSites() {
+	public List<Site> ajouterSite(Site site) {
 
 		loadDatabase();
 
 		try {
-			statement = connexion.createStatement();
+			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO site(nomSite) VALUES(?);");
+			preparedStatement.setString(1, site.getNomSite());
 
-			// Exécution de la requête
-			resultat = statement.executeQuery("INSERT INTO site(nomSite) VALUES(?);");
-
-			// Récupération des données
-			while (resultat.next()) {
-
-//				String nomSite = resultat.getString("nomSite");
-
-				Site site = new Site();
-				site.getNomSite();
-
-				sites.add(site);
-			}
+			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-		} finally {
-			// Fermeture de la connexion
-			try {
-				if (resultat != null)
-					resultat.close();
-				if (statement != null)
-					statement.close();
-				if (connexion != null)
-					connexion.close();
-			} catch (SQLException ignore) {
-			}
+			e.printStackTrace();
 		}
 		return sites;
 	}
 }
-//	public void ajouterSite(Site site) {
-//		loadDatabase();
-//
-//		try {
-//			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO site(nomSite) VALUES(?);");
-//			preparedStatement.setString(1, site.getNomSite());
-//
-//			preparedStatement.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//}

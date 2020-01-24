@@ -25,7 +25,7 @@ public class SiteService {
 
 	public List<SiteDto> createSite() {
 
-		List<Site> site = siteDAO.ajouterSites();
+		List<Site> site = siteDAO.ajouterSite(null);
 		List<SiteDto> dto = new ArrayList<SiteDto>();
 
 //		for (Site s : site) {
