@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+p {
+	font-size: 14px; /* Paragraphes de 14 pixels */
+}
+
+h1 {
+	font-size: 40px; /* Titres de 40 pixels */
+}
+
+body {
+	background-image:
+		url("https://c.pxhere.com/photos/ca/4c/photo-80231.jpg!d");
+}
