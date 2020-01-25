@@ -25,6 +25,7 @@ public class SiteService {
 
 	public List<SiteDto> createSite() {
 
+		@SuppressWarnings("unused")
 		List<Site> site = siteDAO.ajouterSite(null);
 		List<SiteDto> dto = new ArrayList<SiteDto>();
 
