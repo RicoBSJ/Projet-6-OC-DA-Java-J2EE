@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-p {
+.introduction {
 	width: 350px; /* On a indiqué une largeur (obligatoire) */
 	margin: auto;
 	/* On peut donc demander à ce que le bloc soit centré avec auto */
