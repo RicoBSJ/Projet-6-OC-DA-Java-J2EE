@@ -1,3 +1,4 @@
+@import "style.css";
 /* Définition des polices personnalisées */
 @font-face {
 	font-family: 'BallparkWeiner';
@@ -246,6 +247,120 @@ footer h1 {
 
 p {
 	color: blue;
+}
+
+.grid2 ul li.resultats-listeStations {
+	float: left;
+	width: 47%;
+	margin: 0px 20px 0px 0px;
+	padding: 5px 0px 5px 0px;
+	list-style-type: none;
+	border-bottom: 1px solid #f4f3f3;
+}
+
+.grid2 ul li.resultats-listeStations {
+	display: inline-block;
+	width: 47%;
+	padding: 5px 0px 5px 0px;
+	list-style-type: none;
+	border: none;
+}
+
+/*----falaises mobile----*/
+.grid2 ul li.resultats-listeStations {
+	width: 100%;
+	border: none;
+}
+
+.localisationStationListe {
+	float: left;
+	width: auto;
+	margin: 5px 0px 0px 0px;
+	padding: 5px 5px 0px 0px;
+}
+
+h3.nomStationListe {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+h3.nomStationListe a {
+	display: inline-block;
+	font-weight: bold;
+	color: #ff6600;
+	margin: 0px 0px 5px 0px;
+	padding: 0;
+	font-size: 1.2em;
+	line-height: 1.1em;
+	width: 300px;
+}
+
+.massifListe {
+	float: left;
+	width: auto;
+	margin: 0px 10px 0px 0px;
+	color: #666;
+	font-size: 0.8em;
+}
+
+.thumbs-stations {
+	clear: both;
+	float: left;
+	width: 100%;
+	height: auto;
+}
+
+.thumbs-stations a img {
+	display: inline-block;
+	width: 50%;
+}
+
+.results-right {
+	float: left;
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+}
+
+.infosStations {
+	float: left;
+	margin-top: -80px;
+}
+
+.infosStations {
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.value {
+	float: left;
+	font-weight: bold;
+	background: rgba(255, 255, 255, 0.5);
+	width: 27%;
+	height: 60px;
+	font-size: 0.8em;
+	line-height: 1.2em;
+	margin: 0px 2px 0px 6px;
+	padding: 5px;
+	-moz-border-radius: 5px;
+	color: #000;
+	border-radius: 5px;
+}
+
+.value, .valueLast {
+	display: inline-block;
+	font-weight: bold;
+	width: 31%;
+	height: 70px;
+	font-size: 0.8em;
+	line-height: 1.2em;
+	margin: 0px 5px 0px 0px;
+	padding: 5px;
+	-moz-border-radius: 15px;
+	border: 1px solid #f4f3f3;
+	color: #000;
+	border-radius: 5px;
 }
 
 @media all and (max-width: 1024px) {
