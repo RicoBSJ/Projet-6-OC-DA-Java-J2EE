@@ -4,61 +4,6 @@
 <head>
 <meta charset="utf-8" />
 <link type="text/css" rel="stylesheet" href="css/style.css" />
-<!-- Pour tout le monde -->
-<link rel="stylesheet" media="screen and (max-width: 1280px)"
-	href="petite_resolution.css" />
-<!-- Pour ceux qui ont une résolution inférieure à 1280px -->
-
-<style type="text/css">
-body {
-	background: url('images/fond_jaune.png');
-	font-family: 'Trebuchet MS', Arial, sans-serif;
-	color: #181818;
-}
-/* Bannière */
-#banniere_image {
-	margin-top: 15px;
-	height: 200px;
-	border-radius: 5px;
-	background: url('images/escalade_grand.png') no-repeat;
-	position: relative;
-	box-shadow: 0px 4px 4px #1c1a19;
-	margin-bottom: 25px;
-}
-
-#banniere_description {
-	position: absolute;
-	bottom: 0;
-	border-radius: 0px 0px 5px 5px;
-	width: 99.5%;
-	height: 33px;
-	padding-top: 15px;
-	padding-left: 4px;
-	background-color: rgba(24, 24, 24, 0.8);
-	color: white;
-	font-size: 0.8em;
-}
-
-.bouton_rouge {
-	height: 25px;
-	position: absolute;
-	right: 5px;
-	bottom: 5px;
-	background: url('images/fond_degraderouge.png') repeat-x;
-	border: 1px solid #760001;
-	border-radius: 5px;
-	font-size: 1.2em;
-	text-align: center;
-	padding: 3px 8px 0px 8px;
-	color: white;
-	text-decoration: none;
-}
-
-.bouton_rouge img {
-	border: 0;
-}
-</style>
-
 <title>Tous les sites de l'escalade</title>
 </head>
 <body>
@@ -67,7 +12,7 @@ body {
 		<header>
 			<div id="titre_principal">
 				<div id="logo">
-					<img src="images/Les amis de l'escalade.png"
+					<img src="images/Les_amis_de_l_escalade.png"
 						alt="Logo des amis de l'escalade" />
 					<h1>Les Amis de l'Escalade</h1>
 				</div>

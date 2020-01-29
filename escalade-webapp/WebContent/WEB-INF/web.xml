@@ -3,23 +3,20 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
-	<servlet>
-		<servlet-name>Accueil</servlet-name>
-		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Accueil</servlet-class>
-	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>Accueil</servlet-name>
-		<url-pattern>/accueil</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Accueil</servlet-name>
-		<url-pattern>/ajouterSite</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Accueil</servlet-name>
-		<url-pattern>/listerSite</url-pattern>
-	</servlet-mapping>
+	<!-- <servlet> -->
+	<!-- <servlet-name>Accueil</servlet-name> -->
+	<!-- <servlet-class>com.aubrun.eric.projet6.webapp.servlets.Accueil</servlet-class> -->
+	<!-- </servlet> -->
+
+	<!-- <servlet-mapping> -->
+	<!-- <servlet-name>Accueil</servlet-name> -->
+	<!-- <url-pattern>/accueil</url-pattern> -->
+	<!-- </servlet-mapping> -->
+	<!-- <servlet-mapping> -->
+	<!-- <servlet-name>AjouterSite</servlet-name> -->
+	<!-- <url-pattern>/ajouterSite</url-pattern> -->
+	<!-- </servlet-mapping> -->
 
 	<jsp-config>
 		<jsp-property-group>
