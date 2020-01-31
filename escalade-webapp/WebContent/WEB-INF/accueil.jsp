@@ -144,7 +144,6 @@ body {
 
 	<section>
 		<article>
-			<li>
 				<h1>Liste des sites répertoriés</h1>
 
 				<ul>
@@ -152,7 +151,6 @@ body {
 						<li><c:out value="${ site.nomSite }" /></li>
 					</c:forEach>
 				</ul>
-			</li>
 		</article>
 	</section>
 
