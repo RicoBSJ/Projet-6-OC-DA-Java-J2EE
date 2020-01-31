@@ -4,6 +4,23 @@
 <head>
 <meta charset="utf-8" />
 <link type="text/css" rel="stylesheet" href="css/style.css" />
+<style type="text/css">
+body {
+	background: url('images/fond_jaune.png');
+	font-family: 'Trebuchet MS', Arial, sans-serif;
+	color: #181818;
+}
+
+#banniere_image {
+	margin-top: 15px;
+	height: 200px;
+	border-radius: 5px;
+	background: url('images/escalade_grand.png') no-repeat;
+	position: relative;
+	box-shadow: 0px 4px 4px #1c1a19;
+	margin-bottom: 25px;
+}
+</style>
 <title>Tous les sites de l'escalade</title>
 </head>
 <body>
@@ -22,7 +39,7 @@
 			<nav>
 				<ul>
 					<li><a href="/accueil.jsp">Accueil</a></li>
-					<li><a href="/ajouterSite.jsp">Recherche</a></li>
+					<li><a href="/rechercheSite.jsp">Recherche</a></li>
 				</ul>
 			</nav>
 		</header>
