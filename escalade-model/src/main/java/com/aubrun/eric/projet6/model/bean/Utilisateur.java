@@ -2,12 +2,25 @@ package com.aubrun.eric.projet6.model.bean;
 
 public class Utilisateur {
 
+	Integer id;
 	Integer numUtil;
 	String prenUtil;
 	String pseudo;
 	String mail;
 	String motDePasse;
 	Boolean inscrit;
+
+	public Utilisateur() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getNumUtil() {
 		return numUtil;
@@ -49,7 +62,7 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
-	public Boolean isInscrit() {
+	public Boolean getInscrit() {
 		return inscrit;
 	}
 

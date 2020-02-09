@@ -2,11 +2,24 @@ package com.aubrun.eric.projet6.model.bean;
 
 public class Secteur {
 
+	Integer id;
 	String nomSite;
 	String nomSecteur;
 	String descriptSecteur;
 	String acces;
 	String[] listeVoie;
+
+	public Secteur() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNomSite() {
 		return nomSite;

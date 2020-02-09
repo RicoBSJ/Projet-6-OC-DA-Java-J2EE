@@ -2,12 +2,25 @@ package com.aubrun.eric.projet6.model.bean;
 
 public class Voie {
 
+	Integer id;
 	String nomSite;
 	String nomVoie;
 	String cotationVoie;
 	String descriptVoie;
 	String[] listeLongueur;
 	Boolean voieEquipee;
+
+	public Voie() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNomSite() {
 		return nomSite;
@@ -49,7 +62,7 @@ public class Voie {
 		this.listeLongueur = listeLongueur;
 	}
 
-	public Boolean isVoieEquipee() {
+	public Boolean getVoieEquipee() {
 		return voieEquipee;
 	}
 

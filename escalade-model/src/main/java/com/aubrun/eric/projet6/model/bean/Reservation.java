@@ -2,10 +2,23 @@ package com.aubrun.eric.projet6.model.bean;
 
 public class Reservation {
 
+	Integer id;
 	String nomSite;
 	Integer numReservation;
 	Boolean topoDisponible;
 	Integer numUtil;
+
+	public Reservation() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNomSite() {
 		return nomSite;
@@ -23,7 +36,7 @@ public class Reservation {
 		this.numReservation = numReservation;
 	}
 
-	public Boolean isTopoDisponible() {
+	public Boolean getTopoDisponible() {
 		return topoDisponible;
 	}
 

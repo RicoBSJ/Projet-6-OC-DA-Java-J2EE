@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Topo {
 
+	Integer id;
 	String nomSite;
 	String topo;
 	String descriptTopo;
@@ -11,6 +12,18 @@ public class Topo {
 	Date dateParution;
 	Boolean reserve;
 	String nomPhoto;
+
+	public Topo() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNomSite() {
 		return nomSite;
@@ -52,7 +65,7 @@ public class Topo {
 		this.dateParution = dateParution;
 	}
 
-	public Boolean isReserve() {
+	public Boolean getReserve() {
 		return reserve;
 	}
 

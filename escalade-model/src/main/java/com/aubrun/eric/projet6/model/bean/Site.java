@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.model.bean;
 
 public class Site {
 
+	Integer id;
 	String nomSite;
 	String descripSite;
 	String cotationSite;
@@ -10,6 +11,18 @@ public class Site {
 	String commentaire;
 	String nomPhoto;
 	Integer numUtil;
+
+	public Site() {
+
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getNomSite() {
 		return nomSite;
