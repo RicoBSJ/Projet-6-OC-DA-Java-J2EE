@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9 f??vr. 2020 23:22:06 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.aubrun.eric.projet6.model.bean.Commentaire" table="COMMENTAIRE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomSite" type="java.lang.String">
+            <column name="NOMSITE" />
+        </property>
+        <property name="commentaire" type="java.lang.String">
+            <column name="COMMENTAIRE" />
+        </property>
+    </class>
+</hibernate-mapping>
