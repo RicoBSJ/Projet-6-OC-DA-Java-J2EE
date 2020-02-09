@@ -31,10 +31,6 @@
 			<groupId>org.exemple.demo</groupId>
 			<artifactId>escalade-business</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.exemple.demo</groupId>
-			<artifactId>escalade-model</artifactId>
-		</dependency>
 
 		<!-- ===== Bibliothèques tierces ===== -->
 		<!-- JUnit -->
