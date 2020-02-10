@@ -130,7 +130,7 @@
 
 		<section>
 			<article>
-				<h1>Liste des sites répertoriés</h1>
+				<h2>Liste des sites répertoriés</h2>
 
 				<ul>
 					<c:forEach var="site" items="${ sites }">

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 9 f??vr. 2020 23:20:47 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 10 f?vr. 2020 ? 11:04:49 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.aubrun.eric.projet6.model.bean.Bloc" table="BLOC">
         <id name="id" type="java.lang.Integer">
