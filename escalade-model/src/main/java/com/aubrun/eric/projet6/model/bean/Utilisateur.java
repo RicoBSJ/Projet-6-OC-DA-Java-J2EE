@@ -3,12 +3,11 @@ package com.aubrun.eric.projet6.model.bean;
 public class Utilisateur {
 
 	Integer id;
-	Integer numUtil;
+	Integer nomUtil;
 	String prenUtil;
 	String pseudo;
 	String mail;
 	String motDePasse;
-	Boolean inscrit;
 
 	public Integer getId() {
 		return id;
@@ -18,12 +17,12 @@ public class Utilisateur {
 		this.id = id;
 	}
 
-	public Integer getNumUtil() {
-		return numUtil;
+	public Integer getNomUtil() {
+		return nomUtil;
 	}
 
-	public void setNumUtil(Integer numUtil) {
-		this.numUtil = numUtil;
+	public void setNomUtil(Integer numUtil) {
+		this.nomUtil = numUtil;
 	}
 
 	public String getPrenUtil() {
@@ -56,13 +55,5 @@ public class Utilisateur {
 
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
-	}
-
-	public Boolean getInscrit() {
-		return inscrit;
-	}
-
-	public void setInscrit(Boolean inscrit) {
-		this.inscrit = inscrit;
 	}
 }

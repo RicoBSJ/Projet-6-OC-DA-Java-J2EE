@@ -3,7 +3,6 @@ package com.aubrun.eric.projet6.model.bean;
 public class Longueur {
 
 	Integer id;
-	String nomSite;
 	String nomLongueur;
 	String cotationLongueur;
 	String descriptLongueur;
@@ -14,14 +13,6 @@ public class Longueur {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getNomSite() {
-		return nomSite;
-	}
-
-	public void setNomSite(String nomSite) {
-		this.nomSite = nomSite;
 	}
 
 	public String getNomLongueur() {

@@ -1,15 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 12 f??vr. 2020 01:35:59 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 12 f??vr. 2020 01:37:39 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.aubrun.eric.projet6.model.bean.Photo" table="PHOTO">
+    <class name="com.aubrun.eric.projet6.model.bean.Topo" table="TOPO">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="assigned" />
         </id>
-        <property name="nomPhoto" type="java.lang.String">
-            <column name="NOMPHOTO" />
+        <property name="nomTopo" type="java.lang.String">
+            <column name="NOMTOPO" />
+        </property>
+        <property name="descriptTopo" type="java.lang.String">
+            <column name="DESCRIPTTOPO" />
         </property>
     </class>
 </hibernate-mapping>

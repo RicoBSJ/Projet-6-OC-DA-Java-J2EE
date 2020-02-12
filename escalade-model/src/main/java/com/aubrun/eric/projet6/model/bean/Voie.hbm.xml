@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 12 f??vr. 2020 01:38:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.aubrun.eric.projet6.model.bean.Voie" table="VOIE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomVoie" type="java.lang.String">
+            <column name="NOMVOIE" />
+        </property>
+        <property name="cotationVoie" type="java.lang.String">
+            <column name="COTATIONVOIE" />
+        </property>
+        <property name="descriptVoie" type="java.lang.String">
+            <column name="DESCRIPTVOIE" />
+        </property>
+    </class>
+</hibernate-mapping>
