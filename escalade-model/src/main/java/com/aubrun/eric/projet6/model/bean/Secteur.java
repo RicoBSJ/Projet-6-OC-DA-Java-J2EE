@@ -9,10 +9,6 @@ public class Secteur {
 	String acces;
 	String[] listeVoie;
 
-	public Secteur() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

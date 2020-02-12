@@ -10,10 +10,6 @@ public class Voie {
 	String[] listeLongueur;
 	Boolean voieEquipee;
 
-	public Voie() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

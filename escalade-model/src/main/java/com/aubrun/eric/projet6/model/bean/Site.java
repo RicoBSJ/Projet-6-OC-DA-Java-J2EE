@@ -12,10 +12,6 @@ public class Site {
 	String nomPhoto;
 	Integer numUtil;
 
-	public Site() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

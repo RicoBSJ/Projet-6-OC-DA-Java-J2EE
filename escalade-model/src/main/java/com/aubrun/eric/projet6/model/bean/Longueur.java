@@ -8,10 +8,6 @@ public class Longueur {
 	String cotationLongueur;
 	String descriptLongueur;
 
-	public Longueur() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

@@ -5,10 +5,6 @@ public class Photo {
 	Integer id;
 	String nomPhoto;
 
-	public Photo() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

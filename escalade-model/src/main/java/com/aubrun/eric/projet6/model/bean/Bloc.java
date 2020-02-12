@@ -7,10 +7,6 @@ public class Bloc {
 	String nomBloc;
 	String descriptBloc;
 
-	public Bloc() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

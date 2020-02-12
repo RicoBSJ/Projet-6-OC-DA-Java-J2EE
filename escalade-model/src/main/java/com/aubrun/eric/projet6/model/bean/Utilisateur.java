@@ -10,10 +10,6 @@ public class Utilisateur {
 	String motDePasse;
 	Boolean inscrit;
 
-	public Utilisateur() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

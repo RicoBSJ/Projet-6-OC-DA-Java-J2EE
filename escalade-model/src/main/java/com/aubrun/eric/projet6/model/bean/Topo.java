@@ -13,10 +13,6 @@ public class Topo {
 	Boolean reserve;
 	String nomPhoto;
 
-	public Topo() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

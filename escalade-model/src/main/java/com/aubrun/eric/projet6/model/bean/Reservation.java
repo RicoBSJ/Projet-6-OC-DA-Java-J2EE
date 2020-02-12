@@ -8,10 +8,6 @@ public class Reservation {
 	Boolean topoDisponible;
 	Integer numUtil;
 
-	public Reservation() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

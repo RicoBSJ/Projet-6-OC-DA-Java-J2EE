@@ -6,10 +6,6 @@ public class Commentaire {
 	String nomSite;
 	String commentaire;
 
-	public Commentaire() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}
