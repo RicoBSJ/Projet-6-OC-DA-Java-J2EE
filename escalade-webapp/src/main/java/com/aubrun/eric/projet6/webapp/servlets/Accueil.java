@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.SiteService;
 
-@WebServlet("/accueil")
+@WebServlet("/Accueil")
 public class Accueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SiteService siteService = new SiteService();
@@ -23,7 +23,7 @@ public class Accueil extends HttpServlet {
 
 		request.setAttribute("sites", siteService.findAll());
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
