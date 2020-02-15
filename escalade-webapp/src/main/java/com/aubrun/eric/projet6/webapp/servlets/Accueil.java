@@ -23,7 +23,7 @@ public class Accueil extends HttpServlet {
 
 		request.setAttribute("sites", siteService.findAll());
 
-		this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/accueil.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

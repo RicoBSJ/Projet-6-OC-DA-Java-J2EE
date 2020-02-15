@@ -9,6 +9,9 @@ public class MapperDtoSite {
 
 		SiteDto dto = new SiteDto();
 		dto.setNomSite(site.getNomSite());
+		dto.setDescripSite(site.getDescripSite());
+		dto.setCotationSite(site.getCotationSite());
+		dto.setListeBloc(site.getListeBloc());
 		return dto;
 	}
 }

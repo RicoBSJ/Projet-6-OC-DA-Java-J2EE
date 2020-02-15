@@ -2,10 +2,11 @@ package com.aubrun.eric.projet6.model.bean;
 
 public class Site {
 
-	Integer id;
-	String nomSite;
-	String descripSite;
-	String cotationSite;
+	private Integer id;
+	private String nomSite;
+	private String descripSite;
+	private String cotationSite;
+	private String[] listeBloc;
 
 	public Integer getId() {
 		return id;
@@ -37,5 +38,9 @@ public class Site {
 
 	public void setCotationSite(String cotationSite) {
 		this.cotationSite = cotationSite;
+	}
+
+	public String[] getListeBloc() {
+		return listeBloc;
 	}
 }
