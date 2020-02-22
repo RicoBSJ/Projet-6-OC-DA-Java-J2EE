@@ -7,7 +7,7 @@
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
-			<include-prelude>taglibs.jsp</include-prelude>
+			<include-prelude>/WEB-INF/jsp/taglibs.jsp</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
 </web-app>

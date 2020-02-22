@@ -52,5 +52,6 @@
 	<classpathentry kind="lib" path="/Users/ricobsj/eclipse-workspace/Servers/hibernate-release-5.4.10.Final/lib/osgi/org.osgi.compendium-5.0.0.jar"/>
 	<classpathentry kind="lib" path="/Users/ricobsj/eclipse-workspace/Servers/hibernate-release-5.4.10.Final/lib/osgi/org.osgi.core-6.0.0.jar"/>
 	<classpathentry kind="lib" path="/Users/ricobsj/eclipse-workspace/Servers/postgresql-42.2.9.jar"/>
+	<classpathentry kind="lib" path="/Users/ricobsj/eclipse-workspace/Servers/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

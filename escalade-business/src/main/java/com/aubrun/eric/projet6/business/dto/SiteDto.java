@@ -2,76 +2,76 @@ package com.aubrun.eric.projet6.business.dto;
 
 public class SiteDto {
 
-	String nomSite;
-	String descripSite;
-	String cotationSite;
-	String[] listeSecteur;
-	String[] listeBloc;
-	String commentaire;
-	String nomPhoto;
-	Integer numUtil;
+    private Integer id;
+    private String  nomSite;
+    private String  pays;
+    private String  region;
+    private String  descripSite;
+    private String  cotationSite;
+    private Double  hauteur;
+    private String  orientation;
 
-	public String getNomSite() {
-		return nomSite;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setNomSite(String nomSite) {
-		this.nomSite = nomSite;
-	}
+    public void setId( Integer id ) {
+        this.id = id;
+    }
 
-	public String getDescripSite() {
-		return descripSite;
-	}
+    public String getNomSite() {
+        return nomSite;
+    }
 
-	public void setDescripSite(String descriptSite) {
-		this.descripSite = descriptSite;
-	}
+    public void setNomSite( String nomSite ) {
+        this.nomSite = nomSite;
+    }
 
-	public String getCotationSite() {
-		return cotationSite;
-	}
+    public String getPays() {
+        return pays;
+    }
 
-	public void setCotationSite(String cotationSite) {
-		this.cotationSite = cotationSite;
-	}
+    public void setPays( String pays ) {
+        this.pays = pays;
+    }
 
-	public String[] getListeSecteur() {
-		return listeSecteur;
-	}
+    public String getRegion() {
+        return region;
+    }
 
-	public void setListeSecteur(String[] listeSecteur) {
-		this.listeSecteur = listeSecteur;
-	}
+    public void setRegion( String region ) {
+        this.region = region;
+    }
 
-	public String[] getListeBloc() {
-		return listeBloc;
-	}
+    public String getDescripSite() {
+        return descripSite;
+    }
 
-	public void setListeBloc(String[] listeBloc) {
-		this.listeBloc = listeBloc;
-	}
+    public void setDescripSite( String descripSite ) {
+        this.descripSite = descripSite;
+    }
 
-	public String getCommentaire() {
-		return commentaire;
-	}
+    public String getCotationSite() {
+        return cotationSite;
+    }
 
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
+    public void setCotationSite( String cotationSite ) {
+        this.cotationSite = cotationSite;
+    }
 
-	public String getNomPhoto() {
-		return nomPhoto;
-	}
+    public Double getHauteur() {
+        return hauteur;
+    }
 
-	public void setNomPhoto(String nomPhoto) {
-		this.nomPhoto = nomPhoto;
-	}
+    public void setHauteur( Double hauteur ) {
+        this.hauteur = hauteur;
+    }
 
-	public Integer getNumUtil() {
-		return numUtil;
-	}
+    public String getOrientation() {
+        return orientation;
+    }
 
-	public void setNumUtil(Integer numUtil) {
-		this.numUtil = numUtil;
-	}
+    public void setOrientation( String orientation ) {
+        this.orientation = orientation;
+    }
 }

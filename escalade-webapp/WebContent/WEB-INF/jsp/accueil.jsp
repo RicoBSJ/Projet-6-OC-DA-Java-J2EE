@@ -16,7 +16,7 @@
 		<header>
 			<div id="titre_principal">
 				<div id="logo">
-					<img src="images/Les_amis_de_l_escalade.png"
+					<img src="<c:url value="/images/Les_amis_de_l_escalade.png" />"
 						alt="Logo des amis de l'escalade" />
 					<h1>Les Amis de l'Escalade</h1>
 				</div>
@@ -25,7 +25,7 @@
 
 			<nav>
 				<ul>
-					<li><a href="/accueil.jsp">Accueil</a></li>
+					<li><a href="<c:url value="accueil.jsp" />">Accueil</a></li>
 					<li><a href="/rechercheSite.jsp">Recherche</a></li>
 				</ul>
 			</nav>
@@ -33,9 +33,8 @@
 
 		<div id="banniere_image">
 			<div id="banniere_description">
-				Retour sur les tout derniers sites d'escalade... <a
-					href="images/escalade.png" class="bouton_rouge">Voir les
-					commentaires <img src="images/flecheblanchedroite.png" alt="" />
+				Retour sur les tout derniers sites d'escalade... <a class="bouton_rouge" href="<c:url value="/images/escalade.png" />" >
+				Voir les commentaires <img alt="" src="<c:url value="/images/flecheblanchedroite.png" />" />
 				</a>
 			</div>
 		</div>
@@ -145,7 +144,7 @@
 			<h1>À propos des Amis de l'Escalade</h1>
 
 			<p id="photo_du_site">
-				<img src="images/rock-climbing-silhouette.png" alt="Photo du site" />
+				<img src="<c:url value="/images/rock-climbing-silhouette.png" />" alt="Photo du site" />
 			</p>
 			<p>Avec l’objectif de fédérer les licenciés, l’association “Les
 				amis de l’escalade” souhaite développer sa présence en ligne. À ce
