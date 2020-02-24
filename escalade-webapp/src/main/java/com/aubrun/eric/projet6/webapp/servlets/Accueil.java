@@ -16,7 +16,7 @@ public class Accueil extends HttpServlet {
     private static final long  serialVersionUID = 1L;
 
     /* Constantes */
-    public static final String VUE              = "/WEN-INF/jsp/accueil.jsp";
+    public static final String VUE              = "/WEB-INF/jsp/accueil.jsp";
 
     private SiteService        siteService      = new SiteService();
 
