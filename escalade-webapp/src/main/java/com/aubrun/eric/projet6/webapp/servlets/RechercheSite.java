@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class RechercheSite
  */
-@WebServlet( "/RechercheSite" )
+@WebServlet( "/rechercheSite" )
 public class RechercheSite extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+
+    private static final long  serialVersionUID = 1L;
+
+    /* Constantes */
+    public static final String VUE              = "/WEB-INF/jsp/rechercheSite.jsp";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -30,7 +34,7 @@ public class RechercheSite extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         // TODO Auto-generated method stub
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/jsp/rechercheSite.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     /**

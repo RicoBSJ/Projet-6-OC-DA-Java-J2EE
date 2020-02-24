@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet( "/Inscription" )
+@WebServlet( "/inscription" )
 public class Inscription extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
     /* Constantes */
-    public static final String VUE              = "/WEN-INF/jsp/inscription.jsp";
+    public static final String VUE              = "/WEB-INF/jsp/inscription.jsp";
 
     public Inscription() {
         super();

@@ -28,7 +28,7 @@
 					<li><a href="<c:url value="/rechercheSite" />">Recherche</a></li>
 					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
-					
+
 				</ul>
 			</nav>
 		</header>
@@ -46,7 +46,7 @@
 
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a ref="<c:url value="#" />" href="<c:url value="/images/tetes_brulees.jpg" />">Les Têtes Brûlées</a>
+						<a ref="<c:url value="/detailsSite" />" href="<c:url value="/images/tetes_brulees.jpg" />">Les Têtes Brûlées</a>
 					</h3>
 					<div class="massifListe">France</div>
 					<div class="massifListe">Haute-Savoie</div>
