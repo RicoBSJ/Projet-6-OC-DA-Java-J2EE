@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class DetailSite
  */
 @WebServlet("/DetailSite")
-public class DetailSite extends HttpServlet {
+public class DetailsSite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DetailSite() {
+	public DetailsSite() {
 		super();
 	}
 

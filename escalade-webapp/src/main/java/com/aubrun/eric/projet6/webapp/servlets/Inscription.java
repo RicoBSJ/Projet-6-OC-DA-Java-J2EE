@@ -8,32 +8,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.business.service.SiteService;
-
-@WebServlet( "/accueil" )
-public class Accueil extends HttpServlet {
+@WebServlet( "/Inscription" )
+public class Inscription extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
     /* Constantes */
-    public static final String VUE              = "/WEN-INF/jsp/accueil.jsp";
+    public static final String VUE              = "/WEN-INF/jsp/inscription.jsp";
 
-    private SiteService        siteService      = new SiteService();
-
-    public Accueil() {
+    public Inscription() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-
-        request.setAttribute( "sites", siteService.findAll() );
-
+        // TODO Auto-generated method stub
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-
+        // TODO Auto-generated method stub
+        doGet( request, response );
     }
+
 }

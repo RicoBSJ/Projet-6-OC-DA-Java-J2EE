@@ -7,7 +7,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css" />" />
 
 <title>Tous les sites de l'escalade</title>
 </head>
@@ -16,8 +16,7 @@
 		<header>
 			<div id="titre_principal">
 				<div id="logo">
-					<img src="<c:url value="/images/Les_amis_de_l_escalade.png" />"
-						alt="Logo des amis de l'escalade" />
+					<img src="<c:url value="/images/Les_amis_de_l_escalade.png" />" alt="Logo des amis de l'escalade" />
 					<h1>Les Amis de l'Escalade</h1>
 				</div>
 				<h2>Site développé par RicoBSJ</h2>
@@ -25,16 +24,19 @@
 
 			<nav>
 				<ul>
-					<li><a href="<c:url value="accueil.jsp" />">Accueil</a></li>
-					<li><a href="<c:url value="/rechercheSite.jsp" />">Recherche</a></li>
+					<!-- Renvoyer vers des servlets -->
+					<li><a href="<c:url value="/rechercheSite" />">Recherche</a></li>
+					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
+					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
+					
 				</ul>
 			</nav>
 		</header>
 
 		<div id="banniere_image">
 			<div id="banniere_description">
-				Retour sur les tout derniers sites d'escalade... <a class="bouton_rouge" href="<c:url value="/images/escalade.png" />" >
-				Voir les commentaires <img alt="" src="<c:url value="/images/flecheblanchedroite.png" />" />
+				Retour sur les tout derniers sites d'escalade... <a href="<c:url value="/images/escalade.png" />" class="bouton_rouge">
+				Voir les commentaires <img src="<c:url value="/images/flecheblanchedroite.png" />" alt=""/>
 				</a>
 			</div>
 		</div>
@@ -44,16 +46,15 @@
 
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a ref="#" href="site-escalade-ablon">Les Têtes Brûlées</a>
+						<a ref="<c:url value="#" />" href="<c:url value="/images/tetes_brulees.jpg" />">Les Têtes Brûlées</a>
 					</h3>
 					<div class="massifListe">France</div>
 					<div class="massifListe">Haute-Savoie</div>
 
 				</div>
 				<div class="thumbs-stations">
-					<a ref="#" href="site-escalade-ablon"> <img
-						src="images/tetes_brulees.jpg" alt="marc daviet ablon"
-						title="marc daviet ablon" width="315" height="200" />
+					<a ref="<c:url value="#" />" href="<c:url value="/images/tetes_brulees.jpg"/>" >
+					<img src="<c:url value="/images/tetes_brulees.jpg" />" alt="Site des Têtes Brulées" title="Les Têtes Brulées" width="315" height="200" />
 					</a>
 				</div>
 
@@ -155,10 +156,11 @@
 				l’association afin d’encourager des grimpeurs indépendants à y
 				adhérer.</p>
 			<p>
-				<img src="images/facebook.png" alt="Facebook" /><img
-					src="images/twitter.png" alt="Twitter" /><img
-					src="images/vimeo.png" alt="Vimeo" /><img src="images/flickr.png"
-					alt="Flickr" /><img src="images/rss.png" alt="RSS" />
+				<img alt="Facebook" src="<c:url value="/images/facebook.png" />" />
+				<img alt="Twitter" src="<c:url value="/images/twitter.png" />" />
+				<img alt="Vimeo" src="<c:url value="/images/vimeo.png" />" />
+				<img alt="Flickr" src="<c:url value="/images/flickr.png" />" />
+				<img alt="RSS" src="<c:url value="/images/rss.png" />" />
 			</p>
 
 		</div>
@@ -172,26 +174,26 @@
 			<div id="les_dernières_photos">
 				<h1>Les dernières photos</h1>
 				<p>
-					<img src="images/photo1.jpeg" alt="Photographie" /><img
-						src="images/photo2.jpeg" alt="Photographie" /><img
-						src="images/photo3.jpeg" alt="Photographie" /><img
-						src="images/photo4.jpeg" alt="Photographie" />
+					<img alt="Photographie" src="<c:url value="/images/photo1.jpeg" />" />
+					<img alt="Photographie" src="<c:url value="/images/photo2.jpeg" />" />
+					<img alt="Photographie" src="<c:url value="/images/photo3.jpeg" />" />
+					<img alt="Photographie" src="<c:url value="/images/photo4.jpeg" />" />
 				</p>
 			</div>
 			<div id="Les_derniers_sites">
 				<h1>Les derniers sites</h1>
 				<div id="listes_sites">
 					<ul>
-						<li><a href="#">Les Têtes Brûlées</a></li>
-						<li><a href="#">Les Gazelles</a></li>
-						<li><a href="#">Les Warriors</a></li>
-						<li><a href="#">Les Irréductibles</a></li>
+						<li><a href="<c:url value="#" />">Les Têtes Brûlées</a></li>
+						<li><a href="<c:url value="#" />">Les Gazelles</a></li>
+						<li><a href="<c:url value="#" />">Les Warriors</a></li>
+						<li><a href="<c:url value="#" />">Les Irréductibles</a></li>
 					</ul>
 					<ul>
-						<li><a href="#">Les Acrobates</a></li>
-						<li><a href="#">Les Abeilles</a></li>
-						<li><a href="#">Les N'importe Quoi</a></li>
-						<li><a href="#">Les Fans</a></li>
+						<li><a href="<c:url value="#" />">Les Acrobates</a></li>
+						<li><a href="<c:url value="#" />">Les Abeilles</a></li>
+						<li><a href="<c:url value="#" />">Les N'importe Quoi</a></li>
+						<li><a href="<c:url value="#" />">Les Fans</a></li>
 					</ul>
 				</div>
 			</div>
