@@ -26,7 +26,7 @@
 			<nav>
 				<ul>
 					<li><a href="<c:url value="accueil.jsp" />">Accueil</a></li>
-					<li><a href="/rechercheSite.jsp">Recherche</a></li>
+					<li><a href="<c:url value="/rechercheSite.jsp" />">Recherche</a></li>
 				</ul>
 			</nav>
 		</header>
