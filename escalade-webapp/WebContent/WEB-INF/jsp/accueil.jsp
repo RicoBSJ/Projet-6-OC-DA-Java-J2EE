@@ -7,7 +7,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css" />" />
+<link type="text/css" rel="stylesheet"
+	href="<c:url value="/css/style.css" />" />
 
 <title>Tous les sites de l'escalade</title>
 </head>
@@ -16,7 +17,8 @@
 		<header>
 			<div id="titre_principal">
 				<div id="logo">
-					<img src="<c:url value="/images/Les_amis_de_l_escalade.png" />" alt="Logo des amis de l'escalade" />
+					<img src="<c:url value="/images/Les_amis_de_l_escalade.png" />"
+						alt="Logo des amis de l'escalade" />
 					<h1>Les Amis de l'Escalade</h1>
 				</div>
 				<h2>Site développé par RicoBSJ</h2>
@@ -34,27 +36,30 @@
 
 		<div id="banniere_image">
 			<div id="banniere_description">
-				Retour sur les tout derniers sites d'escalade... <a href="<c:url value="/images/escalade.png" />" class="bouton_rouge">
-				Voir les commentaires <img src="<c:url value="/images/flecheblanchedroite.png" />" alt=""/>
+				Retour sur les tout derniers sites d'escalade... <a
+					href="<c:url value="/images/escalade.png" />" class="bouton_rouge">
+					Voir les commentaires <img
+					src="<c:url value="/images/flecheblanchedroite.png" />" alt="" />
 				</a>
 			</div>
 		</div>
 
 		<section>
 			<article class="resultats-listeStations even first">
-
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a href="<c:url value="/images/tetes_brulees.jpg" />">Les Têtes Brûlées</a>
+						<a href="<c:url value="/images/tetes_brulees.jpg" />">Les
+							Têtes Brûlées</a>
 					</h3>
 					<div class="massifListe">France</div>
 					<div class="massifListe">Haute-Savoie</div>
-
 				</div>
 				<div class="thumbs-stations">
-					<a href="<c:url value="/detailsSite" />"><img src="<c:url value="/images/tetes_brulees.jpg" />" alt="Site des Têtes Brulées" title="Détails du site Les Têtes Brulées" width="315" height="200" /></a>
+					<a href="<c:url value="/detailsSite" />"><img
+						src="<c:url value="/images/tetes_brulees.jpg" />"
+						alt="Site des Têtes Brulées"
+						title="Détails du site Les Têtes Brulées" width="315" height="200" /></a>
 				</div>
-
 				<div class="results-right">
 					<div class="infosStations">
 
@@ -65,23 +70,20 @@
 					</div>
 				</div>
 			</article>
-
 			<article class="resultats-listeStations odd">
-
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a ref="#" href="site-escalade-ailefroide">Les Gazelles</a>
+						<a href="<c:url value="/images/gazelles.jpg" />">Les Gazelles</a>
 					</h3>
 					<div class="massifListe">France</div>
 					<div class="massifListe">Hautes-Alpes</div>
-
 				</div>
 				<div class="thumbs-stations">
-					<a ref="#" href="site-escalade-ailefroide"> <img
-						src="images/gazelles.jpeg" alt="ailefroide escalade 5"
-						title="ailefroide escalade 5" width="315" height="200" /></a>
+					<a href="<c:url value="/detailsSite" />"><img
+						src="<c:url value="/images/gazelles.jpeg" />"
+						alt="Site des Gazelles" title="Détails du site des Gazelles"
+						width="315" height="200" /></a>
 				</div>
-
 				<div class="results-right">
 					<div class="infosStations">
 
@@ -92,29 +94,25 @@
 							à <span>8a</span> </span>
 					</div>
 				</div>
-
 			</article>
 
 			<article class="resultats-listeStations even">
 
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a ref="#" href="site-escalade-annot">Les Warriors</a>
+						<a href="<c:url value="/images/warriors.jpeg" />">Les Warriors</a>
 					</h3>
 					<div class="massifListe">France</div>
 					<div class="massifListe">Alpes-de-Haute-Provence</div>
-
 				</div>
 				<div class="thumbs-stations">
-					<a ref="#" href="site-escalade-annot"> <img
-						src="images/warriors.jpeg" alt="annot-fred-oddo-dans-6c"
-						title="annot-fred-oddo-dans-6c" width="315" height="200" /></a>
+					<a href="<c:url value="/detailsSite" />"><img
+						src="<c:url value="/images/warriors.jpeg" />"
+						alt="Site des Warriors" title="Détails du site des Warriors"
+						width="315" height="200" /></a>
 				</div>
-
-
 				<div class="results-right">
 					<div class="infosStations">
-
 						<span class="value"><span>25 m</span> de hauteur</span> <span><span
 							class="value">Orientation <span>Toutes</span></span></span> <span
 							class="value"><span>400 voies</span> de <span>4c</span> à
@@ -142,7 +140,8 @@
 			<h1>À propos des Amis de l'Escalade</h1>
 
 			<p id="photo_du_site">
-				<img src="<c:url value="/images/rock-climbing-silhouette.png" />" alt="Photo du site" />
+				<img src="<c:url value="/images/rock-climbing-silhouette.png" />"
+					alt="Photo du site" />
 			</p>
 			<p>Avec l’objectif de fédérer les licenciés, l’association “Les
 				amis de l’escalade” souhaite développer sa présence en ligne. À ce
@@ -154,10 +153,10 @@
 				adhérer.</p>
 			<p>
 				<img alt="Facebook" src="<c:url value="/images/facebook.png" />" />
-				<img alt="Twitter" src="<c:url value="/images/twitter.png" />" />
-				<img alt="Vimeo" src="<c:url value="/images/vimeo.png" />" />
-				<img alt="Flickr" src="<c:url value="/images/flickr.png" />" />
-				<img alt="RSS" src="<c:url value="/images/rss.png" />" />
+				<img alt="Twitter" src="<c:url value="/images/twitter.png" />" /> <img
+					alt="Vimeo" src="<c:url value="/images/vimeo.png" />" /> <img
+					alt="Flickr" src="<c:url value="/images/flickr.png" />" /> <img
+					alt="RSS" src="<c:url value="/images/rss.png" />" />
 			</p>
 
 		</div>
@@ -181,7 +180,7 @@
 				<h1>Les derniers sites</h1>
 				<div id="listes_sites">
 					<ul>
-						<li><a href="<c:url value="#" />">Les Têtes Brûlées</a></li>
+						<li><a href="<c:url value="/detailsSite" />">Les Têtes Brûlées</a></li>
 						<li><a href="<c:url value="#" />">Les Gazelles</a></li>
 						<li><a href="<c:url value="#" />">Les Warriors</a></li>
 						<li><a href="<c:url value="#" />">Les Irréductibles</a></li>
