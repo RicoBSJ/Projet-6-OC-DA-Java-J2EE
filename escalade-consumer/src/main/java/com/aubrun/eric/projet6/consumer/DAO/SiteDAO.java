@@ -67,7 +67,7 @@ public class SiteDAO {
 		}
 	}
 
-	public List<Site> ajouterSite(Site site) {
+	public List<Site> ajouterSites(Site site) {
 
 		loadDatabase();
 

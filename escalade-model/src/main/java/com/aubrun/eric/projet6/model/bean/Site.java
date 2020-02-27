@@ -1,77 +1,108 @@
 package com.aubrun.eric.projet6.model.bean;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Site {
 
-    private Integer id;
-    private String  nomSite;
-    private String  pays;
-    private String  region;
-    private String  descripSite;
-    private String  cotationSite;
-    private Double  hauteur;
-    private String  orientation;
+	@Id
+	@Column(name = "id")
+	private Integer id;
+	@Column(name = "nom")
+	private String nomSite;
+	@Column(name = "pays")
+	private String pays;
+	@Column(name = "region")
+	private String region;
+	@Column(name = "description")
+	private String descripSite;
+	@Column(name = "cotation")
+	private String cotationSite;
+	@Column(name = "hauteur")
+	private Double hauteur;
+	@Column(name = "orientation")
+	private String orientation;
+	@OneToMany
+	@JoinColumn(name = "id_site")
+	private List<Photo> photos;
 
-    public String getPays() {
-        return pays;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setPays( String pays ) {
-        this.pays = pays;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getRegion() {
-        return region;
-    }
+	public String getNomSite() {
+		return nomSite;
+	}
 
-    public void setRegion( String region ) {
-        this.region = region;
-    }
+	public void setNomSite(String nomSite) {
+		this.nomSite = nomSite;
+	}
 
-    public Double getHauteur() {
-        return hauteur;
-    }
+	public String getPays() {
+		return pays;
+	}
 
-    public void setHauteur( Double hauteur ) {
-        this.hauteur = hauteur;
-    }
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
 
-    public String getOrientation() {
-        return orientation;
-    }
+	public String getRegion() {
+		return region;
+	}
 
-    public void setOrientation( String orientation ) {
-        this.orientation = orientation;
-    }
+	public void setRegion(String region) {
+		this.region = region;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public String getDescripSite() {
+		return descripSite;
+	}
 
-    public void setId( Integer id ) {
-        this.id = id;
-    }
+	public void setDescripSite(String descripSite) {
+		this.descripSite = descripSite;
+	}
 
-    public String getNomSite() {
-        return nomSite;
-    }
+	public String getCotationSite() {
+		return cotationSite;
+	}
 
-    public void setNomSite( String nomSite ) {
-        this.nomSite = nomSite;
-    }
+	public void setCotationSite(String cotationSite) {
+		this.cotationSite = cotationSite;
+	}
 
-    public String getDescripSite() {
-        return descripSite;
-    }
+	public Double getHauteur() {
+		return hauteur;
+	}
 
-    public void setDescripSite( String descriptSite ) {
-        this.descripSite = descriptSite;
-    }
+	public void setHauteur(Double hauteur) {
+		this.hauteur = hauteur;
+	}
 
-    public String getCotationSite() {
-        return cotationSite;
-    }
+	public String getOrientation() {
+		return orientation;
+	}
 
-    public void setCotationSite( String cotationSite ) {
-        this.cotationSite = cotationSite;
-    }
+	public void setOrientation(String orientation) {
+		this.orientation = orientation;
+	}
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
 }
