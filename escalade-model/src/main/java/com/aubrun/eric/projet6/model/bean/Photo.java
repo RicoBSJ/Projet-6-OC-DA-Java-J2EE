@@ -1,15 +1,27 @@
 package com.aubrun.eric.projet6.model.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Photo {
 
-	Integer id;
-	String nomPhoto;
+	@Id
+	@Column(name = "id")
+	private Long id;
+	@Column(name = "nom")
+	private String nomPhoto;
+	@Column(name = "chemin")
+	private String url;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -19,5 +31,13 @@ public class Photo {
 
 	public void setNomPhoto(String nomPhoto) {
 		this.nomPhoto = nomPhoto;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
