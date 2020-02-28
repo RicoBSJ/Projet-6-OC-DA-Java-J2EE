@@ -26,7 +26,7 @@
 
 			<nav>
 				<ul>
-					<!-- Renvoyer vers des servlets -->
+					<!-- Renvoi vers des servlets -->
 					<li><a href="<c:url value="/rechercheSite" />">Recherche</a></li>
 					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
@@ -55,6 +55,7 @@
 					<div class="massifListe">Haute-Savoie</div>
 				</div>
 				<div class="thumbs-stations">
+					<!-- Un clic sur l'image renvoi vers la servlet -->
 					<a href="<c:url value="/detailsSite" />"><img
 						src="<c:url value="/images/tetes_brulees.jpg" />"
 						alt="Site des Têtes Brulées"
@@ -70,10 +71,11 @@
 					</div>
 				</div>
 			</article>
+
 			<article class="resultats-listeStations odd">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a href="<c:url value="/images/gazelles.jpg" />">Les Gazelles</a>
+						<a href="<c:url value="/images/gazelles.jpeg" />">Les Gazelles</a>
 					</h3>
 					<div class="massifListe">France</div>
 					<div class="massifListe">Hautes-Alpes</div>
@@ -180,7 +182,8 @@
 				<h1>Les derniers sites</h1>
 				<div id="listes_sites">
 					<ul>
-						<li><a href="<c:url value="/detailsSite" />">Les Têtes Brûlées</a></li>
+						<li><a href="<c:url value="/detailsSite" />">Les Têtes
+								Brûlées</a></li>
 						<li><a href="<c:url value="#" />">Les Gazelles</a></li>
 						<li><a href="<c:url value="#" />">Les Warriors</a></li>
 						<li><a href="<c:url value="#" />">Les Irréductibles</a></li>

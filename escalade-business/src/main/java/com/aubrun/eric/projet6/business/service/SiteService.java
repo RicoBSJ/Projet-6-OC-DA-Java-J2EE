@@ -22,15 +22,4 @@ public class SiteService {
 		}
 		return dto;
 	}
-
-	public List<SiteDto> addSite(Site Site) {
-
-		List<Site> site = siteDAO.ajouterSites(Site);
-		List<SiteDto> dto = new ArrayList<SiteDto>();
-		for (Site s : site) {
-			SiteDto siteDto = SiteDtoMapper.toDto(s);
-			dto.add(siteDto);
-		}
-		return dto;
-	}
 }

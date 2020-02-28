@@ -10,27 +10,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.SiteService;
 
-@WebServlet( "/Test" )
+@WebServlet("/Test")
 public class Test extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-    private SiteService       siteService      = new SiteService();
+	private static final long serialVersionUID = 1L;
+	private SiteService siteService = new SiteService();
 
-    public Test() {
-        super();
-    }
+	public Test() {
+		super();
+	}
 
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        request.setAttribute( "sites", siteService.findAll() );
+		request.setAttribute("sites", siteService.findAll());
 
-        this.getServletContext().getRequestDispatcher( "bonjour.jsp" ).forward( request, response );
-    }
+		this.getServletContext().getRequestDispatcher("bonjour.jsp").forward(request, response);
+	}
 
-    public void doPost( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        this.getServletContext().getRequestDispatcher( "bonjour.jsp" ).forward( request, response );
-    }
+		this.getServletContext().getRequestDispatcher("bonjour.jsp").forward(request, response);
+	}
 }
