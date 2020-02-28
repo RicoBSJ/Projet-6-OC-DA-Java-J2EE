@@ -1,84 +1,39 @@
 package com.aubrun.eric.projet6.consumer.DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import com.aubrun.eric.projet6.consumer.HibernateUtils;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDAO {
 
-	private Connection connexion;
-	private List<Site> sites = new ArrayList<Site>();
-	private Statement statement = null;
-	private ResultSet resultat = null;
+    SessionFactory factory = HibernateUtils.getSessionFactory();
 
-	public List<Site> recupererSites() {
+    public List<Site> recupererSites() {
 
-		loadDatabase();
+        Session session = factory.getCurrentSession();
+        List<Site> sites = null;
 
-		try {
-			statement = connexion.createStatement();
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT s FROM Site s";
+            Query<Site> query = session.createQuery( q );
+            sites = query.getResultList();
+            session.getTransaction().commit();
 
-			// Exécution de la requête
-			resultat = statement.executeQuery("SELECT nomSite FROM site;");
+        } catch ( Exception e ) {
+            e.printStackTrace(); // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return sites;
+    }
 
-			// Récupération des données
-			while (resultat.next()) {
-				String nomSite = resultat.getString("nomSite");
+    public List<Site> ajouterSites( Site site ) {
 
-				Site site = new Site();
-				site.setNomSite(nomSite);
-
-				sites.add(site);
-			}
-		} catch (SQLException e) {
-		} finally {
-			// Fermeture de la connexion
-			try {
-				if (resultat != null)
-					resultat.close();
-				if (statement != null)
-					statement.close();
-				if (connexion != null)
-					connexion.close();
-			} catch (SQLException ignore) {
-			}
-		}
-		return sites;
-	}
-
-	private void loadDatabase() {
-
-		try {
-			Class.forName("org.postgresql.Driver");
-		} catch (ClassNotFoundException e) {
-		}
-
-		try {
-			connexion = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/javaee", "postgres", "postgres");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public List<Site> ajouterSites(Site site) {
-
-		loadDatabase();
-
-		try {
-			PreparedStatement preparedStatement = connexion.prepareStatement("INSERT INTO site(nomSite) VALUES(?);");
-			preparedStatement.setString(1, site.getNomSite());
-
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return sites;
-	}
+        return null;
+    }
 }

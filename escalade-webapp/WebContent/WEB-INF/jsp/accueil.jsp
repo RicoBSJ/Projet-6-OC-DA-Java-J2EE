@@ -45,67 +45,16 @@
 		</div>
 
 		<section>
-			<article class="resultats-listeStations even first">
-				<div class="localisationStationListe">
-					<h3 class="nomStationListe">
-						<a href="<c:url value="/images/tetes_brulees.jpg" />">Les
-							Têtes Brûlées</a>
-					</h3>
-					<div class="massifListe">France</div>
-					<div class="massifListe">Haute-Savoie</div>
-				</div>
-				<div class="thumbs-stations">
-					<!-- Un clic sur l'image renvoi vers la servlet -->
-					<a href="<c:url value="/detailsSite" />"><img
-						src="<c:url value="/images/tetes_brulees.jpg" />"
-						alt="Site des Têtes Brulées"
-						title="Détails du site Les Têtes Brulées" width="315" height="200" /></a>
-				</div>
-				<div class="results-right">
-					<div class="infosStations">
-
-						<span class="value"><span>80 m</span> de hauteur</span> <span>
-							<span class="value">Orientation <span>Sud-Est</span></span>
-						</span> <span class="value"><span>400 voies</span> de <span>4b</span>
-							à <span>8b</span> </span>
-					</div>
-				</div>
-			</article>
-
-			<article class="resultats-listeStations odd">
-				<div class="localisationStationListe">
-					<h3 class="nomStationListe">
-						<a href="<c:url value="/images/gazelles.jpeg" />">Les Gazelles</a>
-					</h3>
-					<div class="massifListe">France</div>
-					<div class="massifListe">Hautes-Alpes</div>
-				</div>
-				<div class="thumbs-stations">
-					<a href="<c:url value="/detailsSite" />"><img
-						src="<c:url value="/images/gazelles.jpeg" />"
-						alt="Site des Gazelles" title="Détails du site des Gazelles"
-						width="315" height="200" /></a>
-				</div>
-				<div class="results-right">
-					<div class="infosStations">
-
-						<span class="value"><span>De 4 m (blocs) à 400 m
-								(voies)</span> de hauteur</span> <span><span class="value">Orientation
-								<span>Toutes</span>
-						</span></span> <span class="value"><span>500 voies</span> de <span>3a</span>
-							à <span>8a</span> </span>
-					</div>
-				</div>
-			</article>
-
+			<c:forEach var="site" items="${ sites }">
+			
 			<article class="resultats-listeStations even">
 
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a href="<c:url value="/images/warriors.jpeg" />">Les Warriors</a>
+						<a href="<c:url value="/images/warriors.jpeg" />">${ site.nomSite }</a>
 					</h3>
-					<div class="massifListe">France</div>
-					<div class="massifListe">Alpes-de-Haute-Provence</div>
+					<div class="massifListe">${ site.pays }</div>
+					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
 					<a href="<c:url value="/detailsSite" />"><img
@@ -122,19 +71,7 @@
 					</div>
 				</div>
 			</article>
-
-		</section>
-
-		<section>
-			<article>
-				<h2>Liste des sites répertoriés</h2>
-
-				<ul>
-					<c:forEach var="site" items="${ sites }">
-						<li><c:out value="${ site.nomSite }" /></li>
-					</c:forEach>
-				</ul>
-			</article>
+			</c:forEach>
 		</section>
 
 		<div>
