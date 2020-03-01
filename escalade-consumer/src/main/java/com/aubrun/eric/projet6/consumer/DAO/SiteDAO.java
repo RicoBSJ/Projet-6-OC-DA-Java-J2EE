@@ -26,7 +26,8 @@ public class SiteDAO {
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
-            e.printStackTrace(); // Rollback in case of an error occurred.
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
         return sites;
