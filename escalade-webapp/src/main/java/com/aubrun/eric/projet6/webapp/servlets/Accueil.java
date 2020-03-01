@@ -10,30 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.SiteService;
 
-@WebServlet("/accueil")
+@WebServlet( "/accueil" )
 public class Accueil extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long  serialVersionUID = 1L;
 
-	/* Constantes */
-	public static final String VUE = "/WEB-INF/jsp/accueil.jsp";
+    /* Constantes */
+    public static final String VUE              = "/WEB-INF/jsp/accueil.jsp";
 
-	private SiteService siteService = new SiteService();
+    private SiteService        siteService      = new SiteService();
 
-	public Accueil() {
-		super();
-	}
+    public Accueil() {
+        super();
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
 
-		request.setAttribute("sites", siteService.findAll());
+        request.setAttribute( "sites", siteService.findAll() );
 
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	}
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
 
-	}
+    }
 }

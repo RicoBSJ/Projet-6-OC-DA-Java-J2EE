@@ -46,31 +46,30 @@
 
 		<section>
 			<c:forEach var="site" items="${ sites }">
-			
-			<article class="resultats-listeStations even">
 
-				<div class="localisationStationListe">
-					<h3 class="nomStationListe">
-						<a href="<c:url value="/images/warriors.jpeg" />">${ site.nomSite }</a>
-					</h3>
-					<div class="massifListe">${ site.pays }</div>
-					<div class="massifListe">${ site.region }</div>
-				</div>
-				<div class="thumbs-stations">
-					<a href="<c:url value="/detailsSite" />"><img
-						src="<c:url value="/images/warriors.jpeg" />"
-						alt="Site des Warriors" title="Détails du site des Warriors"
-						width="315" height="200" /></a>
-				</div>
-				<div class="results-right">
-					<div class="infosStations">
-						<span class="value"><span>25 m</span> de hauteur</span> <span><span
-							class="value">Orientation <span>Toutes</span></span></span> <span
-							class="value"><span>400 voies</span> de <span>4c</span> à
-							<span>8c+</span> </span>
+				<article class="resultats-listeStations even">
+
+					<div class="localisationStationListe">
+						<h3 class="nomStationListe">
+							<a href="<c:url value="" />">${ site.nom }</a>
+						</h3>
+						<div class="massifListe">${ site.pays }</div>
+						<div class="massifListe">${ site.region }</div>
 					</div>
-				</div>
-			</article>
+					<div class="thumbs-stations">
+						<a href="<c:url value="/detailsSite" />"><img
+							src="<c:url value="" />" alt="Site" title="Détails du site"
+							width="315" height="200" /></a>
+						<div class="massifListe">${ site.description }</div>
+					</div>
+					<div class="results-right">
+						<div class="infosStations">
+							<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
+							<span class="value">Orientation <span> ${ site.orientation }</span></span>
+							<span class="value"><span>Cotation </span> ${ site.cotation }</span>
+						</div>
+					</div>
+				</article>
 			</c:forEach>
 		</section>
 
