@@ -33,7 +33,7 @@ public class SiteDAO {
         return sites;
     }
 
-    public List<Site> ajouterSites( Site site ) {
+    public List<Site> ajouterSite() {
 
         return null;
     }
