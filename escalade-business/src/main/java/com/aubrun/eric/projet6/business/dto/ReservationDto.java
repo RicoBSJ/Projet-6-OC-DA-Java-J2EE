@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.model.bean;
+package com.aubrun.eric.projet6.business.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,13 +7,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Commentaire {
+public class ReservationDto {
 
     @Id
     @Column( name = "id" )
     Integer id;
-    @Column( name = "commentaire" )
-    String  commentaire;
+    @Column( name = "numero" )
+    Integer numReservation;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class Commentaire {
         this.id = id;
     }
 
-    public String getCommentaire() {
-        return commentaire;
+    public Integer getNumReservation() {
+        return numReservation;
     }
 
-    public void setCommentaire( String commentaire ) {
-        this.commentaire = commentaire;
+    public void setNumReservation( Integer numReservation ) {
+        this.numReservation = numReservation;
     }
 }

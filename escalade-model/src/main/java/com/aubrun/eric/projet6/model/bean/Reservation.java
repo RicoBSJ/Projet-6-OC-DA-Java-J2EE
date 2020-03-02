@@ -1,23 +1,33 @@
 package com.aubrun.eric.projet6.model.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Reservation {
 
-	Integer id;
-	Integer nomReservation;
+    @Id
+    @Column( name = "id" )
+    Integer id;
+    @Column( name = "numero" )
+    Integer numReservation;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId( Integer id ) {
+        this.id = id;
+    }
 
-	public Integer getNomReservation() {
-		return nomReservation;
-	}
+    public Integer getNumReservation() {
+        return numReservation;
+    }
 
-	public void setNomReservation(Integer numReservation) {
-		this.nomReservation = numReservation;
-	}
+    public void setNumReservation( Integer numReservation ) {
+        this.numReservation = numReservation;
+    }
 }

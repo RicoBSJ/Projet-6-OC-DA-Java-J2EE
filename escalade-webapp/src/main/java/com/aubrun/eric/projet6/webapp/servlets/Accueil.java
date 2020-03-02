@@ -27,7 +27,7 @@ public class Accueil extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-//        request.setAttribute( "sites", siteService.findAll() );
+        request.setAttribute( "sites", siteService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

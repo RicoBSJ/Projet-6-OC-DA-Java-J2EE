@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.model.bean;
+package com.aubrun.eric.projet6.business.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Longueur {
+public class LongueurDto {
 
     @Id
     @Column( name = "id" )

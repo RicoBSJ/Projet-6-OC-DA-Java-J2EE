@@ -14,8 +14,16 @@
 		<property name="hibernate.connection.release_mode">auto</property>
 		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.connection.autoReconnect">true</property>
-		
-		<mapping class="com.aubrun.eric.projet6.model.bean.Site" />
+
+		<mapping class="com.aubrun.eric.projet6.model.bean.Bloc" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Commentaire" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Longueur" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Photo" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Reservation" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Secteur" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Site" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Topo" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Utilisateur" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Voie" />
 	</session-factory>
 </hibernate-configuration>
