@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.aubrun.eric.projet6.model.bean.Photo;
+import com.aubrun.eric.projet6.model.bean.Secteur;
 
 @Entity
 @Table
@@ -18,25 +19,28 @@ public class SiteDto {
 
     @Id
     @Column( name = "id" )
-    private Integer     id;
+    private Integer       id;
     @Column( name = "nom" )
-    private String      nomSite;
+    private String        nomSite;
     @Column( name = "pays" )
-    private String      pays;
+    private String        pays;
     @Column( name = "region" )
-    private String      region;
+    private String        region;
     @Column( name = "description" )
     @Lob
-    private String      descripSite;
+    private String        descripSite;
     @Column( name = "cotation" )
-    private String      cotationSite;
+    private String        cotationSite;
     @Column( name = "hauteur" )
-    private Double      hauteur;
+    private Double        hauteur;
     @Column( name = "orientation" )
-    private String      orientation;
+    private String        orientation;
     @OneToMany
     @JoinColumn( name = "id_site" )
-    private List<Photo> photos;
+    private List<Photo>   photos;
+    @OneToMany
+    @JoinColumn( name = "id_site" )
+    private List<Secteur> secteurs;
 
     public Integer getId() {
         return id;
@@ -108,5 +112,13 @@ public class SiteDto {
 
     public void setPhotos( List<Photo> photos ) {
         this.photos = photos;
+    }
+
+    public List<Secteur> getSecteurs() {
+        return secteurs;
+    }
+
+    public void setSecteurs( List<Secteur> secteurs ) {
+        this.secteurs = secteurs;
     }
 }
