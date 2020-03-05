@@ -17,7 +17,7 @@
 		<header>
 			<div id="titre_principal">
 				<div id="logo">
-					<img src="<c:url value="/images/Les_amis_de_l_escalade.png" />"
+					<img src="<c:url value="/images/Les_amis_de_l_escalade.png"/>"
 						alt="Logo des amis de l'escalade" />
 					<h1>Les Amis de l'Escalade</h1>
 				</div>
@@ -46,38 +46,30 @@
 
 		<section>
 			<c:forEach var="site" items="${ sites }">
-				<li><c:out value="${ site.nom }" /></li>
+				<article class="resultats-listeStations even">
+					<div class="localisationStationListe">
+						<h3 class="nomStationListe">
+							<a href="<c:url value="" />">${ site.nom }</a>
+						</h3>
+						<div class="massifListe">${ site.pays }</div>
+						<div class="massifListe">${ site.region }</div>
+					</div>
+					<div class="thumbs-stations">
+						<a href="<c:url value="/detailsSite" />"><img
+							src="<c:url value="" />" alt="Site" title="Détails du site"
+							width="315" height="200" /></a>
+						<div class="massifListe">${ site.description }</div>
+					</div>
+					<div class="results-right">
+						<div class="infosStations">
+							<span class="value"><span>${ site.hauteur } </span> de
+								hauteur</span> <span class="value">Orientation <span> ${ site.orientation }</span></span>
+							<span class="value"><span>Cotation </span> ${ site.cotation }</span>
+						</div>
+					</div>
+				</article>
 			</c:forEach>
 		</section>
-
-				<section>
-					<c:forEach var="site" items="${ sites }">
-
-						<article class="resultats-listeStations even">
-
-							<div class="localisationStationListe">
-								<h3 class="nomStationListe">
-									<a href="<c:url value="" />">${ site.nom }</a>
-								</h3>
-								<div class="massifListe">${ site.pays }</div>
-								<div class="massifListe">${ site.region }</div>
-							</div>
-							<div class="thumbs-stations">
-								<a href="<c:url value="/detailsSite" />"><img
-									src="<c:url value="" />" alt="Site" title="Détails du site"
-									width="315" height="200" /></a>
-								<div class="massifListe">${ site.description }</div>
-							</div>
-							<div class="results-right">
-								<div class="infosStations">
-									<span class="value"><span>${ site.hauteur } </span> de
-										hauteur</span> <span class="value">Orientation <span> ${ site.orientation }</span></span>
-									<span class="value"><span>Cotation </span> ${ site.cotation }</span>
-								</div>
-							</div>
-						</article>
-					</c:forEach>
-				</section>
 
 		<div>
 
