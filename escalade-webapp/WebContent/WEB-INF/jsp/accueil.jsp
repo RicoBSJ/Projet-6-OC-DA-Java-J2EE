@@ -46,7 +46,7 @@
 
 		<section>
 			<article>
-				<h2>Liste des sites répertoriés</h2>
+				<h2>Essai 1 affichage</h2>
 				<ul>
 					<c:forEach var="site" items="${ sites }">
 						<article class="resultats-listeStations even">
@@ -79,7 +79,7 @@
 
 		<section>
 			<article>
-				<h2>Liste des sites répertoriés</h2>
+				<h2>Essai 2 affichage</h2>
 				<ul>
 					<c:forEach var="site" items="${ sites }">
 						<li><c:out value="${ site.nomSite }" /></li>
@@ -88,13 +88,20 @@
 			</article>
 		</section>
 
-		<c:forEach items="${ sites }" var="site">
+		<section>
 			<article>
-				<h1>${ site.nomSite }</h1>
-				<img src="${ site.photo[0].url }" />
-				<p>${ site.description }</p>
+				<h2>Essai 3 affichage</h2>
+				<ul>
+					<c:forEach items="${ sites }" var="site">
+						<article>
+							<h1>${ site.nomSite }</h1>
+							<img src="${ site.photo[0].url }" />
+							<p>${ site.description }</p>
+						</article>
+					</c:forEach>
+				</ul>
 			</article>
-		</c:forEach>
+		</section>
 
 		<div>
 
