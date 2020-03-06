@@ -1,26 +1,12 @@
 package com.aubrun.eric.projet6.business.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table
 public class UtilisateurDto {
 
-    @Id
-    @Column( name = "id" )
     Integer id;
-    @Column( name = "nom" )
     Integer nomUtil;
-    @Column( name = "prenom" )
     String  prenUtil;
-    @Column( name = "pseudo" )
     String  pseudo;
-    @Column( name = "mail" )
     String  mail;
-    @Column( name = "motdepasse" )
     String  motDePasse;
 
     public Integer getId() {

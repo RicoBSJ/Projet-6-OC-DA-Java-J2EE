@@ -1,5 +1,9 @@
 package com.aubrun.eric.projet6.business.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.aubrun.eric.projet6.business.dto.PhotoDto;
 import com.aubrun.eric.projet6.business.dto.SiteDto;
 import com.aubrun.eric.projet6.model.bean.Site;
 
@@ -16,6 +20,13 @@ public class SiteDtoMapper {
         dto.setCotationSite( site.getCotationSite() );
         dto.setHauteur( site.getHauteur() );
         dto.setOrientation( site.getOrientation() );
+        List<PhotoDto> photos = site.getPhotos().stream().map( PhotoDtoMapper::toDto )
+                .collect( Collectors.toList() );
+        dto.setPhotos( photos );
+        // List<SecteurDto> secteurs = site.getSecteurs().stream().map(
+        // SecteurDtoMapper::toDto )
+        // .collect( Collectors.toList() );
+        // dto.setSecteurs( secteurs );
         return dto;
     }
 

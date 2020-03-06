@@ -2,28 +2,13 @@ package com.aubrun.eric.projet6.business.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.aubrun.eric.projet6.model.bean.Voie;
 
-@Entity
-@Table
 public class SecteurDto {
 
-    @Id
-    @Column( name = "id" )
     Integer            id;
-    @Column( name = "nom" )
     String             nomSecteur;
-    @Column( name = "description" )
     String             descriptSecteur;
-    @OneToMany
-    @JoinColumn( name = "id_secteur" )
     private List<Voie> voies;
 
     public Integer getId() {

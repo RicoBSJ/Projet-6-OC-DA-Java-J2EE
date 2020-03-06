@@ -46,7 +46,6 @@
 
 		<section>
 			<article>
-				<h2>Essai 1 affichage</h2>
 				<ul>
 					<c:forEach var="site" items="${ sites }">
 						<article class="resultats-listeStations even">
@@ -59,44 +58,18 @@
 							</div>
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite" />"><img
-									src="<c:url value="" />" alt="Site" title="Détails du site"
+									src="${ site.photos[0].url }" alt="Site" title="Détails du site"
 									width="315" height="200" /></a>
-								<div class="massifListe">${ site.description }</div>
+								<div class="massifListe">${ site.descripSite }</div>
 							</div>
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.hauteur } </span> de
 										hauteur</span> <span class="value">Orientation <span>
 											${ site.orientation }</span></span> <span class="value"><span>Cotation
-									</span> ${ site.cotation }</span>
+									</span> ${ site.cotationSite }</span>
 								</div>
 							</div>
-						</article>
-					</c:forEach>
-				</ul>
-			</article>
-		</section>
-
-		<section>
-			<article>
-				<h2>Essai 2 affichage</h2>
-				<ul>
-					<c:forEach var="site" items="${ sites }">
-						<li><c:out value="${ site.nomSite }" /></li>
-					</c:forEach>
-				</ul>
-			</article>
-		</section>
-
-		<section>
-			<article>
-				<h2>Essai 3 affichage</h2>
-				<ul>
-					<c:forEach items="${ sites }" var="site">
-						<article>
-							<h1>${ site.nomSite }</h1>
-							<img src="${ site.photo[0].url }" />
-							<p>${ site.description }</p>
 						</article>
 					</c:forEach>
 				</ul>

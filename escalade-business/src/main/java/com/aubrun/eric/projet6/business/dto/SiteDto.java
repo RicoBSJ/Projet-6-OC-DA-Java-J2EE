@@ -2,45 +2,18 @@ package com.aubrun.eric.projet6.business.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.aubrun.eric.projet6.model.bean.Photo;
-import com.aubrun.eric.projet6.model.bean.Secteur;
-
-@Entity
-@Table
 public class SiteDto {
 
-    @Id
-    @Column( name = "id" )
-    private Integer       id;
-    @Column( name = "nom" )
-    private String        nomSite;
-    @Column( name = "pays" )
-    private String        pays;
-    @Column( name = "region" )
-    private String        region;
-    @Column( name = "description" )
-    @Lob
-    private String        descripSite;
-    @Column( name = "cotation" )
-    private String        cotationSite;
-    @Column( name = "hauteur" )
-    private Double        hauteur;
-    @Column( name = "orientation" )
-    private String        orientation;
-    @OneToMany
-    @JoinColumn( name = "id_site" )
-    private List<Photo>   photos;
-    @OneToMany
-    @JoinColumn( name = "id_site" )
-    private List<Secteur> secteurs;
+    private Integer          id;
+    private String           nomSite;
+    private String           pays;
+    private String           region;
+    private String           descripSite;
+    private String           cotationSite;
+    private Double           hauteur;
+    private String           orientation;
+    private List<PhotoDto>   photos;
+    private List<SecteurDto> secteurs;
 
     public Integer getId() {
         return id;
@@ -106,19 +79,19 @@ public class SiteDto {
         this.orientation = orientation;
     }
 
-    public List<Photo> getPhotos() {
+    public List<PhotoDto> getPhotos() {
         return photos;
     }
 
-    public void setPhotos( List<Photo> photos ) {
+    public void setPhotos( List<PhotoDto> photos ) {
         this.photos = photos;
     }
 
-    public List<Secteur> getSecteurs() {
+    public List<SecteurDto> getSecteurs() {
         return secteurs;
     }
 
-    public void setSecteurs( List<Secteur> secteurs ) {
+    public void setSecteurs( List<SecteurDto> secteurs ) {
         this.secteurs = secteurs;
     }
 }

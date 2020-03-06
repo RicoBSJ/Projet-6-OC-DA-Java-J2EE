@@ -1,20 +1,9 @@
 package com.aubrun.eric.projet6.business.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table
 public class PhotoDto {
 
-    @Id
-    @Column( name = "id" )
     private Long   id;
-    @Column( name = "nom" )
     private String nomPhoto;
-    @Column( name = "chemin" )
     private String url;
 
     public Long getId() {

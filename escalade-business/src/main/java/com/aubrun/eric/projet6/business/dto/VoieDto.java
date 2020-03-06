@@ -2,30 +2,14 @@ package com.aubrun.eric.projet6.business.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.aubrun.eric.projet6.model.bean.Longueur;
 
-@Entity
-@Table
 public class VoieDto {
 
-    @Id
-    @Column( name = "id" )
     Integer                id;
-    @Column( name = "nom" )
     String                 nomVoie;
-    @Column( name = "cotation" )
     String                 cotationVoie;
-    @Column( name = "description" )
     String                 descriptVoie;
-    @OneToMany
-    @JoinColumn( name = "id_voie" )
     private List<Longueur> longueurs;
 
     public Integer getId() {

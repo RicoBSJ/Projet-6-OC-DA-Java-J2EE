@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,28 +16,27 @@ public class Site {
 
     @Id
     @Column( name = "id" )
-    private Integer       id;
+    private Integer     id;
     @Column( name = "nom" )
-    private String        nomSite;
+    private String      nomSite;
     @Column( name = "pays" )
-    private String        pays;
+    private String      pays;
     @Column( name = "region" )
-    private String        region;
-    @Column( name = "description" )
-    @Lob
-    private String        descripSite;
+    private String      region;
+    @Column( name = "description", columnDefinition = "text" )
+    private String      descripSite;
     @Column( name = "cotation" )
-    private String        cotationSite;
+    private String      cotationSite;
     @Column( name = "hauteur" )
-    private Double        hauteur;
+    private Double      hauteur;
     @Column( name = "orientation" )
-    private String        orientation;
-    @OneToMany
+    private String      orientation;
+    @OneToMany( fetch = FetchType.EAGER )
     @JoinColumn( name = "id_site" )
-    private List<Photo>   photos;
-    @OneToMany
-    @JoinColumn( name = "id_site" )
-    private List<Secteur> secteurs;
+    private List<Photo> photos;
+    // @OneToMany( fetch = FetchType.EAGER )
+    // @JoinColumn( name = "id_site" )
+    // private List<Secteur> secteurs;
 
     public Integer getId() {
         return id;
@@ -111,11 +110,11 @@ public class Site {
         this.photos = photos;
     }
 
-    public List<Secteur> getSecteurs() {
-        return secteurs;
-    }
-
-    public void setSecteurs( List<Secteur> secteurs ) {
-        this.secteurs = secteurs;
-    }
+    // public List<Secteur> getSecteurs() {
+    // return secteurs;
+    // }
+    //
+    // public void setSecteurs( List<Secteur> secteurs ) {
+    // this.secteurs = secteurs;
+    // }
 }
