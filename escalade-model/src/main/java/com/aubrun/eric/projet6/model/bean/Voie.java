@@ -2,8 +2,10 @@ package com.aubrun.eric.projet6.model.bean;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -22,7 +24,7 @@ public class Voie {
     String                 cotationVoie;
     @Column( name = "description" )
     String                 descriptVoie;
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn( name = "id_voie" )
     private List<Longueur> longueurs;
 

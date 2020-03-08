@@ -2,14 +2,12 @@ package com.aubrun.eric.projet6.business.dto;
 
 import java.util.List;
 
-import com.aubrun.eric.projet6.model.bean.Voie;
-
 public class SecteurDto {
 
-    Integer            id;
-    String             nomSecteur;
-    String             descriptSecteur;
-    private List<Voie> voies;
+    Integer               id;
+    String                nomSecteur;
+    String                descriptSecteur;
+    private List<VoieDto> voies;
 
     public Integer getId() {
         return id;
@@ -35,11 +33,11 @@ public class SecteurDto {
         this.descriptSecteur = descriptSecteur;
     }
 
-    public List<Voie> getVoies() {
+    public List<VoieDto> getVoies() {
         return voies;
     }
 
-    public void setVoies( List<Voie> voies ) {
+    public void setVoies( List<VoieDto> voies ) {
         this.voies = voies;
     }
 }

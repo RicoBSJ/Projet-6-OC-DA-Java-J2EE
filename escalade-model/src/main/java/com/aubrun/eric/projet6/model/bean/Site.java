@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.model.bean;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,27 +17,27 @@ public class Site {
 
     @Id
     @Column( name = "id" )
-    private Integer     id;
+    private Integer       id;
     @Column( name = "nom" )
-    private String      nomSite;
+    private String        nomSite;
     @Column( name = "pays" )
-    private String      pays;
+    private String        pays;
     @Column( name = "region" )
-    private String      region;
+    private String        region;
     @Column( name = "description", columnDefinition = "text" )
-    private String      descripSite;
+    private String        descripSite;
     @Column( name = "cotation" )
-    private String      cotationSite;
+    private String        cotationSite;
     @Column( name = "hauteur" )
-    private Double      hauteur;
+    private Double        hauteur;
     @Column( name = "orientation" )
-    private String      orientation;
-    @OneToMany( fetch = FetchType.EAGER )
+    private String        orientation;
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     @JoinColumn( name = "id_site" )
-    private List<Photo> photos;
-    // @OneToMany( fetch = FetchType.EAGER )
-    // @JoinColumn( name = "id_site" )
-    // private List<Secteur> secteurs;
+    private List<Photo>   photos;
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    @JoinColumn( name = "id_site" )
+    private List<Secteur> secteurs;
 
     public Integer getId() {
         return id;
@@ -110,11 +111,11 @@ public class Site {
         this.photos = photos;
     }
 
-    // public List<Secteur> getSecteurs() {
-    // return secteurs;
-    // }
-    //
-    // public void setSecteurs( List<Secteur> secteurs ) {
-    // this.secteurs = secteurs;
-    // }
+    public List<Secteur> getSecteurs() {
+        return secteurs;
+    }
+
+    public void setSecteurs( List<Secteur> secteurs ) {
+        this.secteurs = secteurs;
+    }
 }

@@ -2,15 +2,13 @@ package com.aubrun.eric.projet6.business.dto;
 
 import java.util.List;
 
-import com.aubrun.eric.projet6.model.bean.Longueur;
-
 public class VoieDto {
 
-    Integer                id;
-    String                 nomVoie;
-    String                 cotationVoie;
-    String                 descriptVoie;
-    private List<Longueur> longueurs;
+    Integer                   id;
+    String                    nomVoie;
+    String                    cotationVoie;
+    String                    descriptVoie;
+    private List<LongueurDto> longueurs;
 
     public Integer getId() {
         return id;
@@ -44,11 +42,11 @@ public class VoieDto {
         this.descriptVoie = descriptVoie;
     }
 
-    public List<Longueur> getLongueurs() {
+    public List<LongueurDto> getLongueurs() {
         return longueurs;
     }
 
-    public void setLongueurs( List<Longueur> longueurs ) {
+    public void setLongueurs( List<LongueurDto> longueurs ) {
         this.longueurs = longueurs;
     }
 }
