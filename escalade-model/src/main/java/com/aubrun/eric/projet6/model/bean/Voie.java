@@ -2,14 +2,15 @@ package com.aubrun.eric.projet6.model.bean;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table
@@ -24,7 +25,8 @@ public class Voie {
     String                 cotationVoie;
     @Column( name = "description" )
     String                 descriptVoie;
-    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    @OneToMany
+    @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_voie" )
     private List<Longueur> longueurs;
 
