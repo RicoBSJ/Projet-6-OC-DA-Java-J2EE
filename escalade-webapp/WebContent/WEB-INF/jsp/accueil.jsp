@@ -60,7 +60,7 @@
 								<a href="<c:url value="/detailsSite" />"><img
 									src="${ site.photos[0].url }" alt="Site" title="Détails du site"
 									width="315" height="200" /></a>
-								<div class="massifListe">${ site.descripSite }</div>
+								<%-- <div class="massifListe">${ site.descripSite }</div> --%>
 							</div>
 							<div class="results-right">
 								<div class="infosStations">
