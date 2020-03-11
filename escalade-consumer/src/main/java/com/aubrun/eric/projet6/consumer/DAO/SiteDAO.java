@@ -40,28 +40,38 @@ public class SiteDAO {
 
     public List<Site> afficherDetails() {
 
-        String image = "";
+        Session session = factory.getCurrentSession();
+        List<Site> sites = null;
 
-        switch ( image ) {
-        case "images/ablon_marc_daviet_crop_995x516.jpg":
-            System.out.println( "Ouch !" );
-            break;
-        case "images/ailefroide_escalade_5__crop_995x516.jpg":
-            System.out.println( "Vous avez juste la moyenne." );
-            break;
-        case "images/annot-fred-oddo-dans-6c__crop_995x516.jpg":
-            System.out.println( "Parfait !" );
-            break;
-        case "images/antalya1_dr_crop_995x516.jpg":
-            System.out.println( "Parfait !" );
-            break;
-        case "images/arudy_falaise__crop_995x516.jpg":
-            System.out.println( "Parfait !" );
-            break;
-        default:
-            System.out.println( "Il faut davantage travailler." );
+        try {
+            String image = "";
+
+            switch ( image ) {
+            case "images/ablon_marc_daviet_crop_995x516.jpg":
+                System.out.println( "Ouch !" );
+                break;
+            case "images/ailefroide_escalade_5__crop_995x516.jpg":
+                System.out.println( "Vous avez juste la moyenne." );
+                break;
+            case "images/annot-fred-oddo-dans-6c__crop_995x516.jpg":
+                System.out.println( "Parfait !" );
+                break;
+            case "images/antalya1_dr_crop_995x516.jpg":
+                System.out.println( "Parfait !" );
+                break;
+            case "images/arudy_falaise__crop_995x516.jpg":
+                System.out.println( "Parfait !" );
+                break;
+            default:
+                System.out.println( "Il faut davantage travailler." );
+            }
+
+            return null;
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
         }
-
-        return null;
+        return sites;
     }
 }
