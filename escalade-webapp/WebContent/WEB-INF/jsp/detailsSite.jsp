@@ -28,7 +28,7 @@
 							</div>
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite" />"><img
-									src="${ site.photos.url }" alt="Site" title="Détails du site"
+									src="${ site.photos[0].url }" alt="Site" title="Détails du site"
 									width="315" height="200" /></a>
 								<div class="massifListe">${ site.descripSite }</div>
 							</div>
