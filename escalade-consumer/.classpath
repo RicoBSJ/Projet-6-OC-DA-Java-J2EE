@@ -29,6 +29,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/aubrune/eclipse-workspace/Servers/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/ricobsj/eclipse-workspace/Servers/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
