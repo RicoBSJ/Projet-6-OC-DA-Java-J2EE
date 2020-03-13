@@ -48,22 +48,22 @@ public class SiteDAO {
 
             switch ( image ) {
             case "images/ablon_marc_daviet_crop_995x516.jpg":
-                System.out.println( "Ouch !" );
+                System.out.println( "Site Ablon" );
                 break;
             case "images/ailefroide_escalade_5__crop_995x516.jpg":
-                System.out.println( "Vous avez juste la moyenne." );
+                System.out.println( "Site Aile froide" );
                 break;
             case "images/annot-fred-oddo-dans-6c__crop_995x516.jpg":
-                System.out.println( "Parfait !" );
+                System.out.println( "Site Annot" );
                 break;
             case "images/antalya1_dr_crop_995x516.jpg":
-                System.out.println( "Parfait !" );
+                System.out.println( "Site Antaya" );
                 break;
             case "images/arudy_falaise__crop_995x516.jpg":
-                System.out.println( "Parfait !" );
+                System.out.println( "Site Arudy" );
                 break;
             default:
-                System.out.println( "Il faut davantage travailler." );
+                System.out.println( "Autre site" );
             }
 
             return null;
