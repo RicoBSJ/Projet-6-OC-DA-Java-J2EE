@@ -13,9 +13,9 @@ public class VoieDtoMapper {
 
         VoieDto dto = new VoieDto();
         dto.setId( voie.getId() );
-        dto.setNomVoie( voie.getNomVoie() );
-        dto.setCotationVoie( voie.getCotationVoie() );
-        dto.setDescriptVoie( voie.getDescriptVoie() );
+        dto.setNom( voie.getNom() );
+        dto.setCotation( voie.getCotation() );
+        dto.setDescription( voie.getDescription() );
         List<LongueurDto> longueurs = voie.getLongueurs().stream().map( LongueurDtoMapper::toDto )
                 .collect( Collectors.toList() );
         dto.setLongueurs( longueurs );
@@ -26,9 +26,9 @@ public class VoieDtoMapper {
 
         Voie entity = new Voie();
         entity.setId( voieDto.getId() );
-        entity.setNomVoie( voieDto.getNomVoie() );
-        entity.setCotationVoie( voieDto.getCotationVoie() );
-        entity.setDescriptVoie( voieDto.getDescriptVoie() );
+        entity.setNom( voieDto.getNom() );
+        entity.setCotation( voieDto.getCotation() );
+        entity.setDescription( voieDto.getDescription() );
         return entity;
     }
 

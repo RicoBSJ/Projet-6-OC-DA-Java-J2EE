@@ -13,8 +13,8 @@ public class SecteurDtoMapper {
 
         SecteurDto dto = new SecteurDto();
         dto.setId( secteur.getId() );
-        dto.setNomSecteur( secteur.getNomSecteur() );
-        dto.setDescriptSecteur( secteur.getDescriptSecteur() );
+        dto.setNom( secteur.getNom() );
+        dto.setDescription( secteur.getDescription() );
         List<VoieDto> voies = secteur.getVoies().stream().map( VoieDtoMapper::toDto )
                 .collect( Collectors.toList() );
         dto.setVoies( voies );
@@ -25,8 +25,8 @@ public class SecteurDtoMapper {
 
         Secteur entity = new Secteur();
         entity.setId( secteurDto.getId() );
-        entity.setNomSecteur( secteurDto.getNomSecteur() );
-        entity.setDescriptSecteur( secteurDto.getDescriptSecteur() );
+        entity.setNom( secteurDto.getNom() );
+        entity.setDescription( secteurDto.getDescription() );
         return entity;
     }
 }

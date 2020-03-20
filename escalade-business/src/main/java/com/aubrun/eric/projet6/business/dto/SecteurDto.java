@@ -5,8 +5,8 @@ import java.util.List;
 public class SecteurDto {
 
     Integer               id;
-    String                nomSecteur;
-    String                descriptSecteur;
+    String                nom;
+    String                description;
     private List<VoieDto> voies;
 
     public Integer getId() {
@@ -17,20 +17,20 @@ public class SecteurDto {
         this.id = id;
     }
 
-    public String getNomSecteur() {
-        return nomSecteur;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomSecteur( String nomSecteur ) {
-        this.nomSecteur = nomSecteur;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getDescriptSecteur() {
-        return descriptSecteur;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptSecteur( String descriptSecteur ) {
-        this.descriptSecteur = descriptSecteur;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 
     public List<VoieDto> getVoies() {

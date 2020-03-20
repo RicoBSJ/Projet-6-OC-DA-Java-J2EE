@@ -9,9 +9,9 @@ public class LongueurDtoMapper {
 
         LongueurDto dto = new LongueurDto();
         dto.setId( longueur.getId() );
-        dto.setNomLongueur( longueur.getNomLongueur() );
-        dto.setCotationLongueur( longueur.getCotationLongueur() );
-        dto.setDescriptLongueur( longueur.getDescriptLongueur() );
+        dto.setNom( longueur.getNom() );
+        dto.setCotation( longueur.getCotation() );
+        dto.setDescription( longueur.getDescription() );
         return dto;
     }
 
@@ -19,10 +19,9 @@ public class LongueurDtoMapper {
 
         Longueur entity = new Longueur();
         entity.setId( longueurDto.getId() );
-        entity.setNomLongueur( longueurDto.getNomLongueur() );
-        entity.setCotationLongueur( longueurDto.getCotationLongueur() );
-        entity.setDescriptLongueur( longueurDto.getDescriptLongueur() );
+        entity.setNom( longueurDto.getNom() );
+        entity.setCotation( longueurDto.getCotation() );
+        entity.setDescription( longueurDto.getDescription() );
         return entity;
     }
-
 }

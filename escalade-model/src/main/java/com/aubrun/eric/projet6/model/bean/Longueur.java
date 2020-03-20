@@ -15,11 +15,11 @@ public class Longueur {
     @Column( name = "id" )
     Integer id;
     @Column( name = "nom" )
-    String  nomLongueur;
+    String  nom;
     @Column( name = "cotation" )
-    String  cotationLongueur;
+    String  cotation;
     @Column( name = "description" )
-    String  descriptLongueur;
+    String  description;
 
     public Integer getId() {
         return id;
@@ -29,27 +29,27 @@ public class Longueur {
         this.id = id;
     }
 
-    public String getNomLongueur() {
-        return nomLongueur;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomLongueur( String nomLongueur ) {
-        this.nomLongueur = nomLongueur;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getCotationLongueur() {
-        return cotationLongueur;
+    public String getCotation() {
+        return cotation;
     }
 
-    public void setCotationLongueur( String cotationLongueur ) {
-        this.cotationLongueur = cotationLongueur;
+    public void setCotation( String cotation ) {
+        this.cotation = cotation;
     }
 
-    public String getDescriptLongueur() {
-        return descriptLongueur;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptLongueur( String descriptLongueur ) {
-        this.descriptLongueur = descriptLongueur;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 }

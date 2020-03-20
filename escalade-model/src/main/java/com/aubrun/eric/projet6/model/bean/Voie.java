@@ -22,11 +22,11 @@ public class Voie {
     @Column( name = "id" )
     Integer                id;
     @Column( name = "nom" )
-    String                 nomVoie;
+    String                 nom;
     @Column( name = "cotation" )
-    String                 cotationVoie;
+    String                 cotation;
     @Column( name = "description" )
-    String                 descriptVoie;
+    String                 description;
     @OneToMany
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_voie" )
@@ -40,28 +40,28 @@ public class Voie {
         this.id = id;
     }
 
-    public String getNomVoie() {
-        return nomVoie;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomVoie( String nomVoie ) {
-        this.nomVoie = nomVoie;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getCotationVoie() {
-        return cotationVoie;
+    public String getCotation() {
+        return cotation;
     }
 
-    public void setCotationVoie( String cotationVoie ) {
-        this.cotationVoie = cotationVoie;
+    public void setCotation( String cotation ) {
+        this.cotation = cotation;
     }
 
-    public String getDescriptVoie() {
-        return descriptVoie;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptVoie( String descriptVoie ) {
-        this.descriptVoie = descriptVoie;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 
     public List<Longueur> getLongueurs() {

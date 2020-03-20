@@ -5,9 +5,9 @@ import java.util.List;
 public class VoieDto {
 
     Integer                   id;
-    String                    nomVoie;
-    String                    cotationVoie;
-    String                    descriptVoie;
+    String                    nom;
+    String                    cotation;
+    String                    description;
     private List<LongueurDto> longueurs;
 
     public Integer getId() {
@@ -18,28 +18,28 @@ public class VoieDto {
         this.id = id;
     }
 
-    public String getNomVoie() {
-        return nomVoie;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomVoie( String nomVoie ) {
-        this.nomVoie = nomVoie;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getCotationVoie() {
-        return cotationVoie;
+    public String getCotation() {
+        return cotation;
     }
 
-    public void setCotationVoie( String cotationVoie ) {
-        this.cotationVoie = cotationVoie;
+    public void setCotation( String cotation ) {
+        this.cotation = cotation;
     }
 
-    public String getDescriptVoie() {
-        return descriptVoie;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptVoie( String descriptVoie ) {
-        this.descriptVoie = descriptVoie;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 
     public List<LongueurDto> getLongueurs() {
