@@ -10,39 +10,31 @@
 	crossorigin="anonymous">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/css/style.css" />" />
-<title>${ site.nomSite }</title>
+<title>${ site.nom}</title>
 </head>
 <body>
 	<main class="container">
 		<section>
-			<article>
-				<ul>
-					<c:forEach var="site" items="${ sites }">
-						<article class="resultats-listeStations even">
-							<div class="localisationStationListe">
-								<h3 class="nomStationListe">
-									<a href="<c:url value="" />">${ site.nom }</a>
-								</h3>
-								<div class="massifListe">${ site.pays }</div>
-								<div class="massifListe">${ site.region }</div>
-							</div>
-							<div class="thumbs-stations">
-								<a href="<c:url value="/detailsSite" />"><img
-									src="${ site.photos[0].chemin }" alt="Site" title="Détails du site"
-									width="315" height="200" /></a>
-								<div class="massifListe">${ site.description }</div>
-							</div>
-							<div class="results-right">
-								<div class="infosStations">
-									<span class="value"><span>${ site.hauteur } </span> de
-										hauteur</span> <span class="value">Orientation <span>
-											${ site.orientation }</span></span> <span class="value"><span>Cotation
-									</span> ${ site.cotation }</span>
-								</div>
-							</div>
-						</article>
-					</c:forEach>
-				</ul>
+			<article class="resultats-listeStations even">
+				<div class="localisationStationListe">
+					<h3 class="nomStationListe">
+						<a href="<c:url value="" />">${ site.nom }</a>
+					</h3>
+					<div class="massifListe">${ site.pays }</div>
+					<div class="massifListe">${ site.region }</div>
+				</div>
+				<div class="thumbs-stations">
+					<img src="${ site.photos[0].chemin }" alt="Site"
+						title="Détails du site" width="315" height="200" />
+					<div class="massifListe">${ site.description }</div>
+				</div>
+				<div class="results-right">
+					<div class="infosStations">
+						<span class="value"><span>${ site.hauteur } </span> de
+							hauteur</span> <span class="value">Orientation <span> ${ site.orientation }</span></span>
+						<span class="value"><span>Cotation </span> ${ site.cotation }</span>
+					</div>
+				</div>
 			</article>
 		</section>
 

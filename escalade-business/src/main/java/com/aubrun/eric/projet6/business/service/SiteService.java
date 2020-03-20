@@ -10,27 +10,22 @@ import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteService {
 
-	private SiteDAO siteDAO = new SiteDAO();
+    private SiteDAO siteDAO = new SiteDAO();
 
-	public List<SiteDto> findAll() {
+    public List<SiteDto> findAll() {
 
-		List<Site> site = siteDAO.recupererSites();
-		List<SiteDto> dto = new ArrayList<SiteDto>();
-		for (Site s : site) {
-			SiteDto siteDto = SiteDtoMapper.toDto(s);
-			dto.add(siteDto);
-		}
-		return dto;
-	}
+        List<Site> site = siteDAO.recupererSites();
+        List<SiteDto> dto = new ArrayList<SiteDto>();
+        for ( Site s : site ) {
+            SiteDto siteDto = SiteDtoMapper.toDto( s );
+            dto.add( siteDto );
+        }
+        return dto;
+    }
 
-	public List<SiteDto> findDetails() {
+    public SiteDto findDetails( Integer id ) {
 
-		List<Site> site = siteDAO.afficherDetails();
-		List<SiteDto> dto = new ArrayList<SiteDto>();
-		for (Site s : site) {
-			SiteDto siteDto = SiteDtoMapper.toDto(s);
-			dto.add(siteDto);
-		}
-		return dto;
-	}
+        Site site = siteDAO.afficherDetails( id );
+        return SiteDtoMapper.toDto( site );
+    }
 }

@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,30 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.SiteService;
 
-@WebServlet("/detailsSite")
+@WebServlet( "/detailsSite" )
 public class DetailsSite extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long  serialVersionUID = 1L;
 
-	/* Constantes */
-	public static final String VUE = "/WEB-INF/jsp/detailsSite.jsp";
+    /* Constantes */
+    public static final String VUE              = "/WEB-INF/jsp/detailsSite.jsp";
 
-	private SiteService siteService = new SiteService();
+    private SiteService        siteService      = new SiteService();
 
-	public DetailsSite() {
-		super();
-	}
+    public DetailsSite() {
+        super();
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
+        request.setAttribute( "site", siteService.findDetails( id ) );
+        request.getParameter( getServletName() );
 
-		request.setAttribute("sites", siteService.findDetails());
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        doGet( request, response );
+    }
 }

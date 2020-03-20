@@ -57,7 +57,7 @@
 								<div class="massifListe">${ site.region }</div>
 							</div>
 							<div class="thumbs-stations">
-								<a href="<c:url value="/detailsSite" />"><img
+								<a href="<c:url value="/detailsSite?id=${site.id}" />"><img
 									src="${ site.photos[0].chemin }" alt="Site"
 									title="Détails du site" width="315" height="200" /></a>
 							</div>

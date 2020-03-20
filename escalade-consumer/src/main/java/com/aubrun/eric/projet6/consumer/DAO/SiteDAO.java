@@ -2,6 +2,8 @@ package com.aubrun.eric.projet6.consumer.DAO;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -38,16 +40,17 @@ public class SiteDAO {
         return null;
     }
 
-    public List<Site> afficherDetails() {
+    public Site afficherDetails( Integer id ) {
 
         Session session = factory.getCurrentSession();
-        List<Site> sites = null;
+        Site site = null;
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT s.description FROM Site s WHERE id=`1`";
-            Query<Site> query = session.createQuery( q );
-            sites = query.getResultList();
+            String q = "SELECT s FROM Site s WHERE s.id=?1";
+            TypedQuery<Site> query = session.createQuery( q, Site.class );
+            query.setParameter( 1, id );
+            site = query.getSingleResult();
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -55,6 +58,6 @@ public class SiteDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return sites;
+        return site;
     }
 }
