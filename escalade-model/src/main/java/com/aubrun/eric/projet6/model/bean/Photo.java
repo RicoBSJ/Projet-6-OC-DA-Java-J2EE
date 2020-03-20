@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.model.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,13 +10,14 @@ import javax.persistence.Table;
 @Table
 public class Photo {
 
+    @GeneratedValue
     @Id
     @Column( name = "id" )
     private Long   id;
     @Column( name = "nom" )
-    private String nomPhoto;
+    private String nom;
     @Column( name = "chemin" )
-    private String url;
+    private String chemin;
 
     public Long getId() {
         return id;
@@ -25,19 +27,20 @@ public class Photo {
         this.id = id;
     }
 
-    public String getNomPhoto() {
-        return nomPhoto;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomPhoto( String nomPhoto ) {
-        this.nomPhoto = nomPhoto;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getUrl() {
-        return url;
+    public String getChemin() {
+        return chemin;
     }
 
-    public void setUrl( String url ) {
-        this.url = url;
+    public void setChemin( String chemin ) {
+        this.chemin = chemin;
     }
+
 }

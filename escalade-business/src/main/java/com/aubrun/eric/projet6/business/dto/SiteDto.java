@@ -5,11 +5,11 @@ import java.util.List;
 public class SiteDto {
 
     private Integer          id;
-    private String           nomSite;
+    private String           nom;
     private String           pays;
     private String           region;
-    private String           descripSite;
-    private String           cotationSite;
+    private String           description;
+    private String           cotation;
     private Double           hauteur;
     private String           orientation;
     private List<PhotoDto>   photos;
@@ -23,12 +23,12 @@ public class SiteDto {
         this.id = id;
     }
 
-    public String getNomSite() {
-        return nomSite;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomSite( String nomSite ) {
-        this.nomSite = nomSite;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
     public String getPays() {
@@ -47,20 +47,20 @@ public class SiteDto {
         this.region = region;
     }
 
-    public String getDescripSite() {
-        return descripSite;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripSite( String descripSite ) {
-        this.descripSite = descripSite;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 
-    public String getCotationSite() {
-        return cotationSite;
+    public String getCotation() {
+        return cotation;
     }
 
-    public void setCotationSite( String cotationSite ) {
-        this.cotationSite = cotationSite;
+    public void setCotation( String cotation ) {
+        this.cotation = cotation;
     }
 
     public Double getHauteur() {

@@ -3,8 +3,8 @@ package com.aubrun.eric.projet6.business.dto;
 public class PhotoDto {
 
     private Long   id;
-    private String nomPhoto;
-    private String url;
+    private String nom;
+    private String chemin;
 
     public Long getId() {
         return id;
@@ -14,19 +14,19 @@ public class PhotoDto {
         this.id = id;
     }
 
-    public String getNomPhoto() {
-        return nomPhoto;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomPhoto( String nomPhoto ) {
-        this.nomPhoto = nomPhoto;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getUrl() {
-        return url;
+    public String getChemin() {
+        return chemin;
     }
 
-    public void setUrl( String url ) {
-        this.url = url;
+    public void setChemin( String chemin ) {
+        this.chemin = chemin;
     }
 }

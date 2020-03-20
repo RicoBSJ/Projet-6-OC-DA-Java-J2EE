@@ -51,14 +51,14 @@
 						<article class="resultats-listeStations even">
 							<div class="localisationStationListe">
 								<h3 class="nomStationListe">
-									<a href="<c:url value="" />">${ site.nomSite }</a>
+									<a href="<c:url value="" />">${ site.nom }</a>
 								</h3>
 								<div class="massifListe">${ site.pays }</div>
 								<div class="massifListe">${ site.region }</div>
 							</div>
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite" />"><img
-									src="${ site.photos[0].url }" alt="Site"
+									src="${ site.photos[0].chemin }" alt="Site"
 									title="Détails du site" width="315" height="200" /></a>
 							</div>
 							<div class="results-right">
@@ -66,7 +66,7 @@
 									<span class="value"><span>${ site.hauteur } </span> de
 										hauteur</span> <span class="value">Orientation <span>
 											${ site.orientation }</span></span> <span class="value"><span>Cotation
-									</span> ${ site.cotationSite }</span>
+									</span> ${ site.cotation }</span>
 								</div>
 							</div>
 						</article>

@@ -14,11 +14,11 @@ public class SiteDtoMapper {
 
         SiteDto dto = new SiteDto();
         dto.setId( site.getId() );
-        dto.setNomSite( site.getNomSite() );
+        dto.setNom( site.getNom() );
         dto.setPays( site.getPays() );
         dto.setRegion( site.getRegion() );
-        dto.setDescripSite( site.getDescripSite() );
-        dto.setCotationSite( site.getCotationSite() );
+        dto.setDescription( site.getDescription() );
+        dto.setCotation( site.getCotation() );
         dto.setHauteur( site.getHauteur() );
         dto.setOrientation( site.getOrientation() );
         List<PhotoDto> photos = site.getPhotos().stream().map( PhotoDtoMapper::toDto )
@@ -35,11 +35,11 @@ public class SiteDtoMapper {
 
         Site entity = new Site();
         entity.setId( siteDto.getId() );
-        entity.setNomSite( siteDto.getNomSite() );
+        entity.setNom( siteDto.getNom() );
         entity.setPays( siteDto.getPays() );
         entity.setRegion( siteDto.getRegion() );
-        entity.setDescripSite( siteDto.getDescripSite() );
-        entity.setCotationSite( siteDto.getCotationSite() );
+        entity.setDescription( siteDto.getDescription() );
+        entity.setCotation( siteDto.getCotation() );
         entity.setHauteur( siteDto.getHauteur() );
         entity.setOrientation( siteDto.getOrientation() );
         return entity;

@@ -40,7 +40,21 @@ public class SiteDAO {
 
     public List<Site> afficherDetails() {
 
-        return null;
+        Session session = factory.getCurrentSession();
+        List<Site> sites = null;
 
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT s.description FROM Site s WHERE id=`1`";
+            Query<Site> query = session.createQuery( q );
+            sites = query.getResultList();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return sites;
     }
 }
