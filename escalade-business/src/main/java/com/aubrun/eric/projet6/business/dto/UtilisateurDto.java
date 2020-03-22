@@ -3,10 +3,11 @@ package com.aubrun.eric.projet6.business.dto;
 public class UtilisateurDto {
 
     Integer id;
-    Integer nomUtil;
-    String  prenUtil;
-    String  pseudo;
-    String  mail;
+    String  nom;
+    String  prenom;
+    String  adresse;
+    String  telephone;
+    String  email;
     String  motDePasse;
 
     public Integer getId() {
@@ -17,36 +18,44 @@ public class UtilisateurDto {
         this.id = id;
     }
 
-    public Integer getNomUtil() {
-        return nomUtil;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomUtil( Integer numUtil ) {
-        this.nomUtil = numUtil;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getPrenUtil() {
-        return prenUtil;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrenUtil( String prenUtil ) {
-        this.prenUtil = prenUtil;
+    public void setPrenom( String prenom ) {
+        this.prenom = prenom;
     }
 
-    public String getPseudo() {
-        return pseudo;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setPseudo( String pseudo ) {
-        this.pseudo = pseudo;
+    public void setAdresse( String adresse ) {
+        this.adresse = adresse;
     }
 
-    public String getMail() {
-        return mail;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setMail( String mail ) {
-        this.mail = mail;
+    public void setTelephone( String telephone ) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail( String email ) {
+        this.email = email;
     }
 
     public String getMotDePasse() {

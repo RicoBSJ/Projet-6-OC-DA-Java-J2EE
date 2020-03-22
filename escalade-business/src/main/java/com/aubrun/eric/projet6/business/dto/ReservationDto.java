@@ -3,7 +3,7 @@ package com.aubrun.eric.projet6.business.dto;
 public class ReservationDto {
 
     Integer id;
-    Integer numReservation;
+    Integer numero;
 
     public Integer getId() {
         return id;
@@ -13,11 +13,11 @@ public class ReservationDto {
         this.id = id;
     }
 
-    public Integer getNumReservation() {
-        return numReservation;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setNumReservation( Integer numReservation ) {
-        this.numReservation = numReservation;
+    public void setNumero( Integer numero ) {
+        this.numero = numero;
     }
 }

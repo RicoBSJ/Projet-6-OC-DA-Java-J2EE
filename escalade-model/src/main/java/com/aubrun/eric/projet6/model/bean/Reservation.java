@@ -13,7 +13,7 @@ public class Reservation {
     @Column( name = "id" )
     Integer id;
     @Column( name = "numero" )
-    Integer numReservation;
+    Integer numero;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class Reservation {
         this.id = id;
     }
 
-    public Integer getNumReservation() {
-        return numReservation;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setNumReservation( Integer numReservation ) {
-        this.numReservation = numReservation;
+    public void setNumero( Integer numero ) {
+        this.numero = numero;
     }
 }

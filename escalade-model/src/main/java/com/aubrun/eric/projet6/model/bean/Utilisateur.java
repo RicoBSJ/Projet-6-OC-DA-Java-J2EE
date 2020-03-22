@@ -13,13 +13,15 @@ public class Utilisateur {
     @Column( name = "id" )
     Integer id;
     @Column( name = "nom" )
-    Integer nomUtil;
+    String  nom;
     @Column( name = "prenom" )
-    String  prenUtil;
-    @Column( name = "pseudo" )
-    String  pseudo;
-    @Column( name = "mail" )
-    String  mail;
+    String  prenom;
+    @Column( name = "adresse" )
+    String  adresse;
+    @Column( name = "telephone" )
+    String  telephone;
+    @Column( name = "email" )
+    String  email;
     @Column( name = "motdepasse" )
     String  motDePasse;
 
@@ -31,36 +33,44 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public Integer getNomUtil() {
-        return nomUtil;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomUtil( Integer numUtil ) {
-        this.nomUtil = numUtil;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getPrenUtil() {
-        return prenUtil;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrenUtil( String prenUtil ) {
-        this.prenUtil = prenUtil;
+    public void setPrenom( String prenom ) {
+        this.prenom = prenom;
     }
 
-    public String getPseudo() {
-        return pseudo;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setPseudo( String pseudo ) {
-        this.pseudo = pseudo;
+    public void setAdresse( String adresse ) {
+        this.adresse = adresse;
     }
 
-    public String getMail() {
-        return mail;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setMail( String mail ) {
-        this.mail = mail;
+    public void setTelephone( String telephone ) {
+        this.telephone = telephone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail( String email ) {
+        this.email = email;
     }
 
     public String getMotDePasse() {

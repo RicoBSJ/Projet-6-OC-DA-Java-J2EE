@@ -3,8 +3,8 @@ package com.aubrun.eric.projet6.business.dto;
 public class TopoDto {
 
     Integer id;
-    String  nomTopo;
-    String  descriptTopo;
+    String  nom;
+    String  description;
 
     public Integer getId() {
         return id;
@@ -14,19 +14,19 @@ public class TopoDto {
         this.id = id;
     }
 
-    public String getNomTopo() {
-        return nomTopo;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomTopo( String topo ) {
-        this.nomTopo = topo;
+    public void setNom( String nom ) {
+        this.nom = nom;
     }
 
-    public String getDescriptTopo() {
-        return descriptTopo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptTopo( String descriptTopo ) {
-        this.descriptTopo = descriptTopo;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 }

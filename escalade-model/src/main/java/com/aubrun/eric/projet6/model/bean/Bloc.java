@@ -13,9 +13,9 @@ public class Bloc {
     @Column( name = "id" )
     Integer id;
     @Column( name = "nom" )
-    String  nomBloc;
+    String  nom;
     @Column( name = "description" )
-    String  descriptBloc;
+    String  description;
 
     public Integer getId() {
         return id;
@@ -26,18 +26,18 @@ public class Bloc {
     }
 
     public String getNomBloc() {
-        return nomBloc;
+        return nom;
     }
 
     public void setNomBloc( String nomBloc ) {
-        this.nomBloc = nomBloc;
+        this.nom = nomBloc;
     }
 
-    public String getDescriptBloc() {
-        return descriptBloc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptBloc( String descriptBloc ) {
-        this.descriptBloc = descriptBloc;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 }

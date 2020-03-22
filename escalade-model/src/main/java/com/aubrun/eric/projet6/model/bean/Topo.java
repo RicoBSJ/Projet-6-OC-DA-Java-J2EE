@@ -13,9 +13,9 @@ public class Topo {
     @Column( name = "id" )
     Integer id;
     @Column( name = "nom" )
-    String  nomTopo;
+    String  nom;
     @Column( name = "description" )
-    String  descriptTopo;
+    String  description;
 
     public Integer getId() {
         return id;
@@ -26,18 +26,18 @@ public class Topo {
     }
 
     public String getNomTopo() {
-        return nomTopo;
+        return nom;
     }
 
     public void setNomTopo( String topo ) {
-        this.nomTopo = topo;
+        this.nom = topo;
     }
 
-    public String getDescriptTopo() {
-        return descriptTopo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptTopo( String descriptTopo ) {
-        this.descriptTopo = descriptTopo;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 }
