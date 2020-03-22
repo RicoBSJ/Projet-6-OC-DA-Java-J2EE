@@ -353,18 +353,18 @@ h3.nomStationListe a {
 .thumbs-stations {
 	clear: both;
 	float: left;
-	width: 50%;
+	width: auto;
 	height: auto;
 }
 
 .thumbs-stations a img {
 	display: inline-block;
-	width: 50%;
+	width: auto;
 }
 
 .results-right {
 	float: left;
-	width: 100%;
+	width: 80%;
 	padding: 0px 0px 0px 0px;
 }
 

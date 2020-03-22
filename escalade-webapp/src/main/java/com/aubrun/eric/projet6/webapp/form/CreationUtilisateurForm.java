@@ -26,7 +26,7 @@ public class CreationUtilisateurForm {
         return resultat;
     }
 
-    public Utilisateur creerClient( HttpServletRequest request ) {
+    public Utilisateur creerUtilisateur( HttpServletRequest request ) {
 
         String nom = getValeurChamp( request, CHAMP_NOM );
         String prenom = getValeurChamp( request, CHAMP_PRENOM );
@@ -34,7 +34,7 @@ public class CreationUtilisateurForm {
         String telephone = getValeurChamp( request, CHAMP_TELEPHONE );
         String email = getValeurChamp( request, CHAMP_EMAIL );
 
-        Utilisateur client = new Utilisateur();
+        Utilisateur utilisateur = new Utilisateur();
 
         try {
             validationNom( nom );
@@ -42,7 +42,7 @@ public class CreationUtilisateurForm {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
 
-        client.setNom( nom );
+        utilisateur.setNom( nom );
 
         try {
             validationPrenom( prenom );
@@ -50,7 +50,7 @@ public class CreationUtilisateurForm {
             setErreur( CHAMP_PRENOM, e.getMessage() );
         }
 
-        client.setPrenom( prenom );
+        utilisateur.setPrenom( prenom );
 
         try {
             validationAdresse( adresse );
@@ -58,7 +58,7 @@ public class CreationUtilisateurForm {
             setErreur( CHAMP_ADRESSE, e.getMessage() );
         }
 
-        client.setAdresse( adresse );
+        utilisateur.setAdresse( adresse );
 
         try {
             validationTelephone( telephone );
@@ -66,7 +66,7 @@ public class CreationUtilisateurForm {
             setErreur( CHAMP_TELEPHONE, e.getMessage() );
         }
 
-        client.setTelephone( telephone );
+        utilisateur.setTelephone( telephone );
 
         try {
             validationEmail( email );
@@ -74,7 +74,7 @@ public class CreationUtilisateurForm {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
 
-        client.setEmail( email );
+        utilisateur.setEmail( email );
 
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de la création de client.";
@@ -82,7 +82,7 @@ public class CreationUtilisateurForm {
             resultat = "Echec de la creation client.";
         }
 
-        return client;
+        return utilisateur;
     }
 
     private void validationNom( String nom ) throws Exception {
