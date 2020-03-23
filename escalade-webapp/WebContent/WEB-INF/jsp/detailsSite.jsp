@@ -19,7 +19,7 @@
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
 						<a href="<c:url value="" />">${ site.nom }</a>
-						<a href="<c:url value="/accueil"/>"><h4>Retour accueil</h4></a>
+						<a href="<c:url value="/accueil"/>">Retour accueil</a>
 					</h3>
 					<div class="massifListe">${ site.pays }</div>
 					<div class="massifListe">${ site.region }</div>

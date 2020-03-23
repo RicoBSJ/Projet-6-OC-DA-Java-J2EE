@@ -8,13 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.aubrun.eric.projet6.business.service.UtilisateurService;
+
 @WebServlet( "/inscription" )
 public class Inscription extends HttpServlet {
 
-    private static final long  serialVersionUID = 1L;
+    private static final long  serialVersionUID   = 1L;
 
     /* Constantes */
-    public static final String VUE              = "/WEB-INF/jsp/inscription.jsp";
+    public static final String VUE                = "/WEB-INF/jsp/inscription.jsp";
+
+    private UtilisateurService utilisateurService = new UtilisateurService();
 
     public Inscription() {
         super();
@@ -23,7 +27,9 @@ public class Inscription extends HttpServlet {
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
+
+        request.setAttribute( "utilisateur", utilisateurService.recordUser() );
+
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

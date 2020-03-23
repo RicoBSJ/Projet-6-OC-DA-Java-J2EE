@@ -353,19 +353,23 @@ h3.nomStationListe a {
 .thumbs-stations {
 	clear: both;
 	float: left;
-	width: auto;
 	height: auto;
 }
 
 .thumbs-stations a img {
-	display: inline-block;
+	display: flex;
+	flex-direction: row;
 	width: auto;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .results-right {
+	display: flex;
 	float: left;
 	width: 80%;
 	padding: 0px 0px 0px 0px;
+	flex-wrap: nowrap;
 }
 
 .infosStations {
