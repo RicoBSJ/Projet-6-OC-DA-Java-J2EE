@@ -9,25 +9,25 @@ import javax.persistence.Table;
 @Table
 public class Reservation {
 
-    @Id
-    @Column( name = "id" )
-    Integer id;
-    @Column( name = "numero" )
-    Integer numero;
+	@Id
+	@Column(name = "id")
+	private Integer id;
+	@Column(name = "numero")
+	private Integer numero;
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId( Integer id ) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getNumero() {
-        return numero;
-    }
+	public Integer getNumero() {
+		return numero;
+	}
 
-    public void setNumero( Integer numero ) {
-        this.numero = numero;
-    }
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
 }

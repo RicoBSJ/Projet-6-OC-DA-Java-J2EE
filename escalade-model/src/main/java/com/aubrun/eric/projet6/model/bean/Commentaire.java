@@ -9,25 +9,25 @@ import javax.persistence.Table;
 @Table
 public class Commentaire {
 
-    @Id
-    @Column( name = "id" )
-    Integer id;
-    @Column( name = "commentaire" )
-    String  commentaire;
+	@Id
+	@Column(name = "id")
+	private Integer id;
+	@Column(name = "commentaire")
+	private String commentaire;
 
-    public Integer getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId( Integer id ) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getCommentaire() {
-        return commentaire;
-    }
+	public String getCommentaire() {
+		return commentaire;
+	}
 
-    public void setCommentaire( String commentaire ) {
-        this.commentaire = commentaire;
-    }
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
 }
