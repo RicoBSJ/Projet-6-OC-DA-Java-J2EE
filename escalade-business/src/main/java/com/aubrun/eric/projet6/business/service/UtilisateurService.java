@@ -10,7 +10,16 @@ public class UtilisateurService {
 
     public UtilisateurDto recordUser() {
 
-        Utilisateur utilisateur = utilisateurDAO.inscrireUtilisateur();
+        Utilisateur utilisateur = utilisateurDAO.creer( null );
+        UtilisateurDto dto = new UtilisateurDto();
+        // UtilisateurDto utilisateurDto = UtilisateurDtoMapper.toDto( u );
+        // dto.add( utilisateurDto );
+        return dto;
+    }
+
+    public UtilisateurDto connectUser() {
+
+        Utilisateur utilisateur = utilisateurDAO.trouver( null );
         UtilisateurDto dto = new UtilisateurDto();
         // UtilisateurDto utilisateurDto = UtilisateurDtoMapper.toDto( u );
         // dto.add( utilisateurDto );
