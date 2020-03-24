@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class InscriptionForm {
@@ -21,9 +21,9 @@ public class InscriptionForm {
 
     private String              resultat;
     private Map<String, String> erreurs          = new HashMap<String, String>();
-    private UtilisateurDAO      utilisateurDao;
+    private UtilisateurDao      utilisateurDao;
 
-    public InscriptionForm( UtilisateurDAO utilisateurDao ) {
+    public InscriptionForm( UtilisateurDao utilisateurDao ) {
         this.utilisateurDao = utilisateurDao;
     }
 

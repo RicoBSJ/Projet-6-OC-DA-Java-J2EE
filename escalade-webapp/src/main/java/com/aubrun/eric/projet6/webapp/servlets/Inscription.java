@@ -8,30 +8,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
+import com.aubrun.eric.projet6.consumer.DAO.DAOFactory;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.form.InscriptionForm;
 
 @WebServlet( "/inscription" )
 public class Inscription extends HttpServlet {
 
-    private static final long  serialVersionUID   = 1L;
+    private static final long  serialVersionUID = 1L;
 
-    private UtilisateurService utilisateurService = new UtilisateurService();
+    public static final String CONF_DAO_FACTORY = "daofactory";
+    public static final String ATT_USER         = "utilisateur";
+    public static final String ATT_FORM         = "form";
+    public static final String VUE              = "/WEB-INF/inscription.jsp";
 
-    // public static final String CONF_DAO_FACTORY = "daofactory";
-    public static final String ATT_USER           = "utilisateur";
-    public static final String ATT_FORM           = "form";
-    public static final String VUE                = "/WEB-INF/jsp/inscription.jsp";
+    private UtilisateurDao     utilisateurDao;
 
-    private UtilisateurDAO     utilisateurDao;
-
-    // public void init() throws ServletException {
-    // /* Récupération d'une instance de notre DAO Utilisateur */
-    // this.utilisateurDao = ( (DAOFactory) getServletContext().getAttribute(
-    // CONF_DAO_FACTORY ) ).getUtilisateurDao();
-    // }
+    public void init() throws ServletException {
+        /* Récupération d'une instance de notre DAO Utilisateur */
+        this.utilisateurDao = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getUtilisateurDao();
+    }
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
