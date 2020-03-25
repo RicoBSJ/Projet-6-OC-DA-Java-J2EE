@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
+import com.aubrun.eric.projet6.consumer.DAO.DAOException;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -35,6 +36,20 @@ public class InscriptionForm {
         return resultat;
     }
 
+    /*
+     * Appel de la méthode utilisateurDao.creer() à la ligne 66, uniquement si
+     * aucune erreur de validation n'a eu lieu. En effet, inutile d'aller faire
+     * une requête sur la BDD si les critères de validation des champs du
+     * formulaire n'ont pas été respectés ; il est alors nécessaire de mettre en
+     * place un try/catch pour gérer une éventuelle DAOException retournée par
+     * cet appel ! En l'occurrence, j'initialise la chaîne resultat avec un
+     * message d'échec ; enfin, j'ai regroupé le travail de validation des
+     * paramètres et d'initialisation des propriétés du bean dans des méthodes
+     * traiterXXX(). Cela me permet d'aérer le code, qui commençait à devenir
+     * sérieusement chargé avec tout cet enchevêtrement de blocs try/catch ,
+     * sans oublier les ajouts que nous devons y apporter !
+     */
+
     public Utilisateur inscrireUtilisateur( HttpServletRequest request ) {
         String email = getValeurChamp( request, CHAMP_EMAIL );
         String motDePasse = getValeurChamp( request, CHAMP_PASS );
@@ -49,20 +64,20 @@ public class InscriptionForm {
 
             if ( erreurs.isEmpty() ) {
                 utilisateurDao.creer( utilisateur );
-                resultat = "SuccÃ¨s de l'inscription.";
+                resultat = "Succès de l'inscription.";
             } else {
-                resultat = "Ã‰chec de l'inscription.";
+                resultat = "Échec de l'inscription.";
             }
-        } catch ( Exception e ) {
-            resultat = "Ã‰chec de l'inscription : une erreur imprÃ©vue est survenue, merci de rÃ©essayer dans quelques instants.";
+        } catch ( DAOException e ) {
+            resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
         return utilisateur;
     }
 
     /*
-     * Appel Ã la validation de l'adresse email reÃ§ue et initialisation de la
-     * propriÃ©tÃ© email du bean
+     * Appel à la validation de l'adresse email reçue et initialisation de la
+     * propriété email du bean
      */
     private void traiterEmail( String email, Utilisateur utilisateur ) {
         try {
@@ -74,8 +89,8 @@ public class InscriptionForm {
     }
 
     /*
-     * Appel Ã la validation des mots de passe reÃ§us, chiffrement du mot de
-     * passe et initialisation de la propriÃ©tÃ© motDePasse du bean
+     * Appel à la validation des mots de passe reçus, chiffrement du mot de
+     * passe et initialisation de la propriété motDePasse du bean
      */
     private void traiterMotsDePasse( String motDePasse, String confirmation, Utilisateur utilisateur ) {
         try {
@@ -86,15 +101,22 @@ public class InscriptionForm {
         }
 
         /*
-         * Utilisation de la bibliothÃ¨que Jasypt pour chiffrer le mot de passe
+         * Utilisation de la bibliothèque Jasypt pour chiffrer le mot de passe
          * efficacement.
          * 
-         * L'algorithme SHA-256 est ici utilisÃ©, avec par dÃ©faut un salage
-         * alÃ©atoire et un grand nombre d'itÃ©rations de la fonction de
-         * hashage.
+         * L'algorithme SHA-256 est ici utilisé, avec par défaut un salage
+         * aléatoire et un grand nombre d'itérations de la fonction de hashage.
          * 
-         * La String retournÃ©e est de longueur 56 et contient le hash en
-         * Base64.
+         * La String retournée est de longueur 56 et contient le hash en Base64.
+         * 
+         * Il est important de réaliser cette sécurisation du mot de passe en
+         * amont, afin d'initialiser la propriété du bean avec l'empreinte ainsi
+         * générée et non pas directement avec le mot de passe en clair. Par la
+         * suite, lorsque nous souhaiterons vérifier si un utilisateur entre le
+         * bon mot de passe lors de sa connexion, il nous suffira de le comparer
+         * directement à l'empreinte stockée grâce à la méthode
+         * passwordEncryptor.checkPassword(). De manière générale, la règle veut
+         * qu'on ne travaille jamais directement sur les mots de passe en clair.
          */
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
@@ -105,8 +127,8 @@ public class InscriptionForm {
     }
 
     /*
-     * Appel Ã la validation du nom reÃ§u et initialisation de la propriÃ©tÃ©
-     * nom du bean
+     * Appel à la validation du nom reçu et initialisation de la propriété nom
+     * du bean
      */
     private void traiterNom( String nom, Utilisateur utilisateur ) {
         try {
@@ -124,7 +146,7 @@ public class InscriptionForm {
                 throw new FormValidationException( "Merci de saisir une adresse mail valide." );
             } else if ( utilisateurDao.trouver( email ) != null ) {
                 throw new FormValidationException(
-                        "Cette adresse email est dÃ©jÃ  utilisÃ©e, merci d'en choisir une autre." );
+                        "Cette adresse email est déjà utilisée, merci d'en choisir une autre." );
             }
         } else {
             throw new FormValidationException( "Merci de saisir une adresse mail." );
@@ -136,9 +158,9 @@ public class InscriptionForm {
         if ( motDePasse != null && confirmation != null ) {
             if ( !motDePasse.equals( confirmation ) ) {
                 throw new FormValidationException(
-                        "Les mots de passe entrÃ©s sont diffÃ©rents, merci de les saisir Ã  nouveau." );
+                        "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
             } else if ( motDePasse.length() < 3 ) {
-                throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractÃ¨res." );
+                throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractères." );
             }
         } else {
             throw new FormValidationException( "Merci de saisir et confirmer votre mot de passe." );
@@ -148,20 +170,20 @@ public class InscriptionForm {
     /* Validation du nom */
     private void validationNom( String nom ) throws FormValidationException {
         if ( nom != null && nom.length() < 3 ) {
-            throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 3 caractÃ¨res." );
+            throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
         }
     }
 
     /*
-     * Ajoute un message correspondant au champ spÃ©cifiÃ© Ã la map des erreurs.
+     * Ajoute un message correspondant au champ spécifié à la map des erreurs.
      */
     private void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
     }
 
     /*
-     * MÃ©thode utilitaire qui retourne null si un champ est vide, et son
-     * contenu sinon.
+     * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
+     * sinon.
      */
     private static String getValeurChamp( HttpServletRequest request, String nomChamp ) {
         String valeur = request.getParameter( nomChamp );
