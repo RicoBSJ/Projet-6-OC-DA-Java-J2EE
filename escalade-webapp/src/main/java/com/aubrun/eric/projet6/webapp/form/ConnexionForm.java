@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-public class ConnexionForm {
-
+public final class ConnexionForm {
     private static final String CHAMP_EMAIL = "email";
     private static final String CHAMP_PASS  = "motdepasse";
 
@@ -30,7 +29,7 @@ public class ConnexionForm {
 
         Utilisateur utilisateur = new Utilisateur();
 
-        /* Validation du champ email */
+        /* Validation du champ email. */
         try {
             validationEmail( email );
         } catch ( Exception e ) {
@@ -38,7 +37,7 @@ public class ConnexionForm {
         }
         utilisateur.setEmail( email );
 
-        /* Validation du champ mot de passe */
+        /* Validation du champ mot de passe. */
         try {
             validationMotDePasse( motDePasse );
         } catch ( Exception e ) {
@@ -46,13 +45,11 @@ public class ConnexionForm {
         }
         utilisateur.setMotDePasse( motDePasse );
 
-        /* Initialisation du résultat global de la validation */
-        if ( erreurs.isEmpty() )
-
-        {
+        /* Initialisation du résultat global de la validation. */
+        if ( erreurs.isEmpty() ) {
             resultat = "Succès de la connexion.";
         } else {
-            resultat = "Echec de la connexion.";
+            resultat = "Échec de la connexion.";
         }
 
         return utilisateur;

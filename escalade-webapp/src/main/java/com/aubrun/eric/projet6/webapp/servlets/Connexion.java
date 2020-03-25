@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.form.ConnexionForm;
 
-/**
- * Servlet implementation class Connexion
- */
 @WebServlet( "/connexion" )
 public class Connexion extends HttpServlet {
 
@@ -25,14 +22,12 @@ public class Connexion extends HttpServlet {
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "/WEB-INF/jsp/connexion.jsp";
 
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page de connexion */
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-
     }
 
-    protected void doPost( HttpServletRequest request, HttpServletResponse response )
+    public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
         ConnexionForm form = new ConnexionForm();
@@ -59,5 +54,4 @@ public class Connexion extends HttpServlet {
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
-
 }

@@ -9,17 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class Deconnexion
- */
 @WebServlet( "/deconnexion" )
 public class Deconnexion extends HttpServlet {
-    private static final long   serialVersionUID = 1L;
 
-    private static final String URL_REDIRECTION  = "/WEB-INF/jsp/accueil.jsp";
+    private static final long  serialVersionUID = 1L;
 
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
+    public static final String URL_REDIRECTION  = "http://www.siteduzero.com";
+
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Récupération et destruction de la session en cours */
         HttpSession session = request.getSession();
         session.invalidate();

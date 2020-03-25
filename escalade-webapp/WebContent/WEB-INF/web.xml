@@ -4,6 +4,17 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
+	<filter>
+		<filter-name>RestrictionFilter</filter-name>
+		<filter-class>com.aubrun.eric.projet6.webapp.filters.RestrictionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RestrictionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>com.aubrun.eric.projet6.consumer.config.InitialisationDaoFactory</listener-class>
 	</listener>
