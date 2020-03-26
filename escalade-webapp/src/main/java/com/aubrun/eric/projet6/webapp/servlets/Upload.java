@@ -11,15 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.aubrun.eric.projet6.model.bean.Fichier;
 import com.aubrun.eric.projet6.webapp.form.UploadForm;
 
-/**
- * Servlet implementation class Upload
- */
 @WebServlet( "/upload" )
 public class Upload extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
     public static final String CHEMIN           = "chemin";
+
     public static final String ATT_FICHIER      = "fichier";
     public static final String ATT_FORM         = "form";
 

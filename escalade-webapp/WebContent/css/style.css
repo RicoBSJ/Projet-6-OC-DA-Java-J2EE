@@ -1,5 +1,5 @@
 @import "style.css";
-/* Définition des polices personnalisées */
+/* Définition des polices personnalisées ----------------------------------------------------------*/
 @font-face {
 	font-family: 'BallparkWeiner';
 	src: url('polices/ballpark.eot');
@@ -40,7 +40,47 @@ section h1, footer h1, nav a {
 	text-transform: uppercase;
 }
 
-/* Header */
+form .info {
+	font-style: italic;
+	color: #E8A22B;
+}
+
+...
+
+/* Tableaux -------------------------------------------------------------------------------------*/
+table {
+	border-collapse: collapse;
+}
+
+tr.pair {
+	background-color: #efefef;
+}
+
+tr.impair {
+	background-color: #fff;
+}
+
+th {
+	color: #0568CD;
+	border: 1px solid #0568CD;
+	padding: 5px;
+}
+
+th.action {
+	border: 1px solid #900;
+	color: #900;
+}
+
+td {
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+
+td.action {
+	text-align: center;
+}
+
+/* Header -------------------------------------------------------------------------------------*/
 header {
 	background: url('../images/separateur.png') repeat-x bottom;
 	display: flex;
@@ -78,7 +118,7 @@ header h2 {
 	font-weight: normal;
 }
 
-/* Navigation */
+/* Navigation -------------------------------------------------------------------------------------*/
 nav ul {
 	list-style-type: none;
 	display: flex;
@@ -100,7 +140,7 @@ nav a:hover {
 	border-bottom: 3px solid #760001;
 }
 
-/* Bannière */
+/* Bannière -------------------------------------------------------------------------------------*/
 #banniere_image {
 	margin-top: 15px;
 	height: 200px;
@@ -143,7 +183,7 @@ nav a:hover {
 	border: 0;
 }
 
-/* Corps */
+/* Corps -------------------------------------------------------------------------------------*/
 section {
 	display: flex;
 	margin-bottom: 20px;
@@ -240,7 +280,7 @@ form .erreur {
 	color: #FF0000;
 }
 
-/* Footer */
+/* Footer -------------------------------------------------------------------------------------*/
 footer {
 	display: flex;
 	background: url('images/ico_top.png') no-repeat top center,
@@ -311,7 +351,7 @@ p {
 	border: none;
 }
 
-/*----falaises mobile----*/
+/*----falaises mobile ----------------------------------------------------------------------------*/
 .grid2 ul li.resultats-listeStations {
 	width: 100%;
 	border: none;

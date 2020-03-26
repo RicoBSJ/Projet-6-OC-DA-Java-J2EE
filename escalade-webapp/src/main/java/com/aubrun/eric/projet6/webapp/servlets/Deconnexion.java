@@ -14,7 +14,7 @@ public class Deconnexion extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
-    public static final String URL_REDIRECTION  = "http://www.siteduzero.com";
+    public static final String URL_REDIRECTION  = "https://openclassrooms.com";
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Récupération et destruction de la session en cours */
