@@ -33,7 +33,7 @@
 	<!-- </filter-mapping> -->
 
 	<listener>
-		<listener-class>com.sdzee.config.InitialisationDaoFactory</listener-class>
+		<listener-class>com.aubrun.eric.projet6.consumer.config.InitialisationDaoFactory</listener-class>
 	</listener>
 
 	<jsp-config>
