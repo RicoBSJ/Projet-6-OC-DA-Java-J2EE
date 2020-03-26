@@ -27,7 +27,7 @@
 			<nav>
 				<ul>
 					<!-- Renvoi vers des servlets -->
-					<li><a href="<c:url value="/rechercheSite" />">Recherche</a></li>
+					<li><a href="<c:url value="/listeUtilisateurs" />">Liste utilisateurs</a></li>
 					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
 				</ul>

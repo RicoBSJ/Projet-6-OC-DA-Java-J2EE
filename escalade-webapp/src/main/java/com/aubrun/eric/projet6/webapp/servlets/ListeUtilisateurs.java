@@ -16,7 +16,7 @@ public class ListeUtilisateurs extends HttpServlet {
     public static final String ATT_UTILISATEUR  = "utilisateur";
     public static final String ATT_FORM         = "form";
 
-    public static final String VUE              = "/WEB-INF/listerUtilisateurs.jsp";
+    public static final String VUE              = "/WEB-INF/jsp/listeUtilisateurs.jsp";
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /*
