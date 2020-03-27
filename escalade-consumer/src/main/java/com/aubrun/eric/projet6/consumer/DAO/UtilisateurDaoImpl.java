@@ -42,7 +42,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
             connexion = daoFactory.getConnection();
             preparedStatement = initialisationRequetePreparee( connexion, SQL_INSERT, true,
                     utilisateur.getNom(), utilisateur.getPrenom(),
-                    utilisateur.getAdresse(), utilisateur.getTelephone() );
+                    utilisateur.getAdresse(), utilisateur.getTelephone(), utilisateur.getEmail() );
             int statut = preparedStatement.executeUpdate();
             if ( statut == 0 ) {
                 throw new DAOException( "Échec de la création du utilisateur, aucune ligne ajoutée dans la table." );

@@ -27,8 +27,12 @@
 			<input type="password" id="confirmation" name="confirmation" value="" size="20" maxlength="20" />
 			<span class="erreur">${form.erreurs['confirmation']}</span>
 			<br />
-			<label for="nom">Nom d'utilisateur</label>
+			<label for="nom">Nom d'utilisateur <span class="requis">*</span></label>
 			<input type="text" id="nom" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="20" />
+			<span class="erreur">${form.erreurs['nom']}</span>
+			<br />
+			<label for="nom">Numéro de téléphone <span class="requis">*</span></label>
+			<input type="text" id="telephone" name="telephone" value="<c:out value="${utilisateur.telephone}"/>" size="20" maxlength="20" />
 			<span class="erreur">${form.erreurs['nom']}</span>
 			<br />
 			<input type="submit" value="Inscription" class="sansLabel" />
