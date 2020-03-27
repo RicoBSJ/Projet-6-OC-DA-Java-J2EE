@@ -16,7 +16,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
     private static final String SQL_SELECT        = "SELECT id, nom, prenom, adresse, telephone, email FROM Utilisateur ORDER BY id";
     private static final String SQL_SELECT_PAR_ID = "SELECT id, nom, prenom, adresse, telephone, email FROM Utilisateur WHERE id = ?";
-    private static final String SQL_INSERT        = "INSERT INTO Utilisateur (nom, prenom, adresse, telephone, email) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT        = "INSERT INTO Utilisateur (nom, prenom, adresse, telephone, email) VALUES (?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_PAR_ID = "DELETE FROM Utilisateur WHERE id = ?";
 
     private DAOFactory          daoFactory;
@@ -32,7 +32,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     }
 
     /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
-    @Override
+
     public void creer( Utilisateur utilisateur ) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -61,7 +61,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     }
 
     /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
-    @Override
+
     public List<Utilisateur> lister() throws DAOException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -85,7 +85,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     }
 
     /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
-    @Override
+
     public void supprimer( Utilisateur utilisateur ) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -156,7 +156,6 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         return utilisateur;
     }
 
-    @Override
     public Utilisateur trouver( Object object ) throws DAOException {
         // TODO Auto-generated method stub
         return null;

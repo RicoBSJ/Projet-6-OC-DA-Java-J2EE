@@ -21,16 +21,25 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- <filter> -->
-	<!-- <filter-name>RestrictionFilter</filter-name> -->
-	<!-- <filter-class>com.aubrun.eric.projet6.webapp.filters.RestrictionFilter</filter-class> -->
-	<!-- </filter> -->
-	<!-- <filter-mapping> -->
-	<!-- <filter-name>RestrictionFilter</filter-name> -->
-	<!-- <url-pattern>/*</url-pattern> -->
-	<!-- <dispatcher>REQUEST</dispatcher> -->
-	<!-- <dispatcher>FORWARD</dispatcher> -->
-	<!-- </filter-mapping> -->
+<!-- 	<filter> -->
+<!-- 		<filter-name>PrechargementFilter</filter-name> -->
+<!-- 		<filter-class>com.aubrun.eric.projet6.webapp.filters.PrechargementFilter</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>PrechargementFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
+<!-- 	<filter> -->
+<!-- 		<filter-name>RestrictionFilter</filter-name> -->
+<!-- 		<filter-class>com.aubrun.eric.projet6.webapp.filters.RestrictionFilter</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>RestrictionFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 		<dispatcher>REQUEST</dispatcher> -->
+<!-- 		<dispatcher>FORWARD</dispatcher> -->
+<!-- 	</filter-mapping> -->
 
 	<listener>
 		<listener-class>com.aubrun.eric.projet6.consumer.config.InitialisationDaoFactory</listener-class>
