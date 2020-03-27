@@ -26,8 +26,8 @@ public class CreationUtilisateur extends HttpServlet {
     public static final String ATT_FORM             = "form";
     public static final String SESSION_UTILISATEURS = "utilisateurs";
 
-    public static final String VUE_SUCCES           = "/WEB-INF/afficherUtilisateur.jsp";
-    public static final String VUE_FORM             = "/WEB-INF/creerUtilisateur.jsp";
+    public static final String VUE_SUCCES           = "/WEB-INF/jsp/afficherUtilisateur.jsp";
+    public static final String VUE_FORM             = "/WEB-INF/jsp/creerUtilisateur.jsp";
 
     private UtilisateurDao     utilisateurDao;
 

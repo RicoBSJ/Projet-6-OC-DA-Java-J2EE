@@ -24,7 +24,6 @@
                     <th>Adresse</th>
                     <th>Téléphone</th>
                     <th>Email</th>
-                    <th>Image</th>
                     <th class="action">Action</th>                    
                 </tr>
                 <%-- Parcours de la Map des utilisateurs en session, et utilisation de l'objet varStatus. --%>
