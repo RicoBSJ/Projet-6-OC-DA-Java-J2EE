@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.aubrun.eric.projet6.consumer.DAO.DAOFactory;
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
+import com.aubrun.eric.projet6.consumer.factory.DAOFactory;
+import com.aubrun.eric.projet6.consumer.form.CreationUtilisateurForm;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.form.CreationUtilisateurForm;
 
 @WebServlet( "/creationUtilisateur" )
 public class CreationUtilisateur extends HttpServlet {

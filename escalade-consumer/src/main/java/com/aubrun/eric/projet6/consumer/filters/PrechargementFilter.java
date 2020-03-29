@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.webapp.filters;
+package com.aubrun.eric.projet6.consumer.filters;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.aubrun.eric.projet6.consumer.DAO.DAOFactory;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
+import com.aubrun.eric.projet6.consumer.factory.DAOFactory;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class PrechargementFilter implements Filter {

@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.webapp.form;
+package com.aubrun.eric.projet6.consumer.form;
 
 public class FormValidationException extends Exception {
 

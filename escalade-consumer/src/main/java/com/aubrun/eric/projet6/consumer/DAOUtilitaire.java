@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.consumer.DAO;
+package com.aubrun.eric.projet6.consumer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

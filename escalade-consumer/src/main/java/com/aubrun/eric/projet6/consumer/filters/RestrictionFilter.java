@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.webapp.filters;
+package com.aubrun.eric.projet6.consumer.filters;
 
 import java.io.IOException;
 

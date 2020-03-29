@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.consumer.DAO;
+package com.aubrun.eric.projet6.consumer.factory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +7,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import com.aubrun.eric.projet6.consumer.exception.DAOConfigurationException;
+import com.aubrun.eric.projet6.consumer.implementation.UtilisateurDaoImpl;
 
 public class DAOFactory {
 

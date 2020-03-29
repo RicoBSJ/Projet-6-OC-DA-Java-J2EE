@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.webapp.form;
+package com.aubrun.eric.projet6.consumer.form;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.aubrun.eric.projet6.consumer.DAO.DAOException;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
+import com.aubrun.eric.projet6.consumer.exception.DAOException;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class InscriptionForm {

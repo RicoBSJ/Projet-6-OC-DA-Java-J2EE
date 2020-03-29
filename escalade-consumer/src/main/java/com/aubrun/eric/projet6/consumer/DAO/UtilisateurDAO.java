@@ -1,29 +1,32 @@
 package com.aubrun.eric.projet6.consumer.DAO;
 
-import static com.aubrun.eric.projet6.consumer.DAO.DAOUtilitaire.fermeturesSilencieuses;
-import static com.aubrun.eric.projet6.consumer.DAO.DAOUtilitaire.initialisationRequetePreparee;
+import static com.aubrun.eric.projet6.consumer.DAOUtilitaire.fermeturesSilencieuses;
+import static com.aubrun.eric.projet6.consumer.DAOUtilitaire.initialisationRequetePreparee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import com.aubrun.eric.projet6.consumer.HibernateUtils;
+import com.aubrun.eric.projet6.consumer.exception.DAOException;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-public class UtilisateurDaoImpl implements UtilisateurDao {
+public class UtilisateurDAO {
 
     private static final String SQL_SELECT        = "SELECT id, nom, prenom, adresse, telephone, email FROM Utilisateur ORDER BY id";
     private static final String SQL_SELECT_PAR_ID = "SELECT id, nom, prenom, adresse, telephone, email FROM Utilisateur WHERE id = ?";
     private static final String SQL_INSERT        = "INSERT INTO Utilisateur (nom, prenom, adresse, telephone, email) VALUES (?, ?, ?, ?, ?)";
     private static final String SQL_DELETE_PAR_ID = "DELETE FROM Utilisateur WHERE id = ?";
 
-    private DAOFactory          daoFactory;
-
-    UtilisateurDaoImpl( DAOFactory daoFactory ) {
-        this.daoFactory = daoFactory;
-    }
+    SessionFactory              factory           = HibernateUtils.getSessionFactory();
 
     /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
 
@@ -58,30 +61,6 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         } finally {
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
-    }
-
-    /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
-
-    public List<Utilisateur> lister() throws DAOException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
-
-        try {
-            connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement( SQL_SELECT );
-            resultSet = preparedStatement.executeQuery();
-            while ( resultSet.next() ) {
-                utilisateurs.add( map( resultSet ) );
-            }
-        } catch ( SQLException e ) {
-            throw new DAOException( e );
-        } finally {
-            fermeturesSilencieuses( resultSet, preparedStatement, connection );
-        }
-
-        return utilisateurs;
     }
 
     /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
@@ -140,24 +119,49 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         return utilisateur;
     }
 
-    /*
-     * Simple méthode utilitaire permettant de faire la correspondance (le
-     * mapping) entre une ligne issue de la table des utilisateurs (un
-     * ResultSet) et un bean Utilisateur.
-     */
-    private static Utilisateur map( ResultSet resultSet ) throws SQLException {
-        Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setId( resultSet.getInt( "id" ) );
-        utilisateur.setNom( resultSet.getString( "nom" ) );
-        utilisateur.setPrenom( resultSet.getString( "prenom" ) );
-        utilisateur.setAdresse( resultSet.getString( "adresse" ) );
-        utilisateur.setTelephone( resultSet.getString( "telephone" ) );
-        utilisateur.setEmail( resultSet.getString( "email" ) );
-        return utilisateur;
+    public List<Utilisateur> listerUtilisateurs() {
+
+        Session session = factory.getCurrentSession();
+        List<Utilisateur> utilisateurs = null;
+
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT u FROM Utilisateur u";
+            Query<Utilisateur> query = session.createQuery( q );
+            utilisateurs = query.getResultList();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return utilisateurs;
     }
 
-    public Utilisateur trouver( Object object ) throws DAOException {
-        // TODO Auto-generated method stub
+    public List<Utilisateur> creerUtilisateur() {
+
         return null;
+    }
+
+    public Utilisateur afficherDetailsUtilisateur( Integer id ) {
+
+        Session session = factory.getCurrentSession();
+        Utilisateur utilisateur = null;
+
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT u FROM Utilisateur u WHERE u.id=?1";
+            TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
+            query.setParameter( 1, id );
+            utilisateur = query.getSingleResult();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return utilisateur;
     }
 }

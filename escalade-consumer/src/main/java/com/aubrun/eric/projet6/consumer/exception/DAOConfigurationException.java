@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.consumer.DAO;
+package com.aubrun.eric.projet6.consumer.exception;
 
 public class DAOConfigurationException extends RuntimeException {
 
