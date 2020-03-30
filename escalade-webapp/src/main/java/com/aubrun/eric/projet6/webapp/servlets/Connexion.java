@@ -17,8 +17,8 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
 
+import com.aubrun.eric.projet6.consumer.form.ConnexionForm;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.form.ConnexionForm;
 
 @WebServlet( "/connexion" )
 public class Connexion extends HttpServlet {

@@ -28,4 +28,16 @@ public class SiteService {
         Site site = siteDAO.afficherDetails( id );
         return SiteDtoMapper.toDto( site );
     }
+
+    public SiteDto addSite( Integer id ) {
+
+        Site site = siteDAO.ajouterSite( id );
+        return null;
+    }
+
+    public SiteDto deleteSite( Integer id ) {
+
+        Site site = siteDAO.supprimerSite( id );
+        return null;
+    }
 }

@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
-import com.aubrun.eric.projet6.consumer.exception.DAOException;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class InscriptionForm {
@@ -23,10 +22,10 @@ public class InscriptionForm {
 
     private String              resultat;
     private Map<String, String> erreurs          = new HashMap<String, String>();
-    private UtilisateurDao      utilisateurDao;
+    private UtilisateurDAO      utilisateurDAO;
 
-    public InscriptionForm( UtilisateurDao utilisateurDao ) {
-        this.utilisateurDao = utilisateurDao;
+    public InscriptionForm( UtilisateurDAO utilisateurDAO ) {
+        this.utilisateurDAO = utilisateurDAO;
     }
 
     public Map<String, String> getErreurs() {
@@ -36,20 +35,6 @@ public class InscriptionForm {
     public String getResultat() {
         return resultat;
     }
-
-    /*
-     * Appel de la méthode utilisateurDao.creer() à la ligne 66, uniquement si
-     * aucune erreur de validation n'a eu lieu. En effet, inutile d'aller faire
-     * une requête sur la BDD si les critères de validation des champs du
-     * formulaire n'ont pas été respectés ; il est alors nécessaire de mettre en
-     * place un try/catch pour gérer une éventuelle DAOException retournée par
-     * cet appel ! En l'occurrence, j'initialise la chaîne resultat avec un
-     * message d'échec ; enfin, j'ai regroupé le travail de validation des
-     * paramètres et d'initialisation des propriétés du bean dans des méthodes
-     * traiterXXX(). Cela me permet d'aérer le code, qui commençait à devenir
-     * sérieusement chargé avec tout cet enchevêtrement de blocs try/catch ,
-     * sans oublier les ajouts que nous devons y apporter !
-     */
 
     public Utilisateur inscrireUtilisateur( HttpServletRequest request ) {
         String email = getValeurChamp( request, CHAMP_EMAIL );
@@ -65,13 +50,13 @@ public class InscriptionForm {
             traiterNom( nom, utilisateur );
             traiterNom( telephone, utilisateur );
 
-            if ( erreurs.isEmpty() ) {
-                utilisateurDao.creer( utilisateur );
-                resultat = "Succès de l'inscription.";
-            } else {
-                resultat = "Échec de l'inscription.";
-            }
-        } catch ( DAOException e ) {
+            // if ( erreurs.isEmpty() ) {
+            // utilisateurDAO.creer( utilisateur );
+            // resultat = "Succès de l'inscription.";
+            // } else {
+            // resultat = "Échec de l'inscription.";
+            // }
+        } catch ( Exception e ) {
             resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
@@ -85,7 +70,7 @@ public class InscriptionForm {
     private void traiterEmail( String email, Utilisateur utilisateur ) {
         try {
             validationEmail( email );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         utilisateur.setEmail( email );
@@ -98,29 +83,11 @@ public class InscriptionForm {
     private void traiterMotsDePasse( String motDePasse, String confirmation, Utilisateur utilisateur ) {
         try {
             validationMotsDePasse( motDePasse, confirmation );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
             setErreur( CHAMP_CONF, null );
         }
 
-        /*
-         * Utilisation de la bibliothèque Jasypt pour chiffrer le mot de passe
-         * efficacement.
-         * 
-         * L'algorithme SHA-256 est ici utilisé, avec par défaut un salage
-         * aléatoire et un grand nombre d'itérations de la fonction de hashage.
-         * 
-         * La String retournée est de longueur 56 et contient le hash en Base64.
-         * 
-         * Il est important de réaliser cette sécurisation du mot de passe en
-         * amont, afin d'initialiser la propriété du bean avec l'empreinte ainsi
-         * générée et non pas directement avec le mot de passe en clair. Par la
-         * suite, lorsque nous souhaiterons vérifier si un utilisateur entre le
-         * bon mot de passe lors de sa connexion, il nous suffira de le comparer
-         * directement à l'empreinte stockée grâce à la méthode
-         * passwordEncryptor.checkPassword(). De manière générale, la règle veut
-         * qu'on ne travaille jamais directement sur les mots de passe en clair.
-         */
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
         passwordEncryptor.setPlainDigest( false );
@@ -136,44 +103,46 @@ public class InscriptionForm {
     private void traiterNom( String nom, Utilisateur utilisateur ) {
         try {
             validationNom( nom );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
         utilisateur.setNom( nom );
     }
 
     /* Validation de l'adresse email */
-    private void validationEmail( String email ) throws FormValidationException {
+    private void validationEmail( String email ) throws Exception {
         if ( email != null ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-                throw new FormValidationException( "Merci de saisir une adresse mail valide." );
-            } else if ( utilisateurDao.trouver( email ) != null ) {
-                throw new FormValidationException(
-                        "Cette adresse email est déjà utilisée, merci d'en choisir une autre." );
+                throw new Exception( "Merci de saisir une adresse mail valide." );
             }
+            // else if ( utilisateurDAO.trouverUtilisateur( email ) != null ) {
+            // throw new Exception(
+            // "Cette adresse email est déjà utilisée, merci d'en choisir une
+            // autre." );
+            // }
         } else {
-            throw new FormValidationException( "Merci de saisir une adresse mail." );
+            throw new Exception( "Merci de saisir une adresse mail." );
         }
     }
 
     /* Validation des mots de passe */
-    private void validationMotsDePasse( String motDePasse, String confirmation ) throws FormValidationException {
+    private void validationMotsDePasse( String motDePasse, String confirmation ) throws Exception {
         if ( motDePasse != null && confirmation != null ) {
             if ( !motDePasse.equals( confirmation ) ) {
-                throw new FormValidationException(
+                throw new Exception(
                         "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
             } else if ( motDePasse.length() < 3 ) {
-                throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractères." );
+                throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );
             }
         } else {
-            throw new FormValidationException( "Merci de saisir et confirmer votre mot de passe." );
+            throw new Exception( "Merci de saisir et confirmer votre mot de passe." );
         }
     }
 
     /* Validation du nom */
-    private void validationNom( String nom ) throws FormValidationException {
+    private void validationNom( String nom ) throws Exception {
         if ( nom != null && nom.length() < 3 ) {
-            throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
+            throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
         }
     }
 

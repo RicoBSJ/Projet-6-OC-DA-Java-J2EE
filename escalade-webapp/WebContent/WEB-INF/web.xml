@@ -41,9 +41,9 @@
 <!-- 		<dispatcher>FORWARD</dispatcher> -->
 <!-- 	</filter-mapping> -->
 
-	<listener>
-		<listener-class>com.aubrun.eric.projet6.consumer.config.InitialisationDaoFactory</listener-class>
-	</listener>
+	<!-- <listener> -->
+	<!-- <listener-class>com.aubrun.eric.projet6.consumer.config.InitialisationDaoFactory</listener-class> -->
+	<!-- </listener> -->
 
 	<jsp-config>
 		<jsp-property-group>
