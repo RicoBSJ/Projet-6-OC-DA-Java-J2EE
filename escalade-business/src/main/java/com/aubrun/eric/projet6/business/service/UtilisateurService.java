@@ -23,21 +23,19 @@ public class UtilisateurService {
         return dto;
     }
 
-    public List<UtilisateurDto> createUser() {
+    public void createUser() {
 
-        Utilisateur utilisateur = utilisateurDAO.creerUtilisateur();
+        // Utilisateur utilisateur = utilisateurDAO.creerUtilisateur();
         UtilisateurDto dto = new UtilisateurDto();
-        return null;
     }
 
-    public List<UtilisateurDto> deleteUser() {
+    public void deleteUser() {
 
-        Utilisateur utilisateur = utilisateurDAO.supprimerUtilisateur();
+        // Utilisateur utilisateur = utilisateurDAO.supprimerUtilisateur();
         UtilisateurDto dto = new UtilisateurDto();
-        return null;
     }
 
-    public UtilisateurDto findDetailsUser( Integer id ) {
+    public UtilisateurDto findUser( int id ) {
 
         Utilisateur utilisateur = utilisateurDAO.afficherDetailsUtilisateur( id );
         UtilisateurDto dto = new UtilisateurDto();
