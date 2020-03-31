@@ -13,12 +13,7 @@ import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDAO {
 
-    private static final String SQL_SELECT_BY_ID  = "SELECT s FROM Site s WHERE s.id=?1";
-    private static final String SQL_SELECT        = "SELECT s FROM Site s";
-    private static final String SQL_INSERT        = "INSERT INTO Site s (nom, prenom, adresse, telephone, email)";
-    private static final String SQL_DELETE_PAR_ID = "DELETE FROM Utilisateur WHERE id = ?";
-
-    SessionFactory              factory           = HibernateUtils.getSessionFactory();
+    SessionFactory factory = HibernateUtils.getSessionFactory();
 
     public List<Site> recupererSites() {
 
@@ -27,7 +22,7 @@ public class SiteDAO {
 
         try {
             session.getTransaction().begin();
-            String q = SQL_SELECT;
+            String q = "SELECT s FROM Site s";
             Query<Site> query = session.createQuery( q );
             sites = query.getResultList();
             session.getTransaction().commit();
@@ -47,7 +42,7 @@ public class SiteDAO {
 
         try {
             session.getTransaction().begin();
-            String q = SQL_SELECT_BY_ID;
+            String q = "SELECT s FROM Site s WHERE s.id=?1";
             TypedQuery<Site> query = session.createQuery( q, Site.class );
             query.setParameter( 1, id );
             site = query.getSingleResult();
@@ -61,39 +56,41 @@ public class SiteDAO {
         return site;
     }
 
-    public Site supprimerSite( Integer id ) {
+    public void supprimerSite( int id ) {
 
         Session session = factory.getCurrentSession();
-        Site site = null;
 
         try {
             session.getTransaction().begin();
-            String q = SQL_DELETE_PAR_ID;
-            Query<Site> query = session.createQuery( q );
-            query.setParameter( "id", id );
-            int result = query.executeUpdate();
-            site = query.getSingleResult();
-            session.getTransaction().commit();
 
+            Site site = session.get( Site.class, id );
+            if ( site != null ) {
+                String q = "DELETE FROM Site s " + "WHERE s.id = :siteId";
+                Query<Site> query = session.createQuery( q );
+                query.setParameter( "siteId", id );
+                int result = query.executeUpdate();
+                System.out.println( result );
+            }
+
+            session.getTransaction().commit();
         } catch ( Exception e ) {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return site;
     }
 
-    public Site ajouterSite( Integer id ) {
+    public void ajouterSite() {
 
         Session session = factory.getCurrentSession();
-        Site site = null;
 
         try {
             session.getTransaction().begin();
-            String q = SQL_INSERT;
+            String q = "INSERT INTO Site s (nom, prenom, adresse, telephone, email)" +
+                    "SELECT nom, prenom, adresse, telephone, email FROM Site s";
             Query<Site> query = session.createQuery( q );
             int result = query.executeUpdate();
-            site = query.getSingleResult();
+            System.out.println( result );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -101,6 +98,5 @@ public class SiteDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return site;
     }
 }

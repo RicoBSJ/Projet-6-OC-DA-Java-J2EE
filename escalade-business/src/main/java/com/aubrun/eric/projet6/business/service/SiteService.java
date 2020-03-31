@@ -31,13 +31,13 @@ public class SiteService {
 
     public SiteDto addSite( Integer id ) {
 
-        Site site = siteDAO.ajouterSite( id );
+        // Site site = siteDAO.ajouterSite( id );
         return null;
     }
 
     public SiteDto deleteSite( Integer id ) {
 
-        Site site = siteDAO.supprimerSite( id );
+        // Site site = siteDAO.supprimerSite( id );
         return null;
     }
 }
