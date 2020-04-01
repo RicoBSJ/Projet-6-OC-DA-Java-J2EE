@@ -33,7 +33,7 @@
 			<br />
 			<label for="nom">Numéro de téléphone <span class="requis">*</span></label>
 			<input type="text" id="telephone" name="telephone" value="<c:out value="${utilisateur.telephone}"/>" size="20" maxlength="20" />
-			<span class="erreur">${form.erreurs['nom']}</span>
+			<span class="erreur">${form.erreurs['telephone']}</span>
 			<br />
 			<input type="submit" value="Inscription" class="sansLabel" />
 			<br />

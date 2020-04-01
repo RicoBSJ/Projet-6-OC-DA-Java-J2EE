@@ -27,11 +27,6 @@ public class SuppressionUtilisateur extends HttpServlet {
 
     private UtilisateurDAO     utilisateurDAO;
 
-    // public void init() throws ServletException {
-    // this.utilisateurDAO = getServletContext().getAttribute( CONF_DAO_FACTORY
-    // ).getUtilisateurDAO();
-    // }
-
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 
         String idUtilisateur = getValeurParametre( request, PARAM_ID_UTILISATEUR );
@@ -41,18 +36,17 @@ public class SuppressionUtilisateur extends HttpServlet {
         Map<Integer, Utilisateur> utilisateurs = (HashMap<Integer, Utilisateur>) session
                 .getAttribute( SESSION_UTILISATEURS );
 
-        // if ( id != null && utilisateurs != null ) {
-        // try {
-        //
-        // utilisateurService.deleteUser();
-        //
-        // utilisateurs.remove( id );
-        // } catch ( Exception e ) {
-        // e.printStackTrace();
-        // }
-        //
-        // session.setAttribute( SESSION_UTILISATEURS, utilisateurs );
-        // }
+        if ( id != null && utilisateurs != null ) {
+            try {
+
+                utilisateurDAO.supprimerUtilisateur( id );
+
+                utilisateurs.remove( id );
+            } catch ( Exception e ) {
+                e.printStackTrace();
+            }
+            session.setAttribute( SESSION_UTILISATEURS, utilisateurs );
+        }
 
         response.sendRedirect( request.getContextPath() + VUE );
     }

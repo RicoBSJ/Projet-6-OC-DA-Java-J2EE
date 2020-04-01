@@ -19,7 +19,7 @@ import com.aubrun.eric.projet6.webapp.form.CreationUtilisateurForm;
 public class CreationUtilisateur extends HttpServlet {
 
     private static final long  serialVersionUID     = 1L;
-    public static final String CONF_DAO_FACTORY     = "daofactory";
+
     public static final String CHEMIN               = "chemin";
     public static final String ATT_UTILISATEUR      = "utilisateur";
     public static final String ATT_FORM             = "form";
@@ -30,12 +30,10 @@ public class CreationUtilisateur extends HttpServlet {
 
     private UtilisateurDAO     utilisateurDAO;
 
-    /**
-     * public void doGet( HttpServletRequest request, HttpServletResponse
-     * response ) throws ServletException, IOException {
-     * this.getServletContext().getRequestDispatcher( VUE_FORM ).forward(
-     * request, response ); }
-     */
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher( VUE_FORM ).forward(
+                request, response );
+    }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {

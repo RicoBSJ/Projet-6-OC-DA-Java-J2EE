@@ -48,14 +48,14 @@ public class InscriptionForm {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motDePasse, confirmation, utilisateur );
             traiterNom( nom, utilisateur );
-            traiterNom( telephone, utilisateur );
+            traiterTelephone( telephone, utilisateur );
 
-            // if ( erreurs.isEmpty() ) {
-            // utilisateurDAO.creer( utilisateur );
-            // resultat = "Succès de l'inscription.";
-            // } else {
-            // resultat = "Échec de l'inscription.";
-            // }
+            if ( erreurs.isEmpty() ) {
+                utilisateurDAO.creerUtilisateur( utilisateur );
+                resultat = "Succès de l'inscription.";
+            } else {
+                resultat = "Échec de l'inscription.";
+            }
         } catch ( Exception e ) {
             resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
@@ -109,17 +109,27 @@ public class InscriptionForm {
         utilisateur.setNom( nom );
     }
 
+    /*
+     * Appel à la validation du téléphone reçu et initialisation de la propriété
+     * nom du bean
+     */
+    private void traiterTelephone( String telephone, Utilisateur utilisateur ) {
+        try {
+            validationTelephone( telephone );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_TELEPHONE, e.getMessage() );
+        }
+        utilisateur.setTelephone( telephone );
+    }
+
     /* Validation de l'adresse email */
     private void validationEmail( String email ) throws Exception {
         if ( email != null ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new Exception( "Merci de saisir une adresse mail valide." );
+            } else if ( utilisateurDAO.trouverUtilisateur( email ) != null ) {
+                throw new Exception( "Cette adresse email est déjà utilisée, merci d'en choisir une autre." );
             }
-            // else if ( utilisateurDAO.trouverUtilisateur( email ) != null ) {
-            // throw new Exception(
-            // "Cette adresse email est déjà utilisée, merci d'en choisir une
-            // autre." );
-            // }
         } else {
             throw new Exception( "Merci de saisir une adresse mail." );
         }
@@ -143,6 +153,13 @@ public class InscriptionForm {
     private void validationNom( String nom ) throws Exception {
         if ( nom != null && nom.length() < 3 ) {
             throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
+        }
+    }
+
+    /* Validation du téléphone */
+    private void validationTelephone( String telephone ) throws Exception {
+        if ( telephone != null && telephone.length() < 10 ) {
+            throw new Exception( "Le numéro de téléphone doit contenir au moins 10 caractères." );
         }
     }
 

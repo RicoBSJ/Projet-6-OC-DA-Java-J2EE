@@ -56,7 +56,7 @@ public class UtilisateurDAO {
         return utilisateur;
     }
 
-    public void creerUtilisateur() {
+    public Utilisateur creerUtilisateur( Utilisateur utilisateur ) {
 
         Session session = factory.getCurrentSession();
 
@@ -73,6 +73,7 @@ public class UtilisateurDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
+        return utilisateur;
     }
 
     public void supprimerUtilisateur( int id ) {
@@ -97,15 +98,15 @@ public class UtilisateurDAO {
         }
     }
 
-    public Utilisateur trouverUtilisateur( int id ) {
+    public Utilisateur trouverUtilisateur( String email ) {
 
         Session session = factory.getCurrentSession();
         Utilisateur utilisateur = null;
         try {
             session.getTransaction().begin();
-            String q = " FROM Utilisateur U WHERE U.id = :utilisateurId";
+            String q = " FROM Utilisateur U WHERE U.email = :utilisateurEmail";
             Query<Utilisateur> query = session.createQuery( q );
-            query.setParameter( "utilisateurId", id );
+            query.setParameter( "utilisateurEmail", email );
             List<Utilisateur> results = query.getResultList();
 
             if ( results != null && !results.isEmpty() ) {

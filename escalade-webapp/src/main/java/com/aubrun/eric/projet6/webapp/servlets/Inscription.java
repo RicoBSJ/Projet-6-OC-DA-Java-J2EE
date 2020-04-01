@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.form.InscriptionForm;
@@ -16,32 +15,16 @@ import com.aubrun.eric.projet6.webapp.form.InscriptionForm;
 @WebServlet( "/inscription" )
 public class Inscription extends HttpServlet {
 
-    private static final long  serialVersionUID   = 1L;
+    private static final long  serialVersionUID = 1L;
 
-    // public static final String CONF_DAO_FACTORY = "daofactory";
-    public static final String ATT_USER           = "utilisateur";
-    public static final String ATT_FORM           = "form";
-    public static final String VUE                = "/WEB-INF/jsp/inscription.jsp";
+    public static final String ATT_USER         = "utilisateur";
+    public static final String ATT_FORM         = "form";
+    public static final String VUE              = "/WEB-INF/jsp/inscription.jsp";
 
-    private UtilisateurService utilisateurService = new UtilisateurService();
     private UtilisateurDAO     utilisateurDAO;
-    //
-    // public void init() throws ServletException {
-    // /* Récupération d'une instance de notre DAO Utilisateur */
-    // this.utilisateurDao = ( (DAOFactory) getServletContext().getAttribute(
-    // CONF_DAO_FACTORY ) ).getUtilisateurDao();
-    // }
 
-    public Inscription() {
-        super();
-    }
-
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
-
-        // request.setAttribute( "utilisateurs", utilisateurService.createUser()
-        // );
-
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /* Affichage de la page d'inscription */
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
@@ -50,14 +33,16 @@ public class Inscription extends HttpServlet {
         /* Préparation de l'objet formulaire */
         InscriptionForm form = new InscriptionForm( utilisateurDAO );
 
-        /* Traitement de la requête et récupération du bean en résultant */
+        /*
+         * Appel au traitement et à la validation de la requête, et récupération
+         * du bean en résultant
+         */
         Utilisateur utilisateur = form.inscrireUtilisateur( request );
 
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, utilisateur );
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request,
-                response );
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }
