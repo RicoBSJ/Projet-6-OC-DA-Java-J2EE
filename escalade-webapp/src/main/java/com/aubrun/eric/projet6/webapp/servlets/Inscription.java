@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
-import com.aubrun.eric.projet6.consumer.form.InscriptionForm;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
+import com.aubrun.eric.projet6.webapp.form.InscriptionForm;
 
 @WebServlet( "/inscription" )
 public class Inscription extends HttpServlet {

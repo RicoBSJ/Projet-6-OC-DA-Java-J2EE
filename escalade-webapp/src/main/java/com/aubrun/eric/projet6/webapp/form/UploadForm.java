@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.consumer.form;
+package com.aubrun.eric.projet6.webapp.form;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
