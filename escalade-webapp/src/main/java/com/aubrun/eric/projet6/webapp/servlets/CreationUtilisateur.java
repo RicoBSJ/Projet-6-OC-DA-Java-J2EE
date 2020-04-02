@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.form.CreationUtilisateurForm;
+import com.aubrun.eric.projet6.webapp.forms.CreationUtilisateurForm;
 
 @WebServlet( "/creationUtilisateur" )
 public class CreationUtilisateur extends HttpServlet {

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.form.ConnexionForm;
+import com.aubrun.eric.projet6.webapp.forms.ConnexionForm;
 
 @WebServlet( "/connexion" )
 public class Connexion extends HttpServlet {

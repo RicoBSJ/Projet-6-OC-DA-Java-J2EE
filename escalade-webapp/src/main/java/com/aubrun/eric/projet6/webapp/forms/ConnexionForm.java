@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.webapp.form;
+package com.aubrun.eric.projet6.webapp.forms;
 
 import java.util.HashMap;
 import java.util.Map;

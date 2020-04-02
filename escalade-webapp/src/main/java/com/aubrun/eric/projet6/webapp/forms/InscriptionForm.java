@@ -1,4 +1,4 @@
-package com.aubrun.eric.projet6.webapp.form;
+package com.aubrun.eric.projet6.webapp.forms;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +51,7 @@ public class InscriptionForm {
             traiterTelephone( telephone, utilisateur );
 
             if ( erreurs.isEmpty() ) {
-                utilisateurDAO.creerUtilisateur( utilisateur );
+                utilisateurDAO.creer( utilisateur );
                 resultat = "Succès de l'inscription.";
             } else {
                 resultat = "Échec de l'inscription.";
@@ -127,7 +127,7 @@ public class InscriptionForm {
         if ( email != null ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new Exception( "Merci de saisir une adresse mail valide." );
-            } else if ( utilisateurDAO.trouverUtilisateur( email ) != null ) {
+            } else if ( utilisateurDAO.trouver( email ) != null ) {
                 throw new Exception( "Cette adresse email est déjà utilisée, merci d'en choisir une autre." );
             }
         } else {
