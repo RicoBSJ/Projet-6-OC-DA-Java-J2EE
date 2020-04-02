@@ -39,7 +39,7 @@ public class SuppressionUtilisateur extends HttpServlet {
         if ( id != null && utilisateurs != null ) {
             try {
 
-                utilisateurDAO.supprimer( id );
+                utilisateurDAO.supprimer( utilisateurs.get( id ) );
 
                 utilisateurs.remove( id );
             } catch ( Exception e ) {

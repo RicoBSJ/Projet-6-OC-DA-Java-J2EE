@@ -20,13 +20,13 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class PrechargementFilter implements Filter {
 
-    public static final String CONF_DAO_FACTORY    = "daofactory";
-    public static final String ATT_SESSION_CLIENTS = "clients";
+    public static final String CONF_DAO_FACTORY         = "daofactory";
+    public static final String ATT_SESSION_UTILISATEURS = "utilisateurs";
 
     private UtilisateurDAO     utilisateurDAO;
 
     public void init( FilterConfig config ) throws ServletException {
-        /* Récupération d'une instance de nos DAO Client et Commande */
+        /* Récupération d'une instance de notre DAO Utilisateur */
         this.utilisateurDAO = ( (DAOFactory) config.getServletContext().getAttribute( CONF_DAO_FACTORY ) )
                 .getUtilisateurDAO();
     }
@@ -40,21 +40,21 @@ public class PrechargementFilter implements Filter {
         HttpSession session = request.getSession();
 
         /*
-         * Si la map des clients n'existe pas en session, alors l'utilisateur se
-         * connecte pour la première fois et nous devons précharger en session
-         * les infos contenues dans la BDD.
+         * Si la map des utilisateurs n'existe pas en session, alors
+         * l'utilisateur se connecte pour la première fois et nous devons
+         * précharger en session les infos contenues dans la BDD.
          */
-        if ( session.getAttribute( ATT_SESSION_CLIENTS ) == null ) {
+        if ( session.getAttribute( ATT_SESSION_UTILISATEURS ) == null ) {
             /*
-             * Récupération de la liste des clients existants, et enregistrement
-             * en session
+             * Récupération de la liste des utilisateurs existants, et
+             * enregistrement en session
              */
             List<Utilisateur> listeUtilisateurs = utilisateurDAO.lister();
             Map<Integer, Utilisateur> mapUtilisateurs = new HashMap<Integer, Utilisateur>();
             for ( Utilisateur utilisateur : listeUtilisateurs ) {
                 mapUtilisateurs.put( utilisateur.getId(), utilisateur );
             }
-            session.setAttribute( ATT_SESSION_CLIENTS, mapUtilisateurs );
+            session.setAttribute( ATT_SESSION_UTILISATEURS, mapUtilisateurs );
         }
 
         /* Pour terminer, poursuite de la requête en cours */

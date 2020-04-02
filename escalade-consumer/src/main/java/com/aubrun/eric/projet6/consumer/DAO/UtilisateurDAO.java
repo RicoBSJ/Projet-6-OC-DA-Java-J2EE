@@ -9,7 +9,7 @@ public interface UtilisateurDAO {
 
     void creer( Utilisateur utilisateur ) throws DAOException;
 
-    Utilisateur trouver( String email ) throws DAOException;
+    Utilisateur trouver( Object object ) throws DAOException;
 
     List<Utilisateur> lister() throws DAOException;
 
