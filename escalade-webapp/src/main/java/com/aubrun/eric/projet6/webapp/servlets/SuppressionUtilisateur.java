@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/suppressionUtilisateur" )
@@ -25,7 +25,7 @@ public class SuppressionUtilisateur extends HttpServlet {
 
     public static final String VUE                  = "/listeUtilisateurs";
 
-    private UtilisateurDAO     utilisateurDAO;
+    private UtilisateurDao     utilisateurDAO;
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 

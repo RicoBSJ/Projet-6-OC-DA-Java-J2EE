@@ -2,18 +2,17 @@ package com.aubrun.eric.projet6.consumer.exception;
 
 public class DAOConfigurationException extends RuntimeException {
 
-    /*
-     * Constructeurs
-     */
-    public DAOConfigurationException( String message ) {
-        super( message );
-    }
+	private static final long serialVersionUID = 1L;
 
-    public DAOConfigurationException( String message, Throwable cause ) {
-        super( message, cause );
-    }
+	public DAOConfigurationException(String message) {
+		super(message);
+	}
 
-    public DAOConfigurationException( Throwable cause ) {
-        super( cause );
-    }
+	public DAOConfigurationException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public DAOConfigurationException(Throwable cause) {
+		super(cause);
+	}
 }
