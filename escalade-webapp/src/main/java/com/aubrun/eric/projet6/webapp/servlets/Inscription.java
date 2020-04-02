@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.InscriptionForm;
 
@@ -21,8 +20,6 @@ public class Inscription extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String VUE              = "/WEB-INF/jsp/inscription.jsp";
 
-    private UtilisateurDao     utilisateurDAO;
-
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
@@ -31,7 +28,7 @@ public class Inscription extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
-        InscriptionForm form = new InscriptionForm( utilisateurDAO );
+        InscriptionForm form = new InscriptionForm();
 
         /*
          * Appel au traitement et à la validation de la requête, et récupération

@@ -7,7 +7,6 @@ import javax.servlet.ServletContextListener;
 import com.aubrun.eric.projet6.consumer.factory.DAOFactory;
 
 public class InitialisationDaoFactory implements ServletContextListener {
-
     private static final String ATT_DAO_FACTORY = "daofactory";
 
     private DAOFactory          daoFactory;
