@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet6.consumer.factory;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -14,7 +13,7 @@ import com.aubrun.eric.projet6.consumer.impl.UtilisateurDaoImpl;
 
 public class DAOFactory {
 
-    private static final String FICHIER_PROPERTIES       = "/com/aubrun/eric/projet6/consumer/DAO/dao.properties";
+    private static final String FICHIER_PROPERTIES       = "/com/sdzee/dao/dao.properties";
     private static final String PROPERTY_URL             = "url";
     private static final String PROPERTY_DRIVER          = "driver";
     private static final String PROPERTY_NOM_UTILISATEUR = "nomutilisateur";
@@ -24,7 +23,7 @@ public class DAOFactory {
     private String              username;
     private String              password;
 
-    /* package */ DAOFactory( String url, String username, String password ) {
+    DAOFactory( String url, String username, String password ) {
         this.url = url;
         this.username = username;
         this.password = password;
@@ -54,9 +53,6 @@ public class DAOFactory {
             driver = properties.getProperty( PROPERTY_DRIVER );
             nomUtilisateur = properties.getProperty( PROPERTY_NOM_UTILISATEUR );
             motDePasse = properties.getProperty( PROPERTY_MOT_DE_PASSE );
-        } catch ( FileNotFoundException e ) {
-            throw new DAOConfigurationException( "Le fichier properties " + FICHIER_PROPERTIES + " est introuvable.",
-                    e );
         } catch ( IOException e ) {
             throw new DAOConfigurationException( "Impossible de charger le fichier properties " + FICHIER_PROPERTIES,
                     e );
@@ -78,8 +74,8 @@ public class DAOFactory {
     }
 
     /*
-     * Méthodes de récupération de l'implémentation des différents DAO
-     * (uniquement deux dans le cadre de ce TP)
+     * Méthodes de récupération de l'implémentation des différents DAO (un seul
+     * pour le moment)
      */
     public UtilisateurDao getUtilisateurDao() {
         return new UtilisateurDaoImpl( this );

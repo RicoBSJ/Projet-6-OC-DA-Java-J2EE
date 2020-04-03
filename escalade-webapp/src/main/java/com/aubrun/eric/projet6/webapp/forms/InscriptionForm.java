@@ -11,7 +11,7 @@ import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
 import com.aubrun.eric.projet6.consumer.exception.DAOException;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-public class InscriptionForm {
+public final class InscriptionForm {
 
     private static final String CHAMP_EMAIL      = "email";
     private static final String CHAMP_PASS       = "motdepasse";
@@ -27,10 +27,6 @@ public class InscriptionForm {
 
     public InscriptionForm( UtilisateurDao utilisateurDao ) {
         this.utilisateurDao = utilisateurDao;
-    }
-
-    public InscriptionForm() {
-        // TODO Auto-generated constructor stub
     }
 
     public Map<String, String> getErreurs() {
@@ -49,6 +45,7 @@ public class InscriptionForm {
         String telephone = getValeurChamp( request, CHAMP_TELEPHONE );
 
         Utilisateur utilisateur = new Utilisateur();
+
         try {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motDePasse, confirmation, utilisateur );
@@ -59,18 +56,19 @@ public class InscriptionForm {
                 utilisateurDao.creer( utilisateur );
                 resultat = "Succès de l'inscription.";
             } else {
-                resultat = "Échec de l'inscription.";
+                resultat = "Echec de l'inscription.";
             }
         } catch ( DAOException e ) {
-            resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
+            resultat = "Echec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
+
         return utilisateur;
     }
 
     /*
-     * Appel à la validation de l'adresse email reçue et initialisation de la
-     * propriété email du bean
+     * Appel Ã la validation de l'adresse email reÃ§ue et initialisation de la
+     * propriÃ©tÃ© email du bean
      */
     private void traiterEmail( String email, Utilisateur utilisateur ) {
         try {
@@ -82,8 +80,8 @@ public class InscriptionForm {
     }
 
     /*
-     * Appel à la validation des mots de passe reçus, chiffrement du mot de
-     * passe et initialisation de la propriété motDePasse du bean
+     * Appel Ã la validation des mots de passe reÃ§us, chiffrement du mot de
+     * passe et initialisation de la propriÃ©tÃ© motDePasse du bean
      */
     private void traiterMotsDePasse( String motDePasse, String confirmation, Utilisateur utilisateur ) {
         try {
@@ -102,8 +100,8 @@ public class InscriptionForm {
     }
 
     /*
-     * Appel à la validation du nom reçu et initialisation de la propriété nom
-     * du bean
+     * Appel Ã la validation du nom reÃ§u et initialisation de la propriÃ©tÃ©
+     * nom du bean
      */
     private void traiterNom( String nom, Utilisateur utilisateur ) {
         try {
@@ -130,7 +128,7 @@ public class InscriptionForm {
                 throw new FormValidationException( "Merci de saisir une adresse mail valide." );
             } else if ( utilisateurDao.trouver( email ) != null ) {
                 throw new FormValidationException(
-                        "Cette adresse email est déjà utilisée, merci d'en choisir une autre." );
+                        "Cette adresse email est dÃ©jÃ  utilisÃ©e, merci d'en choisir une autre." );
             }
         } else {
             throw new FormValidationException( "Merci de saisir une adresse mail." );
@@ -142,9 +140,9 @@ public class InscriptionForm {
         if ( motDePasse != null && confirmation != null ) {
             if ( !motDePasse.equals( confirmation ) ) {
                 throw new FormValidationException(
-                        "Les mots de passe entrés sont différents, merci de les saisir à nouveau." );
+                        "Les mots de passe entrÃ©s sont diffÃ©rents, merci de les saisir Ã  nouveau." );
             } else if ( motDePasse.length() < 3 ) {
-                throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractères." );
+                throw new FormValidationException( "Les mots de passe doivent contenir au moins 3 caractÃ¨res." );
             }
         } else {
             throw new FormValidationException( "Merci de saisir et confirmer votre mot de passe." );
@@ -154,26 +152,27 @@ public class InscriptionForm {
     /* Validation du nom */
     private void validationNom( String nom ) throws FormValidationException {
         if ( nom != null && nom.length() < 3 ) {
-            throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
+            throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 3 caractÃ¨res." );
         }
     }
 
+    /* Validation du nom */
     private void validationTelephone( String telephone ) throws FormValidationException {
         if ( telephone != null && telephone.length() < 10 ) {
-            throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 10 caractères." );
+            throw new FormValidationException( "Le numéro de téléphone doit contenir au moins 10 caractÃ¨res." );
         }
     }
 
     /*
-     * Ajoute un message correspondant au champ spécifié à la map des erreurs.
+     * Ajoute un message correspondant au champ spÃ©cifiÃ© Ã la map des erreurs.
      */
     private void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
     }
 
     /*
-     * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
-     * sinon.
+     * MÃ©thode utilitaire qui retourne null si un champ est vide, et son
+     * contenu sinon.
      */
     private static String getValeurChamp( HttpServletRequest request, String nomChamp ) {
         String valeur = request.getParameter( nomChamp );
