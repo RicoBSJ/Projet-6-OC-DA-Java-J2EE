@@ -53,7 +53,7 @@ public class InscriptionForm {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motDePasse, confirmation, utilisateur );
             traiterNom( nom, utilisateur );
-            traiterNom( telephone, utilisateur );
+            traiterTelephone( telephone, utilisateur );
 
             if ( erreurs.isEmpty() ) {
                 utilisateurDao.creer( utilisateur );
