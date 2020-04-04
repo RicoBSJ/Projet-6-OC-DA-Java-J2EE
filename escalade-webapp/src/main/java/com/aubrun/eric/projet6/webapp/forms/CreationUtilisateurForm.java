@@ -5,8 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
-import com.aubrun.eric.projet6.consumer.exception.DAOException;
+import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public final class CreationUtilisateurForm {
@@ -19,10 +18,10 @@ public final class CreationUtilisateurForm {
 
     private String              resultat;
     private Map<String, String> erreurs         = new HashMap<String, String>();
-    private UtilisateurDAO      utilisateurDao;
+    private UtilisateurService      utilisateurService;
 
-    public CreationUtilisateurForm( UtilisateurDAO utilisateurDao ) {
-        this.utilisateurDao = utilisateurDao;
+    public CreationUtilisateurForm( UtilisateurService utilisateurService ) {
+        this.utilisateurService = utilisateurService;
     }
 
     public Map<String, String> getErreurs() {
@@ -50,12 +49,12 @@ public final class CreationUtilisateurForm {
 
         try {
             if ( erreurs.isEmpty() ) {
-                utilisateurDao.creer( utilisateur );
+                utilisateurService.createUser( );
                 resultat = "Succès de la création du utilisateur.";
             } else {
                 resultat = "Échec de la création du utilisateur.";
             }
-        } catch ( DAOException e ) {
+        } catch ( Exception e ) {
             setErreur( "imprévu", "Erreur imprévue lors de la création." );
             resultat = "Échec de la création du utilisateur : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();

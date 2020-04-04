@@ -24,7 +24,6 @@
                     <th>Adresse</th>
                     <th>Téléphone</th>
                     <th>Email</th>
-                    <th>Image</th>
                     <th class="action">Action</th>                    
                 </tr>
                 <%-- Parcours de la Map des utilisateurs en session, et utilisation de l'objet varStatus. --%>
@@ -37,13 +36,7 @@
                     <td><c:out value="${ mapUtilisateurs.value.adresse }"></c:out></td>
                     <td><c:out value="${ mapUtilisateurs.value.telephone }"></c:out></td>
                     <td><c:out value="${ mapUtilisateurs.value.email }"></c:out></td>
-                    <td>
-                        <%-- On ne construit et affiche un lien vers l'image que si elle existe. --%>
-                        <c:if test="${ !empty mapUtilisateurs.value.image }">
-                            <c:set var="image"><c:out value="${ mapUtilisateurs.value.image }"></c:out></c:set>
-                            <a href="<c:url value="/images/${ image }"></a>">Voir</a>
-                        </c:if>
-                    </td>
+
                     <%-- Lien vers la servlet de suppression, avec passage du nom du utilisateur - c'est-à-dire la clé de la Map - en paramètre grâce à la balise <c:param></c:param>. --%>
                     <td class="action">
                         <a href="<c:url value="/suppressionUtilisateur"><c:param name="idUtilisateur" value="${ mapUtilisateurs.key }" ></c:param></c:url>">

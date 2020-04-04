@@ -10,34 +10,34 @@ import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteService {
 
-    private SiteDAO siteDAO = new SiteDAO();
+	private SiteDAO siteDAO = new SiteDAO();
 
-    public List<SiteDto> findAll() {
+	public List<SiteDto> findAll() {
 
-        List<Site> site = siteDAO.recupererSites();
-        List<SiteDto> dto = new ArrayList<SiteDto>();
-        for ( Site s : site ) {
-            SiteDto siteDto = SiteDtoMapper.toDto( s );
-            dto.add( siteDto );
-        }
-        return dto;
-    }
+		List<Site> site = siteDAO.recupererSites();
+		List<SiteDto> dto = new ArrayList<SiteDto>();
+		for (Site s : site) {
+			SiteDto siteDto = SiteDtoMapper.toDto(s);
+			dto.add(siteDto);
+		}
+		return dto;
+	}
 
-    public SiteDto findDetails( Integer id ) {
+	public SiteDto findDetails(Integer id) {
 
-        Site site = siteDAO.afficherDetails( id );
-        return SiteDtoMapper.toDto( site );
-    }
+		Site site = siteDAO.afficherDetails(id);
+		return SiteDtoMapper.toDto(site);
+	}
 
-    public SiteDto addSite( Integer id ) {
+	public SiteDto addSite(Integer id) {
 
-        // Site site = siteDAO.ajouterSite( id );
-        return null;
-    }
+		// Site site = siteDAO.ajouterSite( id );
+		return null;
+	}
 
-    public SiteDto deleteSite( Integer id ) {
+	public SiteDto deleteSite(Integer id) {
 
-        // Site site = siteDAO.supprimerSite( id );
-        return null;
-    }
+		// Site site = siteDAO.supprimerSite( id );
+		return null;
+	}
 }
