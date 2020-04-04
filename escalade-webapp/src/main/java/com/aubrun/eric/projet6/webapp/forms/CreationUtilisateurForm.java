@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.consumer.exception.DAOException;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -19,9 +19,9 @@ public final class CreationUtilisateurForm {
 
     private String              resultat;
     private Map<String, String> erreurs         = new HashMap<String, String>();
-    private UtilisateurDao      utilisateurDao;
+    private UtilisateurDAO      utilisateurDao;
 
-    public CreationUtilisateurForm( UtilisateurDao utilisateurDao ) {
+    public CreationUtilisateurForm( UtilisateurDAO utilisateurDao ) {
         this.utilisateurDao = utilisateurDao;
     }
 

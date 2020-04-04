@@ -26,10 +26,10 @@
 
 			<nav>
 				<ul>
-					<!-- Renvoi vers des servlets -->
 					<li><a href="<c:url value="/listeUtilisateurs" />">Liste utilisateurs</a></li>
-					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
-					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
+					<c:if test="${sessionScope.sessionUtilisateur == null}"><li><a href="<c:url value="/inscription" />">Inscription</a></li>
+					<li><a href="<c:url value="/connexion" />">Connexion</a></li></c:if>
+					<c:if test="${sessionScope.sessionUtilisateur != null}"><li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li></c:if>
 				</ul>
 			</nav>
 		</header>

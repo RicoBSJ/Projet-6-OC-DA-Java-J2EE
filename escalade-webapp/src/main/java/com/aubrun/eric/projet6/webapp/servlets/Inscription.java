@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDao;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.InscriptionForm;
 
@@ -22,7 +22,7 @@ public class Inscription extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String VUE              = "/WEB-INF/jsp/inscription.jsp";
 
-    private UtilisateurDao     utilisateurDao;
+    private UtilisateurDAO     utilisateurDao;
 
     // public void init() throws ServletException {
     // /* Récupération d'une instance de notre DAO Utilisateur */
