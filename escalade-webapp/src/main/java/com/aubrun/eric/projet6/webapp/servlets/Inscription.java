@@ -22,7 +22,7 @@ public class Inscription extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String VUE              = "/WEB-INF/jsp/inscription.jsp";
 
-    private UtilisateurDAO     utilisateurDao;
+    private UtilisateurDAO     utilisateurDAO;
 
     // public void init() throws ServletException {
     // /* Récupération d'une instance de notre DAO Utilisateur */
@@ -38,7 +38,7 @@ public class Inscription extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
-        InscriptionForm form = new InscriptionForm( utilisateurDao );
+        InscriptionForm form = new InscriptionForm( utilisateurDAO );
 
         /* Traitement de la requête et récupération du bean en résultant */
         Utilisateur utilisateur = form.inscrireUtilisateur( request );
