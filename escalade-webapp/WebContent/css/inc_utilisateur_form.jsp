@@ -5,7 +5,7 @@
 <span class="erreur">${erreurs['nom']}</span>
 <br />
 
-<label for="prenom">Prénom </label>
+<label for="prenom">Prénom <span class="requis">*</span></label>
 <input type="text" id="prenom" name="prenom" value="<c:out value="${utilisateur.prenom}"/>" size="30" maxlength="30" />
 <span class="erreur">${erreurs['prenom']}</span>
 <br />

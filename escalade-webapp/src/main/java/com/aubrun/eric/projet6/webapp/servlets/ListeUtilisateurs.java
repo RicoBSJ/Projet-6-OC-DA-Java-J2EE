@@ -26,7 +26,7 @@ public class ListeUtilisateurs extends HttpServlet {
         /*
          * À la réception d'une requête GET, affichage de la liste des clients
          */
-        // request.setAttribute( "utilisateurs", utilisateurService.findAll() );
+        request.setAttribute( "utilisateurs", utilisateurService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

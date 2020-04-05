@@ -13,29 +13,29 @@
                 <legend>Inscription</legend>
                 <p>Vous pouvez vous inscrire via ce formulaire.</p>
 
-                <label for="email">Adresse email <span class="requis">*</span></label>
-                <input type="email" id="email" name="email" value="<c:out value="${param.email}"/>" size="20" maxlength="60" />
-                <span class="erreur">${erreurs['email']}</span>
+				<label for="emailUtilisateur">Adresse email <span class="requis">*</span></label>
+				<input type="email" id="emailUtilisateur" name="emailUtilisateur" value="<c:out value="${utilisateur.email}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['emailUtilisateur']}</span>
                 <br />
 
-                <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
-                <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-                <span class="erreur">${erreurs['motdepasse']}</span>
+                <label for="motdepasseUtilisateur">Mot de passe <span class="requis">*</span></label>
+                <input type="password" id="motdepasseUtilisateur" name="motdepasseUtilisateur" value="" size="20" maxlength="20" />
+                <span class="erreur">${form.erreurs['motdepasseUtilisateur']}</span>
                 <br />
 
-                <label for="confirmation">Confirmation du mot de passe <span class="requis">*</span></label>
-                <input type="password" id="confirmation" name="confirmation" value="" size="20" maxlength="20" />
-                <span class="erreur">${erreurs['confirmation']}</span>
+                <label for="confirmationUtilisateur">Confirmation du mot de passe <span class="requis">*</span></label>
+                <input type="password" id="confirmationUtilisateur" name="confirmationUtilisateur" value="" size="20" maxlength="20" />
+                <span class="erreur">${form.erreurs['confirmationUtilisateur']}</span>
                 <br />
 
-                <label for="nom">Nom d'utilisateur <span class="requis">*</span></label>
-                <input type="text" id="nom" name="nom" value="<c:out value="${param.nom}"/>" size="20" maxlength="20" />
-                <span class="erreur">${erreurs['nom']}</span>
+				<label for="nomUtilisateur">Nom d'utilisateur <span class="requis">*</span></label>
+				<input type="text" id="nomUtilisateur" name="nomUtilisateur" value="<c:out value="${utilisateur.nom}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['nomUtilisateur']}</span>
                 <br />
                 
-                <label for="telephone">Numéro de téléphone <span class="requis">*</span></label>
-                <input type="text" id="telephone" name="telephone" value="<c:out value="${param.telephone}"/>" size="20" maxlength="60" />
-                <span class="erreur">${erreurs['telephone']}</span>
+				<label for="telephoneUtilisateur">Numéro de téléphone <span class="requis">*</span></label>
+				<input type="text" id="telephoneUtilisateur" name="telephoneUtilisateur" value="<c:out value="${utilisateur.telephone}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['telephoneUtilisateur']}</span>
                 <br />
 
                 <input type="submit" value="Inscription" class="sansLabel" />

@@ -14,59 +14,58 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-@WebServlet("/suppressionUtilisateur")
+@WebServlet( "/suppressionUtilisateur" )
 public class SuppressionUtilisateur extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long  serialVersionUID     = 1L;
 
-	public static final String CONF_Service_FACTORY = "daofactory";
-	public static final String PARAM_ID_UTILISATEUR = "idUtilisateur";
-	public static final String SESSION_UTILISATEURS = "utilisateurs";
+    public static final String PARAM_ID_UTILISATEUR = "idUtilisateur";
+    public static final String SESSION_UTILISATEURS = "utilisateurs";
 
-	public static final String VUE = "/listeUtilisateurs";
+    public static final String VUE                  = "/listeUtilisateurs";
 
-	private UtilisateurService utilisateurService;
+    private UtilisateurService utilisateurService;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Récupération du paramètre */
-		String idUtilisateur = getValeurParametre(request, PARAM_ID_UTILISATEUR);
-		Integer id = (int) Integer.parseInt(idUtilisateur);
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /* Récupération du paramètre */
+        String idUtilisateur = getValeurParametre( request, PARAM_ID_UTILISATEUR );
+        Integer id = (int) Integer.parseInt( idUtilisateur );
 
-		/* Récupération de la Map des utilisateurs enregistrés en session */
-		HttpSession session = request.getSession();
-		Map<Integer, Utilisateur> utilisateurs = (HashMap<Integer, Utilisateur>) session
-				.getAttribute(SESSION_UTILISATEURS);
+        /* Récupération de la Map des utilisateurs enregistrés en session */
+        HttpSession session = request.getSession();
+        Map<Integer, Utilisateur> utilisateurs = (HashMap<Integer, Utilisateur>) session
+                .getAttribute( SESSION_UTILISATEURS );
 
-		/*
-		 * Si l'id du utilisateur et la Map des utilisateurs ne sont pas vides
-		 */
-		if (id != null && utilisateurs != null) {
-			try {
-				/* Alors suppression du utilisateur de la BDD */
-				utilisateurService.deleteUser(id);
-				/* Puis suppression du utilisateur de la Map */
-				utilisateurs.remove(id);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			/* Et remplacement de l'ancienne Map en session par la nouvelle */
-			session.setAttribute(SESSION_UTILISATEURS, utilisateurs);
-		}
+        /*
+         * Si l'id du utilisateur et la Map des utilisateurs ne sont pas vides
+         */
+        if ( id != null && utilisateurs != null ) {
+            try {
+                /* Alors suppression de l'utilisateur de la BDD */
+                utilisateurService.deleteUser( id );
+                /* Puis suppression du utilisateur de la Map */
+                utilisateurs.remove( id );
+            } catch ( Exception e ) {
+                e.printStackTrace();
+            }
+            /* Et remplacement de l'ancienne Map en session par la nouvelle */
+            session.setAttribute( SESSION_UTILISATEURS, utilisateurs );
+        }
 
-		/* Redirection vers la fiche récapitulative */
-		response.sendRedirect(request.getContextPath() + VUE);
-	}
+        /* Redirection vers la fiche récapitulative */
+        response.sendRedirect( request.getContextPath() + VUE );
+    }
 
-	/*
-	 * Méthode utilitaire qui retourne null si un paramètre est vide, et son contenu
-	 * sinon.
-	 */
-	private static String getValeurParametre(HttpServletRequest request, String nomChamp) {
-		String valeur = request.getParameter(nomChamp);
-		if (valeur == null || valeur.trim().length() == 0) {
-			return null;
-		} else {
-			return valeur;
-		}
-	}
+    /*
+     * Méthode utilitaire qui retourne null si un paramètre est vide, et son
+     * contenu sinon.
+     */
+    private static String getValeurParametre( HttpServletRequest request, String nomChamp ) {
+        String valeur = request.getParameter( nomChamp );
+        if ( valeur == null || valeur.trim().length() == 0 ) {
+            return null;
+        } else {
+            return valeur;
+        }
+    }
 }
