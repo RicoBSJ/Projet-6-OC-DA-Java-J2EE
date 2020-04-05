@@ -16,13 +16,10 @@ public final class CreationUtilisateurForm {
     private static final String CHAMP_TELEPHONE = "telephoneUtilisateur";
     private static final String CHAMP_EMAIL     = "emailUtilisateur";
 
+    private UtilisateurService  utilisateurService;
+
     private String              resultat;
     private Map<String, String> erreurs         = new HashMap<String, String>();
-    private UtilisateurService      utilisateurService;
-
-    public CreationUtilisateurForm( UtilisateurService utilisateurService ) {
-        this.utilisateurService = utilisateurService;
-    }
 
     public Map<String, String> getErreurs() {
         return erreurs;
@@ -49,7 +46,7 @@ public final class CreationUtilisateurForm {
 
         try {
             if ( erreurs.isEmpty() ) {
-                utilisateurService.createUser( );
+                utilisateurService.createUser();
                 resultat = "Succès de la création du utilisateur.";
             } else {
                 resultat = "Échec de la création du utilisateur.";
@@ -66,7 +63,7 @@ public final class CreationUtilisateurForm {
     private void traiterNom( String nom, Utilisateur utilisateur ) {
         try {
             validationNom( nom );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
         utilisateur.setNom( nom );
@@ -75,7 +72,7 @@ public final class CreationUtilisateurForm {
     private void traiterPrenom( String prenom, Utilisateur utilisateur ) {
         try {
             validationPrenom( prenom );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_PRENOM, e.getMessage() );
         }
         utilisateur.setPrenom( prenom );
@@ -84,7 +81,7 @@ public final class CreationUtilisateurForm {
     private void traiterAdresse( String adresse, Utilisateur utilisateur ) {
         try {
             validationAdresse( adresse );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_ADRESSE, e.getMessage() );
         }
         utilisateur.setAdresse( adresse );
@@ -93,7 +90,7 @@ public final class CreationUtilisateurForm {
     private void traiterTelephone( String telephone, Utilisateur utilisateur ) {
         try {
             validationTelephone( telephone );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_TELEPHONE, e.getMessage() );
         }
         utilisateur.setTelephone( telephone );
@@ -102,53 +99,53 @@ public final class CreationUtilisateurForm {
     private void traiterEmail( String email, Utilisateur utilisateur ) {
         try {
             validationEmail( email );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         utilisateur.setEmail( email );
     }
 
-    private void validationNom( String nom ) throws FormValidationException {
+    private void validationNom( String nom ) throws Exception {
         if ( nom != null ) {
             if ( nom.length() < 2 ) {
-                throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
+                throw new Exception( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
             }
         } else {
-            throw new FormValidationException( "Merci d'entrer un nom d'utilisateur." );
+            throw new Exception( "Merci d'entrer un nom d'utilisateur." );
         }
     }
 
-    private void validationPrenom( String prenom ) throws FormValidationException {
+    private void validationPrenom( String prenom ) throws Exception {
         if ( prenom != null && prenom.length() < 2 ) {
-            throw new FormValidationException( "Le prénom d'utilisateur doit contenir au moins 2 caractères." );
+            throw new Exception( "Le prénom d'utilisateur doit contenir au moins 2 caractères." );
         }
     }
 
-    private void validationAdresse( String adresse ) throws FormValidationException {
+    private void validationAdresse( String adresse ) throws Exception {
         if ( adresse != null ) {
             if ( adresse.length() < 10 ) {
-                throw new FormValidationException( "L'adresse de livraison doit contenir au moins 10 caractères." );
+                throw new Exception( "L'adresse de livraison doit contenir au moins 10 caractères." );
             }
         } else {
-            throw new FormValidationException( "Merci d'entrer une adresse de livraison." );
+            throw new Exception( "Merci d'entrer une adresse de livraison." );
         }
     }
 
-    private void validationTelephone( String telephone ) throws FormValidationException {
+    private void validationTelephone( String telephone ) throws Exception {
         if ( telephone != null ) {
             if ( !telephone.matches( "^\\d+$" ) ) {
-                throw new FormValidationException( "Le numéro de téléphone doit uniquement contenir des chiffres." );
+                throw new Exception( "Le numéro de téléphone doit uniquement contenir des chiffres." );
             } else if ( telephone.length() < 4 ) {
-                throw new FormValidationException( "Le numéro de téléphone doit contenir au moins 4 chiffres." );
+                throw new Exception( "Le numéro de téléphone doit contenir au moins 4 chiffres." );
             }
         } else {
-            throw new FormValidationException( "Merci d'entrer un numéro de téléphone." );
+            throw new Exception( "Merci d'entrer un numéro de téléphone." );
         }
     }
 
-    private void validationEmail( String email ) throws FormValidationException {
+    private void validationEmail( String email ) throws Exception {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-            throw new FormValidationException( "Merci de saisir une adresse mail valide." );
+            throw new Exception( "Merci de saisir une adresse mail valide." );
         }
     }
 

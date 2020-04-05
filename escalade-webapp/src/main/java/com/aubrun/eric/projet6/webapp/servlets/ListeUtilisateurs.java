@@ -10,32 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 
-@WebServlet("/listeUtilisateurs")
+@WebServlet( "/listeUtilisateurs" )
 public class ListeUtilisateurs extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long  serialVersionUID   = 1L;
 
-	public static final String VUE = "/WEB-INF/jsp/listeUtilisateurs.jsp";
+    public static final String ATT_UTILISATEUR    = "utilisateur";
+    public static final String ATT_FORM           = "form";
 
-	private UtilisateurService utilisateurService = new UtilisateurService();
+    public static final String VUE                = "/WEB-INF/jsp/listeUtilisateurs.jsp";
 
-	public ListeUtilisateurs() {
-		super();
-	}
+    private UtilisateurService utilisateurService = new UtilisateurService();
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * À la réception d'une requête GET, affichage de la liste des clients
-		 */
-		request.setAttribute("utilisateurs", utilisateurService.findAll());
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /*
+         * À la réception d'une requête GET, affichage de la liste des clients
+         */
+        // request.setAttribute( "utilisateurs", utilisateurService.findAll() );
 
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	}
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    protected void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet( request, response );
+    }
 
 }
