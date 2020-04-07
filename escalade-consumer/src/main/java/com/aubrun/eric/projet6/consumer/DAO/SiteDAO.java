@@ -56,7 +56,7 @@ public class SiteDAO {
         return site;
     }
 
-    public void supprimerSite( int id ) {
+    public Site supprimerSite( int id ) {
 
         Session session = factory.getCurrentSession();
 
@@ -78,9 +78,10 @@ public class SiteDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void ajouterSite() {
+    public Site ajouterSite() {
 
         Session session = factory.getCurrentSession();
 
@@ -98,5 +99,6 @@ public class SiteDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
+        return null;
     }
 }

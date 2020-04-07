@@ -10,40 +10,40 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class UtilisateurService {
 
-	private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+    private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
-	public List<UtilisateurDto> findAll() {
+    public List<UtilisateurDto> findAll() {
 
-		List<Utilisateur> utilisateur = utilisateurDAO.recupererUtilisateurs();
-		List<UtilisateurDto> dto = new ArrayList<UtilisateurDto>();
-		for (Utilisateur u : utilisateur) {
-			UtilisateurDto utilisateurDto = UtilisateurDtoMapper.toDto(u);
-			dto.add(utilisateurDto);
-		}
-		return dto;
-	}
+        List<Utilisateur> utilisateur = utilisateurDAO.recupererUtilisateurs();
+        List<UtilisateurDto> dto = new ArrayList<UtilisateurDto>();
+        for ( Utilisateur u : utilisateur ) {
+            UtilisateurDto utilisateurDto = UtilisateurDtoMapper.toDto( u );
+            dto.add( utilisateurDto );
+        }
+        return dto;
+    }
 
-	public UtilisateurDto findById(Integer id) {
+    public UtilisateurDto findById( Integer id ) {
 
-		Utilisateur utilisateur = utilisateurDAO.afficherParId(id);
-		return UtilisateurDtoMapper.toDto(utilisateur);
-	}
+        Utilisateur utilisateur = utilisateurDAO.afficherParId( id );
+        return UtilisateurDtoMapper.toDto( utilisateur );
+    }
 
-	public UtilisateurDto findByEmail(String email) {
+    public UtilisateurDto findByEmail( String email ) {
 
-		Utilisateur utilisateur = utilisateurDAO.afficherParEmail(email);
-		return UtilisateurDtoMapper.toDto(utilisateur);
-	}
+        Utilisateur utilisateur = utilisateurDAO.afficherParEmail( email );
+        return UtilisateurDtoMapper.toDto( utilisateur );
+    }
 
-	public UtilisateurDto createUser() {
+    public UtilisateurDto createUser() {
 
-		Utilisateur utilisateur = utilisateurDAO.ajouterUtilisateur();
-		return null;
-	}
+        Utilisateur utilisateur = utilisateurDAO.ajouterUtilisateur();
+        return UtilisateurDtoMapper.toDto( utilisateur );
+    }
 
-	public UtilisateurDto deleteUser(Integer id) {
+    public UtilisateurDto deleteUser( Integer id ) {
 
-		Utilisateur utilisateur = utilisateurDAO.supprimerUtilisateur(id);
-		return null;
-	}
+        Utilisateur utilisateur = utilisateurDAO.supprimerUtilisateur( id );
+        return UtilisateurDtoMapper.toDto( utilisateur );
+    }
 }
