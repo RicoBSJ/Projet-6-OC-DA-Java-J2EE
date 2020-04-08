@@ -87,8 +87,9 @@ public class SiteDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "INSERT INTO Site s (nom, prenom, adresse, telephone, email)" +
-                    "SELECT nom, prenom, adresse, telephone, email FROM Site s";
+            String q = "INSERT INTO Site s (nom, pays, region, description, cotation, hauteur, orientation, photos, secteurs)"
+                    +
+                    "SELECT nom, pays, region, description, cotation, hauteur, orientation, photos, secteurs FROM Site s";
             Query<Site> query = session.createQuery( q );
             int result = query.executeUpdate();
             System.out.println( result );

@@ -42,7 +42,7 @@ public class UtilisateurDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT s FROM Utilisateur s WHERE s.id=?1";
+            String q = "SELECT u FROM Utilisateur u WHERE u.id=?1";
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, id );
             utilisateur = query.getSingleResult();
@@ -63,7 +63,7 @@ public class UtilisateurDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT s FROM Utilisateur s WHERE s.email=?";
+            String q = "SELECT u FROM Utilisateur u WHERE u.email=?";
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, email );
             utilisateur = query.getSingleResult();
@@ -86,7 +86,7 @@ public class UtilisateurDAO {
 
             Utilisateur utilisateur = session.get( Utilisateur.class, id );
             if ( utilisateur != null ) {
-                String q = "DELETE FROM Utilisateur s " + "WHERE s.id = :utilisateurId";
+                String q = "DELETE FROM Utilisateur u " + "WHERE u.id = :utilisateurId";
                 Query<Utilisateur> query = session.createQuery( q );
                 query.setParameter( "utilisateurId", id );
                 int result = query.executeUpdate();
@@ -108,8 +108,8 @@ public class UtilisateurDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "INSERT INTO Utilisateur s (nom, prenom, adresse, telephone, email)"
-                    + "SELECT nom, prenom, adresse, telephone, email FROM Utilisateur s";
+            String q = "INSERT INTO Utilisateur u (nom, prenom, adresse, telephone, email)"
+                    + "SELECT nom, prenom, adresse, telephone, email FROM Utilisateur u";
             Query<Utilisateur> query = session.createQuery( q );
             int result = query.executeUpdate();
             System.out.println( result );
