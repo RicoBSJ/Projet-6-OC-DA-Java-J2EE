@@ -21,9 +21,6 @@ public class ListeUtilisateurs extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 
-        /*
-         * À la réception d'une requête GET, affichage de la liste des clients
-         */
         request.setAttribute( "utilisateurs", utilisateurService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

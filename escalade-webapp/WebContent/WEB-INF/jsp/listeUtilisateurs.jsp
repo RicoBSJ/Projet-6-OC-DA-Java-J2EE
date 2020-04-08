@@ -16,9 +16,10 @@
                     <th>Prénom</th>
                     <th>Adresse</th>
                     <th>Téléphone</th>
-                    <th>Email</th>          
+                    <th>Email</th>            
                 </tr>
-                <c:forEach var="utilisateur" items="${ utilisateurs }" >
+                <c:forEach items="${ utilisateurs }" var="utilisateur">
+                <%-- Simple test de parité sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
                     <%-- Affichage des propriétés du bean Utilisateur, qui est stocké en tant que valeur de l'entrée courante de la map --%>
                     <td><c:out value="${ utilisateur.nom }"></c:out></td>
@@ -26,7 +27,6 @@
                     <td><c:out value="${ utilisateur.adresse }"></c:out></td>
                     <td><c:out value="${ utilisateur.telephone }"></c:out></td>
                     <td><c:out value="${ utilisateur.email }"></c:out></td>
-
                 </tr>
                 </c:forEach>
             </table>
