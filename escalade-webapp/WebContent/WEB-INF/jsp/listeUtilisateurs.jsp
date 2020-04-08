@@ -9,7 +9,6 @@
     </head>
     <body>
         <c:import url="/css/menu.jsp" ></c:import>
-        <br>
         <div id="corps">
             <table>
                 <tr>
@@ -27,6 +26,7 @@
                     <td><c:out value="${ utilisateur.adresse }"></c:out></td>
                     <td><c:out value="${ utilisateur.telephone }"></c:out></td>
                     <td><c:out value="${ utilisateur.email }"></c:out></td>
+
                 </tr>
                 </c:forEach>
             </table>
