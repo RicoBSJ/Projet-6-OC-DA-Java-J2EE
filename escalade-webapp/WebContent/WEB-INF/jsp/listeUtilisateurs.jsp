@@ -8,7 +8,7 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"></c:url>" />
     </head>
     <body>
-        <c:import url="/css/menu.jsp" ></c:import>
+<%--         <c:import url="/css/menu.jsp" ></c:import> --%>
         <div id="corps">
             <table>
                 <tr>

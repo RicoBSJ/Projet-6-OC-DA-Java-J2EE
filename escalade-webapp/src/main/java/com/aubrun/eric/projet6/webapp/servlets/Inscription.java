@@ -17,19 +17,17 @@ public class Inscription extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final String CONF_Service_FACTORY = "daofactory";
 	public static final String ATT_USER = "utilisateur";
 	public static final String ATT_FORM = "form";
 	public static final String VUE = "/WEB-INF/jsp/inscription.jsp";
 
 	private UtilisateurService utilisateurService;
 
-	// public void init() throws ServletException {
-	// /* Récupération d'une instance de notre Service Utilisateur */
-	// this.utilisateurService = ( (ServiceFactory)
-	// getServletContext().getAttribute(
-	// CONF_Service_FACTORY ) ).getUtilisateurService();
-	// }
+	public void init() throws ServletException {
+		/* Récupération d'une instance de notre Service Utilisateur */
+//		this.utilisateurService = ((UtilisateurService) getServletContext().getAttribute(utilisateurService))
+//				.getUtilisateurService();
+	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* Affichage de la page d'inscription */
