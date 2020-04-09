@@ -15,10 +15,10 @@
         </h2>
  </center>
     <div align="center">
-  		<c:if test="${utilisateurs != null}">
+  		<c:if test="${utilisateur != null}">
    			<form action="update" method="post">
         </c:if>
-        <c:if test="${utilisateurs == null}">
+        <c:if test="${utilisateur == null}">
    			<form action="insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
