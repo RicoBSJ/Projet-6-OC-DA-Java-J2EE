@@ -13,7 +13,7 @@
 <title>Tous les sites de l'escalade</title>
 </head>
 <body>
-	<main class="container">
+	<main class="container" scope="session">
 		<header>
 			<div id="titre_principal">
 				<div id="logo">
@@ -26,10 +26,17 @@
 
 			<nav>
 				<ul>
-					<li><a href="<c:url value="/css/menu.jsp" />">Menu utilisateurs</a></li>
-					<c:if test="${sessionScope.sessionUtilisateur == null}"><li><a href="<c:url value="/inscription" />">Inscription</a></li>
-					<li><a href="<c:url value="/connexion" />">Connexion</a></li></c:if>
-					<c:if test="${sessionScope.sessionUtilisateur != null}"><li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li></c:if>
+					<c:if test="${empty sessionScope.sessionUtilisateur}">
+					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
+					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
+					</c:if>
+					<c:if test="${!empty sessionScope.sessionUtilisateur}">
+					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
+					</c:if>
+<%-- 					<c:if test="${!empty sessionScope.sessionUtilisateur}"> --%>
+<%--                     Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
+<%--                 	<p class="succes">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUtilisateur.email}</p> --%>
+<%--                 	</c:if> --%>
 				</ul>
 			</nav>
 		</header>

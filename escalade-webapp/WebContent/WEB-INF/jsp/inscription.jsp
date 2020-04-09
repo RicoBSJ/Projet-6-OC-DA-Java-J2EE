@@ -44,5 +44,6 @@
                 <p class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
             </fieldset>
         </form>
+        <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
     </body>
 </html>
