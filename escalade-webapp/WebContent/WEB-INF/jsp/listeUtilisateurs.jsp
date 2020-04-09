@@ -8,8 +8,9 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"></c:url>" />
     </head>
     <body>
-<%--         <c:import url="/css/menu.jsp" ></c:import> --%>
         <div id="corps">
+        <fieldset>
+        <legend>Liste des utilisateurs existants</legend>
             <table>
                 <tr>
                     <th>Nom</th>
@@ -30,6 +31,7 @@
                 </tr>
                 </c:forEach>
             </table>
+        </fieldset>
         </div>
     </body>
 </html>
