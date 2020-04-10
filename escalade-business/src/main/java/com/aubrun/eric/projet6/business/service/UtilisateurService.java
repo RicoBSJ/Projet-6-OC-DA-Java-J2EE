@@ -46,4 +46,17 @@ public class UtilisateurService {
         Utilisateur utilisateur = utilisateurDAO.supprimerUtilisateur( id );
         return UtilisateurDtoMapper.toDto( utilisateur );
     }
+
+    public Utilisateur connexion( Utilisateur credentiel ) {
+
+        Utilisateur connected = utilisateurDAO.afficherParEmail( credentiel.getEmail() );
+        if ( connected == null ) {
+            return null;
+        }
+        if ( !connected.getMotDePasse().equals( credentiel.getMotDePasse() ) ) {
+            return null;
+        }
+        connected.setMotDePasse( null );
+        return connected;
+    }
 }

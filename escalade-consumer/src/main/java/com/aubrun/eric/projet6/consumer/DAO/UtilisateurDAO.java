@@ -63,7 +63,7 @@ public class UtilisateurDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT u FROM Utilisateur u WHERE u.email=?";
+            String q = "SELECT u FROM Utilisateur u WHERE u.email=?1";
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, email );
             utilisateur = query.getSingleResult();

@@ -13,32 +13,8 @@
 <title>Tous les sites de l'escalade</title>
 </head>
 <body>
+	<c:import url="/include/menu.jsp"></c:import>
 	<main class="container" scope="session">
-		<header>
-			<div id="titre_principal">
-				<div id="logo">
-					<img src="<c:url value="/images/Les_amis_de_l_escalade.png"/>"
-						alt="Logo des amis de l'escalade" />
-					<h1>Les Amis de l'Escalade</h1>
-				</div>
-				<h2>Site développé par RicoBSJ</h2>
-			</div>
-
-			<nav>
-				<ul>
-					<c:if test="${empty sessionScope.sessionUtilisateur}">
-					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
-					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
-					<li><a href="<c:url value="listeUtilisateurs" />">Liste Ut</a></li>
-					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
-					</c:if>
-					<c:if test="${!empty sessionScope.sessionUtilisateur}">
-					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
-					</c:if>
-				</ul>
-			</nav>
-		</header>
-
 		<div id="banniere_image">
 			<div id="banniere_description">
 				Retour sur les tout derniers sites d'escalade... <a
