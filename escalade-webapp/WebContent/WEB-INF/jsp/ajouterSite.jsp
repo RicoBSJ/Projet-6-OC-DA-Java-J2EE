@@ -1,3 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +7,7 @@
 <title>Escalade-Webapp</title>
 </head>
 <body>
+	<c:import url="/include/menu.jsp"></c:import>
 	<form method="post" action="ajouterSite">
 		<p>
 			<label for="nomSite">Nom du site : </label> <input type="text"

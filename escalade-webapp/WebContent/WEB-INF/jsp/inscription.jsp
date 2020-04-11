@@ -8,6 +8,7 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"/>" />
     </head>
     <body>
+    	<c:import url="/include/menu.jsp"></c:import>
         <form method="post" action="inscription">
             <fieldset>
                 <legend>Inscription</legend>
@@ -15,7 +16,7 @@
 
 				<label for="emailUtilisateur">Adresse email <span class="requis">*</span></label>
 				<input type="email" id="emailUtilisateur" name="emailUtilisateur" value="<c:out value="${utilisateur.email}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['emailUtilisateur']}</span>
+				<span class="erreur">${form.erreurs[utilisateur.email]}</span>
                 <br />
 
                 <label for="motdepasseUtilisateur">Mot de passe <span class="requis">*</span></label>

@@ -8,6 +8,7 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"></c:url>" />
     </head>
     <body>
+        <c:import url="/include/menu.jsp"></c:import>
         <div id="corps">
         <fieldset>
         <legend>Liste des utilisateurs existants</legend>
@@ -33,5 +34,6 @@
             </table>
         </fieldset>
         </div>
+        <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
     </body>
 </html>

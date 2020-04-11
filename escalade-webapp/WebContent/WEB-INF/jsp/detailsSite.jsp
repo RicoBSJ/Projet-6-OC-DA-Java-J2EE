@@ -13,6 +13,7 @@
 <title>${ site.nom}</title>
 </head>
 <body>
+	<c:import url="/include/menu.jsp"></c:import>
 	<main class="container">
 		<section>
 			<article class="resultats-listeStations even">
