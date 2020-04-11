@@ -5,10 +5,10 @@
     <head>
         <meta charset="utf-8" />
         <title>Création d'un utilisateur</title>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>" />
+        <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"/>" />
     </head>
     <body>
-        <c:import url="/css/menu.jsp" />
+        <c:import url="/include/menu.jsp" />
         <div>
             <form method="post" action="<c:url value="/creationUtilisateur"/>" enctype="multipart/form-data">
                 <fieldset>

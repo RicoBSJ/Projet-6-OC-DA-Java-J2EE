@@ -8,7 +8,7 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>" />
     </head>
     <body>
-<%--         <c:import url="/css/menu.jsp" /> --%>
+<%--         <c:import url="/include/menu.jsp" /> --%>
         <div id="corps">
             <p class="info">${ form.resultat }</p>
             <p>Nom : <c:out value="${ utilisateur.nom }"/></p>

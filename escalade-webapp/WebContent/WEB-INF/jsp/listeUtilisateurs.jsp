@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Liste des utilisateurs existants</title>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"></c:url>" />
+        <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"></c:url>" />
     </head>
     <body>
         <div id="corps">
