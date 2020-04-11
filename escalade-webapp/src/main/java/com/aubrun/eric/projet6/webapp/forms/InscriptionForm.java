@@ -24,10 +24,6 @@ public final class InscriptionForm {
     private Map<String, String> erreurs          = new HashMap<String, String>();
     private UtilisateurService  utilisateurService;
 
-    public InscriptionForm( UtilisateurService utilisateurService ) {
-        this.utilisateurService = utilisateurService;
-    }
-
     public Map<String, String> getErreurs() {
         return erreurs;
     }
@@ -52,7 +48,7 @@ public final class InscriptionForm {
             traiterTelephone( telephone, utilisateur );
 
             if ( erreurs.isEmpty() ) {
-                utilisateurService.createUser();
+                utilisateurService.registerUser( utilisateur );
                 resultat = "Succès de l'inscription.";
             } else {
                 resultat = "Echec de l'inscription.";

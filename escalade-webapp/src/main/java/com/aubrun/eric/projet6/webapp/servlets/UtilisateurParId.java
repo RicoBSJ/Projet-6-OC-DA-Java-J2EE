@@ -10,17 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 
-/**
- * Servlet implementation class UtilisateurParId
- */
-@WebServlet( "/UtilisateurParId" )
+@WebServlet( "/utilisateurParId" )
 public class UtilisateurParId extends HttpServlet {
 
-    private static final long               serialVersionUID   = 1L;
+    private static final long  serialVersionUID   = 1L;
 
-    public static final String              VUE                = "/WEB-INF/jsp/utilisateurParId.jsp";
+    public static final String VUE                = "/WEB-INF/jsp/utilisateurParId.jsp";
 
-    private static final UtilisateurService utilisateurService = new UtilisateurService();
+    private UtilisateurService utilisateurService = new UtilisateurService();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {

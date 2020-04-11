@@ -18,7 +18,6 @@ public class Connexion extends HttpServlet {
 
     private static final long       serialVersionUID   = 1L;
 
-    public static final String      ATT_USER           = "utilisateur";
     public static final String      ATT_FORM           = "form";
     public static final String      ATT_SESSION_USER   = "sessionUtilisateur";
     public static final String      VUE                = "/WEB-INF/jsp/connexion.jsp";
