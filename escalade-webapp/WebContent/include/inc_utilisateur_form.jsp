@@ -1,22 +1,36 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<label for="nom">Nom <span class="requis">*</span></label>
-<input type="text" id="nom" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="30" maxlength="30" />
-<span class="erreur">${erreurs['nom']}</span>
-<br />
+            <fieldset>
+                <legend>Inscription</legend>
+                <p>Vous pouvez vous inscrire via ce formulaire.</p>
 
-<label for="prenom">Prénom <span class="requis">*</span></label>
-<input type="text" id="prenom" name="prenom" value="<c:out value="${utilisateur.prenom}"/>" size="30" maxlength="30" />
-<span class="erreur">${erreurs['prenom']}</span>
-<br />
+				<label for="emailUtilisateur">Adresse email <span class="requis">*</span></label>
+				<input type="email" id="emailUtilisateur" name="emailUtilisateur" value="<c:out value="${utilisateur.email}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['emailUtilisateur']}</span>
+                <br />
+                
+				<label for="prenomUtilisateur">Prénom d'utilisateur <span class="requis">*</span></label>
+				<input type="text" id="prenomUtilisateur" name="prenomUtilisateur" value="<c:out value="${utilisateur.prenom}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['prenomUtilisateur']}</span>
+                <br />
+                
+                <label for="nomUtilisateur">Nom d'utilisateur <span class="requis">*</span></label>
+				<input type="text" id="nomUtilisateur" name="nomUtilisateur" value="<c:out value="${utilisateur.nom}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['nomUtilisateur']}</span>
+                <br />
+				
+				<label for="telephoneUtilisateur">Numéro de téléphone <span class="requis">*</span></label>
+				<input type="text" id="telephoneUtilisateur" name="telephoneUtilisateur" value="<c:out value="${utilisateur.telephone}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['telephoneUtilisateur']}</span>
+                <br />
+                
+                <label for="adresseUtilisateur">Adresse <span class="requis">*</span></label>
+				<input type="text" id="adresseUtilisateur" name="adresseUtilisateur" value="<c:out value="${utilisateur.adresse}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['adresseUtilisateur']}</span>
+                <br />
 
-<label for="telephone">Numéro de téléphone <span class="requis">*</span></label>
-<input type="text" id="telephone" name="telephone" value="<c:out value="${utilisateur.telephone}"/>" size="30" maxlength="30" />
-<span class="erreur">${erreurs['telephone']}</span>
-<br />
-
-<label for="email">Adresse email <span class="requis">*</span></label>
-<input type="email" id="email" name="email" value="<c:out value="${utilisateur.email}"/>" size="30" maxlength="60" />
-<span class="erreur">${erreurs['email']}</span>
-<br />
+                <p class="info">${ form.resultat }</p>
+                <input type="submit" value="Valider"  />
+                <input type="reset" value="Remettre à zéro" /> <br />
+            </fieldset>

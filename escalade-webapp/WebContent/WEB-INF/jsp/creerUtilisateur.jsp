@@ -11,13 +11,7 @@
         <c:import url="/include/menu.jsp" />
         <div>
             <form method="post" action="<c:url value="/creationUtilisateur"/>" enctype="multipart/form-data">
-                <fieldset>
-                    <legend>Informations utilisateur</legend>
-                    <c:import url="/include/inc_utilisateur_form.jsp" />
-                </fieldset>  
-                <p class="info">${ form.resultat }</p>
-                <input type="submit" value="Valider"  />
-                <input type="reset" value="Remettre à zéro" /> <br />
+            	<c:import url="/include/inc_utilisateur_form.jsp" />
             </form>
         </div>
     </body>

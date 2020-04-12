@@ -16,6 +16,7 @@ public final class InscriptionForm {
     private static final String CHAMP_PASS       = "motdepasse";
     private static final String CHAMP_CONF       = "confirmation";
     private static final String CHAMP_NOM        = "nom";
+    private static final String CHAMP_PRENOM     = "prenom";
     private static final String CHAMP_TELEPHONE  = "telephone";
 
     private static final String ALGO_CHIFFREMENT = "SHA-256";
@@ -36,6 +37,7 @@ public final class InscriptionForm {
         String email = getValeurChamp( request, CHAMP_EMAIL );
         String motDePasse = getValeurChamp( request, CHAMP_PASS );
         String confirmation = getValeurChamp( request, CHAMP_CONF );
+        String prenom = getValeurChamp( request, CHAMP_PRENOM );
         String nom = getValeurChamp( request, CHAMP_NOM );
         String telephone = getValeurChamp( request, CHAMP_TELEPHONE );
 
@@ -44,6 +46,7 @@ public final class InscriptionForm {
         try {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motDePasse, confirmation, utilisateur );
+            traiterPrenom( prenom, utilisateur );
             traiterNom( nom, utilisateur );
             traiterTelephone( telephone, utilisateur );
 
@@ -94,6 +97,15 @@ public final class InscriptionForm {
         utilisateur.setMotDePasse( motDePasseChiffre );
     }
 
+    private void traiterPrenom( String prenom, Utilisateur utilisateur ) {
+        try {
+            validationPrenom( prenom );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_NOM, e.getMessage() );
+        }
+        utilisateur.setPrenom( prenom );
+    }
+
     /*
      * Appel Ã la validation du nom reÃ§u et initialisation de la propriÃ©tÃ©
      * nom du bean
@@ -141,6 +153,12 @@ public final class InscriptionForm {
             }
         } else {
             throw new Exception( "Merci de saisir et confirmer votre mot de passe." );
+        }
+    }
+
+    private void validationPrenom( String prenom ) throws Exception {
+        if ( prenom != null && prenom.length() < 3 ) {
+            throw new Exception( "Le prénom d'utilisateur doit contenir au moins 3 caractÃ¨res." );
         }
     }
 

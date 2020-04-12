@@ -16,7 +16,7 @@
 
 				<label for="emailUtilisateur">Adresse email <span class="requis">*</span></label>
 				<input type="email" id="emailUtilisateur" name="emailUtilisateur" value="<c:out value="${utilisateur.email}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs[utilisateur.email]}</span>
+				<span class="erreur">${form.erreurs['emailUtilisateur']}</span>
                 <br />
 
                 <label for="motdepasseUtilisateur">Mot de passe <span class="requis">*</span></label>
@@ -28,12 +28,17 @@
                 <input type="password" id="confirmationUtilisateur" name="confirmationUtilisateur" value="" size="20" maxlength="20" />
                 <span class="erreur">${form.erreurs['confirmationUtilisateur']}</span>
                 <br />
-
-				<label for="nomUtilisateur">Nom d'utilisateur <span class="requis">*</span></label>
+                
+				<label for="prenomUtilisateur">Prénom d'utilisateur <span class="requis">*</span></label>
+				<input type="text" id="prenomUtilisateur" name="prenomUtilisateur" value="<c:out value="${utilisateur.prenom}"/>" size="30" maxlength="30" />
+				<span class="erreur">${form.erreurs['prenomUtilisateur']}</span>
+                <br />
+                
+                <label for="nomUtilisateur">Nom d'utilisateur <span class="requis">*</span></label>
 				<input type="text" id="nomUtilisateur" name="nomUtilisateur" value="<c:out value="${utilisateur.nom}"/>" size="30" maxlength="30" />
 				<span class="erreur">${form.erreurs['nomUtilisateur']}</span>
                 <br />
-                
+				
 				<label for="telephoneUtilisateur">Numéro de téléphone <span class="requis">*</span></label>
 				<input type="text" id="telephoneUtilisateur" name="telephoneUtilisateur" value="<c:out value="${utilisateur.telephone}"/>" size="30" maxlength="30" />
 				<span class="erreur">${form.erreurs['telephoneUtilisateur']}</span>

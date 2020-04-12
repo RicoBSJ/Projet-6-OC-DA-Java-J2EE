@@ -30,13 +30,13 @@ public class UtilisateurService {
         return utilisateur;
     }
 
-    public Utilisateur registerUser( Utilisateur user ) {
+    public Utilisateur registerUser( Utilisateur utilisateur ) {
 
-        Utilisateur registered = (Utilisateur) utilisateurDAO.ajouterUtilisateur();
-        if ( registered == null ) {
+        utilisateur = utilisateurDAO.ajouterUtilisateur();
+        if ( utilisateur == null ) {
             return null;
         }
-        return registered;
+        return utilisateur;
     }
 
     public Utilisateur deleteUser( Integer id ) {
