@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public final class InscriptionForm {
@@ -16,14 +16,16 @@ public final class InscriptionForm {
     private static final String CHAMP_PASS       = "motdepasse";
     private static final String CHAMP_CONF       = "confirmation";
     private static final String CHAMP_NOM        = "nom";
-    private static final String CHAMP_PRENOM     = "prenom";
-    private static final String CHAMP_TELEPHONE  = "telephone";
 
     private static final String ALGO_CHIFFREMENT = "SHA-256";
 
     private String              resultat;
     private Map<String, String> erreurs          = new HashMap<String, String>();
-    private UtilisateurService  utilisateurService;
+    private UtilisateurDAO      utilisateurDAO;
+
+    public InscriptionForm( UtilisateurDAO utilisateurDAO ) {
+        this.utilisateurDAO = utilisateurDAO;
+    }
 
     public Map<String, String> getErreurs() {
         return erreurs;
@@ -37,27 +39,22 @@ public final class InscriptionForm {
         String email = getValeurChamp( request, CHAMP_EMAIL );
         String motDePasse = getValeurChamp( request, CHAMP_PASS );
         String confirmation = getValeurChamp( request, CHAMP_CONF );
-        String prenom = getValeurChamp( request, CHAMP_PRENOM );
         String nom = getValeurChamp( request, CHAMP_NOM );
-        String telephone = getValeurChamp( request, CHAMP_TELEPHONE );
 
         Utilisateur utilisateur = new Utilisateur();
-
         try {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motDePasse, confirmation, utilisateur );
-            traiterPrenom( prenom, utilisateur );
             traiterNom( nom, utilisateur );
-            traiterTelephone( telephone, utilisateur );
 
             if ( erreurs.isEmpty() ) {
-                utilisateurService.registerUser( utilisateur );
-                resultat = "Succès de l'inscription.";
+                utilisateurDAO.ajouterUtilisateur( utilisateur );
+                resultat = "SuccÃ¨s de l'inscription.";
             } else {
-                resultat = "Echec de l'inscription.";
+                resultat = "Ã‰chec de l'inscription.";
             }
         } catch ( Exception e ) {
-            resultat = "Echec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
+            resultat = "Ã‰chec de l'inscription : une erreur imprÃ©vue est survenue, merci de rÃ©essayer dans quelques instants.";
             e.printStackTrace();
         }
 
@@ -89,21 +86,23 @@ public final class InscriptionForm {
             setErreur( CHAMP_CONF, null );
         }
 
+        /*
+         * Utilisation de la bibliothÃ¨que Jasypt pour chiffrer le mot de passe
+         * efficacement.
+         * 
+         * L'algorithme SHA-256 est ici utilisÃ©, avec par dÃ©faut un salage
+         * alÃ©atoire et un grand nombre d'itÃ©rations de la fonction de
+         * hashage.
+         * 
+         * La String retournÃ©e est de longueur 56 et contient le hash en
+         * Base64.
+         */
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
         passwordEncryptor.setPlainDigest( false );
         String motDePasseChiffre = passwordEncryptor.encryptPassword( motDePasse );
 
         utilisateur.setMotDePasse( motDePasseChiffre );
-    }
-
-    private void traiterPrenom( String prenom, Utilisateur utilisateur ) {
-        try {
-            validationPrenom( prenom );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_NOM, e.getMessage() );
-        }
-        utilisateur.setPrenom( prenom );
     }
 
     /*
@@ -119,23 +118,13 @@ public final class InscriptionForm {
         utilisateur.setNom( nom );
     }
 
-    private void traiterTelephone( String telephone, Utilisateur utilisateur ) {
-        try {
-            validationTelephone( telephone );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_NOM, e.getMessage() );
-        }
-        utilisateur.setTelephone( telephone );
-    }
-
     /* Validation de l'adresse email */
     private void validationEmail( String email ) throws Exception {
         if ( email != null ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new Exception( "Merci de saisir une adresse mail valide." );
-            } else if ( utilisateurService.findByEmail( email ) != null ) {
-                throw new Exception(
-                        "Cette adresse email est dÃ©jÃ  utilisÃ©e, merci d'en choisir une autre." );
+            } else if ( utilisateurDAO.afficherParEmail( email ) != null ) {
+                throw new Exception( "Cette adresse email est dÃ©jÃ  utilisÃ©e, merci d'en choisir une autre." );
             }
         } else {
             throw new Exception( "Merci de saisir une adresse mail." );
@@ -146,8 +135,7 @@ public final class InscriptionForm {
     private void validationMotsDePasse( String motDePasse, String confirmation ) throws Exception {
         if ( motDePasse != null && confirmation != null ) {
             if ( !motDePasse.equals( confirmation ) ) {
-                throw new Exception(
-                        "Les mots de passe entrÃ©s sont diffÃ©rents, merci de les saisir Ã  nouveau." );
+                throw new Exception( "Les mots de passe entrÃ©s sont diffÃ©rents, merci de les saisir Ã  nouveau." );
             } else if ( motDePasse.length() < 3 ) {
                 throw new Exception( "Les mots de passe doivent contenir au moins 3 caractÃ¨res." );
             }
@@ -156,23 +144,10 @@ public final class InscriptionForm {
         }
     }
 
-    private void validationPrenom( String prenom ) throws Exception {
-        if ( prenom != null && prenom.length() < 3 ) {
-            throw new Exception( "Le prénom d'utilisateur doit contenir au moins 3 caractÃ¨res." );
-        }
-    }
-
     /* Validation du nom */
     private void validationNom( String nom ) throws Exception {
         if ( nom != null && nom.length() < 3 ) {
             throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractÃ¨res." );
-        }
-    }
-
-    /* Validation du nom */
-    private void validationTelephone( String telephone ) throws Exception {
-        if ( telephone != null && telephone.length() < 10 ) {
-            throw new Exception( "Le numéro de téléphone doit contenir au moins 10 caractÃ¨res." );
         }
     }
 

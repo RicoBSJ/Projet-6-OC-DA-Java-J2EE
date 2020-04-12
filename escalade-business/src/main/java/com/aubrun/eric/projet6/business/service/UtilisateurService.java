@@ -20,29 +20,22 @@ public class UtilisateurService {
 
     public Utilisateur findById( Integer id ) {
 
-        Utilisateur utilisateur = utilisateurDAO.afficherParId( id );
-        return utilisateur;
+        return utilisateurDAO.afficherParId( id );
     }
 
     public Utilisateur findByEmail( String email ) {
 
-        Utilisateur utilisateur = utilisateurDAO.afficherParEmail( email );
-        return utilisateur;
+        return utilisateurDAO.afficherParEmail( email );
     }
 
-    public Utilisateur registerUser( Utilisateur utilisateur ) {
+    public Utilisateur register( Utilisateur utilisateur ) {
 
-        utilisateur = utilisateurDAO.ajouterUtilisateur();
-        if ( utilisateur == null ) {
-            return null;
-        }
-        return utilisateur;
+        return utilisateurDAO.ajouterUtilisateur( utilisateur );
     }
 
     public Utilisateur deleteUser( Integer id ) {
 
-        Utilisateur utilisateur = utilisateurDAO.supprimerUtilisateur( id );
-        return utilisateur;
+        return utilisateurDAO.supprimerUtilisateur( id );
     }
 
     public Utilisateur connexion( Utilisateur credential ) {

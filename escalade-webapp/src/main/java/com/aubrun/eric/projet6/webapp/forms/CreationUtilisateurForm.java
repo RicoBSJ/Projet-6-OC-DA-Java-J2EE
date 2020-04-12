@@ -46,7 +46,7 @@ public final class CreationUtilisateurForm {
 
         try {
             if ( erreurs.isEmpty() ) {
-                utilisateurService.registerUser( utilisateur );
+                utilisateurService.register( utilisateur );
                 resultat = "Succès de la création du utilisateur.";
             } else {
                 resultat = "Échec de la création du utilisateur.";

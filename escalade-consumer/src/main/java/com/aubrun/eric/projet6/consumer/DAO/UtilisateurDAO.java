@@ -102,7 +102,7 @@ public class UtilisateurDAO {
         return null;
     }
 
-    public Utilisateur ajouterUtilisateur() {
+    public Utilisateur ajouterUtilisateur( Utilisateur utilisateur ) {
 
         Session session = factory.getCurrentSession();
 
