@@ -28,11 +28,6 @@ public class UtilisateurService {
         return utilisateurDAO.afficherParEmail( email );
     }
 
-    public Utilisateur register( Utilisateur utilisateur ) {
-
-        return utilisateurDAO.ajouterUtilisateur( utilisateur );
-    }
-
     public Utilisateur deleteUser( Integer id ) {
 
         return utilisateurDAO.supprimerUtilisateur( id );
@@ -50,4 +45,12 @@ public class UtilisateurService {
         connected.setMotDePasse( null );
         return connected;
     }
+
+    // public Utilisateur register( Utilisateur registerUser ) {
+    //
+    // Utilisateur registered = utilisateurDAO.ajouterUtilisateur(
+    // registerUser.getEmail() );
+    //
+    // return registerUser;
+    // }
 }
