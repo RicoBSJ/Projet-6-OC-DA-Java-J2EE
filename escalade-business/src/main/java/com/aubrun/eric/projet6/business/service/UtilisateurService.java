@@ -7,50 +7,47 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class UtilisateurService {
 
-    private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+	private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
-    public List<Utilisateur> findAll() {
+	public List<Utilisateur> findAll() {
 
-        List<Utilisateur> utilisateur = utilisateurDAO.recupererUtilisateurs();
-        for ( Utilisateur u : utilisateur ) {
-            System.out.println( u );
-        }
-        return utilisateur;
-    }
+		List<Utilisateur> utilisateur = utilisateurDAO.recupererUtilisateurs();
+		for (Utilisateur u : utilisateur) {
+			System.out.println(u);
+		}
+		return utilisateur;
+	}
 
-    public Utilisateur findById( Integer id ) {
+	public Utilisateur findById(Integer id) {
 
-        return utilisateurDAO.afficherParId( id );
-    }
+		return utilisateurDAO.afficherParId(id);
+	}
 
-    public Utilisateur findByEmail( String email ) {
+	public Utilisateur findByEmail(String email) {
 
-        return utilisateurDAO.afficherParEmail( email );
-    }
+		return utilisateurDAO.afficherParEmail(email);
+	}
 
-    public Utilisateur deleteUser( Integer id ) {
+	public Utilisateur deleteUser(Integer id) {
 
-        return utilisateurDAO.supprimerUtilisateur( id );
-    }
+		return utilisateurDAO.supprimerUtilisateur(id);
+	}
 
-    public Utilisateur connexion( Utilisateur credential ) {
+	public Utilisateur connexion(Utilisateur credential) {
 
-        Utilisateur connected = utilisateurDAO.afficherParEmail( credential.getEmail() );
-        if ( connected == null ) {
-            return null;
-        }
-        if ( !connected.getMotDePasse().equals( credential.getMotDePasse() ) ) {
-            return null;
-        }
-        connected.setMotDePasse( null );
-        return connected;
-    }
+		Utilisateur connected = utilisateurDAO.afficherParEmail(credential.getEmail());
+		if (connected == null) {
+			return null;
+		}
+		if (!connected.getMotDePasse().equals(credential.getMotDePasse())) {
+			return null;
+		}
+		connected.setMotDePasse(null);
+		return connected;
+	}
 
-    // public Utilisateur register( Utilisateur registerUser ) {
-    //
-    // Utilisateur registered = utilisateurDAO.ajouterUtilisateur(
-    // registerUser.getEmail() );
-    //
-    // return registerUser;
-    // }
+	public void registeredUser(Utilisateur registerUser) {
+
+		utilisateurDAO.ajouterUtilisateur(registerUser);
+	}
 }
