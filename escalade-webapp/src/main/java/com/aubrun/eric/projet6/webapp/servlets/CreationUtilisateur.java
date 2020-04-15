@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.CreationUtilisateurForm;
 
@@ -27,6 +28,13 @@ public class CreationUtilisateur extends HttpServlet {
     public static final String VUE_SUCCES           = "/WEB-INF/jsp/afficherUtilisateur.jsp";
     public static final String VUE_FORM             = "/WEB-INF/jsp/creerUtilisateur.jsp";
 
+    private UtilisateurDAO     utilisateurDAO;
+
+    // public void init() throws ServletException {
+    // /* Récupération d'une instance de notre DAO Utilisateur */
+    // this.utilisateurDAO = getServletContext().getAttribute( utilisateurDAO );
+    // }
+
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* À la réception d'une requête GET, simple affichage du formulaire */
         this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
@@ -41,7 +49,7 @@ public class CreationUtilisateur extends HttpServlet {
         String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
         /* Préparation de l'objet formulaire */
-        CreationUtilisateurForm form = new CreationUtilisateurForm();
+        CreationUtilisateurForm form = new CreationUtilisateurForm( utilisateurDAO );
 
         /* Traitement de la requête et récupération du bean en résultant */
         Utilisateur utilisateur = form.creerUtilisateur( request, chemin );

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
+import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public final class CreationUtilisateurForm {
@@ -16,10 +16,13 @@ public final class CreationUtilisateurForm {
     private static final String CHAMP_TELEPHONE = "telephoneUtilisateur";
     private static final String CHAMP_EMAIL     = "emailUtilisateur";
 
-    private UtilisateurService  utilisateurService;
-
     private String              resultat;
     private Map<String, String> erreurs         = new HashMap<String, String>();
+    private UtilisateurDAO      utilisateurDAO;
+
+    public CreationUtilisateurForm( UtilisateurDAO utilisateurDAO ) {
+        this.utilisateurDAO = utilisateurDAO;
+    }
 
     public Map<String, String> getErreurs() {
         return erreurs;
@@ -46,7 +49,7 @@ public final class CreationUtilisateurForm {
 
         try {
             if ( erreurs.isEmpty() ) {
-                utilisateurService.register( utilisateur );
+                utilisateurDAO.ajouterUtilisateur( utilisateur );
                 resultat = "Succès de la création du utilisateur.";
             } else {
                 resultat = "Échec de la création du utilisateur.";
