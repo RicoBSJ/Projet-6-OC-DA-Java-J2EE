@@ -31,10 +31,6 @@ public class Inscription extends HttpServlet {
         /* Préparation de l'objet formulaire */
         InscriptionForm form = new InscriptionForm();
 
-        /*
-         * Appel aux traitement et validation de la requête, et récupération du
-         * bean en résultant
-         */
         Utilisateur utilisateur = form.inscrireUtilisateur( request );
 
         /* Stockage du formulaire et du bean dans l'objet request */

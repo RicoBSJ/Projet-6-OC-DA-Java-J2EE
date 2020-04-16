@@ -102,15 +102,14 @@ public class UtilisateurDAO {
         return null;
     }
 
-    public String ajouterUtilisateur( Utilisateur utilisateur ) {
+    public void ajouterUtilisateur( Utilisateur utilisateur ) {
 
-        String resultat = "Data entered successfully";
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            String q = "INSERT INTO Utilisateur (nom, prenom, adresse, telephone, email)"
-                    + "SELECT nom, prenom, adresse, telephone, email FROM Utilisateur";
+            String q = "INSERT INTO Utilisateur (email, motdepasse, nom)"
+                    + "SELECT email, motdepasse, nom FROM Utilisateur";
             Query<Utilisateur> query = session.createQuery( q );
             int result = query.executeUpdate();
             System.out.println( result );
@@ -120,8 +119,6 @@ public class UtilisateurDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
-            resultat = "Data not entered";
         }
-        return resultat;
     }
 }

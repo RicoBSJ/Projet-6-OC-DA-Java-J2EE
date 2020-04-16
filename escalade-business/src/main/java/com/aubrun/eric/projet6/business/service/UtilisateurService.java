@@ -46,8 +46,8 @@ public class UtilisateurService {
         return connected;
     }
 
-    public String registration( Utilisateur registerUser ) {
+    public void registration( Utilisateur registerUser ) {
 
-        return utilisateurDAO.ajouterUtilisateur( registerUser );
+        utilisateurDAO.ajouterUtilisateur( registerUser );
     }
 }
