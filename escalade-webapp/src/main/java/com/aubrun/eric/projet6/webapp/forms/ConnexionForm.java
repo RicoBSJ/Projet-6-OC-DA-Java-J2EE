@@ -5,18 +5,25 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
+
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public final class ConnexionForm {
 
-    private static final String CHAMP_EMAIL = "email";
-    private static final String CHAMP_PASS  = "motdepasse";
+    private static final String CHAMP_EMAIL      = "email";
+    private static final String CHAMP_PASS       = "motdepasse";
+    private static final String ALGO_CHIFFREMENT = "SHA-256";
 
     private String              resultat;
-    private Map<String, String> erreurs     = new HashMap<String, String>();
+    private Map<String, String> erreurs          = new HashMap<String, String>();
 
     public String getResultat() {
         return resultat;
+    }
+
+    public void setResultat( String result ) {
+        this.resultat = result;
     }
 
     public Map<String, String> getErreurs() {
@@ -32,7 +39,7 @@ public final class ConnexionForm {
 
         /* Validation du champ email. */
         try {
-            validationEmail( email );
+            traiterEmail( email, utilisateur );
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
@@ -40,34 +47,45 @@ public final class ConnexionForm {
 
         /* Validation du champ mot de passe. */
         try {
-            validationMotDePasse( motDePasse );
+            traiterMotDePasse( motDePasse, utilisateur );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
         }
         utilisateur.setMotDePasse( motDePasse );
 
-        /* Initialisation du résultat global de la validation. */
-        if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la connexion.";
-        } else {
-            resultat = "Échec de la connexion.";
-        }
-
         return utilisateur;
     }
 
-    /**
-     * Valide l'adresse email saisie.
-     */
+    private void traiterEmail( String email, Utilisateur utilisateur ) {
+        try {
+            validationEmail( email );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_EMAIL, e.getMessage() );
+        }
+        utilisateur.setEmail( email );
+    }
+
+    private void traiterMotDePasse( String motdepasse, Utilisateur utilisateur ) {
+        try {
+            validationMotDePasse( motdepasse );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_PASS, e.getMessage() );
+        }
+
+        ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
+        passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
+        passwordEncryptor.setPlainDigest( false );
+        String motDePasseChiffre = passwordEncryptor.encryptPassword( motdepasse );
+
+        utilisateur.setMotDePasse( motDePasseChiffre );
+    }
+
     private void validationEmail( String email ) throws Exception {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
             throw new Exception( "Merci de saisir une adresse mail valide." );
         }
     }
 
-    /**
-     * Valide le mot de passe saisi.
-     */
     private void validationMotDePasse( String motDePasse ) throws Exception {
         if ( motDePasse != null ) {
             if ( motDePasse.length() < 3 ) {
@@ -81,7 +99,7 @@ public final class ConnexionForm {
     /*
      * Ajoute un message correspondant au champ spécifié à la map des erreurs.
      */
-    private void setErreur( String champ, String message ) {
+    public void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
     }
 

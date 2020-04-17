@@ -108,11 +108,15 @@ public class UtilisateurDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "INSERT INTO Utilisateur (email, motDePasse, nom)"
-                    + "SELECT email, motDePasse, nom FROM Utilisateur";
-            Query<Utilisateur> query = session.createQuery( q );
-            int result = query.executeUpdate();
-            System.out.println( result );
+            // String q = "INSERT INTO Utilisateur (email, motDePasse, nom)
+            // values (?1, ?2, ?3)";
+            // Query<Utilisateur> query = session.createQuery( q );
+            // query.setParameter( 1, utilisateur.getEmail() );
+            // query.setParameter( 2, utilisateur.getMotDePasse() );
+            // query.setParameter( 3, utilisateur.getNom() );
+            // int result = query.executeUpdate();
+            // System.out.println( result );
+            session.save( utilisateur );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {

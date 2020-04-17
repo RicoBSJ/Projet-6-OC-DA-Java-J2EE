@@ -16,7 +16,6 @@ public final class InscriptionForm {
     private static final String CHAMP_PASS       = "motdepasse";
     private static final String CHAMP_CONF       = "confirmation";
     private static final String CHAMP_NOM        = "nom";
-
     private static final String ALGO_CHIFFREMENT = "SHA-256";
 
     private String              resultat;
@@ -31,6 +30,10 @@ public final class InscriptionForm {
         return resultat;
     }
 
+    public void setResultat( String result ) {
+        this.resultat = result;
+    }
+
     public Utilisateur inscrireUtilisateur( HttpServletRequest request ) {
         String email = getValeurChamp( request, CHAMP_EMAIL );
         String motdepasse = getValeurChamp( request, CHAMP_PASS );
@@ -42,19 +45,14 @@ public final class InscriptionForm {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motdepasse, confirmation, utilisateur );
             traiterNom( nom, utilisateur );
+            resultat = "Inscription réussie !";
         } catch ( Exception e ) {
             resultat = "Echec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
-
-        resultat = "Inscription réussie !";
         return utilisateur;
     }
 
-    /*
-     * Appel à la validation de l'adresse email reçue et initialisation de la
-     * propriété email du bean
-     */
     private void traiterEmail( String email, Utilisateur utilisateur ) {
         try {
             validationEmail( email );
@@ -64,10 +62,6 @@ public final class InscriptionForm {
         utilisateur.setEmail( email );
     }
 
-    /*
-     * Appel à la validation des mots de passe reçus, chiffrement du mot de
-     * passe et initialisation de la propriété motDePasse du bean
-     */
     private void traiterMotsDePasse( String motdepasse, String confirmation, Utilisateur utilisateur ) {
         try {
             validationMotsDePasse( motdepasse, confirmation );
@@ -84,10 +78,6 @@ public final class InscriptionForm {
         utilisateur.setMotDePasse( motDePasseChiffre );
     }
 
-    /*
-     * Appel à la validation du nom reà§u et initialisation de la propriété nom
-     * du bean
-     */
     private void traiterNom( String nom, Utilisateur utilisateur ) {
         try {
             validationNom( nom );
@@ -97,7 +87,6 @@ public final class InscriptionForm {
         utilisateur.setNom( nom );
     }
 
-    /* Validation de l'adresse email */
     private void validationEmail( String email ) throws Exception {
         if ( email != null ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
@@ -110,7 +99,6 @@ public final class InscriptionForm {
         }
     }
 
-    /* Validation des mots de passe */
     private void validationMotsDePasse( String motdepasse, String confirmation ) throws Exception {
         if ( motdepasse != null && confirmation != null ) {
             if ( !motdepasse.equals( confirmation ) ) {
@@ -123,7 +111,6 @@ public final class InscriptionForm {
         }
     }
 
-    /* Validation du nom */
     private void validationNom( String nom ) throws Exception {
         if ( nom != null && nom.length() < 3 ) {
             throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );

@@ -45,6 +45,13 @@ public class Connexion extends HttpServlet {
          * Utilisateur à la session, sinon suppression du bean de la session.
          */
 
+        if ( connectedUser == null ) {
+            form.setErreur( "erreur", "noUserFound" );
+            form.setResultat( "Cet utilisateur n'existe pas ou ce mot de passe est incorrect" );
+        } else {
+            form.setResultat( "La connexion a réussi" );
+        }
+
         session.setAttribute( ATT_SESSION_USER, connectedUser );
 
         /* Stockage du formulaire et du bean dans l'objet request */
