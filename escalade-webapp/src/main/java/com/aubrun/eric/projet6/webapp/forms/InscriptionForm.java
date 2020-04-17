@@ -33,27 +33,21 @@ public final class InscriptionForm {
 
     public Utilisateur inscrireUtilisateur( HttpServletRequest request ) {
         String email = getValeurChamp( request, CHAMP_EMAIL );
-        String motDePasse = getValeurChamp( request, CHAMP_PASS );
+        String motdepasse = getValeurChamp( request, CHAMP_PASS );
         String confirmation = getValeurChamp( request, CHAMP_CONF );
         String nom = getValeurChamp( request, CHAMP_NOM );
 
         Utilisateur utilisateur = new Utilisateur();
         try {
             traiterEmail( email, utilisateur );
-            traiterMotsDePasse( motDePasse, confirmation, utilisateur );
+            traiterMotsDePasse( motdepasse, confirmation, utilisateur );
             traiterNom( nom, utilisateur );
-
-            if ( erreurs.isEmpty() ) {
-                utilisateurService.registration( utilisateur );
-                resultat = "Succés de l'inscription.";
-            } else {
-                resultat = "Echec de l'inscription.";
-            }
         } catch ( Exception e ) {
             resultat = "Echec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
 
+        resultat = "Inscription réussie !";
         return utilisateur;
     }
 
@@ -74,9 +68,9 @@ public final class InscriptionForm {
      * Appel à la validation des mots de passe reçus, chiffrement du mot de
      * passe et initialisation de la propriété motDePasse du bean
      */
-    private void traiterMotsDePasse( String motDePasse, String confirmation, Utilisateur utilisateur ) {
+    private void traiterMotsDePasse( String motdepasse, String confirmation, Utilisateur utilisateur ) {
         try {
-            validationMotsDePasse( motDePasse, confirmation );
+            validationMotsDePasse( motdepasse, confirmation );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
             setErreur( CHAMP_CONF, null );
@@ -85,7 +79,7 @@ public final class InscriptionForm {
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
         passwordEncryptor.setPlainDigest( false );
-        String motDePasseChiffre = passwordEncryptor.encryptPassword( motDePasse );
+        String motDePasseChiffre = passwordEncryptor.encryptPassword( motdepasse );
 
         utilisateur.setMotDePasse( motDePasseChiffre );
     }
@@ -117,11 +111,11 @@ public final class InscriptionForm {
     }
 
     /* Validation des mots de passe */
-    private void validationMotsDePasse( String motDePasse, String confirmation ) throws Exception {
-        if ( motDePasse != null && confirmation != null ) {
-            if ( !motDePasse.equals( confirmation ) ) {
+    private void validationMotsDePasse( String motdepasse, String confirmation ) throws Exception {
+        if ( motdepasse != null && confirmation != null ) {
+            if ( !motdepasse.equals( confirmation ) ) {
                 throw new Exception( "Les mots de passe entrés sont différents, merci de les saisir à  nouveau." );
-            } else if ( motDePasse.length() < 3 ) {
+            } else if ( motdepasse.length() < 3 ) {
                 throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );
             }
         } else {

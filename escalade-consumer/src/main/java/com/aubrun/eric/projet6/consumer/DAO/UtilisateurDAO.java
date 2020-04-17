@@ -108,8 +108,8 @@ public class UtilisateurDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "INSERT INTO Utilisateur (email, motdepasse, nom)"
-                    + "SELECT email, motdepasse, nom FROM Utilisateur";
+            String q = "INSERT INTO Utilisateur (email, motDePasse, nom)"
+                    + "SELECT email, motDePasse, nom FROM Utilisateur";
             Query<Utilisateur> query = session.createQuery( q );
             int result = query.executeUpdate();
             System.out.println( result );

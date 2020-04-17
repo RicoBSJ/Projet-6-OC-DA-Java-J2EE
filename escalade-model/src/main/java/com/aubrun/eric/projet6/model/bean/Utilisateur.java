@@ -17,20 +17,20 @@ public class Utilisateur {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "id" )
     private Integer   id;
-    @Column( name = "nom" )
-    private String    nom;
-    @Column( name = "prenom" )
-    private String    prenom;
     @Column( name = "adresse" )
     private String    adresse;
-    @Column( name = "telephone" )
-    private String    telephone;
+    @Column( name = "dateinscription" )
+    private Timestamp dateInscription;
     @Column( name = "email" )
     private String    email;
     @Column( name = "motdepasse" )
     private String    motDePasse;
-    @Column( name = "dateInscription" )
-    private Timestamp dateInscription;
+    @Column( name = "nom" )
+    private String    nom;
+    @Column( name = "prenom" )
+    private String    prenom;
+    @Column( name = "telephone" )
+    private String    telephone;
 
     public Integer getId() {
         return id;
@@ -38,22 +38,6 @@ public class Utilisateur {
 
     public void setId( Integer id ) {
         this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom( String nom ) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom( String prenom ) {
-        this.prenom = prenom;
     }
 
     public String getAdresse() {
@@ -64,12 +48,12 @@ public class Utilisateur {
         this.adresse = adresse;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public Timestamp getDateInscription() {
+        return dateInscription;
     }
 
-    public void setTelephone( String telephone ) {
-        this.telephone = telephone;
+    public void setDateInscription( Timestamp dateInscription ) {
+        this.dateInscription = dateInscription;
     }
 
     public String getEmail() {
@@ -88,11 +72,27 @@ public class Utilisateur {
         this.motDePasse = motDePasse;
     }
 
-    public Timestamp getDateInscription() {
-        return dateInscription;
+    public String getNom() {
+        return nom;
     }
 
-    public void setDateInscription( Timestamp dateInscription ) {
-        this.dateInscription = dateInscription;
+    public void setNom( String nom ) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom( String prenom ) {
+        this.prenom = prenom;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone( String telephone ) {
+        this.telephone = telephone;
     }
 }
