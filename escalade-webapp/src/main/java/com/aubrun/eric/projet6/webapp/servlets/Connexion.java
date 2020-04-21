@@ -40,10 +40,6 @@ public class Connexion extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utilisateur connectedUser = utilisateurService.connexion( utilisateur );
-        /**
-         * Si aucune erreur de validation n'a eu lieu, alors ajout du bean
-         * Utilisateur à la session, sinon suppression du bean de la session.
-         */
 
         if ( connectedUser == null ) {
             form.setErreur( "erreur", "noUserFound" );
@@ -54,7 +50,6 @@ public class Connexion extends HttpServlet {
 
         session.setAttribute( ATT_SESSION_USER, connectedUser );
 
-        /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
