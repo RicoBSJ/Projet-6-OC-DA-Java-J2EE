@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.CreationUtilisateurForm;
+import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
 
-@WebServlet( "/creationUtilisateur" )
-public class CreationUtilisateur extends HttpServlet {
+@WebServlet( "/creationSite" )
+public class CreationSite extends HttpServlet {
 
     private static final long  serialVersionUID     = 1L;
 
@@ -25,15 +25,10 @@ public class CreationUtilisateur extends HttpServlet {
     public static final String ATT_FORM             = "form";
     public static final String SESSION_UTILISATEURS = "utilisateurs";
 
-    public static final String VUE_SUCCES           = "/WEB-INF/jsp/afficherUtilisateur.jsp";
-    public static final String VUE_FORM             = "/WEB-INF/jsp/creerUtilisateur.jsp";
+    public static final String VUE_SUCCES           = "/WEB-INF/jsp/afficherSite.jsp";
+    public static final String VUE_FORM             = "/WEB-INF/jsp/creerSite.jsp";
 
     private UtilisateurService utilisateurService;
-
-    // public void init() throws ServletException {
-    // /* Récupération d'une instance de notre DAO Utilisateur */
-    // this.utilisateurDAO = getServletContext().getAttribute( utilisateurDAO );
-    // }
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* À la réception d'une requête GET, simple affichage du formulaire */
@@ -49,10 +44,10 @@ public class CreationUtilisateur extends HttpServlet {
         String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
         /* Préparation de l'objet formulaire */
-        CreationUtilisateurForm form = new CreationUtilisateurForm( utilisateurService );
+        CreationSiteForm form = new CreationSiteForm( utilisateurService );
 
         /* Traitement de la requête et récupération du bean en résultant */
-        Utilisateur utilisateur = form.creerUtilisateur( request, chemin );
+        Utilisateur utilisateur = form.creationSite( request, chemin );
 
         /* Ajout du bean et de l'objet métier à l'objet requête */
         request.setAttribute( ATT_UTILISATEUR, utilisateur );

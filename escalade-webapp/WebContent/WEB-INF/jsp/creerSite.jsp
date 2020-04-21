@@ -8,7 +8,7 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<form method="post" action="ajouterSite">
+	<form method="post" action="creerSite">
 		<p>
 			<label for="nomSite">Nom du site : </label> <input type="text"
 				name="nomSite" id="nomSite" />

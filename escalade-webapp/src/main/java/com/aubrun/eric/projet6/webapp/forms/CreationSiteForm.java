@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-public final class CreationUtilisateurForm {
+public final class CreationSiteForm {
 
     private static final String CHAMP_NOM       = "nomUtilisateur";
     private static final String CHAMP_PRENOM    = "prenomUtilisateur";
@@ -20,7 +20,7 @@ public final class CreationUtilisateurForm {
     private Map<String, String> erreurs         = new HashMap<String, String>();
     private UtilisateurService  utilisateurService;
 
-    public CreationUtilisateurForm( UtilisateurService utilisateurService ) {
+    public CreationSiteForm( UtilisateurService utilisateurService ) {
         this.utilisateurService = utilisateurService;
     }
 
@@ -32,7 +32,7 @@ public final class CreationUtilisateurForm {
         return resultat;
     }
 
-    public Utilisateur creerUtilisateur( HttpServletRequest request, String chemin ) {
+    public Utilisateur creationSite( HttpServletRequest request, String chemin ) {
         String nom = getValeurChamp( request, CHAMP_NOM );
         String prenom = getValeurChamp( request, CHAMP_PRENOM );
         String adresse = getValeurChamp( request, CHAMP_ADRESSE );

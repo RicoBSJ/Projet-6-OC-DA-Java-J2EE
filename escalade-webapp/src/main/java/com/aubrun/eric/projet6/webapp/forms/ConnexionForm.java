@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
+import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public final class ConnexionForm {
@@ -14,6 +15,8 @@ public final class ConnexionForm {
     private static final String CHAMP_EMAIL      = "email";
     private static final String CHAMP_PASS       = "motdepasse";
     private static final String ALGO_CHIFFREMENT = "SHA-256";
+
+    private UtilisateurService  utilisateurService;
 
     private String              resultat;
     private Map<String, String> erreurs          = new HashMap<String, String>();
@@ -47,7 +50,7 @@ public final class ConnexionForm {
 
         /* Validation du champ mot de passe. */
         try {
-            traiterMotDePasse( motDePasse, utilisateur );
+            traiterMotDePasse( email, motDePasse, utilisateur );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
         }
@@ -65,19 +68,24 @@ public final class ConnexionForm {
         utilisateur.setEmail( email );
     }
 
-    private void traiterMotDePasse( String motdepasse, Utilisateur utilisateur ) {
+    private void traiterMotDePasse( String email, String motDePasse, Utilisateur utilisateur ) {
         try {
-            validationMotDePasse( motdepasse );
+            validationMotDePasse( motDePasse );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
         }
-
+        String motDePasseEnClair = motDePasse;
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
         passwordEncryptor.setPlainDigest( false );
-        String motDePasseChiffre = passwordEncryptor.encryptPassword( motdepasse );
 
-        utilisateur.setMotDePasse( motDePasseChiffre );
+        utilisateur = utilisateurService.findByEmail( email );
+        if ( utilisateur != null
+                && passwordEncryptor.checkPassword( motDePasseEnClair, utilisateur.getMotDePasse() ) ) {
+            System.out.println( "Mot de passe correct !" );
+        } else {
+            System.out.println( "Mot de passe incorrect !" );
+        }
     }
 
     private void validationEmail( String email ) throws Exception {
