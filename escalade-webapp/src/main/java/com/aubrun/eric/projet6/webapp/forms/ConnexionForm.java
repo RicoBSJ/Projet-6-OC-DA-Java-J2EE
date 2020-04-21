@@ -74,14 +74,14 @@ public final class ConnexionForm {
         } catch ( Exception e ) {
             setErreur( CHAMP_PASS, e.getMessage() );
         }
-        String motDePasseEnClair = motDePasse;
+
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
-        passwordEncryptor.setPlainDigest( false );
+        passwordEncryptor.setPlainDigest( true );
 
         utilisateur = utilisateurService.findByEmail( email );
         if ( utilisateur != null
-                && passwordEncryptor.checkPassword( motDePasseEnClair, utilisateur.getMotDePasse() ) ) {
+                && passwordEncryptor.checkPassword( motDePasse, utilisateur.getMotDePasse() ) ) {
             System.out.println( "Mot de passe correct !" );
         } else {
             System.out.println( "Mot de passe incorrect !" );
