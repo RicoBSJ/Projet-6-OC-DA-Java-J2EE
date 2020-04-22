@@ -1,80 +1,46 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
-import com.aubrun.eric.projet6.model.bean.Utilisateur;
+import com.aubrun.eric.projet6.business.service.SiteService;
+import com.aubrun.eric.projet6.model.bean.Site;
 import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
 
 @WebServlet( "/creationSite" )
 public class CreationSite extends HttpServlet {
 
-    private static final long  serialVersionUID     = 1L;
+    private static final long  serialVersionUID = 1L;
 
-    public static final String CHEMIN               = "chemin";
-    public static final String ATT_UTILISATEUR      = "utilisateur";
-    public static final String ATT_FORM             = "form";
-    public static final String SESSION_UTILISATEURS = "utilisateurs";
+    public static final String ATT_SITE         = "site";
+    public static final String ATT_FORM         = "form";
+    public static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
 
-    public static final String VUE_SUCCES           = "/WEB-INF/jsp/afficherSite.jsp";
-    public static final String VUE_FORM             = "/WEB-INF/jsp/creerSite.jsp";
-
-    private UtilisateurService utilisateurService;
+    private SiteService        siteService      = new SiteService();
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* À la réception d'une requête GET, simple affichage du formulaire */
-        this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
+        /* Affichage de la page d'inscription */
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        /*
-         * Lecture du paramètre 'chemin' passé à la servlet via la déclaration
-         * dans le web.xml
-         */
-        String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
         /* Préparation de l'objet formulaire */
-        CreationSiteForm form = new CreationSiteForm( utilisateurService );
+        CreationSiteForm form = new CreationSiteForm();
 
-        /* Traitement de la requête et récupération du bean en résultant */
-        Utilisateur utilisateur = form.creationSite( request, chemin );
+        Site site = form.creerSite( request );
 
-        /* Ajout du bean et de l'objet métier à l'objet requête */
-        request.setAttribute( ATT_UTILISATEUR, utilisateur );
+        siteService.addSite( site );
+
+        /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
-
-        /* Si aucune erreur */
-        if ( form.getErreurs().isEmpty() ) {
-            /* Alors récupération de la map des utilisateurs dans la session */
-            HttpSession session = request.getSession();
-            Map<Integer, Utilisateur> utilisateurs = (HashMap<Integer, Utilisateur>) session
-                    .getAttribute( SESSION_UTILISATEURS );
-            /*
-             * Si aucune map n'existe, alors initialisation d'une nouvelle map
-             */
-            if ( utilisateurs == null ) {
-                utilisateurs = new HashMap<Integer, Utilisateur>();
-            }
-            /* Puis ajout du utilisateur courant dans la map */
-            utilisateurs.put( utilisateur.getId(), utilisateur );
-            /* Et enfin (ré)enregistrement de la map en session */
-            session.setAttribute( SESSION_UTILISATEURS, utilisateurs );
-
-            /* Affichage de la fiche récapitulative */
-            this.getServletContext().getRequestDispatcher( VUE_SUCCES ).forward( request, response );
-        } else {
-            /* Sinon, ré-affichage du formulaire de création avec les erreurs */
-            this.getServletContext().getRequestDispatcher( VUE_FORM ).forward( request, response );
-        }
+        request.setAttribute( ATT_SITE, site );
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

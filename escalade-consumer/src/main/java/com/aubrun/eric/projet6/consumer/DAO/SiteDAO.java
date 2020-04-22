@@ -81,18 +81,13 @@ public class SiteDAO {
         return null;
     }
 
-    public Site ajouterSite() {
+    public void ajouterSite( Site site ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            String q = "INSERT INTO Site s (nom, pays, region, description, cotation, hauteur, orientation, photos, secteurs)"
-                    +
-                    "SELECT nom, pays, region, description, cotation, hauteur, orientation, photos, secteurs FROM Site s";
-            Query<Site> query = session.createQuery( q );
-            int result = query.executeUpdate();
-            System.out.println( result );
+            session.save( site );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -100,6 +95,5 @@ public class SiteDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return null;
     }
 }

@@ -72,7 +72,7 @@ public final class InscriptionForm {
 
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
-        passwordEncryptor.setPlainDigest( true );
+        passwordEncryptor.setPlainDigest( false );
         String motDePasseChiffre = passwordEncryptor.encryptPassword( motdepasse );
 
         utilisateur.setMotDePasse( motDePasseChiffre );

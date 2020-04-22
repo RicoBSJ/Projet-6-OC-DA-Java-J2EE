@@ -24,10 +24,9 @@ public class SiteService {
         return site;
     }
 
-    public Site addSite() {
+    public void addSite( Site createSite ) {
 
-        Site site = siteDAO.ajouterSite();
-        return site;
+        siteDAO.ajouterSite( createSite );
     }
 
     public Site deleteSite( Integer id ) {

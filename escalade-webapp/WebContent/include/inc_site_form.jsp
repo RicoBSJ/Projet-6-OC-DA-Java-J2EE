@@ -1,17 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>Escalade-Webapp</title>
-</head>
-<body>
-	<c:import url="/include/menu.jsp"></c:import>
-	<form method="post" action="creerSite">
+
             <fieldset>
-                <legend>Création site</legend>
-                <p>Vous pouvez créer un site via ce formulaire.</p>
+                <legend>Inscription</legend>
+                <p>Vous pouvez vous inscrire via ce formulaire.</p>
                 
 				<label for="nomSite">Nom du site <span class="requis">*</span></label>
 				<input type="text" id="nomSite" name="nomSite" value="<c:out value="${utilisateur.nom}"/>" size="30" maxlength="30" />
@@ -53,6 +45,3 @@
                 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
             </fieldset>
-	</form>
-</body>
-</html>

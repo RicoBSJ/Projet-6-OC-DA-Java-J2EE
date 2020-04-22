@@ -77,7 +77,7 @@ public final class ConnexionForm {
 
         ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
         passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
-        passwordEncryptor.setPlainDigest( true );
+        passwordEncryptor.setPlainDigest( false );
 
         utilisateur = utilisateurService.findByEmail( email );
         if ( utilisateur != null
