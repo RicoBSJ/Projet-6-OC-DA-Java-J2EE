@@ -33,7 +33,7 @@ public class Site {
     @Column( name = "cotation" )
     private String        cotation;
     @Column( name = "hauteur" )
-    private Double        hauteur;
+    private String        hauteur;
     @Column( name = "orientation" )
     private String        orientation;
     @OneToMany
@@ -93,11 +93,11 @@ public class Site {
         this.cotation = cotation;
     }
 
-    public Double getHauteur() {
+    public String getHauteur() {
         return hauteur;
     }
 
-    public void setHauteur( Double hauteur ) {
+    public void setHauteur( String hauteur ) {
         this.hauteur = hauteur;
     }
 

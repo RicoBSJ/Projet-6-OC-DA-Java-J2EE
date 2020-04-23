@@ -16,9 +16,9 @@ public class Photo {
     @Column( name = "id" )
     private Long   id;
     @Column( name = "nom" )
-    private String nom;
+    private String nomPhoto;
     @Column( name = "chemin" )
-    private String chemin;
+    private String cheminPhoto;
 
     public Long getId() {
         return id;
@@ -28,20 +28,20 @@ public class Photo {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomPhoto() {
+        return nomPhoto;
     }
 
-    public void setNom( String nom ) {
-        this.nom = nom;
+    public void setNomPhoto( String nomPhoto ) {
+        this.nomPhoto = nomPhoto;
     }
 
-    public String getChemin() {
-        return chemin;
+    public String getCheminPhoto() {
+        return cheminPhoto;
     }
 
-    public void setChemin( String chemin ) {
-        this.chemin = chemin;
+    public void setCheminPhoto( String cheminPhoto ) {
+        this.cheminPhoto = cheminPhoto;
     }
 
 }
