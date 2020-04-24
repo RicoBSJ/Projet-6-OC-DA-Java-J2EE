@@ -5,8 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.jasypt.util.password.ConfigurablePasswordEncryptor;
-
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -49,11 +47,6 @@ public final class ConnexionForm {
         utilisateur.setEmail( email );
 
         /* Validation du champ mot de passe. */
-        try {
-            traiterMotDePasse( email, motDePasse, utilisateur );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PASS, e.getMessage() );
-        }
         utilisateur.setMotDePasse( motDePasse );
 
         return utilisateur;
@@ -66,26 +59,6 @@ public final class ConnexionForm {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         utilisateur.setEmail( email );
-    }
-
-    private void traiterMotDePasse( String email, String motDePasse, Utilisateur utilisateur ) {
-        try {
-            validationMotDePasse( motDePasse );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PASS, e.getMessage() );
-        }
-
-        ConfigurablePasswordEncryptor passwordEncryptor = new ConfigurablePasswordEncryptor();
-        passwordEncryptor.setAlgorithm( ALGO_CHIFFREMENT );
-        passwordEncryptor.setPlainDigest( false );
-
-        utilisateur = utilisateurService.findByEmail( email );
-        if ( utilisateur != null
-                && passwordEncryptor.checkPassword( motDePasse, utilisateur.getMotDePasse() ) ) {
-            System.out.println( "Mot de passe correct !" );
-        } else {
-            System.out.println( "Mot de passe incorrect !" );
-        }
     }
 
     private void validationEmail( String email ) throws Exception {

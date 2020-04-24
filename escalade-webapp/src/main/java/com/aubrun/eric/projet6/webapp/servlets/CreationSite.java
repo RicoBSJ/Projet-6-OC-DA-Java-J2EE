@@ -7,46 +7,70 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.PhotoService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.model.bean.Site;
+import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
 
-@WebServlet("/creationSite")
+@WebServlet( "/creationSite" )
 public class CreationSite extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long  serialVersionUID = 1L;
 
-	public static final String ATT_SITE = "site";
-	public static final String ATT_PHOTO = "photo";
-	public static final String ATT_FORM = "form";
-	public static final String VUE = "/WEB-INF/jsp/creerSite.jsp";
+    public static final String ATT_SITE         = "site";
+    public static final String ATT_PHOTO        = "photo";
+    public static final String ATT_FORM         = "form";
+    public static final String ATT_SESSION_USER = "sessionUtilisateur";
+    public static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
 
-	private SiteService siteService = new SiteService();
-	private PhotoService photoService = new PhotoService();
+    private SiteService        siteService      = new SiteService();
+    private PhotoService       photoService     = new PhotoService();
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/* Affichage de la page d'inscription */
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	}
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /* Affichage de la page d'inscription */
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
 
-		/* Préparation de l'objet formulaire */
-		CreationSiteForm form = new CreationSiteForm();
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
-		Site site = form.creerSite(request);
-		Photo photo = form.ajouterPhoto(request);
+        if ( utilisateur == null ) {
+            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
+            throw new RuntimeException();
+        }
 
-		siteService.addSite(site);
-		photoService.addPhoto(photo);
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 
-		/* Stockage du formulaire et du bean dans l'objet request */
-		request.setAttribute(ATT_FORM, form);
-		request.setAttribute(ATT_SITE, site);
-		request.setAttribute(ATT_PHOTO, photo);
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	}
+    public void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+
+        /* Préparation de l'objet formulaire */
+        CreationSiteForm form = new CreationSiteForm();
+
+        /* Récupération de la session depuis la requête */
+        HttpSession session = request.getSession();
+
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
+
+        if ( utilisateur == null ) {
+            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
+            throw new RuntimeException();
+        } else {
+            Site site = form.creerSite( request );
+            Photo photo = form.ajouterPhoto( request );
+
+            siteService.addSite( site );
+            photoService.addPhoto( photo );
+
+            request.setAttribute( ATT_FORM, form );
+            request.setAttribute( ATT_SITE, site );
+            request.setAttribute( ATT_PHOTO, photo );
+        }
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 }

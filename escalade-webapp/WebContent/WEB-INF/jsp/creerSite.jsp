@@ -28,6 +28,16 @@
 				<input type="text" id="region" name="region" value="<c:out value="${site.region}"/>" size="30" maxlength="30" />
 				<span class="erreur">${form.erreurs['region']}</span>
                 <br />
+                
+                <label for="nom">Nom de la photo du site <span class="requis">*</span></label>
+				<input type="text" id="nom" name="nom" value="<c:out value="${photo.nomPhoto}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['nom']}</span>
+                <br />
+                
+                <label for="chemin">Chemin de la photo du site <span class="requis">*</span></label>
+				<input type="file" id="chemin" name="chemin" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['chemin']}</span>
+                <br />
 				
 				<label for="description">Description du site <span class="requis">*</span></label>
 				<input type="text" id="description" name="description" value="<c:out value="${site.description}"/>" size="30" maxlength="30" />
@@ -47,16 +57,6 @@
                 <label for="orientation">Orientation du site <span class="requis">*</span></label>
 				<input type="text" id="orientation" name="orientation" value="<c:out value="${site.orientation}"/>" size="30" maxlength="60" />
 				<span class="erreur">${form.erreurs['orientation']}</span>
-                <br />
-                
-                <label for="nom">Nom de la photo du site <span class="requis">*</span></label>
-				<input type="text" id="nom" name="nom" value="<c:out value="${photo.nomPhoto}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['nom']}</span>
-                <br />
-                
-                <label for="chemin">Chemin de la photo du site <span class="requis">*</span></label>
-				<input type="text" id="chemin" name="chemin" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['chemin']}</span>
                 <br />
 
                 <input type="submit" value="Valider"  />
