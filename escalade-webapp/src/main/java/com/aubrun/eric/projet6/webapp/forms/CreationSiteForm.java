@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.webapp.forms;
 
 import java.util.HashMap;
 
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,11 +45,8 @@ public final class CreationSiteForm {
 		String cotation = getValeurChamp(request, CHAMP_COTATION);
 		String hauteur = getValeurChamp(request, CHAMP_HAUTEUR);
 		String orientation = getValeurChamp(request, CHAMP_ORIENTATION);
-		String nomPhoto = getValeurChamp(request, CHAMP_NOM_PHOTO);
-		String cheminPhoto = getValeurChamp(request, CHAMP_CHEMIN_PHOTO);
 
 		Site site = new Site();
-		Photo photo = new Photo();
 		try {
 			traiterNom(nom, site);
 			traiterPays(pays, site);
@@ -57,14 +55,29 @@ public final class CreationSiteForm {
 			traiterCotation(cotation, site);
 			traiterHauteur(hauteur, site);
 			traiterOrientation(orientation, site);
-			traiterNomPhoto(nomPhoto, photo);
-			traiterCheminPhoto(cheminPhoto, photo);
 			resultat = "Création du site réussie !";
 		} catch (Exception e) {
 			resultat = "Echec de la création de site : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
 			e.printStackTrace();
 		}
 		return site;
+	}
+	
+	public Photo ajouterPhoto(HttpServletRequest request) {
+
+		String nomPhoto = getValeurChamp(request, CHAMP_NOM_PHOTO);
+		String cheminPhoto = getValeurChamp(request, CHAMP_CHEMIN_PHOTO);
+
+		Photo photo = new Photo();
+		try {
+			traiterNomPhoto(nomPhoto, photo);
+			traiterCheminPhoto(cheminPhoto, photo);
+			resultat = "Ajout photo réussi !";
+		} catch (Exception e) {
+			resultat = "Echec de l'ajout de photo : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
+			e.printStackTrace();
+		}
+		return photo;
 	}
 
 	private void traiterNom(String nom, Site site) {

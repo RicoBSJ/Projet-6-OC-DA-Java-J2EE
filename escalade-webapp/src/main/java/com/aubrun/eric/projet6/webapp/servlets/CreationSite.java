@@ -8,39 +8,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.aubrun.eric.projet6.business.service.PhotoService;
 import com.aubrun.eric.projet6.business.service.SiteService;
+import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.model.bean.Site;
 import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
 
-@WebServlet( "/creationSite" )
+@WebServlet("/creationSite")
 public class CreationSite extends HttpServlet {
 
-    private static final long  serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public static final String ATT_SITE         = "site";
-    public static final String ATT_FORM         = "form";
-    public static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
+	public static final String ATT_SITE = "site";
+	public static final String ATT_PHOTO = "photo";
+	public static final String ATT_FORM = "form";
+	public static final String VUE = "/WEB-INF/jsp/creerSite.jsp";
 
-    private SiteService        siteService      = new SiteService();
+	private SiteService siteService = new SiteService();
+	private PhotoService photoService = new PhotoService();
 
-    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* Affichage de la page d'inscription */
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-    }
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* Affichage de la page d'inscription */
+		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+	}
 
-    public void doPost( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /* Préparation de l'objet formulaire */
-        CreationSiteForm form = new CreationSiteForm();
+		/* Préparation de l'objet formulaire */
+		CreationSiteForm form = new CreationSiteForm();
 
-        Site site = form.creerSite( request );
+		Site site = form.creerSite(request);
+		Photo photo = form.ajouterPhoto(request);
 
-        siteService.addSite( site );
+		siteService.addSite(site);
+		photoService.addPhoto(photo);
 
-        /* Stockage du formulaire et du bean dans l'objet request */
-        request.setAttribute( ATT_FORM, form );
-        request.setAttribute( ATT_SITE, site );
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-    }
+		/* Stockage du formulaire et du bean dans l'objet request */
+		request.setAttribute(ATT_FORM, form);
+		request.setAttribute(ATT_SITE, site);
+		request.setAttribute(ATT_PHOTO, photo);
+		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+	}
 }

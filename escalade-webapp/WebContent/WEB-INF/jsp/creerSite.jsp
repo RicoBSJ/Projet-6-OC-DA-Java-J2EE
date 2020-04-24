@@ -49,14 +49,14 @@
 				<span class="erreur">${form.erreurs['orientation']}</span>
                 <br />
                 
-                <label for="nomPhoto">Nom de la photo du site <span class="requis">*</span></label>
-				<input type="text" id="nomPhoto" name="nomPhoto" value="<c:out value="${site.photos[0].nomPhoto}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['nomPhoto']}</span>
+                <label for="nom">Nom de la photo du site <span class="requis">*</span></label>
+				<input type="text" id="nom" name="nom" value="<c:out value="${photo.nomPhoto}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['nom']}</span>
                 <br />
                 
-                <label for="cheminPhoto">Chemin de la photo du site <span class="requis">*</span></label>
-				<input type="text" id="cheminPhoto" name="cheminPhoto" value="<c:out value="${site.photos[0].cheminPhoto}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['cheminPhoto']}</span>
+                <label for="chemin">Chemin de la photo du site <span class="requis">*</span></label>
+				<input type="text" id="chemin" name="chemin" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['chemin']}</span>
                 <br />
 
                 <input type="submit" value="Valider"  />
