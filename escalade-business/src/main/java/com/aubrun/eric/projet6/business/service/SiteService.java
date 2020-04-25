@@ -41,7 +41,7 @@ public class SiteService {
         return site;
     }
 
-    public Site getSiteByPays( String pays ) {
+    public Site getSiteByCountry( String pays ) {
 
         Site site = siteDAO.chercherSiteParPays( pays );
         return site;
@@ -59,19 +59,19 @@ public class SiteService {
         return site;
     }
 
-    public Site getSiteByCotation( String cotation ) {
+    public Site getSiteByQuotation( String cotation ) {
 
         Site site = siteDAO.chercherSiteParCotation( cotation );
         return site;
     }
 
-    public Site getSiteByHauteur( String hauteur ) {
+    public Site getSiteByHeight( String hauteur ) {
 
         Site site = siteDAO.chercherSiteParHauteur( hauteur );
         return site;
     }
 
-    public Site getSiteByOrientation( String orientation ) {
+    public Site getSiteByDirection( String orientation ) {
 
         Site site = siteDAO.chercherSiteParOrientation( orientation );
         return site;
