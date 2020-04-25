@@ -19,6 +19,8 @@ public class RechercheSite extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )

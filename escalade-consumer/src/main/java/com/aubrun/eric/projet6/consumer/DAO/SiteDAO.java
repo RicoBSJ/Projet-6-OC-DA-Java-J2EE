@@ -9,92 +9,203 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
-import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDAO {
 
-	SessionFactory factory = HibernateUtils.getSessionFactory();
+    SessionFactory factory = HibernateUtils.getSessionFactory();
 
-	public List<Site> recupererSites() {
+    public List<Site> recupererSites() {
 
-		Session session = factory.getCurrentSession();
-		List<Site> sites = null;
+        Session session = factory.getCurrentSession();
+        List<Site> sites = null;
 
-		try {
-			session.getTransaction().begin();
-			String q = "SELECT s FROM Site s";
-			Query<Site> query = session.createQuery(q);
-			sites = query.getResultList();
-			session.getTransaction().commit();
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT s FROM Site s";
+            Query<Site> query = session.createQuery( q );
+            sites = query.getResultList();
+            session.getTransaction().commit();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-		return sites;
-	}
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return sites;
+    }
 
-	public Site afficherDetails(Integer id) {
+    public Site afficherDetails( Integer id ) {
 
-		Session session = factory.getCurrentSession();
-		Site site = null;
+        Session session = factory.getCurrentSession();
+        Site site = null;
 
-		try {
-			session.getTransaction().begin();
-			String q = "SELECT s FROM Site s WHERE s.id=?1";
-			TypedQuery<Site> query = session.createQuery(q, Site.class);
-			query.setParameter(1, id);
-			site = query.getSingleResult();
-			session.getTransaction().commit();
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT s FROM Site s WHERE s.id=?1";
+            TypedQuery<Site> query = session.createQuery( q, Site.class );
+            query.setParameter( 1, id );
+            site = query.getSingleResult();
+            session.getTransaction().commit();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-		return site;
-	}
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
 
-	public Site supprimerSite(int id) {
+    public Site supprimerSite( int id ) {
 
-		Session session = factory.getCurrentSession();
+        Session session = factory.getCurrentSession();
 
-		try {
-			session.getTransaction().begin();
+        try {
+            session.getTransaction().begin();
 
-			Site site = session.get(Site.class, id);
-			if (site != null) {
-				String q = "DELETE FROM Site s " + "WHERE s.id = :siteId";
-				Query<Site> query = session.createQuery(q);
-				query.setParameter("siteId", id);
-				int result = query.executeUpdate();
-				System.out.println(result);
-			}
+            Site site = session.get( Site.class, id );
+            if ( site != null ) {
+                String q = "DELETE FROM Site s " + "WHERE s.id = :siteId";
+                Query<Site> query = session.createQuery( q );
+                query.setParameter( "siteId", id );
+                int result = query.executeUpdate();
+                System.out.println( result );
+            }
 
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-		return null;
-	}
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return null;
+    }
 
-	public void ajouterSite(Site site) {
-		// TODO Auto-generated method stub
-		Session session = factory.getCurrentSession();
+    public void ajouterSite( Site site ) {
+        // TODO Auto-generated method stub
+        Session session = factory.getCurrentSession();
 
-		try {
-			session.getTransaction().begin();
-			session.save(site);
-			session.getTransaction().commit();
+        try {
+            session.getTransaction().begin();
+            session.save( site );
+            session.getTransaction().commit();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-	}
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+    }
+
+    public Site chercherSiteParNom( String nom ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, nom );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
+
+    public Site chercherSiteParPays( String pays ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, pays );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
+
+    public Site chercherSiteParRegion( String region ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, region );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
+
+    public Site chercherSiteParDescription( String description ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, description );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
+
+    public Site chercherSiteParCotation( String cotation ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, cotation );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
+
+    public Site chercherSiteParHauteur( String hauteur ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, hauteur );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
+
+    public Site chercherSiteParOrientation( String orientation ) {
+
+        Session session = factory.getCurrentSession();
+        Site site = null;
+        try {
+            session.getTransaction().begin();
+            site = session.get( Site.class, orientation );
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return site;
+    }
 }

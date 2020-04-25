@@ -5,19 +5,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public final class ConnexionForm {
 
-    private static final String CHAMP_EMAIL      = "email";
-    private static final String CHAMP_PASS       = "motdepasse";
-    private static final String ALGO_CHIFFREMENT = "SHA-256";
-
-    private UtilisateurService  utilisateurService;
+    private static final String CHAMP_EMAIL = "email";
+    private static final String CHAMP_PASS  = "motdepasse";
 
     private String              resultat;
-    private Map<String, String> erreurs          = new HashMap<String, String>();
+    private Map<String, String> erreurs     = new HashMap<String, String>();
 
     public String getResultat() {
         return resultat;
@@ -64,16 +60,6 @@ public final class ConnexionForm {
     private void validationEmail( String email ) throws Exception {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
             throw new Exception( "Merci de saisir une adresse mail valide." );
-        }
-    }
-
-    private void validationMotDePasse( String motDePasse ) throws Exception {
-        if ( motDePasse != null ) {
-            if ( motDePasse.length() < 3 ) {
-                throw new Exception( "Le mot de passe doit contenir au moins 3 caractères." );
-            }
-        } else {
-            throw new Exception( "Merci de saisir votre mot de passe." );
         }
     }
 

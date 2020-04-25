@@ -17,7 +17,6 @@ public final class CreationSiteForm {
     private static final String CHAMP_COTATION     = "cotation";
     private static final String CHAMP_HAUTEUR      = "hauteur";
     private static final String CHAMP_ORIENTATION  = "orientation";
-    private static final String CHAMP_NOM_PHOTO    = "nomPhoto";
     private static final String CHAMP_CHEMIN_PHOTO = "cheminPhoto";
 
     private String              resultat;
@@ -63,7 +62,6 @@ public final class CreationSiteForm {
 
     public Photo ajouterPhoto( HttpServletRequest request ) {
 
-        String nomPhoto = getValeurChamp( request, CHAMP_NOM_PHOTO );
         String cheminPhoto = getValeurChamp( request, CHAMP_CHEMIN_PHOTO );
 
         Photo photo = new Photo();
