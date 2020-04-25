@@ -1,4 +1,5 @@
-<%@ page pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -29,15 +30,11 @@
 				<span class="erreur">${form.erreurs['region']}</span>
                 <br />
                 
-                <label for="nom">Nom de la photo du site <span class="requis">*</span></label>
-				<input type="text" id="nom" name="nom" value="<c:out value="${photo.nomPhoto}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['nom']}</span>
-                <br />
-                
-                <label for="chemin">Chemin de la photo du site <span class="requis">*</span></label>
-				<input type="file" id="chemin" name="chemin" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" />
+<%--            <c:import url="/include/upload.jsp"></c:import> --%>
+           		<label for="fichier">Chemin de la photo du site <span class="requis">*</span></label>
+				<input type="file" id="fichier" name="fichier" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" />
 				<span class="erreur">${form.erreurs['chemin']}</span>
-                <br />
+           		<br />
 				
 				<label for="description">Description du site <span class="requis">*</span></label>
 				<input type="text" id="description" name="description" value="<c:out value="${site.description}"/>" size="30" maxlength="30" />
