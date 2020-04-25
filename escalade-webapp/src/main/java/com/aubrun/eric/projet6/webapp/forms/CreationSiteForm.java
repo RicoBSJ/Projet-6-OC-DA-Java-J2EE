@@ -68,7 +68,6 @@ public final class CreationSiteForm {
 
         Photo photo = new Photo();
         try {
-            traiterNomPhoto( nomPhoto, photo );
             traiterCheminPhoto( cheminPhoto, photo );
             resultat = "Ajout photo réussi !";
         } catch ( Exception e ) {
@@ -141,15 +140,6 @@ public final class CreationSiteForm {
         site.setOrientation( orientation );
     }
 
-    private void traiterNomPhoto( String nomPhoto, Photo photo ) {
-        try {
-            validationNomPhoto( nomPhoto );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_ORIENTATION, e.getMessage() );
-        }
-        photo.setNomPhoto( nomPhoto );
-    }
-
     private void traiterCheminPhoto( String cheminPhoto, Photo photo ) {
         try {
             validationCheminPhoto( cheminPhoto );
@@ -198,12 +188,6 @@ public final class CreationSiteForm {
     private void validationOrientation( String orientation ) throws Exception {
         if ( orientation != null && orientation.length() < 3 ) {
             throw new Exception( "L'orientation du site doit contenir au moins 3 caractères." );
-        }
-    }
-
-    private void validationNomPhoto( String nomPhoto ) throws Exception {
-        if ( nomPhoto != null && nomPhoto.length() < 3 ) {
-            throw new Exception( "Le nom de la photo du site doit contenir au moins 3 caractères." );
         }
     }
 
