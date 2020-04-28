@@ -30,11 +30,12 @@
 				<span class="erreur">${form.erreurs['region']}</span>
                 <br />
                 
-<%--            <c:import url="/include/upload.jsp"></c:import> --%>
-           		<label for="fichier">Chemin de la photo du site <span class="requis">*</span></label>
-				<input type="file" id="fichier" name="fichier" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['chemin']}</span>
-           		<br />
+                <c:import url="/include/upload.jsp"></c:import>
+
+<!--            <label for="fichier">Chemin de la photo du site <span class="requis">*</span></label> -->
+<%-- 			<input type="file" id="fichier" name="fichier" value="<c:out value="${photo.cheminPhoto}"/>" size="30" maxlength="60" /> --%>
+<%-- 			<span class="erreur">${form.erreurs['chemin']}</span> --%>
+<!--            <br /> -->
 				
 				<label for="description">Description du site <span class="requis">*</span></label>
 				<input type="text" id="description" name="description" value="<c:out value="${site.description}"/>" size="30" maxlength="30" />

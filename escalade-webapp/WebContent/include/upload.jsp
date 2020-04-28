@@ -20,9 +20,6 @@
                 <label for="fichier">Emplacement du fichier <span class="requis">*</span></label>
                 <input type="file" id="fichier" name="fichier" />
                 <br />
-                
-                <input type="submit" value="Envoyer" class="sansLabel" />
-                <br />                
             </fieldset>
         </form>
     </body>
