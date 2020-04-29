@@ -53,7 +53,7 @@ public class SiteService {
         return site;
     }
 
-    public Site getSiteByDescription( String description ) {
+    public Site searchSiteByDescription( String description ) {
 
         Site site = siteDAO.chercherSiteParDescription( description );
         return site;
