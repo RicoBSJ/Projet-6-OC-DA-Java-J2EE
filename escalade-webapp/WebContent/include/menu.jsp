@@ -24,6 +24,7 @@
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 					<li><a href="<c:url value="/creationSite" />">Création d'un site</a></li>
 					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
+					<li><a href="<c:url value="/rechercheSite" />">Recherche de site</a></li>
 					</c:if>
 				</ul>
 			</nav>
