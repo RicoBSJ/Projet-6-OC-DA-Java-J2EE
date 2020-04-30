@@ -1,5 +1,5 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +39,8 @@
 								<div class="massifListe">${ site.region }</div>
 							</div>
 							<div class="thumbs-stations">
-								<a href="<c:url value="/detailsSite?id=${site.id}" />"><img
-									src="${ site.photos[0].chemin }" alt="Site"
+								<a href="<c:url value="/detailsSite?id=${site.id}" />"> <img
+									src="${ site.photos[0].cheminPhoto }" alt="Site"
 									title="Détails du site" width="315" height="200" /></a>
 							</div>
 							<div class="results-right">

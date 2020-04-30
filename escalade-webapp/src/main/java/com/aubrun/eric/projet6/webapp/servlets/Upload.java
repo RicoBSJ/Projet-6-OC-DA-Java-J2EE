@@ -1,5 +1,9 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -17,6 +21,9 @@ public class Upload extends HttpServlet {
     public static final String VUE               = "/WEB-INF/jsp/upload.jsp";
     public static final String CHAMP_DESCRIPTION = "description";
     public static final String CHAMP_FICHIER     = "fichier";
+    public static final String CHEMIN            = "chemin";
+    public static final int    TAILLE_TAMPON     = 10240;                    // 10
+                                                                             // ko
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -26,6 +33,11 @@ public class Upload extends HttpServlet {
 
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
+        /*
+         * Lecture du paramètre 'chemin' passé à la servlet via la déclaration
+         * dans le web.xml
+         */
+        String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
         /* Récupération du contenu du champ de description */
         String description = request.getParameter( CHAMP_DESCRIPTION );
@@ -50,8 +62,6 @@ public class Upload extends HttpServlet {
          */
         if ( nomFichier != null && !nomFichier.isEmpty() ) {
             String nomChamp = part.getName();
-            request.setAttribute( nomChamp, nomFichier );
-
             /*
              * Antibug pour Internet Explorer, qui transmet pour une raison
              * mystique le chemin du fichier local à la machine du client...
@@ -63,6 +73,9 @@ public class Upload extends HttpServlet {
              */
             nomFichier = nomFichier.substring( nomFichier.lastIndexOf( '/' ) + 1 )
                     .substring( nomFichier.lastIndexOf( '\\' ) + 1 );
+
+            /* Écriture du fichier sur le disque */
+            ecrireFichier( part, nomFichier, chemin );
 
             request.setAttribute( nomChamp, nomFichier );
         }
@@ -93,5 +106,40 @@ public class Upload extends HttpServlet {
         }
         /* Et pour terminer, si rien n'a été trouvé... */
         return null;
+    }
+
+    /*
+     * Méthode utilitaire qui a pour but d'écrire le fichier passé en paramètre
+     * sur le disque, dans le répertoire donné et avec le nom donné.
+     */
+    private void ecrireFichier( Part part, String nomFichier, String chemin ) throws IOException {
+        /* Prépare les flux. */
+        BufferedInputStream entree = null;
+        BufferedOutputStream sortie = null;
+        try {
+            /* Ouvre les flux. */
+            entree = new BufferedInputStream( part.getInputStream(), TAILLE_TAMPON );
+            sortie = new BufferedOutputStream( new FileOutputStream( new File( chemin + nomFichier ) ),
+                    TAILLE_TAMPON );
+
+            /*
+             * Lit le fichier reçu et écrit son contenu dans un fichier sur le
+             * disque.
+             */
+            byte[] tampon = new byte[TAILLE_TAMPON];
+            int longueur;
+            while ( ( longueur = entree.read( tampon ) ) > 0 ) {
+                sortie.write( tampon, 0, longueur );
+            }
+        } finally {
+            try {
+                sortie.close();
+            } catch ( IOException ignore ) {
+            }
+            try {
+                entree.close();
+            } catch ( IOException ignore ) {
+            }
+        }
     }
 }

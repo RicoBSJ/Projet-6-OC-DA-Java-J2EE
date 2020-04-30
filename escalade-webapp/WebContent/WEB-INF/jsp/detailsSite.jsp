@@ -26,7 +26,7 @@
 					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
-					<img src="${ site.photos[0].chemin }" alt="Site"
+					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
 						title="Détails du site" width="315" height="200" />
 					<div class="massifListe">${ site.description }</div>
 				</div>

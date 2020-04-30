@@ -49,13 +49,13 @@ public class RechercheSite extends HttpServlet {
         } else {
             Site site = form.rechercherSite( request );
 
-            siteService.searchSiteByName( site.getClass().getName() );
-            siteService.searchSiteByCountry( site.getClass().getName() );
-            siteService.searchSiteByRegion( site.getClass().getName() );
-            siteService.searchSiteByDescription( site.getClass().getName() );
-            siteService.searchSiteByQuotation( site.getClass().getName() );
-            siteService.searchSiteByHeight( site.getClass().getName() );
-            siteService.searchSiteByDirection( site.getClass().getName() );
+            siteService.searchSiteByName( site.getNom() );
+            siteService.searchSiteByCountry( site.getPays() );
+            siteService.searchSiteByRegion( site.getRegion() );
+            siteService.searchSiteByDescription( site.getDescription() );
+            siteService.searchSiteByQuotation( site.getCotation() );
+            siteService.searchSiteByHeight( site.getHauteur() );
+            siteService.searchSiteByDirection( site.getOrientation() );
 
             request.setAttribute( ATT_FORM, form );
             request.setAttribute( ATT_SITE, site );
