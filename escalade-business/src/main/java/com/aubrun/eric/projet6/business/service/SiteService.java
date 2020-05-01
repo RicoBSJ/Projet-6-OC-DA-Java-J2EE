@@ -36,48 +36,6 @@ public class SiteService {
         return site;
     }
 
-    public Site searchSiteByName( String nom ) {
-
-        Site site = siteDAO.chercherSiteParNom( nom );
-        return site;
-    }
-
-    public Site searchSiteByCountry( String pays ) {
-
-        Site site = siteDAO.chercherSiteParPays( pays );
-        return site;
-    }
-
-    public Site searchSiteByRegion( String region ) {
-
-        Site site = siteDAO.chercherSiteParRegion( region );
-        return site;
-    }
-
-    public Site searchSiteByDescription( String description ) {
-
-        Site site = siteDAO.chercherSiteParDescription( description );
-        return site;
-    }
-
-    public Site searchSiteByQuotation( String cotation ) {
-
-        Site site = siteDAO.chercherSiteParCotation( cotation );
-        return site;
-    }
-
-    public Site searchSiteByHeight( String hauteur ) {
-
-        Site site = siteDAO.chercherSiteParHauteur( hauteur );
-        return site;
-    }
-
-    public Site searchSiteByDirection( String orientation ) {
-
-        Site site = siteDAO.chercherSiteParOrientation( orientation );
-        return site;
-    }
-
     public List<Site> searchSite( SearchForm searchForm ) {
         return siteDAO.recherche( searchForm );
     }
