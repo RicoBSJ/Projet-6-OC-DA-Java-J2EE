@@ -29,6 +29,11 @@
 				<input type="text" id="region" name="region" value="<c:out value="${site.region}"/>" size="30" maxlength="30" />
 				<span class="erreur">${form.erreurs['region']}</span>
                 <br />
+                
+                <label for="photo" enctype="multipart/form-data">Photo du site <span class="requis">*</span></label>
+                <input type="file" id="photo" name="photo" value="<c:out value="${photo.cheminPhoto}"/>" />
+                <span class="erreur">${form.erreurs['photo']}</span>
+                <br />
 				
 				<label for="description">Description du site <span class="requis">*</span></label>
 				<input type="text" id="description" name="description" value="<c:out value="${site.description}"/>" size="30" maxlength="30" />

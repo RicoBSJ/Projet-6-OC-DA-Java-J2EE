@@ -56,6 +56,7 @@ public class RechercheSite extends HttpServlet {
             siteService.searchSiteByQuotation( site.getCotation() );
             siteService.searchSiteByHeight( site.getHauteur() );
             siteService.searchSiteByDirection( site.getOrientation() );
+            siteService.findAll();
 
             request.setAttribute( ATT_FORM, form );
             request.setAttribute( ATT_SITE, site );
