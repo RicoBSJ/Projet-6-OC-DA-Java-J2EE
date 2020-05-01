@@ -6,7 +6,7 @@
 
 	<error-page>
 		<error-code>403</error-code>
-		<location>/creationSite</location>
+		<location>//403.html</location>
 	</error-page>
 
 	<servlet>

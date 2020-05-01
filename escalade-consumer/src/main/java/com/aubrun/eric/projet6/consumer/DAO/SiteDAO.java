@@ -1,6 +1,8 @@
 package com.aubrun.eric.projet6.consumer.DAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.TypedQuery;
 
@@ -9,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
+import com.aubrun.eric.projet6.model.bean.SearchForm;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDAO {
@@ -207,5 +210,53 @@ public class SiteDAO {
             session.getTransaction().rollback();
         }
         return site;
+    }
+
+    public List<Site> recherche( SearchForm searchForm ) {
+        Session session = factory.getCurrentSession();
+        List<Site> resultat = null;
+        try {
+            Map<String, String> parameters = new HashMap();
+            session.getTransaction().begin();
+            String q = "SELECT s FROM Site s WHERE 1=1 ";
+            if ( searchForm.getNom() != "" ) {
+                q += "AND s.nom LIKE :nom ";
+                parameters.put( "nom", "%" + searchForm.getNom() + "%" );
+            }
+            if ( searchForm.getPays() != "" ) {
+                q += "AND s.pays LIKE :pays ";
+                parameters.put( "pays", "%" + searchForm.getPays() + "%" );
+            }
+            if ( searchForm.getRegion() != "" ) {
+                q += "AND s.region LIKE :region ";
+                parameters.put( "region", "%" + searchForm.getRegion() + "%" );
+            }
+            if ( searchForm.getDescription() != "" ) {
+                q += "AND s.description LIKE :description ";
+                parameters.put( "description", "%" + searchForm.getDescription() + "%" );
+            }
+            if ( searchForm.getCotation() != "" ) {
+                q += "AND s.cotation LIKE :cotation ";
+                parameters.put( "cotation", "%" + searchForm.getCotation() + "%" );
+            }
+            if ( searchForm.getHauteur() != "" ) {
+                q += "AND s.hauteur LIKE :hauteur ";
+                parameters.put( "hauteur", "%" + searchForm.getHauteur() + "%" );
+            }
+            if ( searchForm.getOrientation() != "" ) {
+                q += "AND s.orientation LIKE :orientation ";
+                parameters.put( "orientation", "%" + searchForm.getOrientation() + "%" );
+            }
+            Query<Site> query = session.createQuery( q );
+            query.setProperties( parameters );
+            resultat = query.getResultList();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return resultat;
     }
 }
