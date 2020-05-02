@@ -21,8 +21,7 @@ public class SiteService {
 
     public Site findDetails( Integer id ) {
 
-        Site site = siteDAO.afficherDetails( id );
-        return site;
+        return siteDAO.afficherDetails( id );
     }
 
     public void addSite( Site createSite ) {
@@ -32,11 +31,11 @@ public class SiteService {
 
     public Site deleteSite( Integer id ) {
 
-        Site site = siteDAO.supprimerSite( id );
-        return site;
+        return siteDAO.supprimerSite( id );
     }
 
     public List<Site> searchSite( SearchForm searchForm ) {
+
         return siteDAO.recherche( searchForm );
     }
 }
