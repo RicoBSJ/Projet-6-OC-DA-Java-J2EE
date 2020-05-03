@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.aubrun.eric.projet6.consumer.DAO.ClientDao;
+import com.aubrun.eric.projet6.model.bean.Client;
 import com.aubrun.eric.projet6.webapp.forms.CreationClientForm;
 
 public class CreationClient extends HttpServlet {

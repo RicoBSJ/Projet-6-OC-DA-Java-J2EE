@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import com.aubrun.eric.projet6.consumer.DAO.ClientDao;
 import com.aubrun.eric.projet6.model.bean.Client;
 
 import eu.medsea.mimeutil.MimeUtil;
@@ -67,7 +68,7 @@ public final class CreationClientForm {
             } else {
                 resultat = "Échec de la création du client.";
             }
-        } catch ( DAOException e ) {
+        } catch ( Exception e ) {
             setErreur( "imprévu", "Erreur imprévue lors de la création." );
             resultat = "Échec de la création du client : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
@@ -79,7 +80,7 @@ public final class CreationClientForm {
     private void traiterNom( String nom, Client client ) {
         try {
             validationNom( nom );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
         client.setNom( nom );
@@ -88,7 +89,7 @@ public final class CreationClientForm {
     private void traiterPrenom( String prenom, Client client ) {
         try {
             validationPrenom( prenom );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_PRENOM, e.getMessage() );
         }
         client.setPrenom( prenom );
@@ -97,7 +98,7 @@ public final class CreationClientForm {
     private void traiterAdresse( String adresse, Client client ) {
         try {
             validationAdresse( adresse );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_ADRESSE, e.getMessage() );
         }
         client.setAdresse( adresse );
@@ -106,7 +107,7 @@ public final class CreationClientForm {
     private void traiterTelephone( String telephone, Client client ) {
         try {
             validationTelephone( telephone );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_TELEPHONE, e.getMessage() );
         }
         client.setTelephone( telephone );
@@ -115,7 +116,7 @@ public final class CreationClientForm {
     private void traiterEmail( String email, Client client ) {
         try {
             validationEmail( email );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         client.setEmail( email );
@@ -125,57 +126,57 @@ public final class CreationClientForm {
         String image = null;
         try {
             image = validationImage( request, chemin );
-        } catch ( FormValidationException e ) {
+        } catch ( Exception e ) {
             setErreur( CHAMP_IMAGE, e.getMessage() );
         }
         client.setImage( image );
     }
 
-    private void validationNom( String nom ) throws FormValidationException {
+    private void validationNom( String nom ) throws Exception {
         if ( nom != null ) {
             if ( nom.length() < 2 ) {
-                throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
+                throw new Exception( "Le nom d'utilisateur doit contenir au moins 2 caractères." );
             }
         } else {
-            throw new FormValidationException( "Merci d'entrer un nom d'utilisateur." );
+            throw new Exception( "Merci d'entrer un nom d'utilisateur." );
         }
     }
 
-    private void validationPrenom( String prenom ) throws FormValidationException {
+    private void validationPrenom( String prenom ) throws Exception {
         if ( prenom != null && prenom.length() < 2 ) {
-            throw new FormValidationException( "Le prénom d'utilisateur doit contenir au moins 2 caractères." );
+            throw new Exception( "Le prénom d'utilisateur doit contenir au moins 2 caractères." );
         }
     }
 
-    private void validationAdresse( String adresse ) throws FormValidationException {
+    private void validationAdresse( String adresse ) throws Exception {
         if ( adresse != null ) {
             if ( adresse.length() < 10 ) {
-                throw new FormValidationException( "L'adresse de livraison doit contenir au moins 10 caractères." );
+                throw new Exception( "L'adresse de livraison doit contenir au moins 10 caractères." );
             }
         } else {
-            throw new FormValidationException( "Merci d'entrer une adresse de livraison." );
+            throw new Exception( "Merci d'entrer une adresse de livraison." );
         }
     }
 
-    private void validationTelephone( String telephone ) throws FormValidationException {
+    private void validationTelephone( String telephone ) throws Exception {
         if ( telephone != null ) {
             if ( !telephone.matches( "^\\d+$" ) ) {
-                throw new FormValidationException( "Le numéro de téléphone doit uniquement contenir des chiffres." );
+                throw new Exception( "Le numéro de téléphone doit uniquement contenir des chiffres." );
             } else if ( telephone.length() < 4 ) {
-                throw new FormValidationException( "Le numéro de téléphone doit contenir au moins 4 chiffres." );
+                throw new Exception( "Le numéro de téléphone doit contenir au moins 4 chiffres." );
             }
         } else {
-            throw new FormValidationException( "Merci d'entrer un numéro de téléphone." );
+            throw new Exception( "Merci d'entrer un numéro de téléphone." );
         }
     }
 
-    private void validationEmail( String email ) throws FormValidationException {
+    private void validationEmail( String email ) throws Exception {
         if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-            throw new FormValidationException( "Merci de saisir une adresse mail valide." );
+            throw new Exception( "Merci de saisir une adresse mail valide." );
         }
     }
 
-    private String validationImage( HttpServletRequest request, String chemin ) throws FormValidationException {
+    private String validationImage( HttpServletRequest request, String chemin ) throws Exception {
         /*
          * Récupération du contenu du champ image du formulaire. Il faut ici
          * utiliser la méthode getPart().
@@ -218,7 +219,7 @@ public final class CreationClientForm {
                     /* Écriture du fichier sur le disque */
                     ecrireFichier( contenuFichier, nomFichier, chemin );
                 } else {
-                    throw new FormValidationException( "Le fichier envoyé doit être une image." );
+                    throw new Exception( "Le fichier envoyé doit être une image." );
                 }
             }
         } catch ( IllegalStateException e ) {
@@ -228,7 +229,7 @@ public final class CreationClientForm {
              * notre servlet d'upload dans le fichier web.xml
              */
             e.printStackTrace();
-            throw new FormValidationException( "Le fichier envoyé ne doit pas dépasser 1Mo." );
+            throw new Exception( "Le fichier envoyé ne doit pas dépasser 1Mo." );
         } catch ( IOException e ) {
             /*
              * Exception retournée si une erreur au niveau des répertoires de
@@ -236,14 +237,14 @@ public final class CreationClientForm {
              * insuffisants, etc.)
              */
             e.printStackTrace();
-            throw new FormValidationException( "Erreur de configuration du serveur." );
+            throw new Exception( "Erreur de configuration du serveur." );
         } catch ( ServletException e ) {
             /*
              * Exception retournée si la requête n'est pas de type
              * multipart/form-data.
              */
             e.printStackTrace();
-            throw new FormValidationException(
+            throw new Exception(
                     "Ce type de requête n'est pas supporté, merci d'utiliser le formulaire prévu pour envoyer votre fichier." );
         }
 
@@ -300,7 +301,7 @@ public final class CreationClientForm {
      * sur le disque, dans le répertoire donné et avec le nom donné.
      */
     private void ecrireFichier( InputStream contenuFichier, String nomFichier, String chemin )
-            throws FormValidationException {
+            throws Exception {
         /* Prépare les flux. */
         BufferedInputStream entree = null;
         BufferedOutputStream sortie = null;
@@ -320,7 +321,7 @@ public final class CreationClientForm {
                 sortie.write( tampon, 0, longueur );
             }
         } catch ( Exception e ) {
-            throw new FormValidationException( "Erreur lors de l'écriture du fichier sur le disque." );
+            throw new Exception( "Erreur lors de l'écriture du fichier sur le disque." );
         } finally {
             try {
                 sortie.close();
