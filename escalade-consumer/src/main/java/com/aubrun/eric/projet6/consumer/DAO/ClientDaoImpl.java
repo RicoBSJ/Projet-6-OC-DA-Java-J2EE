@@ -1,7 +1,7 @@
 package com.aubrun.eric.projet6.consumer.DAO;
 
-import static com.sdzee.tp.dao.DAOUtilitaire.fermeturesSilencieuses;
-import static com.sdzee.tp.dao.DAOUtilitaire.initialisationRequetePreparee;
+import static com.aubrun.eric.projet6.consumer.DAO.DAOUtilitaire.fermeturesSilencieuses;
+import static com.aubrun.eric.projet6.consumer.DAO.DAOUtilitaire.initialisationRequetePreparee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

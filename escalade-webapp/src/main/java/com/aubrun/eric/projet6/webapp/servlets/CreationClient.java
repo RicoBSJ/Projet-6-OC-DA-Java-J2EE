@@ -29,10 +29,10 @@ public class CreationClient extends HttpServlet {
 
     private ClientDao          clientDao;
 
-    public void init() throws ServletException {
-        /* Récupération d'une instance de notre DAO Utilisateur */
-        this.clientDao = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getClientDao();
-    }
+    // public void init() throws ServletException {
+    // this.clientDao = ( (DAOFactory) getServletContext().getAttribute(
+    // CONF_DAO_FACTORY ) ).getClientDao();
+    // }
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* À la réception d'une requête GET, simple affichage du formulaire */
