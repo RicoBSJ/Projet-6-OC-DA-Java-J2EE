@@ -13,14 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
-import com.aubrun.eric.projet6.model.bean.Fichier;
+import com.aubrun.eric.projet6.model.bean.Photo;
 
 public final class UploadForm {
     private static final String CHAMP_DESCRIPTION = "description";
     private static final String CHAMP_FICHIER     = "fichier";
     private static final int    TAILLE_TAMPON     = 10240;                        // 10
                                                                                   // ko
-
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
 
@@ -32,9 +31,9 @@ public final class UploadForm {
         return erreurs;
     }
 
-    public Fichier enregistrerFichier( HttpServletRequest request, String chemin ) {
+    public Photo enregistrerFichier( HttpServletRequest request, String chemin ) {
         /* Initialisation du bean représentant un fichier */
-        Fichier fichier = new Fichier();
+        Photo photo = new Photo();
 
         /* Récupération du champ de description du formulaire */
         String description = getValeurChamp( request, CHAMP_DESCRIPTION );
@@ -112,7 +111,7 @@ public final class UploadForm {
             } catch ( Exception e ) {
                 setErreur( CHAMP_DESCRIPTION, e.getMessage() );
             }
-            fichier.setDescription( description );
+            photo.setNomPhoto( description );
 
             /* Validation du champ fichier. */
             try {
@@ -120,7 +119,7 @@ public final class UploadForm {
             } catch ( Exception e ) {
                 setErreur( CHAMP_FICHIER, e.getMessage() );
             }
-            fichier.setNom( nomFichier );
+            photo.setCheminPhoto( nomFichier );
         }
 
         /* Si aucune erreur n'est survenue jusqu'à présent */
@@ -140,7 +139,7 @@ public final class UploadForm {
             resultat = "Échec de l'envoi du fichier.";
         }
 
-        return fichier;
+        return photo;
     }
 
     /*
@@ -148,8 +147,8 @@ public final class UploadForm {
      */
     private void validationDescription( String description ) throws Exception {
         if ( description != null ) {
-            if ( description.length() < 15 ) {
-                throw new Exception( "La phrase de description du fichier doit contenir au moins 15 caractères." );
+            if ( description.length() < 3 ) {
+                throw new Exception( "La phrase de description du fichier doit contenir au moins 3 caractères." );
             }
         } else {
             throw new Exception( "Merci d'entrer une phrase de description du fichier." );

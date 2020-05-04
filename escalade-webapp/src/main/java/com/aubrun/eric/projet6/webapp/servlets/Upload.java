@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.model.bean.Fichier;
+import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.webapp.forms.UploadForm;
 
 @WebServlet( "/Upload" )
@@ -18,7 +18,7 @@ public class Upload extends HttpServlet {
 
     public static final String CHEMIN           = "chemin";
 
-    public static final String ATT_FICHIER      = "fichier";
+    public static final String ATT_PHOTO        = "photo";
     public static final String ATT_FORM         = "form";
 
     public static final String VUE              = "/WEB-INF/jsp/upload.jsp";
@@ -40,11 +40,11 @@ public class Upload extends HttpServlet {
         UploadForm form = new UploadForm();
 
         /* Traitement de la requête et récupération du bean en résultant */
-        Fichier fichier = form.enregistrerFichier( request, chemin );
+        Photo photo = form.enregistrerFichier( request, chemin );
 
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
-        request.setAttribute( ATT_FICHIER, fichier );
+        request.setAttribute( ATT_PHOTO, photo );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
