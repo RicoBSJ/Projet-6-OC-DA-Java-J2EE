@@ -14,16 +14,16 @@ public class Commentaire {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "id" )
-    private Integer id;
-    @Column( name = "commentaire" )
+    private Integer idCommentaire;
+    @Column( name = "commentaire", columnDefinition = "text" )
     private String  commentaire;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdCommentaire() {
+        return idCommentaire;
     }
 
-    public void setId( Integer id ) {
-        this.id = id;
+    public void setIdCommentaire( Integer idCommentaire ) {
+        this.idCommentaire = idCommentaire;
     }
 
     public String getCommentaire() {

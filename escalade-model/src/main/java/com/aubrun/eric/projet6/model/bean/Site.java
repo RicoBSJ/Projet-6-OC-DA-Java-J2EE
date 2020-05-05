@@ -21,29 +21,33 @@ public class Site {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "id" )
-    private Integer       id;
+    private Integer           id;
     @Column( name = "nom" )
-    private String        nom;
+    private String            nom;
     @Column( name = "pays" )
-    private String        pays;
+    private String            pays;
     @Column( name = "region" )
-    private String        region;
+    private String            region;
     @Column( name = "description", columnDefinition = "text" )
-    private String        description;
+    private String            description;
     @Column( name = "cotation" )
-    private String        cotation;
+    private String            cotation;
     @Column( name = "hauteur" )
-    private String        hauteur;
+    private String            hauteur;
     @Column( name = "orientation" )
-    private String        orientation;
+    private String            orientation;
     @OneToMany
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
-    private List<Photo>   photos;
+    private List<Photo>       photos;
     @OneToMany
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
-    private List<Secteur> secteurs;
+    private List<Secteur>     secteurs;
+    @OneToMany
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
+    private List<Commentaire> commentaires;
 
     public Integer getId() {
         return id;
@@ -125,4 +129,11 @@ public class Site {
         this.secteurs = secteurs;
     }
 
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires( List<Commentaire> commentaires ) {
+        this.commentaires = commentaires;
+    }
 }

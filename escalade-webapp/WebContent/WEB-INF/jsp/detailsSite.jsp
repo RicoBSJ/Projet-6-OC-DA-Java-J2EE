@@ -19,15 +19,17 @@
 			<article class="resultats-listeStations even">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a href="<c:url value="" />">${ site.nom }</a>
-						<a href="<c:url value="/accueil"/>">Retour accueil</a>
+						<a href="<c:url value="" />">${ site.nom }</a> <a
+							href="<c:url value="/accueil"/>">Retour accueil</a>
 					</h3>
 					<div class="massifListe">${ site.pays }</div>
 					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
 					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
-						title="Détails du site" width="315" height="200" />
+						title="Détails du site" width="315" height="200" /> <br />
+					<div class="massifListe">${ site.commentaires[0].commentaire }</div>
+					<br />
 					<div class="massifListe">${ site.description }</div>
 				</div>
 				<div class="results-right">

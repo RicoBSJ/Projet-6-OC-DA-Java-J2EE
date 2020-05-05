@@ -8,17 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 
 @WebServlet( "/accueil" )
 public class Accueil extends HttpServlet {
 
-    private static final long  serialVersionUID = 1L;
+    private static final long  serialVersionUID   = 1L;
 
     /* Constantes */
-    public static final String VUE              = "/WEB-INF/jsp/accueil.jsp";
+    public static final String VUE                = "/WEB-INF/jsp/accueil.jsp";
 
-    private SiteService        siteService      = new SiteService();
+    private SiteService        siteService        = new SiteService();
+    private CommentaireService commentaireService = new CommentaireService();
 
     public Accueil() {
         super();
@@ -28,6 +30,7 @@ public class Accueil extends HttpServlet {
             throws ServletException, IOException {
 
         request.setAttribute( "sites", siteService.findAll() );
+        request.setAttribute( "commentaires", commentaireService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

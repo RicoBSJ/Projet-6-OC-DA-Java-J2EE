@@ -41,7 +41,8 @@
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite?id=${site.id}" />"> <img
 									src="${ site.photos[0].cheminPhoto }" alt="Site"
-									title="Détails du site" width="315" height="200" /></a>
+									title="Détails du site" width="315" height="200" />
+								</a>
 							</div>
 							<div class="results-right">
 								<div class="infosStations">
