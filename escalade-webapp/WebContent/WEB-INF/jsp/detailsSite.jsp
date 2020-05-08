@@ -28,15 +28,17 @@
 				<div class="thumbs-stations">
 					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
 						title="Détails du site" width="315" height="200" />
-					<div class="massifListe">${ site.commentaires[0].commentaire }</div>
+					<h4>Description du site</h4>
 					<div class="massifListe">${ site.description }</div>
+					<h4>Commentaires</h4>
+					<div class="massifListe">${ site.commentaires[0].commentaire }</div>
 				</div>
 				<div class="thumbs-stations">
 					<a
 						href="<c:url value="/ajouterCommentaire?commentaire=${commentaire.commentaire}" />">
 						<img src="<c:url value="./images/ajouter_un_commentaire.jpg" />"
-						alt="Commentaire" title="Ajouter commentaire" width="auto"
-						height="auto" />
+						alt="Commentaire" title="Ajouter commentaire" width="100"
+						height="50" />
 					</a>
 				</div>
 				<div class="results-right">
