@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.aubrun.eric.projet6.business.service.PhotoService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.model.bean.Site;
@@ -32,7 +31,6 @@ public class CreationSite extends HttpServlet {
     private static final String CHEMIN           = "chemin";
 
     private SiteService         siteService      = new SiteService();
-    private PhotoService        photoService     = new PhotoService();
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
@@ -69,7 +67,7 @@ public class CreationSite extends HttpServlet {
             Site site = form.creerSite( request );
             Photo photo = formU.enregistrerFichier( request, chemin );
             if ( site.getPhotos() == null ) {
-                site.setPhotos( new ArrayList() );
+                site.setPhotos( new ArrayList<Photo>() );
             }
             site.getPhotos().add( photo );
 
