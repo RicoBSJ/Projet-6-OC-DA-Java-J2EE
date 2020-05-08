@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.model.bean;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,15 +37,15 @@ public class Site {
     private String            hauteur;
     @Column( name = "orientation" )
     private String            orientation;
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private List<Photo>       photos;
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private List<Secteur>     secteurs;
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private List<Commentaire> commentaires;

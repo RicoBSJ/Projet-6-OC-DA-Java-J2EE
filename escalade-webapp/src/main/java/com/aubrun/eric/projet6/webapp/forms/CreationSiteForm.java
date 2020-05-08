@@ -5,22 +5,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public final class CreationSiteForm {
 
-    private static final String CHAMP_NOM          = "nom";
-    private static final String CHAMP_PAYS         = "pays";
-    private static final String CHAMP_REGION       = "region";
-    private static final String CHAMP_DESCRIPTION  = "description";
-    private static final String CHAMP_COTATION     = "cotation";
-    private static final String CHAMP_HAUTEUR      = "hauteur";
-    private static final String CHAMP_ORIENTATION  = "orientation";
-    private static final String CHAMP_CHEMIN_PHOTO = "cheminPhoto";
+    private static final String CHAMP_NOM         = "nom";
+    private static final String CHAMP_PAYS        = "pays";
+    private static final String CHAMP_REGION      = "region";
+    private static final String CHAMP_DESCRIPTION = "description";
+    private static final String CHAMP_COTATION    = "cotation";
+    private static final String CHAMP_HAUTEUR     = "hauteur";
+    private static final String CHAMP_ORIENTATION = "orientation";
 
     private String              resultat;
-    private Map<String, String> erreurs            = new HashMap<String, String>();
+    private Map<String, String> erreurs           = new HashMap<String, String>();
 
     public Map<String, String> getErreurs() {
         return erreurs;
@@ -58,21 +56,6 @@ public final class CreationSiteForm {
             e.printStackTrace();
         }
         return site;
-    }
-
-    public Photo ajouterPhoto( HttpServletRequest request ) {
-
-        String cheminPhoto = getValeurChamp( request, CHAMP_CHEMIN_PHOTO );
-
-        Photo photo = new Photo();
-        try {
-            traiterCheminPhoto( cheminPhoto, photo );
-            resultat = "Ajout photo réussi !";
-        } catch ( Exception e ) {
-            resultat = "Echec de l'ajout de photo : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
-            e.printStackTrace();
-        }
-        return photo;
     }
 
     private void traiterNom( String nom, Site site ) {
@@ -138,15 +121,6 @@ public final class CreationSiteForm {
         site.setOrientation( orientation );
     }
 
-    private void traiterCheminPhoto( String cheminPhoto, Photo photo ) {
-        try {
-            validationCheminPhoto( cheminPhoto );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_ORIENTATION, e.getMessage() );
-        }
-        photo.setCheminPhoto( cheminPhoto );
-    }
-
     private void validationNom( String nom ) throws Exception {
         if ( nom != null && nom.length() < 3 ) {
             throw new Exception( "Le nom du site doit contenir au moins 3 caractères." );
@@ -186,12 +160,6 @@ public final class CreationSiteForm {
     private void validationOrientation( String orientation ) throws Exception {
         if ( orientation != null && orientation.length() < 3 ) {
             throw new Exception( "L'orientation du site doit contenir au moins 3 caractères." );
-        }
-    }
-
-    private void validationCheminPhoto( String cheminPhoto ) throws Exception {
-        if ( cheminPhoto != null && cheminPhoto.length() < 3 ) {
-            throw new Exception( "Le chemin de la photo du site doit contenir au moins 3 caractères." );
         }
     }
 

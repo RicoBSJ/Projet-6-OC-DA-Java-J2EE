@@ -10,7 +10,7 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<form method="post" action="creationSite">
+	<form method="post" action="creationSite" enctype="multipart/form-data">
             <fieldset>
                 <legend>Création site</legend>
                 <p>Vous pouvez créer un site via ce formulaire.</p>

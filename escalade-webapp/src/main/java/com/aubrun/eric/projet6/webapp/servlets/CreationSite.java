@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,20 +16,23 @@ import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.model.bean.Site;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
+import com.aubrun.eric.projet6.webapp.forms.UploadForm;
 
 @WebServlet( "/creationSite" )
 public class CreationSite extends HttpServlet {
 
-    private static final long  serialVersionUID = 1L;
+    private static final long   serialVersionUID = 1L;
 
-    public static final String ATT_SITE         = "site";
-    public static final String ATT_PHOTO        = "photo";
-    public static final String ATT_FORM         = "form";
-    public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
+    public static final String  ATT_SITE         = "site";
+    public static final String  ATT_PHOTO        = "photo";
+    public static final String  ATT_FORM         = "form";
+    public static final String  ATT_SESSION_USER = "sessionUtilisateur";
+    public static final String  VUE              = "/WEB-INF/jsp/creerSite.jsp";
 
-    private SiteService        siteService      = new SiteService();
-    private PhotoService       photoService     = new PhotoService();
+    private static final String CHEMIN           = "chemin";
+
+    private SiteService         siteService      = new SiteService();
+    private PhotoService        photoService     = new PhotoService();
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
@@ -48,9 +52,11 @@ public class CreationSite extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
+        String chemin = this.getServletConfig().getInitParameter( CHEMIN );
+
         /* Préparation de l'objet formulaire */
         CreationSiteForm form = new CreationSiteForm();
-
+        UploadForm formU = new UploadForm();
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
@@ -61,10 +67,13 @@ public class CreationSite extends HttpServlet {
             throw new RuntimeException();
         } else {
             Site site = form.creerSite( request );
-            Photo photo = form.ajouterPhoto( request );
+            Photo photo = formU.enregistrerFichier( request, chemin );
+            if ( site.getPhotos() == null ) {
+                site.setPhotos( new ArrayList() );
+            }
+            site.getPhotos().add( photo );
 
             siteService.addSite( site );
-            photoService.addPhoto( photo );
 
             request.setAttribute( ATT_FORM, form );
             request.setAttribute( ATT_SITE, site );

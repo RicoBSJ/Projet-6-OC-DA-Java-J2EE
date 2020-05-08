@@ -30,16 +30,18 @@
 						title="Détails du site" width="315" height="200" />
 					<h4>Description du site</h4>
 					<div class="massifListe">${ site.description }</div>
+					<br>
+					<div>
+						<a
+							href="<c:url value="/ajouterCommentaire?commentaire=${commentaire.commentaire}" />">
+							<img src="<c:url value="./images/ajouter_un_commentaire.jpg" />"
+							alt="Commentaire" title="Ajouter commentaire" width="100"
+							height="50" />
+						</a>
+					</div>
+					<br>
 					<h4>Commentaires</h4>
 					<div class="massifListe">${ site.commentaires[0].commentaire }</div>
-				</div>
-				<div class="thumbs-stations">
-					<a
-						href="<c:url value="/ajouterCommentaire?commentaire=${commentaire.commentaire}" />">
-						<img src="<c:url value="./images/ajouter_un_commentaire.jpg" />"
-						alt="Commentaire" title="Ajouter commentaire" width="100"
-						height="50" />
-					</a>
 				</div>
 				<div class="results-right">
 					<div class="infosStations">
