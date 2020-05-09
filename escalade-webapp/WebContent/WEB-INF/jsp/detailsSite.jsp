@@ -34,10 +34,7 @@
 					<div>
 						<a
 							href="<c:url value="/ajouterCommentaire?commentaire=${commentaire.commentaire}" />">
-							<img src="<c:url value="./images/ajouter_un_commentaire.jpg" />"
-							alt="Commentaire" title="Ajouter commentaire" width="100"
-							height="50" />
-						</a>
+							Ajouter commentaire </a>
 					</div>
 					<br>
 					<h4>Commentaires</h4>
