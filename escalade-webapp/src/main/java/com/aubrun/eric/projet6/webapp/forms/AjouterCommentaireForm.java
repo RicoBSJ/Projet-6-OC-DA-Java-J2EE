@@ -12,7 +12,7 @@ public class AjouterCommentaireForm {
 
     private static final String CHAMP_COMMENTAIRE = "commentaire";
     private static final String CHAMP_TITRE       = "titre";
-    private static final Date   CHAMP_DATE        = "date";
+    private static final Date   CHAMP_DATE        = null;
 
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
@@ -109,7 +109,7 @@ public class AjouterCommentaireForm {
     }
 
     private Date getValeurChamp( HttpServletRequest request, Date champDate ) {
-        Date valeur = request.getParameter( champDate );
+        Date valeur = request.getParameterValues( champDate );
         if ( valeur == null ) {
             return null;
         } else {

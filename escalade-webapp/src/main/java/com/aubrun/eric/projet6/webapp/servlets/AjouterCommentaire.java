@@ -47,22 +47,28 @@ public class AjouterCommentaire extends HttpServlet {
         /* Préparation de l'objet formulaire */
         AjouterCommentaireForm form = new AjouterCommentaireForm();
 
+        Commentaire commentaire = form.ajouterCommentaire( request );
+
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
+        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
-        if ( utilisateur == null ) {
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
+        if ( connectedUser == null ) {
+            form.setErreur( "erreur", "noUserFound" );
+            form.setResultat( "Aucun utilisateur connecté" );
         } else {
-            Commentaire commentaire = form.ajouterCommentaire( request );
-
-            commentaireService.addCommentaire( commentaire );
-
-            request.setAttribute( ATT_FORM, form );
-            request.setAttribute( ATT_COMMENTAIRE, commentaire );
+            form.setResultat( "Utilisateur connecté" );
         }
+
+        commentaire.setCommentaires( connectedUser );
+
+        commentaireService.addCommentaire( commentaire );
+
+        session.setAttribute( ATT_SESSION_USER, connectedUser );
+
+        request.setAttribute( ATT_FORM, form );
+        request.setAttribute( ATT_COMMENTAIRE, commentaire );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
