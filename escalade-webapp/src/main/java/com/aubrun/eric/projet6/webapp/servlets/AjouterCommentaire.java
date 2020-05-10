@@ -14,10 +14,7 @@ import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.AjouterCommentaireForm;
 
-/**
- * Servlet implementation class AjouterCommentaire
- */
-@WebServlet( "/ajouterCommentaire" )
+@WebServlet( "/AjouterCommentaire" )
 public class AjouterCommentaire extends HttpServlet {
 
     private static final long  serialVersionUID   = 1L;

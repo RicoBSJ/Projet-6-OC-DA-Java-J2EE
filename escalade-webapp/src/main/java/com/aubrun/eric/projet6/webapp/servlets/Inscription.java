@@ -12,7 +12,7 @@ import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.InscriptionForm;
 
-@WebServlet( "/inscription" )
+@WebServlet( "/Inscription" )
 public class Inscription extends HttpServlet {
 
     private static final long  serialVersionUID   = 1L;

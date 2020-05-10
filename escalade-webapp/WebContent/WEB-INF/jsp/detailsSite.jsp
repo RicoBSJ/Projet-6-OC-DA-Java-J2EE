@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,18 +28,14 @@
 				<div class="thumbs-stations">
 					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
 						title="Détails du site" width="315" height="200" />
-					<h4>Description du site</h4>
+					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
-					<br>
-					<div>
-						<a
-							href="<c:url value="/ajouterCommentaire?commentaire=${commentaire.commentaire}" />">
-							Ajouter commentaire </a>
-					</div>
-					<br>
-					<h4>Commentaires</h4>
+					<h5>Commentaires</h5>
+					<div class="massifListe"><h5>${ site.commentaires[0].commentaires.prenom }</h5></div>
+					<div class="massifListe"><h5>${ site.commentaires[0].commentaires.nom }</h5></div>
 					<div class="massifListe">${ site.commentaires[0].commentaire }</div>
 				</div>
+
 				<div class="results-right">
 					<div class="infosStations">
 						<span class="value"><span>${ site.hauteur } </span> de

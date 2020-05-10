@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.UtilisateurService;
 
-@WebServlet( "/listeUtilisateurs" )
+@WebServlet( "/ListeUtilisateurs" )
 public class ListeUtilisateurs extends HttpServlet {
 
     private static final long  serialVersionUID   = 1L;

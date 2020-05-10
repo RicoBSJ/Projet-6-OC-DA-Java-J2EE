@@ -13,7 +13,7 @@ import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.SearchForm;
 import com.aubrun.eric.projet6.model.bean.Site;
 
-@WebServlet( "/rechercheSite" )
+@WebServlet( "/RechercheSite" )
 public class RechercheSite extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;

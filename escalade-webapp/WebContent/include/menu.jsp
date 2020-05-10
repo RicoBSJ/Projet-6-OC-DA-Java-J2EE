@@ -14,17 +14,16 @@
 			<nav>
 				<ul>
 					<c:if test="${empty sessionScope.sessionUtilisateur}">
-					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
-					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
+						<li><a href="<c:url value="/inscription" />">Inscription</a></li>
+						<li><a href="<c:url value="/connexion" />">Connexion</a></li>
 					</c:if>
-					<li><a href="<c:url value="/listeUtilisateurs" />">Liste</a></li>
-					<li><a href="<c:url value="/utilisateurParId" />">Utilisateur par id</a></li>
-					<li><a href="<c:url value="/utilisateurParEmail" />">Utilisateur par email</a></li>
-					<li><a href="<c:url value="/rechercheSite" />">Recherche de site</a></li>
+						<li><a href="<c:url value="/listeUtilisateurs" />">Liste</a></li>
+						<li><a href="<c:url value="/rechercheSite" />">Recherche de site</a></li>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
-					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
-					<li><a href="<c:url value="/creationSite" />">Création d'un site</a></li>
-					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
+						<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
+						<li><a href="<c:url value="/creationSite" />">Création d'un site</a></li>
+						<li><a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a></li>
+						<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 					</c:if>
 				</ul>
 			</nav>

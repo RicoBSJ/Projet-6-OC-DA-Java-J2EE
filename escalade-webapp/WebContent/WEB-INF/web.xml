@@ -4,10 +4,45 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
-	<error-page>
-		<error-code>403</error-code>
-		<location>//403.html</location>
-	</error-page>
+	<servlet>
+		<servlet-name>Accueil</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Accueil</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>RechercheSite</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.RechercheSite</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ListeUtilisateurs</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.ListeUtilisateurs</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Inscription</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Inscription</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>DetailsSite</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.DetailsSite</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Connexion</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Connexion</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Deconnexion</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Deconnexion</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AjouterCommentaire</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.AjouterCommentaire</servlet-class>
+	</servlet>
 
 	<servlet>
 		<servlet-name>CreationSite</servlet-name>
@@ -25,14 +60,48 @@
 	</servlet>
 
 	<servlet-mapping>
+		<servlet-name>Accueil</servlet-name>
+		<url-pattern>/accueil</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>RechercheSite</servlet-name>
+		<url-pattern>/rechercheSite</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ListeUtilisateurs</servlet-name>
+		<url-pattern>/listeUtilisateurs</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Inscription</servlet-name>
+		<url-pattern>/inscription</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>DetailsSite</servlet-name>
+		<url-pattern>/detailsSite</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Connexion</servlet-name>
+		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Deconnexion</servlet-name>
+		<url-pattern>/deconnexion</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
 		<servlet-name>CreationSite</servlet-name>
 		<url-pattern>/creationSite</url-pattern>
 	</servlet-mapping>
 
-	<jsp-config>
-		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
-			<include-prelude>/WEB-INF/jsp/taglibs.jsp</include-prelude>
-		</jsp-property-group>
-	</jsp-config>
+	<servlet-mapping>
+		<servlet-name>AjouterCommentaire</servlet-name>
+		<url-pattern>/ajouterCommentaire</url-pattern>
+	</servlet-mapping>
+
 </web-app>
