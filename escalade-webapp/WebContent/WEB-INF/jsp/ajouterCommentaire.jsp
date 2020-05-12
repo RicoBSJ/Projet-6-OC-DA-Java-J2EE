@@ -16,9 +16,9 @@
                 <legend>Ajout de commentaire</legend>
                 <p>Vous pouvez ajouter un commentaire via ce formulaire.</p>
                 
-                <label for="commentaire">Ajout de commentaire <span class="requis">*</span></label>
-				<input type="text" id="commentaire" name="commentaire" value="<c:out value="${commentaire.commentaire}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['commentaire']}</span>
+                <label for="description">Ajout de commentaire <span class="requis">*</span></label>
+				<input type="text" id="description" name="description" value="<c:out value="${commentaire.description}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['description']}</span>
                 <br />
 
                 <input type="submit" value="Valider"  />

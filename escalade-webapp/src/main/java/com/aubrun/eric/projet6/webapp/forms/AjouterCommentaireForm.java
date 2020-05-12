@@ -1,6 +1,6 @@
 package com.aubrun.eric.projet6.webapp.forms;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +16,7 @@ public class AjouterCommentaireForm {
 
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
+    private Map<Date, String>   erreursDate       = new HashMap<Date, String>();
 
     public String getResultat() {
         return resultat;
@@ -26,52 +27,52 @@ public class AjouterCommentaireForm {
     }
 
     public Commentaire ajouterCommentaire( HttpServletRequest request ) {
-        String commentaire = getValeurChamp( request, CHAMP_COMMENTAIRE );
+        String description = getValeurChamp( request, CHAMP_COMMENTAIRE );
         String titre = getValeurChamp( request, CHAMP_TITRE );
-        Date date = getValeurChamp( request, CHAMP_DATE );
+        Date date = getValeurChampDate( request, CHAMP_DATE );
 
-        Commentaire comment = new Commentaire();
+        Commentaire commentaire = new Commentaire();
         try {
-            traiterCommentaire( commentaire, comment );
-            traiterTitre( titre, comment );
-            traiterDate( date, comment );
+            traiterCommentaire( description, commentaire );
+            traiterTitre( titre, commentaire );
+            traiterDate( date, commentaire );
             resultat = "Ajout du commentaire réussi !";
         } catch ( Exception e ) {
             resultat = "Echec de l'ajout de commentaire : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
-        return comment;
+        return commentaire;
     }
 
-    private void traiterCommentaire( String commentaire, Commentaire comment ) {
+    private void traiterCommentaire( String description, Commentaire commentaire ) {
         try {
-            validationCommentaire( commentaire );
+            validationCommentaire( description );
         } catch ( Exception e ) {
             setErreur( CHAMP_COMMENTAIRE, e.getMessage() );
         }
-        comment.setCommentaire( commentaire );
+        commentaire.setDescription( description );
     }
 
-    private void traiterTitre( String titre, Commentaire comment ) {
+    private void traiterTitre( String titre, Commentaire commentaire ) {
         try {
             validationTitre( titre );
         } catch ( Exception e ) {
-            setErreur( CHAMP_COMMENTAIRE, e.getMessage() );
+            setErreur( CHAMP_TITRE, e.getMessage() );
         }
-        comment.setTitre( titre );
+        commentaire.setTitre( titre );
     }
 
-    private void traiterDate( Date date, Commentaire comment ) {
+    private void traiterDate( Date date, Commentaire commentaire ) {
         try {
             validationDate( date );
         } catch ( Exception e ) {
-            setErreur( CHAMP_COMMENTAIRE, e.getMessage() );
+            setErreurDate( CHAMP_DATE, e.getMessage() );
         }
-        comment.setDate( date );
+        commentaire.setDate( date );
     }
 
-    private void validationCommentaire( String commentaire ) throws Exception {
-        if ( commentaire != null && commentaire.length() < 30 ) {
+    private void validationCommentaire( String description ) throws Exception {
+        if ( description != null && description.length() < 30 ) {
             throw new Exception( "Le commentaire doit contenir au moins 30 caractères." );
         }
     }
@@ -95,6 +96,11 @@ public class AjouterCommentaireForm {
         erreurs.put( champ, message );
     }
 
+    private void setErreurDate( Date champDate, String message ) {
+        // TODO Auto-generated method stub
+        erreursDate.put( champDate, message );
+    }
+
     /*
      * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
      * sinon.
@@ -108,8 +114,8 @@ public class AjouterCommentaireForm {
         }
     }
 
-    private Date getValeurChamp( HttpServletRequest request, Date champDate ) {
-        Date valeur = request.getParameterValues( champDate );
+    private static Date getValeurChampDate( HttpServletRequest request, Date champDate ) {
+        Date valeur = request.getParameter( champDate );
         if ( valeur == null ) {
             return null;
         } else {

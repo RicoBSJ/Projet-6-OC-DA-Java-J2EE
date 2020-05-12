@@ -1,6 +1,6 @@
 package com.aubrun.eric.projet6.model.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,8 +22,8 @@ public class Commentaire {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "id" )
     private Integer     idCommentaire;
-    @Column( name = "commentaire", columnDefinition = "text" )
-    private String      commentaire;
+    @Column( name = "description", columnDefinition = "text" )
+    private String      description;
     @Column( name = "titre" )
     private String      titre;
     @Column( name = "date" )
@@ -41,12 +41,12 @@ public class Commentaire {
         this.idCommentaire = idCommentaire;
     }
 
-    public String getCommentaire() {
-        return commentaire;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCommentaire( String commentaire ) {
-        this.commentaire = commentaire;
+    public void setDescription( String description ) {
+        this.description = description;
     }
 
     public String getTitre() {
