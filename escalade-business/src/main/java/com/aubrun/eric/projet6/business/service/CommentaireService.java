@@ -29,6 +29,11 @@ public class CommentaireService {
         commentaireDAO.ajouterCommentaire( createCommentaire );
     }
 
+    public void updateCommentaire( Commentaire upCommentaire ) {
+
+        commentaireDAO.modifierCommentaire( upCommentaire );
+    }
+
     public Commentaire deleteCommentaire( Integer idCommentaire ) {
 
         return commentaireDAO.supprimerCommentaire( idCommentaire );

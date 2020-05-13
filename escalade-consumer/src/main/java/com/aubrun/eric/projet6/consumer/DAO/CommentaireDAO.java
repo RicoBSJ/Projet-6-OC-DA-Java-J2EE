@@ -59,7 +59,23 @@ public class CommentaireDAO {
         return commentaire;
     }
 
-    public Commentaire supprimerCommentaire( int idCommentaire ) {
+    public void modifierCommentaire( Commentaire commentaire ) {
+        // TODO Auto-generated method stub
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.update( commentaire );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+    }
+
+    public Commentaire supprimerCommentaire( Integer idCommentaire ) {
 
         Session session = factory.getCurrentSession();
 

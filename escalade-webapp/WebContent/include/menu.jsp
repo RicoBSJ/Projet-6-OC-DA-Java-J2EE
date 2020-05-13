@@ -22,7 +22,6 @@
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 						<li><a href="<c:url value="/creationSite" />">Création d'un site</a></li>
-						<li><a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a></li>
 						<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 					</c:if>
 				</ul>

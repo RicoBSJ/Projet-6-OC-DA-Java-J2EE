@@ -27,13 +27,13 @@ public class AjouterCommentaireForm {
     }
 
     public Commentaire ajouterCommentaire( HttpServletRequest request ) {
-        String description = getValeurChamp( request, CHAMP_COMMENTAIRE );
+        String contenu = getValeurChamp( request, CHAMP_COMMENTAIRE );
         String titre = getValeurChamp( request, CHAMP_TITRE );
         Date date = getValeurChampDate( request, CHAMP_DATE );
 
         Commentaire commentaire = new Commentaire();
         try {
-            traiterCommentaire( description, commentaire );
+            traiterCommentaire( contenu, commentaire );
             traiterTitre( titre, commentaire );
             traiterDate( date, commentaire );
             resultat = "Ajout du commentaire réussi !";
@@ -44,13 +44,13 @@ public class AjouterCommentaireForm {
         return commentaire;
     }
 
-    private void traiterCommentaire( String description, Commentaire commentaire ) {
+    private void traiterCommentaire( String contenu, Commentaire commentaire ) {
         try {
-            validationCommentaire( description );
+            validationCommentaire( contenu );
         } catch ( Exception e ) {
             setErreur( CHAMP_COMMENTAIRE, e.getMessage() );
         }
-        commentaire.setDescription( description );
+        commentaire.setContenu( contenu );
     }
 
     private void traiterTitre( String titre, Commentaire commentaire ) {
@@ -71,8 +71,8 @@ public class AjouterCommentaireForm {
         commentaire.setDate( date );
     }
 
-    private void validationCommentaire( String description ) throws Exception {
-        if ( description != null && description.length() < 30 ) {
+    private void validationCommentaire( String contenu ) throws Exception {
+        if ( contenu != null && contenu.length() < 30 ) {
             throw new Exception( "Le commentaire doit contenir au moins 30 caractères." );
         }
     }

@@ -22,8 +22,8 @@ public class Commentaire {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = "id" )
     private Integer     idCommentaire;
-    @Column( name = "description", columnDefinition = "text" )
-    private String      description;
+    @Column( name = "contenu", columnDefinition = "text" )
+    private String      contenu;
     @Column( name = "titre" )
     private String      titre;
     @Column( name = "date" )
@@ -41,12 +41,12 @@ public class Commentaire {
         this.idCommentaire = idCommentaire;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContenu() {
+        return contenu;
     }
 
-    public void setDescription( String description ) {
-        this.description = description;
+    public void setContenu( String contenu ) {
+        this.contenu = contenu;
     }
 
     public String getTitre() {

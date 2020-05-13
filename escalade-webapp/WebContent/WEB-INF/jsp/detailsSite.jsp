@@ -30,10 +30,16 @@
 						title="Détails du site" width="315" height="200" />
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
+					<a href="<c:url value="/ajouterCommentaire" />">Ajouter un
+						commentaire</a>
 					<h5>Commentaires</h5>
-					<div class="massifListe"><h5>${ site.commentaires[0].commentaires.prenom }</h5></div>
-					<div class="massifListe"><h5>${ site.commentaires[0].commentaires.nom }</h5></div>
-					<div class="massifListe">${ site.commentaires[0].commentaire }</div>
+					<div class="massifListe">
+						<h5>${ site.commentaires[0].commentaires.prenom }</h5>
+					</div>
+					<div class="massifListe">
+						<h5>${ site.commentaires[0].commentaires.nom }</h5>
+					</div>
+					<div class="massifListe">${ site.commentaires[0].contenu }</div>
 				</div>
 
 				<div class="results-right">
