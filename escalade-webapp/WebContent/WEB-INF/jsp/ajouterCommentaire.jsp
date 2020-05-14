@@ -12,7 +12,7 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<form method="post" action="creationSite">
+	<form action="<c:url value="/ajouterCommentaire" />" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Ajout de commentaire</legend>
 			<p>Vous pouvez ajouter un commentaire via ce formulaire.</p>
@@ -21,7 +21,7 @@
 				class="requis">*</span></label> <input type="text" id="contenu"
 				name="contenu" value="<c:out value="${commentaire.contenu}"/>"
 				size="30" maxlength="60" /> <span class="erreur">${form.erreurs['contenu']}</span>
-			<br /> <input type="submit" value="Valider" /> <input type="reset"
+			<br /> <input type="submit" value="Envoyer" class="sansLabel" /> <input type="reset"
 				value="Remettre à zéro" /> <br />
 
 			<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
