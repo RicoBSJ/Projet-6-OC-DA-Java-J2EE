@@ -1,6 +1,5 @@
 package com.aubrun.eric.projet6.webapp.forms;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,6 @@ public class AjouterCommentaireForm {
 
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
-    private Map<Date, String>   erreursDate       = new HashMap<Date, String>();
 
     public String getResultat() {
         return resultat;
@@ -80,10 +78,6 @@ public class AjouterCommentaireForm {
      */
     public void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
-    }
-
-    public void setErreurDate( Date date, String message ) {
-        erreursDate.put( date, message );
     }
 
     /*
