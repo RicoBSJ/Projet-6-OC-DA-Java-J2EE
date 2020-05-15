@@ -33,13 +33,18 @@
 					<a href="<c:url value="/ajouterCommentaire" />">Ajouter un
 						commentaire</a>
 					<h5>Commentaires</h5>
-					<div class="massifListe">
-						<h5>${ site.commentaires[0].commentaires.prenom }</h5>
-					</div>
-					<div class="massifListe">
-						<h5>${ site.commentaires[0].commentaires.nom }</h5>
-					</div>
-					<div class="massifListe">${ site.commentaires[0].contenu }</div>
+					<c:forEach var="commentaire" items="${ site.commentaires }">
+						<div class="massifListe">
+							<h5>${ commentaire.utilisateur.prenom }</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${ commentaire.utilisateur.nom }</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${ commentaire.date }</h5>
+						</div>
+						<div class="massifListe">${ site.commentaires[0].contenu }</div>
+					</c:forEach>
 				</div>
 
 				<div class="results-right">

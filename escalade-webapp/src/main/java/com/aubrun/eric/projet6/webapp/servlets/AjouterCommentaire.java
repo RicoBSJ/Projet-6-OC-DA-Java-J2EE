@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +59,8 @@ public class AjouterCommentaire extends HttpServlet {
         } else {
             Commentaire commentaire = form.ajouterCommentaire( request );
 
-            commentaire.setCommentaires( connectedUser );
+            commentaire.setUtilisateur( connectedUser );
+            commentaire.setDate( new Date() );
 
             commentaireService.addCommentaire( commentaire );
 

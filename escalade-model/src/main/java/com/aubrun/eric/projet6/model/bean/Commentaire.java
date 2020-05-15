@@ -31,7 +31,7 @@ public class Commentaire {
     @ManyToOne
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_utilisateur" )
-    private Utilisateur commentaires;
+    private Utilisateur utilisateur;
 
     public Integer getIdCommentaire() {
         return idCommentaire;
@@ -65,11 +65,11 @@ public class Commentaire {
         this.date = date;
     }
 
-    public Utilisateur getCommentaires() {
-        return commentaires;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setCommentaires( Utilisateur commentaires ) {
-        this.commentaires = commentaires;
+    public void setUtilisateur( Utilisateur utilisateur ) {
+        this.utilisateur = utilisateur;
     }
 }

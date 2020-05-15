@@ -31,6 +31,8 @@ public class Utilisateur {
     private String    prenom;
     @Column( name = "telephone" )
     private String    telephone;
+    @Column( name = "membre" )
+    private Boolean   membre;
 
     public Integer getId() {
         return id;

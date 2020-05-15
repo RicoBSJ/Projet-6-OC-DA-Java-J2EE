@@ -37,6 +37,8 @@ public class Site {
     private String            hauteur;
     @Column( name = "orientation" )
     private String            orientation;
+    @Column( name = "officiel" )
+    private Boolean           officiel;
     @OneToMany( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
