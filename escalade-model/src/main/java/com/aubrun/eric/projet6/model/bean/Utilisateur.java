@@ -97,4 +97,12 @@ public class Utilisateur {
     public void setTelephone( String telephone ) {
         this.telephone = telephone;
     }
+
+    public Boolean getMembre() {
+        return membre;
+    }
+
+    public void setMembre( Boolean membre ) {
+        this.membre = membre;
+    }
 }

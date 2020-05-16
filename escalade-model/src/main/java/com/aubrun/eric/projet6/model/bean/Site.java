@@ -116,6 +116,14 @@ public class Site {
         this.orientation = orientation;
     }
 
+    public Boolean getOfficiel() {
+        return officiel;
+    }
+
+    public void setOfficiel( Boolean officiel ) {
+        this.officiel = officiel;
+    }
+
     public List<Photo> getPhotos() {
         return photos;
     }

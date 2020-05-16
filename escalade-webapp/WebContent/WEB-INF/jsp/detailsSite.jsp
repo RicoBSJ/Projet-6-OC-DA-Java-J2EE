@@ -19,8 +19,10 @@
 			<article class="resultats-listeStations even">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a href="<c:url value="" />">${ site.nom }</a> <a
-							href="<c:url value="/accueil"/>"><h5>Retour accueil</h5></a>
+						<a href="<c:url value="" />">${ site.nom }</a>
+						<c:if test="${site.officiel == true}">Site officiel</c:if>
+						<br> <a href="<c:url value="/accueil"/>"><h5>Retour
+								accueil</h5></a>
 					</h3>
 					<div class="massifListe">${ site.pays }</div>
 					<div class="massifListe">${ site.region }</div>
@@ -34,6 +36,7 @@
 						commentaire</a>
 					<h5>Commentaires</h5>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
+					<c:if test="${commentaire.utilisateur.membre == true}"><h5>Membre officiel :</h5></c:if>
 						<div class="massifListe">
 							<h5>${ commentaire.utilisateur.prenom }</h5>
 						</div>

@@ -18,7 +18,8 @@
                     <th>Prénom</th>
                     <th>Adresse</th>
                     <th>Téléphone</th>
-                    <th>Email</th>            
+                    <th>Email</th>
+                    <th>Membre</th>
                 </tr>
                 <c:forEach items="${ utilisateurs }" var="utilisateur">
                 <%-- Simple test de parité sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
@@ -29,6 +30,7 @@
                     <td><c:out value="${ utilisateur.adresse }"></c:out></td>
                     <td><c:out value="${ utilisateur.telephone }"></c:out></td>
                     <td><c:out value="${ utilisateur.email }"></c:out></td>
+                    <td><c:if test="${utilisateur.membre == true}"><h5>Membre officiel</h5></c:if></td>
                 </tr>
                 </c:forEach>
             </table>
