@@ -24,10 +24,6 @@
 					<li><a href="<c:url value="/creationSite" />">Création d'un site</a></li>
 					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 				</c:if>
-				<c:if test="${!empty sessionScope.sessionUtilisateur.membre == true}">
-					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>					
-					<li><a href="<c:url value="/taguerUnSiteOfficiel" />">Taguer un site officiel</a></li>
-				</c:if>
 			</ul>
 		</nav>
 	</header>

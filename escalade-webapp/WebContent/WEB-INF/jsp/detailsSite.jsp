@@ -21,8 +21,12 @@
 					<h3 class="nomStationListe">
 						<a href="<c:url value="" />">${ site.nom }</a>
 						<c:if test="${site.officiel == true}">Site officiel</c:if>
-						<br> <a href="<c:url value="/accueil"/>"><h5>Retour
-								accueil</h5></a>
+					<c:forEach var="membre" items="${ utilisateur.membre }">
+					<c:if test="${utilisateur.membre == true}">
+						<li><a href="<c:url value="/taguerUnSiteOfficiel" />">Taguer un site officiel</a></li>
+					</c:if>
+					</c:forEach>
+						<br> <a href="<c:url value="/accueil"/>"><h5>Retour accueil</h5></a>
 					</h3>
 					<div class="massifListe">${ site.pays }</div>
 					<div class="massifListe">${ site.region }</div>
