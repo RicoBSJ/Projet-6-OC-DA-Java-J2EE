@@ -15,9 +15,11 @@
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
 	<main class="container">
+	<c:if test="${site.officiel == true}">
+		<br><a><h5>Officiel Les amis de l'escalade</h5></a>
+	</c:if>
 	<c:choose>
 		<c:when test="${site.officiel == true && sessionScope.sessionUtilisateur.membre == true}">
-			<br><a><h5>Officiel Les amis de l'escalade</h5></a>
 			<a href="<c:url value="/taguerUnSiteOfficiel" />"><h5>Taguer un site officiel</h5></a>
 		</c:when>
 	</c:choose>
@@ -36,8 +38,9 @@
 						title="Détails du site" width="315" height="200" />
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
-					<a href="<c:url value="/ajouterCommentaire" />">Ajouter un
-						commentaire</a>
+					<c:if test="${!empty sessionScope.sessionUtilisateur}">
+						<a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a>
+					</c:if>
 					<h5>Commentaires</h5>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
 					<c:if test="${commentaire.utilisateur.membre == true}"><h5>Membre officiel :</h5></c:if>
