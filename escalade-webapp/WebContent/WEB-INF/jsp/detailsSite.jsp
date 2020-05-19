@@ -23,6 +23,10 @@
 			<a href="<c:url value="/taguerUnSiteOfficiel" />"><h5>Taguer un site officiel</h5></a>
 		</c:when>
 	</c:choose>
+	<c:if test="${ site.taguerUnSiteOfficiel == true }">
+		<br><a><h5>Un site officiel est tagué par :</h5></a>
+		<br>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}
+	</c:if>
 		<section>
 			<article class="resultats-listeStations even">
 				<div class="localisationStationListe">
