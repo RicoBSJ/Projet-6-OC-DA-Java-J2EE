@@ -24,8 +24,8 @@
 		</c:when>
 	</c:choose>
 	<c:if test="${ site.taguerUnSiteOfficiel == true }">
-		<br><a><h5>Un site officiel est tagué par :</h5></a>
-		<br>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}
+		<a><h5>Ce site officiel est tagué par :</h5></a>
+		<a>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</a>
 	</c:if>
 		<section>
 			<article class="resultats-listeStations even">

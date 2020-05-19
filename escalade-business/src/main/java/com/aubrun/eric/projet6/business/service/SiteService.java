@@ -8,39 +8,39 @@ import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteService {
 
-	private SiteDAO siteDAO = new SiteDAO();
+    private SiteDAO siteDAO = new SiteDAO();
 
-	public List<Site> findAll() {
+    public List<Site> findAll() {
 
-		List<Site> site = siteDAO.recupererSites();
-		for (Site s : site) {
-			System.out.println(s);
-		}
-		return site;
-	}
+        List<Site> site = siteDAO.recupererSites();
+        for ( Site s : site ) {
+            System.out.println( s );
+        }
+        return site;
+    }
 
-	public Site findDetails(Integer id) {
+    public Site findDetails( Integer id ) {
 
-		return siteDAO.afficherDetails(id);
-	}
+        return siteDAO.afficherDetails( id );
+    }
 
-	public void addSite(Site createSite) {
+    public void addSite( Site createSite ) {
 
-		siteDAO.ajouterSite(createSite);
-	}
+        siteDAO.ajouterSite( createSite );
+    }
 
-	public Site deleteSite(Integer id) {
+    public Site deleteSite( Integer id ) {
 
-		return siteDAO.supprimerSite(id);
-	}
+        return siteDAO.supprimerSite( id );
+    }
 
-	public List<Site> searchSite(SearchForm searchForm) {
+    public List<Site> searchSite( SearchForm searchForm ) {
 
-		return siteDAO.recherche(searchForm);
-	}
+        return siteDAO.recherche( searchForm );
+    }
 
-	public Boolean tagOfficialSite(Boolean tag) {
+    public void tagOfficialSite( Site siteToBeTag ) {
 
-		return siteDAO.taguerUnSiteOfficiel(tag);
-	}
+        siteDAO.taguerUnSiteOfficiel( siteToBeTag );
+    }
 }

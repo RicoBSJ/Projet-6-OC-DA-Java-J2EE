@@ -11,32 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Site;
 
-@WebServlet("/TaguerUnSiteOfficiel")
+@WebServlet( "/TaguerUnSiteOfficiel" )
 public class TaguerUnSiteOfficiel extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long  serialVersionUID = 1L;
 
-	/* Constantes */
-	public static final String VUE = "/WEB-INF/jsp/taguerUnSiteOfficiel.jsp";
+    /* Constantes */
+    public static final String VUE              = "/WEB-INF/jsp/detailsSite.jsp";
 
-	private SiteService siteService = new SiteService();
+    private SiteService        siteService      = new SiteService();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
 
-		Site site = new Site();
+        Site siteATaguer = new Site();
 
-		Boolean tag = site.getTaguerUnSiteOfficiel();
+        siteService.tagOfficialSite( siteATaguer );
 
-		siteService.tagOfficialSite(tag);
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    protected void doPost( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet( request, response );
+    }
 
 }

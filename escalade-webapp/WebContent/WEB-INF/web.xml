@@ -45,6 +45,11 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>TaguerUnSiteOfficiel</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.TaguerUnSiteOfficiel</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>CreationSite</servlet-name>
 		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.CreationSite</servlet-class>
 		<init-param>
@@ -102,6 +107,11 @@
 	<servlet-mapping>
 		<servlet-name>AjouterCommentaire</servlet-name>
 		<url-pattern>/ajouterCommentaire</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>TaguerUnSiteOfficiel</servlet-name>
+		<url-pattern>/taguerUnSiteOfficiel</url-pattern>
 	</servlet-mapping>
 
 </web-app>
