@@ -158,7 +158,7 @@ public class SiteDAO {
             String hql = "UPDATE Site set taguerUnSiteOfficiel = :taguerUnSiteOfficiel " + "WHERE id = :siteId";
             Query<Site> query = session.createQuery( hql );
             query.setParameter( "taguerUnSiteOfficiel", true );
-            // query.setParameter( "siteId", site.getId() );
+            query.setParameter( "siteId", site.getId() );
             int result = query.executeUpdate();
             System.out.println( "Rows affected: " + result );
 

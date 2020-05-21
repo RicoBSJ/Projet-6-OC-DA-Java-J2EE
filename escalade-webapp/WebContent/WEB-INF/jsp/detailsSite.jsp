@@ -20,7 +20,10 @@
 	</c:if>
 	<c:choose>
 		<c:when test="${site.officiel == true && sessionScope.sessionUtilisateur.membre == true}">
-			<a href="<c:url value="/taguerUnSiteOfficiel" />"><h5>Taguer un site officiel</h5></a>
+<%-- 			<a href="<c:url value="/taguerUnSiteOfficiel" />"><h5>Taguer un site officiel</h5></a> --%>
+			<form action="taguerUnSiteOfficiel" method="post"> 
+			    <input type="submit" name="tag" value="Taguer le site officiel" /> 
+			</form> 
 		</c:when>
 	</c:choose>
 	<c:if test="${ site.taguerUnSiteOfficiel == true }">
@@ -43,7 +46,10 @@
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
-						<a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a>
+<%-- 						<a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a> --%>
+						<form action="ajouterCommentaire" method="post"> 
+			    			<input type="submit" name="comment" value="Ajouter un commentaire" /> 
+						</form> 
 					</c:if>
 					<h5>Commentaires</h5>
 					<c:forEach var="commentaire" items="${ site.commentaires }">

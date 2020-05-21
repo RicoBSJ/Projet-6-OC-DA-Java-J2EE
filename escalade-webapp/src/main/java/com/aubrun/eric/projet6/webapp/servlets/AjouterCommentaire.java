@@ -54,22 +54,21 @@ public class AjouterCommentaire extends HttpServlet {
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
         if ( connectedUser == null ) {
+
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
-        } else {
-            Commentaire commentaire = form.ajouterCommentaire( request );
 
+        } else if ( connectedUser != null && request.getParameter( "comment" ) != null ) {
+
+            Commentaire commentaire = form.ajouterCommentaire( request );
             commentaire.setUtilisateur( connectedUser );
             commentaire.setDate( new Date() );
-
             commentaireService.addCommentaire( commentaire );
-
             session.setAttribute( ATT_SESSION_USER, connectedUser );
-
             request.setAttribute( ATT_FORM, form );
             request.setAttribute( ATT_COMMENTAIRE, commentaire );
-
-            this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
         }
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

@@ -26,15 +26,16 @@ public class TaguerUnSiteOfficiel extends HttpServlet {
 
         Site siteATaguer = new Site();
 
-        siteService.tagOfficialSite( siteATaguer );
+        if ( request.getParameter( "tag" ) != null ) {
+            siteService.tagOfficialSite( siteATaguer );
+        }
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet( request, response );
-    }
 
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 }
