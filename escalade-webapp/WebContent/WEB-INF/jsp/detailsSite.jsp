@@ -19,15 +19,15 @@
 		<br><a><h5>Officiel Les amis de l'escalade</h5></a>
 	</c:if>
 	<c:choose>
-		<c:when test="${site.officiel == true && sessionScope.sessionUtilisateur.membre == true}">
-<%-- 			<a href="<c:url value="/taguerUnSiteOfficiel" />"><h5>Taguer un site officiel</h5></a> --%>
-			<form action="taguerUnSiteOfficiel" method="post"> 
-			    <input type="submit" name="tag" value="Taguer le site officiel" /> 
+		<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
+			<form action="taguerUnSiteOfficiel" method="post">
+				<input type="hidden" value="${ site.id }" name="idSite" >
+			    <input type="submit" name="tag" value="Taguer ce site comme site officiel" />
 			</form> 
 		</c:when>
 	</c:choose>
-	<c:if test="${ site.taguerUnSiteOfficiel == true }">
-		<a><h5>Ce site officiel est tagué par :</h5></a>
+	<c:if test="${ site.officiel == true }">
+		<a><h5>Ce site est tagué comme site officiel par :</h5></a>
 		<a>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</a>
 	</c:if>
 		<section>

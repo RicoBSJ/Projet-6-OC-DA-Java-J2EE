@@ -39,8 +39,10 @@ public class SiteService {
         return siteDAO.recherche( searchForm );
     }
 
-    public void tagOfficialSite( Site siteToBeTag ) {
+    public void tagOfficialSite( Integer idSite ) {
 
-        siteDAO.taguerUnSiteOfficiel( siteToBeTag );
+        Site site = siteDAO.afficherDetails( idSite );
+        site.setOfficiel( true );
+        siteDAO.modifierSite( site );
     }
 }

@@ -19,142 +19,132 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Table
 public class Site {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
-	@Column(name = "nom")
-	private String nom;
-	@Column(name = "pays")
-	private String pays;
-	@Column(name = "region")
-	private String region;
-	@Column(name = "description", columnDefinition = "text")
-	private String description;
-	@Column(name = "cotation")
-	private String cotation;
-	@Column(name = "hauteur")
-	private String hauteur;
-	@Column(name = "orientation")
-	private String orientation;
-	@Column(name = "officiel")
-	private Boolean officiel;
-	@Column(name = "taguer")
-	private Boolean taguerUnSiteOfficiel;
-	@OneToMany(cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinColumn(name = "id_site")
-	private List<Photo> photos;
-	@OneToMany(cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinColumn(name = "id_site")
-	private List<Secteur> secteurs;
-	@OneToMany(cascade = CascadeType.ALL)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinColumn(name = "id_site")
-	private List<Commentaire> commentaires;
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "id" )
+    private Integer           id;
+    @Column( name = "nom" )
+    private String            nom;
+    @Column( name = "pays" )
+    private String            pays;
+    @Column( name = "region" )
+    private String            region;
+    @Column( name = "description", columnDefinition = "text" )
+    private String            description;
+    @Column( name = "cotation" )
+    private String            cotation;
+    @Column( name = "hauteur" )
+    private String            hauteur;
+    @Column( name = "orientation" )
+    private String            orientation;
+    @Column( name = "officiel" )
+    private Boolean           officiel;
+    @OneToMany( cascade = CascadeType.ALL )
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
+    private List<Photo>       photos;
+    @OneToMany( cascade = CascadeType.ALL )
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
+    private List<Secteur>     secteurs;
+    @OneToMany( cascade = CascadeType.ALL )
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
+    private List<Commentaire> commentaires;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId( Integer id ) {
+        this.id = id;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public void setNom( String nom ) {
+        this.nom = nom;
+    }
 
-	public String getPays() {
-		return pays;
-	}
+    public String getPays() {
+        return pays;
+    }
 
-	public void setPays(String pays) {
-		this.pays = pays;
-	}
+    public void setPays( String pays ) {
+        this.pays = pays;
+    }
 
-	public String getRegion() {
-		return region;
-	}
+    public String getRegion() {
+        return region;
+    }
 
-	public void setRegion(String region) {
-		this.region = region;
-	}
+    public void setRegion( String region ) {
+        this.region = region;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription( String description ) {
+        this.description = description;
+    }
 
-	public String getCotation() {
-		return cotation;
-	}
+    public String getCotation() {
+        return cotation;
+    }
 
-	public void setCotation(String cotation) {
-		this.cotation = cotation;
-	}
+    public void setCotation( String cotation ) {
+        this.cotation = cotation;
+    }
 
-	public String getHauteur() {
-		return hauteur;
-	}
+    public String getHauteur() {
+        return hauteur;
+    }
 
-	public void setHauteur(String hauteur) {
-		this.hauteur = hauteur;
-	}
+    public void setHauteur( String hauteur ) {
+        this.hauteur = hauteur;
+    }
 
-	public String getOrientation() {
-		return orientation;
-	}
+    public String getOrientation() {
+        return orientation;
+    }
 
-	public void setOrientation(String orientation) {
-		this.orientation = orientation;
-	}
+    public void setOrientation( String orientation ) {
+        this.orientation = orientation;
+    }
 
-	public Boolean getOfficiel() {
-		return officiel;
-	}
+    public Boolean getOfficiel() {
+        return officiel;
+    }
 
-	public void setOfficiel(Boolean officiel) {
-		this.officiel = officiel;
-	}
+    public void setOfficiel( Boolean officiel ) {
+        this.officiel = officiel;
+    }
 
-	public Boolean getTaguerUnSiteOfficiel() {
-		return taguerUnSiteOfficiel;
-	}
+    public List<Photo> getPhotos() {
+        return photos;
+    }
 
-	public void setTaguerUnSiteOfficiel(Boolean taguerUnSiteOfficiel) {
-		this.taguerUnSiteOfficiel = taguerUnSiteOfficiel;
-	}
+    public void setPhotos( List<Photo> photos ) {
+        this.photos = photos;
+    }
 
-	public List<Photo> getPhotos() {
-		return photos;
-	}
+    public List<Secteur> getSecteurs() {
+        return secteurs;
+    }
 
-	public void setPhotos(List<Photo> photos) {
-		this.photos = photos;
-	}
+    public void setSecteurs( List<Secteur> secteurs ) {
+        this.secteurs = secteurs;
+    }
 
-	public List<Secteur> getSecteurs() {
-		return secteurs;
-	}
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
 
-	public void setSecteurs(List<Secteur> secteurs) {
-		this.secteurs = secteurs;
-	}
-
-	public List<Commentaire> getCommentaires() {
-		return commentaires;
-	}
-
-	public void setCommentaires(List<Commentaire> commentaires) {
-		this.commentaires = commentaires;
-	}
+    public void setCommentaires( List<Commentaire> commentaires ) {
+        this.commentaires = commentaires;
+    }
 }

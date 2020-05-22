@@ -148,20 +148,13 @@ public class SiteDAO {
         return resultat;
     }
 
-    public void taguerUnSiteOfficiel( Site site ) {
+    public void modifierSite( Site site ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-
-            String hql = "UPDATE Site set taguerUnSiteOfficiel = :taguerUnSiteOfficiel " + "WHERE id = :siteId";
-            Query<Site> query = session.createQuery( hql );
-            query.setParameter( "taguerUnSiteOfficiel", true );
-            query.setParameter( "siteId", site.getId() );
-            int result = query.executeUpdate();
-            System.out.println( "Rows affected: " + result );
-
+            session.save( site );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
