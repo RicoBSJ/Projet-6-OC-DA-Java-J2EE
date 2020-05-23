@@ -153,7 +153,7 @@ public class SiteDAO {
 
         try {
             session.getTransaction().begin();
-            session.save( site );
+            session.update( site );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {

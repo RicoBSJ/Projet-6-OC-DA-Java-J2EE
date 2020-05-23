@@ -24,20 +24,6 @@ public class TaguerUnSiteOfficiel extends HttpServlet {
 
     private SiteService        siteService      = new SiteService();
 
-    // protected void doGet( HttpServletRequest request, HttpServletResponse
-    // response )
-    // throws ServletException, IOException {
-    //
-    // Site siteATaguer = new Site();
-    //
-    // if ( request.getParameter( "tag" ) != null ) {
-    // siteService.tagOfficialSite( siteATaguer );
-    // }
-    //
-    // this.getServletContext().getRequestDispatcher( VUE ).forward( request,
-    // response );
-    // }
-
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
@@ -54,7 +40,7 @@ public class TaguerUnSiteOfficiel extends HttpServlet {
 
         Integer idSite = Integer.parseInt( request.getParameter( "idSite" ) );
         siteService.tagOfficialSite( idSite );
-        request.setAttribute( "site", siteService.findDetails( idSite ) );
+        // request.setAttribute( "site", siteService.findDetails( idSite ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

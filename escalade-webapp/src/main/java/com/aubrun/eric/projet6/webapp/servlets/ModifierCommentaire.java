@@ -26,7 +26,7 @@ public class ModifierCommentaire extends HttpServlet {
     public static final String ATT_COMMENTAIRE    = "commentaire";
     public static final String ATT_FORM           = "form";
     public static final String ATT_SESSION_USER   = "sessionUtilisateur";
-    public static final String VUE                = "/WEB-INF/jsp/detailsSite.jsp";
+    public static final String VUE                = "/WEB-INF/jsp/modifierCommentaire.jsp";
 
     private CommentaireService commentaireService = new CommentaireService();
 
