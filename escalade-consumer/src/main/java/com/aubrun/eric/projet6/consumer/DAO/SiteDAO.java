@@ -59,18 +59,18 @@ public class SiteDAO {
         return site;
     }
 
-    public Site supprimerSite( int id ) {
+    public void supprimerSite( Integer idSite ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
 
-            Site site = session.get( Site.class, id );
+            Site site = session.get( Site.class, idSite );
             if ( site != null ) {
                 String q = "DELETE FROM Site s " + "WHERE s.id = :siteId";
                 Query<Site> query = session.createQuery( q );
-                query.setParameter( "siteId", id );
+                query.setParameter( "siteId", idSite );
                 int result = query.executeUpdate();
                 System.out.println( result );
             }
@@ -81,7 +81,6 @@ public class SiteDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return null;
     }
 
     public void ajouterSite( Site site ) {

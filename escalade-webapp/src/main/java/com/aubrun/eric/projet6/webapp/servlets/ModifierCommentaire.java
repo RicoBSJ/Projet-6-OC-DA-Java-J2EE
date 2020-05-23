@@ -26,7 +26,7 @@ public class ModifierCommentaire extends HttpServlet {
     public static final String ATT_COMMENTAIRE    = "commentaire";
     public static final String ATT_FORM           = "form";
     public static final String ATT_SESSION_USER   = "sessionUtilisateur";
-    public static final String VUE                = "/WEB-INF/jsp/supprimerCommentaire.jsp";
+    public static final String VUE                = "/WEB-INF/jsp/detailsSite.jsp";
 
     private CommentaireService commentaireService = new CommentaireService();
 
@@ -65,7 +65,7 @@ public class ModifierCommentaire extends HttpServlet {
             commentaire.setUtilisateur( connectedUser );
             commentaire.setDate( new Date() );
 
-            commentaireService.updateCommentaire( commentaire );
+            commentaireService.modifyComment( commentaire );
 
             session.setAttribute( ATT_SESSION_USER, connectedUser );
 

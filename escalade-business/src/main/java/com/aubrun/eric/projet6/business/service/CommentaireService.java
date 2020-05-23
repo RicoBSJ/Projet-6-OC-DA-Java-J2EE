@@ -29,19 +29,19 @@ public class CommentaireService {
         commentaireDAO.ajouterCommentaire( createCommentaire );
     }
 
-    public void updateCommentaire( Commentaire upCommentaire ) {
+    public void deleteCommentaire( Integer idCommentaire ) {
 
-        commentaireDAO.modifierCommentaire( upCommentaire );
-    }
-
-    public Commentaire deleteCommentaire( Integer idCommentaire ) {
-
-        return commentaireDAO.supprimerCommentaire( idCommentaire );
+        commentaireDAO.supprimerCommentaire( idCommentaire );
     }
 
     public List<Commentaire> searchCommentaire( SearchFormCom searchFormCom ) {
 
         return commentaireDAO.recherche( searchFormCom );
+    }
+
+    public void modifyComment( Commentaire commentToModidy ) {
+
+        commentaireDAO.modifierCommentaire( commentToModidy );
     }
 
 }

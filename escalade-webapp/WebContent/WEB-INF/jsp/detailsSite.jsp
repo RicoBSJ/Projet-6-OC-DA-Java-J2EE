@@ -15,27 +15,30 @@
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
 	<main class="container">
-	<c:if test="${site.officiel == true}">
-		<br><a><h5>Officiel Les amis de l'escalade</h5></a>
-	</c:if>
-	<c:choose>
-		<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
-			<form action="taguerUnSiteOfficiel" method="post">
-				<input type="hidden" value="${ site.id }" name="idSite" >
-			    <input type="submit" name="tag" value="Taguer ce site comme site officiel" />
-			</form> 
-		</c:when>
-	</c:choose>
-	<c:if test="${ site.officiel == true }">
-		<a><h5>Ce site est tagué comme site officiel par :</h5></a>
-		<a>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</a>
-	</c:if>
+		<c:if test="${site.officiel == true}">
+			<br>
+			<a><h5>Officiel Les amis de l'escalade</h5></a>
+		</c:if>
+		<c:choose>
+			<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
+				<form action="taguerUnSiteOfficiel" method="post">
+					<input type="hidden" value="${ site.id }" name="idSite"> <input
+						type="submit" name="tag"
+						value="Taguer ce site comme site officiel" />
+				</form>
+			</c:when>
+		</c:choose>
+		<c:if test="${ site.officiel == true }">
+			<a><h5>Ce site est tagué comme site officiel par :</h5></a>
+			<a>${sessionScope.sessionUtilisateur.prenom}
+				${sessionScope.sessionUtilisateur.nom}</a>
+		</c:if>
 		<section>
 			<article class="resultats-listeStations even">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
-						<a href="<c:url value="" />">${ site.nom }</a>
-						<a href="<c:url value="/accueil"/>"><h5>Retour accueil</h5></a><br>
+						<a href="<c:url value="" />">${ site.nom }</a> <a
+							href="<c:url value="/accueil"/>"><h5>Retour accueil</h5></a><br>
 					</h3>
 					<div class="massifListe">${ site.pays }</div>
 					<div class="massifListe">${ site.region }</div>
@@ -46,14 +49,16 @@
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
-<%-- 						<a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a> --%>
-						<form action="ajouterCommentaire" method="post"> 
-			    			<input type="submit" name="comment" value="Ajouter un commentaire" /> 
-						</form> 
+						<form action="ajouterCommentaire" method="post">
+							<input type="submit" name="comment"
+								value="Ajouter un commentaire" />
+						</form>
 					</c:if>
 					<h5>Commentaires</h5>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
-					<c:if test="${commentaire.utilisateur.membre == true}"><h5>Membre officiel :</h5></c:if>
+						<c:if test="${commentaire.utilisateur.membre == true}">
+							<h5>Membre officiel :</h5>
+						</c:if>
 						<div class="massifListe">
 							<h5>${ commentaire.utilisateur.prenom }</h5>
 						</div>
@@ -64,6 +69,13 @@
 							<h5>${ commentaire.date }</h5>
 						</div>
 						<div class="massifListe">${ site.commentaires[0].contenu }</div>
+						<c:choose>
+							<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
+								<form action="supprimerCommentaire" method="post">
+									<input type="submit" name="comment" value="Supprimer ce commentaire" />
+								</form>
+							</c:when>
+						</c:choose>
 					</c:forEach>
 				</div>
 

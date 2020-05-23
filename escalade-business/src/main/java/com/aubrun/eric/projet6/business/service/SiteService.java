@@ -29,9 +29,9 @@ public class SiteService {
         siteDAO.ajouterSite( createSite );
     }
 
-    public Site deleteSite( Integer id ) {
+    public void deleteSite( Integer idSite ) {
 
-        return siteDAO.supprimerSite( id );
+        siteDAO.supprimerSite( idSite );
     }
 
     public List<Site> searchSite( SearchForm searchForm ) {
@@ -44,5 +44,10 @@ public class SiteService {
         Site site = siteDAO.afficherDetails( idSite );
         site.setOfficiel( true );
         siteDAO.modifierSite( site );
+    }
+
+    public void modifySite( Site siteToModidy ) {
+
+        siteDAO.modifierSite( siteToModidy );
     }
 }

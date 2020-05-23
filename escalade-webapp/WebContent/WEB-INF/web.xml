@@ -50,6 +50,16 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>SupprimerCommentaire</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.SupprimerCommentaire</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ModifierCommentaire</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.ModifierCommentaire</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>CreationSite</servlet-name>
 		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.CreationSite</servlet-class>
 		<init-param>
@@ -112,6 +122,16 @@
 	<servlet-mapping>
 		<servlet-name>TaguerUnSiteOfficiel</servlet-name>
 		<url-pattern>/taguerUnSiteOfficiel</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SupprimerCommentaire</servlet-name>
+		<url-pattern>/supprimerCommentaire</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ModifierCommentaire</servlet-name>
+		<url-pattern>/modifierCommentaire</url-pattern>
 	</servlet-mapping>
 
 </web-app>

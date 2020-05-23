@@ -60,12 +60,12 @@ public class CommentaireDAO {
     }
 
     public void modifierCommentaire( Commentaire commentaire ) {
-        // TODO Auto-generated method stub
+
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            session.update( commentaire );
+            session.save( commentaire );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -75,7 +75,7 @@ public class CommentaireDAO {
         }
     }
 
-    public Commentaire supprimerCommentaire( Integer idCommentaire ) {
+    public void supprimerCommentaire( Integer idCommentaire ) {
 
         Session session = factory.getCurrentSession();
 
@@ -84,11 +84,9 @@ public class CommentaireDAO {
 
             Commentaire commentaire = session.get( Commentaire.class, idCommentaire );
             if ( commentaire != null ) {
-                String q = "DELETE FROM Commentaire c " + "WHERE c.idCommentaire = :commentaireidCommentaire";
-                Query<Commentaire> query = session.createQuery( q );
-                query.setParameter( "commentaireId", idCommentaire );
-                int result = query.executeUpdate();
-                System.out.println( result );
+                session.getTransaction().begin();
+                session.delete( idCommentaire );
+                session.getTransaction().commit();
             }
 
             session.getTransaction().commit();
@@ -97,7 +95,6 @@ public class CommentaireDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return null;
     }
 
     public void ajouterCommentaire( Commentaire commentaire ) {

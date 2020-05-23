@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.SupprimerCommentaireForm;
@@ -18,14 +17,12 @@ import com.aubrun.eric.projet6.webapp.forms.SupprimerCommentaireForm;
 @WebServlet( "/SupprimerCommentaire" )
 public class SupprimerCommentaire extends HttpServlet {
 
-    private static final long  serialVersionUID   = 1L;
+    private static final long  serialVersionUID = 1L;
 
-    public static final String ATT_COMMENTAIRE    = "commentaire";
-    public static final String ATT_FORM           = "form";
-    public static final String ATT_SESSION_USER   = "sessionUtilisateur";
-    public static final String VUE                = "/WEB-INF/jsp/supprimerCommentaire.jsp";
-
-    private CommentaireService commentaireService = new CommentaireService();
+    public static final String ATT_COMMENTAIRE  = "commentaire";
+    public static final String ATT_FORM         = "form";
+    public static final String ATT_SESSION_USER = "sessionUtilisateur";
+    public static final String VUE              = "/WEB-INF/jsp/detailsSite.jsp";
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
