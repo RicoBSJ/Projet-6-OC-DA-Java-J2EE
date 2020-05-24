@@ -65,7 +65,12 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-            session.update( commentaire );
+            String hql = "UPDATE Commentaire set contenu = :contenu " + "WHERE id = :idCommentaire";
+            Query<Commentaire> query = session.createQuery( hql );
+            query.setParameter( "contenu", 1000 );
+            query.setParameter( "idCommentaire", 1 );
+            int result = query.executeUpdate();
+            System.out.println( "Rows affected: " + result );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -81,11 +86,15 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-
             Commentaire commentaire = session.get( Commentaire.class, idCommentaire );
+
             if ( commentaire != null ) {
                 session.getTransaction().begin();
-                session.delete( idCommentaire );
+                String hql = "DELETE FROM Commentaire " + "WHERE id = :idCommentaire";
+                Query<Commentaire> query = session.createQuery( hql );
+                query.setParameter( "idCommentaire", 1 );
+                int result = query.executeUpdate();
+                System.out.println( "Rows affected: " + result );
                 session.getTransaction().commit();
             }
 
@@ -103,7 +112,11 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-            session.save( commentaire );
+            String hql = "INSERT INTO Commentaire(contenu, titre, utilisateur)"
+                    + "SELECT contenu, titre, utilisateur FROM commentaire";
+            Query<Commentaire> query = session.createQuery( hql );
+            int result = query.executeUpdate();
+            System.out.println( "Rows affected: " + result );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
