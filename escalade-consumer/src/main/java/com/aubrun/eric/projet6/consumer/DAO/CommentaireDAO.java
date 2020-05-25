@@ -112,11 +112,7 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-            String hql = "INSERT INTO Commentaire(contenu, titre, utilisateur)"
-                    + "SELECT contenu, titre, utilisateur FROM commentaire";
-            Query<Commentaire> query = session.createQuery( hql );
-            int result = query.executeUpdate();
-            System.out.println( "Rows affected: " + result );
+            session.save( commentaire );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {

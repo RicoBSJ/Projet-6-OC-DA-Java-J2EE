@@ -12,17 +12,23 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<form action="<c:url value="/ajouterCommentaire" />" method="post" enctype="multipart/form-data">
+	<form action="ajouterCommentaire" method="post">
 		<fieldset>
 			<legend>Ajout de commentaire</legend>
 			<p>Vous pouvez ajouter un commentaire via ce formulaire.</p>
+			
+			<label for="titre">Ajout d'un titre <span class="requis">*</span></label>
+			<input type="text" id="titre" name="titre" value="<c:out value="${commentaire.titre}"/>" size="30" maxlength="60" />
+			<span class="erreur">${form.erreurs['titre']}</span>
+			<br />
 
-			<label for="contenu">Ajout de commentaire <span
-				class="requis">*</span></label> <input type="text" id="contenu"
-				name="contenu" value="<c:out value="${commentaire.contenu}"/>"
-				size="30" maxlength="60" /> <span class="erreur">${form.erreurs['contenu']}</span>
-			<br /> <input type="submit" value="Envoyer" class="sansLabel" /> <input type="reset"
-				value="Remettre à zéro" /> <br />
+			<label for="contenu">Ajout de commentaire <span class="requis">*</span></label>
+			<input type="text" id="contenu" name="contenu" value="<c:out value="${commentaire.contenu}"/>" size="30" maxlength="60" />
+			<span class="erreur">${form.erreurs['contenu']}</span>
+			<br />
+			
+			<input type="submit" value="Valider" />
+			<input type="reset" value="Remettre à zéro" /> <br />
 
 			<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 		</fieldset>
