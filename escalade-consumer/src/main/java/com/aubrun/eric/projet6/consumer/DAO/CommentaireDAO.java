@@ -65,12 +65,7 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-            String hql = "UPDATE Commentaire set contenu = :contenu " + "WHERE id = :idCommentaire";
-            Query<Commentaire> query = session.createQuery( hql );
-            query.setParameter( "contenu", 1000 );
-            query.setParameter( "idCommentaire", 1 );
-            int result = query.executeUpdate();
-            System.out.println( "Rows affected: " + result );
+            session.saveOrUpdate( commentaire );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
@@ -80,7 +75,7 @@ public class CommentaireDAO {
         }
     }
 
-    public void supprimerCommentaire( Integer idCommentaire ) {
+    public boolean supprimerCommentaire( Integer idCommentaire ) {
 
         Session session = factory.getCurrentSession();
 
@@ -89,13 +84,9 @@ public class CommentaireDAO {
             Commentaire commentaire = session.get( Commentaire.class, idCommentaire );
 
             if ( commentaire != null ) {
-                session.getTransaction().begin();
-                String hql = "DELETE FROM Commentaire " + "WHERE id = :idCommentaire";
-                Query<Commentaire> query = session.createQuery( hql );
-                query.setParameter( "idCommentaire", 1 );
-                int result = query.executeUpdate();
-                System.out.println( "Rows affected: " + result );
-                session.getTransaction().commit();
+                session.delete( commentaire );
+                System.out.println( "Le commentaire a été supprimé !" );
+                return true;
             }
 
             session.getTransaction().commit();
@@ -104,6 +95,7 @@ public class CommentaireDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
+        return false;
     }
 
     public void ajouterCommentaire( Commentaire commentaire ) {
