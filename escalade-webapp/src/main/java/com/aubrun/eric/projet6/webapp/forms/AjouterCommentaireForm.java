@@ -33,22 +33,13 @@ public class AjouterCommentaireForm {
 
         Commentaire commentaire = new Commentaire();
         try {
-            traiterCommentaire( contenu, commentaire );
             traiterTitre( titre, commentaire );
+            traiterContenu( contenu, commentaire );
         } catch ( Exception e ) {
             resultat = "Echec de l'ajout de commentaire : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
         }
         return commentaire;
-    }
-
-    private void traiterCommentaire( String contenu, Commentaire commentaire ) {
-        try {
-            validationCommentaire( contenu );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_COMMENTAIRE, e.getMessage() );
-        }
-        commentaire.setContenu( contenu );
     }
 
     private void traiterTitre( String titre, Commentaire commentaire ) {
@@ -60,15 +51,24 @@ public class AjouterCommentaireForm {
         commentaire.setTitre( titre );
     }
 
-    private void validationCommentaire( String contenu ) throws Exception {
-        if ( contenu != null && contenu.length() < 30 ) {
-            throw new Exception( "Le commentaire doit contenir au moins 30 caractères." );
+    private void traiterContenu( String contenu, Commentaire commentaire ) {
+        try {
+            validationContenu( contenu );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_COMMENTAIRE, e.getMessage() );
         }
+        commentaire.setContenu( contenu );
     }
 
     private void validationTitre( String titre ) throws Exception {
         if ( titre != null && titre.length() < 5 ) {
             throw new Exception( "Le titre doit contenir au moins 5 caractères." );
+        }
+    }
+
+    private void validationContenu( String contenu ) throws Exception {
+        if ( contenu != null && contenu.length() < 30 ) {
+            throw new Exception( "Le commentaire doit contenir au moins 30 caractères." );
         }
     }
 

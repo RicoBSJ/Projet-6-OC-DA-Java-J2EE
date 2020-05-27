@@ -35,7 +35,6 @@ public class ModifierCommentaireForm {
         try {
             traiterCommentaire( contenu, commentaire );
             traiterTitre( titre, commentaire );
-            resultat = "Modification du commentaire réussi !";
         } catch ( Exception e ) {
             resultat = "Echec de la modification de commentaire : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();

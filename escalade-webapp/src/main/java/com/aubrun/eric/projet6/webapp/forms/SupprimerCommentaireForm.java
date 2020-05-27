@@ -35,7 +35,6 @@ public class SupprimerCommentaireForm {
         try {
             traiterCommentaire( contenu, commentaire );
             traiterTitre( titre, commentaire );
-            resultat = "Suppression du commentaire réussi !";
         } catch ( Exception e ) {
             resultat = "Echec de la suppression de commentaire : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();
