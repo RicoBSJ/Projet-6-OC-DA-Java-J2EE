@@ -75,13 +75,12 @@ public class CommentaireDAO {
         }
     }
 
-    public void supprimerCommentaire( Integer idCommentaire ) {
+    public void supprimerCommentaire( Commentaire commentaire ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            Commentaire commentaire = session.get( Commentaire.class, idCommentaire );
             session.delete( commentaire );
             session.getTransaction().commit();
 

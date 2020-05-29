@@ -31,7 +31,8 @@ public class CommentaireService {
 
     public void deleteCommentaire( Integer idCommentaire ) {
 
-        commentaireDAO.supprimerCommentaire( idCommentaire );
+        Commentaire comment = commentaireDAO.afficherDetails( idCommentaire );
+        commentaireDAO.supprimerCommentaire( comment );
     }
 
     public List<Commentaire> searchCommentaire( SearchFormCom searchFormCom ) {
