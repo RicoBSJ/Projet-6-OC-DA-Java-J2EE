@@ -75,31 +75,25 @@ public class CommentaireDAO {
         }
     }
 
-    public boolean supprimerCommentaire( Integer idCommentaire ) {
+    public void supprimerCommentaire( Integer idCommentaire ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
             Commentaire commentaire = session.get( Commentaire.class, idCommentaire );
-
-            if ( commentaire != null ) {
-                session.delete( commentaire );
-                System.out.println( "Le commentaire a été supprimé !" );
-                return true;
-            }
-
+            session.delete( commentaire );
             session.getTransaction().commit();
+
         } catch ( Exception e ) {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-        return false;
     }
 
     public void ajouterCommentaire( Commentaire commentaire ) {
-        // TODO Auto-generated method stub
+
         Session session = factory.getCurrentSession();
 
         try {
@@ -115,8 +109,10 @@ public class CommentaireDAO {
     }
 
     public List<Commentaire> recherche( SearchFormCom searchFormCom ) {
+
         Session session = factory.getCurrentSession();
         List<Commentaire> resultat = null;
+
         try {
             Map<String, String> parameters = new HashMap();
             session.getTransaction().begin();

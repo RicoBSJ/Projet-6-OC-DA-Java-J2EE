@@ -40,7 +40,6 @@ public class TaguerUnSiteOfficiel extends HttpServlet {
 
         Integer idSite = Integer.parseInt( request.getParameter( "idSite" ) );
         siteService.tagOfficialSite( idSite );
-
         request.setAttribute( "site", siteService.findDetails( idSite ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
