@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.SupprimerCommentaireForm;
 
 @WebServlet( "/SupprimerCommentaire" )
 public class SupprimerCommentaire extends HttpServlet {
@@ -44,9 +43,6 @@ public class SupprimerCommentaire extends HttpServlet {
 
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-
-        /* Préparation de l'objet formulaire */
-        SupprimerCommentaireForm form = new SupprimerCommentaireForm();
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();

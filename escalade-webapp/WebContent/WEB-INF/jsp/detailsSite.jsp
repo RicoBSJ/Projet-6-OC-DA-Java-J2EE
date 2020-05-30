@@ -49,7 +49,7 @@
 					<h5>Commentaires</h5>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<form action="ajouterCommentaire" method="post">
-							<br> <input type="submit" name="comment"
+							<input type="submit" name="comment"
 								value="Ajouter un commentaire" />
 						</form>
 					</c:if>
