@@ -22,9 +22,8 @@
 		<c:choose>
 			<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
 				<form action="taguerUnSiteOfficiel" method="post">
-					<input type="hidden" value="${ site.id }" name="idSite"> <input
-						type="submit" name="tag"
-						value="Taguer ce site comme site officiel" />
+					<input type="hidden" value="${ site.id }" name="idSite">
+					<input type="submit" name="tag" value="Taguer ce site comme site officiel" />
 				</form>
 			</c:when>
 		</c:choose>
@@ -32,7 +31,7 @@
 			<a><h5>Ce site est tagué comme site officiel</h5></a>
 		</c:if>
 		<section>
-			<article class="resultats-listeStations even">
+			<article class="resultats-listeStations">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
 						<a href="<c:url value="" />">${ site.nom }</a> <a
@@ -42,15 +41,16 @@
 					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
-					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
-						title="Détails du site" width="315" height="200" />
+					<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" />
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
 					<h5>Commentaires</h5>
+<%-- 					<c:if test="${!empty sessionScope.sessionUtilisateur}"> --%>
+<%-- 						<li><a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a></li> --%>
+<%-- 					</c:if> --%>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<form action="ajouterCommentaire" method="post">
-							<input type="submit" name="comment"
-								value="Ajouter un commentaire" />
+							<input type="submit" name="comment" value="Ajouter un commentaire" />
 						</form>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
@@ -67,14 +67,12 @@
 						<br>
 						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
 							<form action="supprimerCommentaire" method="post">
-								<input type="hidden" value="${ commentaire.idCommentaire }"
-									name="id"> <input type="hidden" value="${ site.id }"
-									name="idSite"> <input type="submit" name="delComment"
-									value="Supprimer ce commentaire" />
+								<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
+								<input type="hidden" value="${ site.id }" name="idSite">
+								<input type="submit" name="delComment" value="Supprimer ce commentaire" />
 							</form>
 							<form action="modifierCommentaire" method="post">
-								<input type="submit" name="modComment"
-									value="Modifier ce commentaire" />
+								<input type="submit" name="modComment" value="Modifier ce commentaire" />
 							</form>
 						</c:if>
 					</c:forEach>

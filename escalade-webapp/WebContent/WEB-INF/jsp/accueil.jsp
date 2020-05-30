@@ -30,7 +30,7 @@
 			<article>
 				<ul>
 					<c:forEach var="site" items="${ sites }">
-						<article class="resultats-listeStations even">
+						<article class="resultats-listeStations">
 							<div class="localisationStationListe">
 								<h3 class="nomStationListe">
 									<a href="<c:url value="" />">${ site.nom }</a>
@@ -39,9 +39,8 @@
 								<div class="massifListe">${ site.region }</div>
 							</div>
 							<div class="thumbs-stations">
-								<a href="<c:url value="/detailsSite?id=${site.id}" />"> <img
-									src="${ site.photos[0].cheminPhoto }" alt="Site"
-									title="Détails du site" width="315" height="200" />
+								<a href="<c:url value="/detailsSite?id=${site.id}" />">
+								<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="30" height="200" />
 								</a>
 							</div>
 							<div class="results-right">

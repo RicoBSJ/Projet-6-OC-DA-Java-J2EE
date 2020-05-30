@@ -40,6 +40,11 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.Upload</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>AjouterCommentaire</servlet-name>
 		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.AjouterCommentaire</servlet-class>
 	</servlet>
@@ -107,6 +112,11 @@
 	<servlet-mapping>
 		<servlet-name>Deconnexion</servlet-name>
 		<url-pattern>/deconnexion</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/upload</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

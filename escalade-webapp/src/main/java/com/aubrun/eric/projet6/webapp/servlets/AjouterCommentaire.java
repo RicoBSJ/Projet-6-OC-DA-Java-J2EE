@@ -66,7 +66,6 @@ public class AjouterCommentaire extends HttpServlet {
         commentaireService.addCommentaire( commentaire );
 
         request.setAttribute( ATT_FORM, form );
-        session.setAttribute( ATT_SESSION_USER, connectedUser );
         request.setAttribute( ATT_COMMENTAIRE, commentaire );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

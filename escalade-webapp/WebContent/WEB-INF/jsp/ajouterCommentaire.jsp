@@ -4,11 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>Ajout de commentaire</title>
-<link type="text/css" rel="stylesheet"
-	href="<c:url value="/include/style.css"/>" />
-</head>
+	<meta charset="utf-8" />
+	<title>Ajout de commentaire</title>
+	<link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"/>" />
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
@@ -33,8 +31,6 @@
 			<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 		</fieldset>
 	</form>
-	<p>
-		<a href="<c:url value="/accueil"/>">Retour à l'accueil</a>
-	</p>
+	<p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
 </body>
 </html>

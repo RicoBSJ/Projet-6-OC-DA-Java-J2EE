@@ -15,6 +15,10 @@ public class AjouterCommentaireForm {
     private String              resultat;
     private Map<String, String> erreurs           = new HashMap<String, String>();
 
+    public Map<String, String> getErreurs() {
+        return erreurs;
+    }
+
     public String getResultat() {
         return resultat;
     }
@@ -23,13 +27,9 @@ public class AjouterCommentaireForm {
         this.resultat = result;
     }
 
-    public Map<String, String> getErreurs() {
-        return erreurs;
-    }
-
     public Commentaire ajouterCommentaire( HttpServletRequest request ) {
-        String contenu = getValeurChamp( request, CHAMP_COMMENTAIRE );
         String titre = getValeurChamp( request, CHAMP_TITRE );
+        String contenu = getValeurChamp( request, CHAMP_COMMENTAIRE );
 
         Commentaire commentaire = new Commentaire();
         try {
