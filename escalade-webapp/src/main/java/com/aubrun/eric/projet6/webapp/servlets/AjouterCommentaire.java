@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.CommentaireService;
-import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.AjouterCommentaireForm;
@@ -27,7 +26,6 @@ public class AjouterCommentaire extends HttpServlet {
     public static final String VUE                = "/WEB-INF/jsp/ajouterCommentaire.jsp";
 
     private CommentaireService commentaireService = new CommentaireService();
-    private SiteService        siteService        = new SiteService();
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
@@ -66,10 +64,6 @@ public class AjouterCommentaire extends HttpServlet {
         commentaire.setDate( new Date() );
 
         commentaireService.addCommentaire( commentaire );
-        Integer idSite = Integer.parseInt( request.getParameter( "idSite" ) );
-        request.setAttribute( "site", siteService.findDetails( idSite ) );
-        request.setAttribute( ATT_FORM, form );
-        request.setAttribute( ATT_COMMENTAIRE, commentaire );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
