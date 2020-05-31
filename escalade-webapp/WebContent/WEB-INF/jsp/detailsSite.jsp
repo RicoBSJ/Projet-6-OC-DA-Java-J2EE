@@ -45,12 +45,11 @@
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
 					<h5>Commentaires</h5>
-<%-- 					<c:if test="${!empty sessionScope.sessionUtilisateur}"> --%>
-<%-- 						<li><a href="<c:url value="/ajouterCommentaire" />">Ajouter un commentaire</a></li> --%>
-<%-- 					</c:if> --%>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<form action="ajouterCommentaire" method="post">
-							<input type="submit" name="comment" value="Ajouter un commentaire" />
+							<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
+							<input type="hidden" value="${ site.id }" name="idSite">
+							<input type="submit" name="addComment" value="Ajouter un commentaire" />
 						</form>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
@@ -72,6 +71,8 @@
 								<input type="submit" name="delComment" value="Supprimer ce commentaire" />
 							</form>
 							<form action="modifierCommentaire" method="post">
+								<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
+								<input type="hidden" value="${ site.id }" name="idSite">
 								<input type="submit" name="modComment" value="Modifier ce commentaire" />
 							</form>
 						</c:if>

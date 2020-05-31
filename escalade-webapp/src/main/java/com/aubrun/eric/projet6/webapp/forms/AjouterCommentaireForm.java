@@ -28,6 +28,7 @@ public class AjouterCommentaireForm {
     }
 
     public Commentaire ajouterCommentaire( HttpServletRequest request ) {
+
         String titre = getValeurChamp( request, CHAMP_TITRE );
         String contenu = getValeurChamp( request, CHAMP_COMMENTAIRE );
 
@@ -61,14 +62,14 @@ public class AjouterCommentaireForm {
     }
 
     private void validationTitre( String titre ) throws Exception {
-        if ( titre != null && titre.length() < 5 ) {
-            throw new Exception( "Le titre doit contenir au moins 5 caractères." );
+        if ( titre != null && titre.length() < 3 ) {
+            throw new Exception( "Le titre doit contenir au moins 3 caractères." );
         }
     }
 
     private void validationContenu( String contenu ) throws Exception {
-        if ( contenu != null && contenu.length() < 30 ) {
-            throw new Exception( "Le commentaire doit contenir au moins 30 caractères." );
+        if ( contenu != null && contenu.length() < 3 ) {
+            throw new Exception( "Le commentaire doit contenir au moins 3 caractères." );
         }
     }
 
