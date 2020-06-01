@@ -62,9 +62,7 @@ public class AjouterCommentaire extends HttpServlet {
         Commentaire commentaire = form.ajouterCommentaire( request );
         commentaire.setUtilisateur( connectedUser );
         commentaire.setDate( new Date() );
-
         commentaireService.addCommentaire( commentaire );
-
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

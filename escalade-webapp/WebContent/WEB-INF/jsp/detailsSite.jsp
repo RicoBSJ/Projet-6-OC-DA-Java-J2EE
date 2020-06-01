@@ -47,7 +47,6 @@
 					<h5>Commentaires</h5>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<form action="ajouterCommentaire" method="post">
-							<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
 							<input type="submit" name="addComment" value="Ajouter un commentaire" />
 						</form>
 					</c:if>
@@ -59,8 +58,10 @@
 							<h5>${commentaire.utilisateur.nom}</h5>
 						</div>
 						<div class="massifListe">
-							<h5>${commentaire.date}</h5>
+							<h5>${commentaire.date} :</h5>
 						</div>
+						<div class="massifListe"><h5>${ commentaire.titre }</h5></div>
+						<br>
 						<div class="massifListe">${ commentaire.contenu }</div>
 						<br>
 						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
@@ -70,8 +71,6 @@
 								<input type="submit" name="delComment" value="Supprimer ce commentaire" />
 							</form>
 							<form action="modifierCommentaire" method="post">
-								<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
-								<input type="hidden" value="${ site.id }" name="idSite">
 								<input type="submit" name="modComment" value="Modifier ce commentaire" />
 							</form>
 						</c:if>
