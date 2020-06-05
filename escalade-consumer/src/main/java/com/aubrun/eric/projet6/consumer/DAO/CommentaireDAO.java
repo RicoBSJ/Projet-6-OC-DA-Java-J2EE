@@ -65,7 +65,7 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-            session.saveOrUpdate( commentaire );
+            session.save( commentaire );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {

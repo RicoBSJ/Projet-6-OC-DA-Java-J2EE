@@ -4,7 +4,7 @@
 <html>
 <head>
         <meta charset="utf-8" />
-        <title>Recherche de Site</title>
+        <title>Recherche de Topo</title>
         <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"/>" />
 </head>
 <body>

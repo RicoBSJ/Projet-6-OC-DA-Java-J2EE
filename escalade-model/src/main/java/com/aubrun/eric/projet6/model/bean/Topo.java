@@ -24,14 +24,12 @@ public class Topo {
     private Integer     id;
     @Column( name = "nom" )
     private String      nom;
-    @Column( name = "description" )
+    @Column( name = "description", columnDefinition = "text" )
     private String      description;
     @Column( name = "lieu" )
     private String      lieu;
     @Column( name = "dateParution" )
     private Date        dateParution;
-    @Column( name = "reservation" )
-    private Boolean     reservation;
     @ManyToOne
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
@@ -79,14 +77,6 @@ public class Topo {
 
     public void setDateParution( Date dateParution ) {
         this.dateParution = dateParution;
-    }
-
-    public Boolean getReservation() {
-        return reservation;
-    }
-
-    public void setReservation( Boolean reservation ) {
-        this.reservation = reservation;
     }
 
     public Site getSite() {

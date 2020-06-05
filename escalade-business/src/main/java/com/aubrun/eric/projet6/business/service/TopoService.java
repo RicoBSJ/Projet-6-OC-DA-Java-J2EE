@@ -39,13 +39,6 @@ public class TopoService {
         return topoDAO.recherche( searchFormTopo );
     }
 
-    public void reserverTopo( Integer idTopo ) {
-
-        Topo topo = topoDAO.afficherDetails( idTopo );
-        topo.setReservation( true );
-        topoDAO.modifierTopo( topo );
-    }
-
     public void modifyTopo( Topo topoToModidy ) {
 
         topoDAO.modifierTopo( topoToModidy );

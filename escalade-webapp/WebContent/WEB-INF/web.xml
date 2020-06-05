@@ -65,6 +65,11 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>AfficherTopo</servlet-name>
+		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.AfficherTopo</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>CreationSite</servlet-name>
 		<servlet-class>com.aubrun.eric.projet6.webapp.servlets.CreationSite</servlet-class>
 		<init-param>
@@ -142,6 +147,11 @@
 	<servlet-mapping>
 		<servlet-name>ModifierCommentaire</servlet-name>
 		<url-pattern>/modifierCommentaire</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>AfficherTopo</servlet-name>
+		<url-pattern>/afficherTopo</url-pattern>
 	</servlet-mapping>
 
 </web-app>
