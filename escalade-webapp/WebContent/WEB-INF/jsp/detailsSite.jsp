@@ -70,15 +70,12 @@
 						<div class="massifListe">${ commentaire.contenu }</div>
 						<br>
 						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
+							<a href="<c:url value="/modifierCommentaire?id=${commentaire.idCommentaire}" />">Modifier commentaire</a>
 							<form action="supprimerCommentaire" method="post">
-								<input type="hidden" value="${ commentaire.idCommentaire }"
-									name="id"> <input type="hidden" value="${ site.id }"
-									name="idSite"> <input type="submit" name="delComment"
-									value="Supprimer ce commentaire" />
+								<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
+								<input type="hidden" value="${ site.id }" name="idSite">
+								<input type="submit" name="delComment" value="Supprimer ce commentaire" />
 							</form>
-							<a
-								href="<c:url value="/modifierCommentaire?id=${commentaire.idCommentaire}" />">Modifier
-								commentaire</a>
 						</c:if>
 					</c:forEach>
 				</div>

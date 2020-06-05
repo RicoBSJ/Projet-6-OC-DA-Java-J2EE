@@ -60,14 +60,12 @@ public class ModifierCommentaire extends HttpServlet {
         if ( connectedUser == null ) {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
-        } else {
-
-            Commentaire commentaire = form.modifierCommentaire( request );
-            commentaire.setUtilisateur( connectedUser );
-            commentaire.setDate( new Date() );
-            commentaireService.modifyComment( commentaire );
-
-            this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
         }
+        Commentaire commentaire = form.modifierCommentaire( request );
+        commentaire.setUtilisateur( connectedUser );
+        commentaire.setDate( new Date() );
+        commentaireService.modifyComment( commentaire );
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }
