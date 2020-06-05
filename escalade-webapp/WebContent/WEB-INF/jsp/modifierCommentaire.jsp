@@ -17,10 +17,9 @@
 			<legend>Modifier un commentaire</legend>
 			<p>Vous pouvez modifier un commentaire via ce formulaire.</p>
 
-			<label for="contenu">Modification de commentaire <span
-				class="requis">*</span></label> <input type="text" id="contenu"
-				name="contenu" value="<c:out value="${commentaire.contenu}"/>"
-				size="30" maxlength="60" /> <span class="erreur">${form.erreurs['contenu']}</span>
+			<label for="contenu">Modification de commentaire <span class="requis">*</span></label>
+			<textarea>${commentaire.contenu}</textarea>
+			<span class="erreur">${form.erreurs['contenu']}</span>
 			<br /> <input type="submit" value="Envoyer" class="sansLabel" /> <input type="reset"
 				value="Remettre à zéro" /> <br />
 

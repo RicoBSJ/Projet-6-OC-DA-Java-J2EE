@@ -32,6 +32,7 @@ public class ModifierCommentaire extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page d'inscription */
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
 
         HttpSession session = request.getSession();
 
@@ -41,7 +42,7 @@ public class ModifierCommentaire extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
+        request.setAttribute( "commentaire", commentaireService.findDetails( id ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

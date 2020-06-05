@@ -34,6 +34,10 @@ public class Topo {
     private Boolean     reservation;
     @ManyToOne
     @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
+    private Site        site;
+    @ManyToOne
+    @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_utilisateur" )
     private Utilisateur utilisateur;
 
@@ -83,6 +87,14 @@ public class Topo {
 
     public void setReservation( Boolean reservation ) {
         this.reservation = reservation;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite( Site site ) {
+        this.site = site;
     }
 
     public Utilisateur getUtilisateur() {
