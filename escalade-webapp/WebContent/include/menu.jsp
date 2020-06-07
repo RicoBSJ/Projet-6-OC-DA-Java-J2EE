@@ -17,7 +17,7 @@
 					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
 				</c:if>
-				<li><a href="<c:url value="/listeUtilisateurs" />">Liste</a></li>
+				<li><a href="<c:url value="/listeUtilisateurs" />">Liste utilisateurs</a></li>
 				<li><a href="<c:url value="/rechercheSite" />">Recherche de site</a></li>
 				<c:if test="${!empty sessionScope.sessionUtilisateur}">
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>

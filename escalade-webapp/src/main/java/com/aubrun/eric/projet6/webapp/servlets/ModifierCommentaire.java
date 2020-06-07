@@ -55,16 +55,21 @@ public class ModifierCommentaire extends HttpServlet {
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
+        Utilisateur connectedUser = (Utilisateur) session.getAttribute(
+                ATT_SESSION_USER );
 
-        if ( connectedUser == null ) {
+        if ( connectedUser == null || !connectedUser.getMembre() ) {
+
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
+
         Commentaire commentaire = form.modifierCommentaire( request );
         commentaire.setUtilisateur( connectedUser );
         commentaire.setDate( new Date() );
         commentaireService.modifyComment( commentaire );
+        Integer idCommentaire = Integer.parseInt( request.getParameter( "id" ) );
+        request.setAttribute( "commentaire", commentaireService.findDetails( idCommentaire ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

@@ -21,10 +21,8 @@ public class AfficherTopo extends HttpServlet {
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        Integer id = Integer.parseInt( request.getParameter( "id" ) );
-        request.setAttribute( "topo", topoService.findDetails( id ) );
-        request.getParameter( getServletName() );
+
+        request.setAttribute( "topo", topoService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
