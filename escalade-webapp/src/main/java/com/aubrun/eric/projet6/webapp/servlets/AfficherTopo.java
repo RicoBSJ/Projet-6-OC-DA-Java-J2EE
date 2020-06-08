@@ -7,30 +7,46 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.TopoService;
+import com.aubrun.eric.projet6.model.bean.Topo;
+import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/AfficherTopo" )
 public class AfficherTopo extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
+    public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "/WEB-INF/jsp/afficherTopo.jsp";
 
     private TopoService        topoService      = new TopoService();
+    private Topo               topo             = new Topo();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        request.setAttribute( "topo", topoService.findAll() );
+        HttpSession session = request.getSession();
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
+
+        if ( connectedUser == null || !connectedUser.getMembre() ) {
+
+            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
+            throw new RuntimeException();
+        } else {
+
+            request.setAttribute( "topo", topoService.findDetails( topo.getId() ) );
+
+            this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        }
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet( request, response );
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
 }

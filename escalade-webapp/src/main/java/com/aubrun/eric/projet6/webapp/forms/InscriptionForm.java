@@ -16,6 +16,7 @@ public final class InscriptionForm {
     private static final String CHAMP_PASS       = "motdepasse";
     private static final String CHAMP_CONF       = "confirmation";
     private static final String CHAMP_NOM        = "nom";
+    private static final String CHAMP_PRENOM     = "prenom";
     private static final String ALGO_CHIFFREMENT = "SHA-256";
 
     private String              resultat;
@@ -39,12 +40,14 @@ public final class InscriptionForm {
         String motdepasse = getValeurChamp( request, CHAMP_PASS );
         String confirmation = getValeurChamp( request, CHAMP_CONF );
         String nom = getValeurChamp( request, CHAMP_NOM );
+        String prenom = getValeurChamp( request, CHAMP_PRENOM );
 
         Utilisateur utilisateur = new Utilisateur();
         try {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motdepasse, confirmation, utilisateur );
             traiterNom( nom, utilisateur );
+            traiterPrenom( prenom, utilisateur );
             resultat = "Inscription réussie !";
         } catch ( Exception e ) {
             resultat = "Echec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
@@ -87,6 +90,15 @@ public final class InscriptionForm {
         utilisateur.setNom( nom );
     }
 
+    private void traiterPrenom( String prenom, Utilisateur utilisateur ) {
+        try {
+            validationPrenom( prenom );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_NOM, e.getMessage() );
+        }
+        utilisateur.setPrenom( prenom );
+    }
+
     private void validationEmail( String email ) throws Exception {
         if ( email != null ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
@@ -113,6 +125,12 @@ public final class InscriptionForm {
 
     private void validationNom( String nom ) throws Exception {
         if ( nom != null && nom.length() < 3 ) {
+            throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
+        }
+    }
+
+    private void validationPrenom( String prenom ) throws Exception {
+        if ( prenom != null && prenom.length() < 3 ) {
             throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
         }
     }

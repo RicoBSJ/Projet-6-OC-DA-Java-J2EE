@@ -13,7 +13,7 @@
 	<div id="corps">
 		<fieldset>
 			<legend>Liste des topos de l'utilisateur connecté</legend>
-			<c:if test="${utilisateur.nom.equals(topo.utilisateur.nom)}">
+			<c:if test="${!empty sessionScope.sessionUtilisateur}">
 			<table>
                 <tr>
                     <th>Nom</th>

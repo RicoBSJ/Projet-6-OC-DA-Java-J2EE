@@ -15,9 +15,6 @@ import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.ModifierCommentaireForm;
 
-/**
- * Servlet implementation class ModifierCommentaire
- */
 @WebServlet( "/ModifierCommentaire" )
 public class ModifierCommentaire extends HttpServlet {
 
@@ -68,8 +65,7 @@ public class ModifierCommentaire extends HttpServlet {
         commentaire.setUtilisateur( connectedUser );
         commentaire.setDate( new Date() );
         commentaireService.modifyComment( commentaire );
-        Integer idCommentaire = Integer.parseInt( request.getParameter( "id" ) );
-        request.setAttribute( "commentaire", commentaireService.findDetails( idCommentaire ) );
+        request.setAttribute( "commentaire", commentaireService.findDetails( commentaire.getIdCommentaire() ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

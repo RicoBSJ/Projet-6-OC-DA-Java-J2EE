@@ -33,6 +33,11 @@
 				<input type="text" id="nom" name="nom" value="<c:out value="${utilisateur.nom}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['nom']}</span>
                 <br />
+                
+                <label for="prenom">Prénom d'utilisateur <span class="requis">*</span></label>
+				<input type="text" id="prenom" name="prenom" value="<c:out value="${utilisateur.prenom}"/>" size="20" maxlength="20" />
+				<span class="erreur">${form.erreurs['prenom']}</span>
+                <br />
 
                 <input type="submit" value="Inscription" class="sansLabel" />
                 <br />

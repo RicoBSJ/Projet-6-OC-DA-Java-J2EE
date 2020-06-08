@@ -39,9 +39,9 @@ public class TopoService {
         return topoDAO.recherche( searchFormTopo );
     }
 
-    public void modifyTopo( Topo topoToModidy ) {
+    public void modifyTopo( Topo topoToModify ) {
 
-        topoDAO.modifierTopo( topoToModidy );
+        topoDAO.modifierTopo( topoToModify );
     }
 
 }
