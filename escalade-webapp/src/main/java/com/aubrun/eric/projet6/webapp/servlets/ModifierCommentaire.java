@@ -64,7 +64,7 @@ public class ModifierCommentaire extends HttpServlet {
         commentaire.setUtilisateur( connectedUser );
         commentaire.setDate( new Date() );
         commentaireService.modifyComment( commentaire );
-        request.setAttribute( "commentaire", commentaireService.findDetails( commentaire.getIdCommentaire() ) );
+        request.setAttribute( "commentaire", commentaireService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

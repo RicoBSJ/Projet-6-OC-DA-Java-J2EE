@@ -35,12 +35,10 @@ public class AfficherTopo extends HttpServlet {
 
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
-        } else {
-
-            request.setAttribute( "topo", topoService.findDetails( topo.getId() ) );
-
-            this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
         }
+        request.setAttribute( "topo", topoService.findAll() );
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
