@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 
-@WebServlet( "/DetailsSite" )
+@WebServlet( "/detailsSite" )
 public class DetailsSite extends HttpServlet {
 
     private static final long  serialVersionUID   = 1L;

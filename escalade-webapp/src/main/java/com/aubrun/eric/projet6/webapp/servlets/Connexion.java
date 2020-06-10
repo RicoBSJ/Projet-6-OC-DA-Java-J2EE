@@ -13,7 +13,7 @@ import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.ConnexionForm;
 
-@WebServlet( "/Connexion" )
+@WebServlet( "/connexion" )
 public class Connexion extends HttpServlet {
 
     private static final long       serialVersionUID   = 1L;

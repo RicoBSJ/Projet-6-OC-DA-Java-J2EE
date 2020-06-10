@@ -13,7 +13,7 @@ import com.aubrun.eric.projet6.business.service.TopoService;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-@WebServlet( "/AfficherTopo" )
+@WebServlet( "/afficherTopo" )
 public class AfficherTopo extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;

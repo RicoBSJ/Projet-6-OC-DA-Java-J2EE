@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.aubrun.eric.projet6.model.bean.Photo;
 import com.aubrun.eric.projet6.webapp.forms.UploadForm;
 
-@WebServlet( "/Upload" )
+@WebServlet( "/upload" )
 public class Upload extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;

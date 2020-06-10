@@ -15,7 +15,7 @@ import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.ModifierCommentaireForm;
 
-@WebServlet( "/ModifierCommentaire" )
+@WebServlet( "/modifierCommentaire" )
 public class ModifierCommentaire extends HttpServlet {
 
     private static final long  serialVersionUID   = 1L;
@@ -52,8 +52,7 @@ public class ModifierCommentaire extends HttpServlet {
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute(
-                ATT_SESSION_USER );
+        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
         if ( connectedUser == null || !connectedUser.getMembre() ) {
 

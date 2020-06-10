@@ -1,5 +1,3 @@
-<%@ page pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +27,7 @@
 			</c:when>
 		</c:choose>
 		<c:if test="${ site.officiel == true }">
-			<a><h5>Ce site est taguÃ© comme site officiel</h5></a>
+			<a><h5>Ce site est tagué comme site officiel</h5></a>
 		</c:if>
 		<section>
 			<article class="resultats-listeStations">
@@ -43,7 +41,7 @@
 				</div>
 				<div class="thumbs-stations">
 					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
-						title="DÃ©tails du site" />
+						title="Détails du site" />
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
 					<h5>Commentaires</h5>

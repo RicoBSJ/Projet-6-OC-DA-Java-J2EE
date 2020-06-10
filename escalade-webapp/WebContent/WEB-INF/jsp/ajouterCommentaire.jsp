@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +23,11 @@
 			<br />
 			
 			<input type="submit" value="Valider" />
-			<input type="reset" value="Remettre Ã  zÃ©ro" /> <br />
+			<input type="reset" value="Remettre à zéro" /> <br />
 
 			<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 		</fieldset>
 	</form>
-	<p><a href="<c:url value="/accueil"/>">Retour Ã  l'accueil</a></p>
+	<p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
 </body>
 </html>

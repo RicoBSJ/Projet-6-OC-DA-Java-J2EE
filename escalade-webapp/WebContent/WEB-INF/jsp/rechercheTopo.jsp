@@ -1,5 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +10,7 @@
 	<form method="post" action="rechercheTopo">
             <fieldset>
                 <legend>Recherche de topo</legend>
-                <p>Vous pouvez sÃ©lectionner vos critÃ¨res de recherche via ce formulaire.</p>
+                <p>Vous pouvez sélectionner vos critères de recherche via ce formulaire.</p>
                 
 				<label for="nom">Recherche de topos par nom </label>
 				<input type="text" id="nom" name="nom" value="<c:out value="${topo.nom}"/>" size="30" maxlength="30" />
@@ -30,11 +28,11 @@
                 <br />
 
                 <input type="submit" value="Valider"  />
-                <input type="reset" value="Remettre Ã  zÃ©ro" /> <br />
+                <input type="reset" value="Remettre à zéro" /> <br />
                 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
             </fieldset>
 	</form>
-	<p><a href="<c:url value="/accueil"/>">Retour Ã  l'accueil</a></p>
+	<p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
 </body>
 </html>

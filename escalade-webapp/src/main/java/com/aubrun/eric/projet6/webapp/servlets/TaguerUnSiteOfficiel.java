@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-@WebServlet( "/TaguerUnSiteOfficiel" )
+@WebServlet( "/taguerUnSiteOfficiel" )
 public class TaguerUnSiteOfficiel extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;

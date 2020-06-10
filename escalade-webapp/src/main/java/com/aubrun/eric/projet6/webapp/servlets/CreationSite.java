@@ -17,7 +17,7 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
 import com.aubrun.eric.projet6.webapp.forms.UploadForm;
 
-@WebServlet( "/CreationSite" )
+@WebServlet( "/creationSite" )
 public class CreationSite extends HttpServlet {
 
     private static final long   serialVersionUID = 1L;

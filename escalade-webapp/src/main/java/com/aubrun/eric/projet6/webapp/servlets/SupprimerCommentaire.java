@@ -13,7 +13,7 @@ import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-@WebServlet( "/SupprimerCommentaire" )
+@WebServlet( "/supprimerCommentaire" )
 public class SupprimerCommentaire extends HttpServlet {
 
     private static final long  serialVersionUID   = 1L;

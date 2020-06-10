@@ -1,5 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,16 +13,16 @@
             <table>
                 <tr>
                     <th>Nom</th>
-                    <th>PrÃ©nom</th>
+                    <th>Prénom</th>
                     <th>Adresse</th>
-                    <th>TÃ©lÃ©phone</th>
+                    <th>Téléphone</th>
                     <th>Email</th>
                     <th>Membre</th>
                 </tr>
                 <c:forEach items="${ utilisateurs }" var="utilisateur">
-                <%-- Simple test de paritÃ© sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
+                <%-- Simple test de parité sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
-                    <%-- Affichage des propriÃ©tÃ©s du bean Utilisateur, qui est stockÃ© en tant que valeur de l'entrÃ©e courante de la map --%>
+                    <%-- Affichage des propriétés du bean Utilisateur, qui est stocké en tant que valeur de l'entrée courante de la map --%>
                     <td><c:out value="${ utilisateur.nom }"></c:out></td>
                     <td><c:out value="${ utilisateur.prenom }"></c:out></td>
                     <td><c:out value="${ utilisateur.adresse }"></c:out></td>
@@ -36,6 +34,6 @@
             </table>
         </fieldset>
         </div>
-        <p><a href="<c:url value="/accueil"/>">Retour Ã  l'accueil</a></p>
+        <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
     </body>
 </html>

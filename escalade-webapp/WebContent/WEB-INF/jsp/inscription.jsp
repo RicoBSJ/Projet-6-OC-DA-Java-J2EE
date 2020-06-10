@@ -1,5 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,7 +32,7 @@
 				<span class="erreur">${form.erreurs['nom']}</span>
                 <br />
                 
-                <label for="prenom">PrÃ©nom d'utilisateur <span class="requis">*</span></label>
+                <label for="prenom">Prénom d'utilisateur <span class="requis">*</span></label>
 				<input type="text" id="prenom" name="prenom" value="<c:out value="${utilisateur.prenom}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['prenom']}</span>
                 <br />
@@ -46,6 +44,6 @@
 
             </fieldset>
         </form>
-        <p><a href="<c:url value="/accueil"/>">Retour Ã  l'accueil</a></p>
+        <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
     </body>
 </html>

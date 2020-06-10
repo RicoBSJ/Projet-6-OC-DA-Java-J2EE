@@ -25,7 +25,7 @@ public class TopoDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT s FROM Topo s";
+            String q = "SELECT t FROM Topo t";
             Query<Topo> query = session.createQuery( q );
             topos = query.getResultList();
             session.getTransaction().commit();
@@ -45,7 +45,7 @@ public class TopoDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT s FROM Topo s WHERE s.id=?1";
+            String q = "SELECT t FROM Topo t WHERE t.id=?1";
             TypedQuery<Topo> query = session.createQuery( q, Topo.class );
             query.setParameter( 1, id );
             topo = query.getSingleResult();
@@ -68,7 +68,7 @@ public class TopoDAO {
 
             Topo topo = session.get( Topo.class, idTopo );
             if ( topo != null ) {
-                String q = "DELETE FROM Topo s " + "WHERE s.id = :topoId";
+                String q = "DELETE FROM Topo t " + "WHERE t.id = :topoId";
                 Query<Topo> query = session.createQuery( q );
                 query.setParameter( "topoId", idTopo );
                 int result = query.executeUpdate();

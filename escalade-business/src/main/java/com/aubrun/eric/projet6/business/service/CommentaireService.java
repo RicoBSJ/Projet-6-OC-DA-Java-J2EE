@@ -40,9 +40,9 @@ public class CommentaireService {
         return commentaireDAO.recherche( searchFormCom );
     }
 
-    public void modifyComment( Commentaire commentToModidy ) {
+    public void modifyComment( Commentaire commentToModify ) {
 
-        commentaireDAO.modifierCommentaire( commentToModidy );
+        commentaireDAO.modifierCommentaire( commentToModify );
     }
 
 }

@@ -1,5 +1,3 @@
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +12,7 @@
                 <legend>Connexion</legend>
                 <p>Vous pouvez vous connecter via ce formulaire.</p>
                 <c:if test="${empty sessionScope.sessionUtilisateur && !empty requestScope.intervalleConnexions}">
-                	<p class="info">(Vous ne vous Ãªtes pas connectÃ©(e) depuis ce navigateur depuis ${requestScope.intervalleConnexions})</p>
+                	<p class="info">(Vous ne vous êtes pas connecté(e) depuis ce navigateur depuis ${requestScope.intervalleConnexions})</p>
                 </c:if>
 
                 <label for="nom">Adresse email <span class="requis">*</span></label>
@@ -38,10 +36,10 @@
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
                 
                 <c:if test="${!empty sessionScope.sessionUtilisateur}">
-                	<p class="succes">Vous Ãªtes connectÃ©(e) avec l'adresse : ${sessionScope.sessionUtilisateur.email}</p>
+                	<p class="succes">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUtilisateur.email}</p>
                 </c:if>
             </fieldset>
         </form>
-        <p><a href="<c:url value="/accueil"/>">Retour Ã  l'accueil</a></p>
+        <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
     </body>
 </html>
