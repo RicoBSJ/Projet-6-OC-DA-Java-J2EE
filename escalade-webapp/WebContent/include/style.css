@@ -407,7 +407,7 @@ h3.nomStationListe a {
 .results-right {
 	display: flex;
 	float: left;
-	width: 80%;
+	width: 10%;
 	padding: 0px 0px 0px 0px;
 	flex-wrap: nowrap;
 }
