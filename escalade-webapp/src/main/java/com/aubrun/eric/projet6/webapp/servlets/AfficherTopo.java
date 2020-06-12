@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.TopoService;
-import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/afficherTopo" )
@@ -22,7 +21,6 @@ public class AfficherTopo extends HttpServlet {
     public static final String VUE              = "/WEB-INF/jsp/afficherTopo.jsp";
 
     private TopoService        topoService      = new TopoService();
-    private Topo               topo             = new Topo();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -31,12 +29,13 @@ public class AfficherTopo extends HttpServlet {
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
-        if ( connectedUser == null || !connectedUser.getMembre() ) {
+        if ( connectedUser == null ) {
 
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-        request.setAttribute( "topo", topoService.findAll() );
+
+        request.setAttribute( "topos", topoService.findDetailsToposUser( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

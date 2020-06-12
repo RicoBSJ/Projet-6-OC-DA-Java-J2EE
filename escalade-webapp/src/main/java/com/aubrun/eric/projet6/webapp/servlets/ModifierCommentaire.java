@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,11 +59,10 @@ public class ModifierCommentaire extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
         Commentaire commentaire = form.modifierCommentaire( request );
         commentaire.setUtilisateur( connectedUser );
-        commentaire.setDate( new Date() );
-        commentaireService.modifyComment( commentaire );
+        commentaireService.modifyComment( id, commentaire );
         request.setAttribute( "commentaire", commentaireService.findDetails( commentaire.getIdCommentaire() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_DETAILS_SITE ).forward( request, response );

@@ -21,7 +21,7 @@
                     <th>Site du topo</th>
                     <th>Utilisateur</th>
                 </tr>
-                <c:forEach items="${ topo }" var="topo">
+                <c:forEach items="${ topos }" var="topo">
                 <%-- Simple test de parité sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
                     <%-- Affichage des propriétés du bean Utilisateur, qui est stocké en tant que valeur de l'entrée courante de la map --%>

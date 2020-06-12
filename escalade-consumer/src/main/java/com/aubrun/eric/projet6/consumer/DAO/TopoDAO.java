@@ -13,6 +13,7 @@ import org.hibernate.query.Query;
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
 import com.aubrun.eric.projet6.model.bean.SearchFormTopo;
 import com.aubrun.eric.projet6.model.bean.Topo;
+import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class TopoDAO {
 
@@ -27,6 +28,27 @@ public class TopoDAO {
             session.getTransaction().begin();
             String q = "SELECT t FROM Topo t";
             Query<Topo> query = session.createQuery( q );
+            topos = query.getResultList();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return topos;
+    }
+
+    public List<Topo> recupererToposDeLUtilisateur( Utilisateur utilisateur ) {
+
+        Session session = factory.getCurrentSession();
+        List<Topo> topos = null;
+
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT t FROM Topo t WHERE t.utilisateur=?1";
+            Query<Topo> query = session.createQuery( q );
+            query.setParameter( 1, utilisateur );
             topos = query.getResultList();
             session.getTransaction().commit();
 

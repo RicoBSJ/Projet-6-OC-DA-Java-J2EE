@@ -1,5 +1,6 @@
 package com.aubrun.eric.projet6.business.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.CommentaireDAO;
@@ -40,9 +41,12 @@ public class CommentaireService {
         return commentaireDAO.recherche( searchFormCom );
     }
 
-    public void modifyComment( Commentaire commentToModify ) {
-
-        commentaireDAO.modifierCommentaire( commentToModify );
+    public void modifyComment( Integer id, Commentaire commentToModify ) {
+        Commentaire commentaire = commentaireDAO.afficherDetails( id );
+        commentaire.setTitre( commentToModify.getTitre() );
+        commentaire.setContenu( commentToModify.getContenu() );
+        commentaire.setDate( new Date() );
+        commentaireDAO.modifierCommentaire( commentaire );
     }
 
 }
