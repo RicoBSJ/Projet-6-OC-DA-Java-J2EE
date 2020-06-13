@@ -25,6 +25,18 @@ public class AjouterTopo extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
+        /* Préparation de l'objet formulaire */
+        AjouterTopoForm form = new AjouterTopoForm();
+
+        Topo createTopo = form.ajouterTopo( request );
+
+        topoService.addTopo( createTopo );
+
+        /* Stockage du formulaire et du bean dans l'objet request */
+        request.setAttribute( ATT_FORM, form );
+        request.setAttribute( ATT_USER, createTopo );
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
     }
 
     /**

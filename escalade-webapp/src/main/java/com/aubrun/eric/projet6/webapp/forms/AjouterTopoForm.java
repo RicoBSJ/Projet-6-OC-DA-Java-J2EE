@@ -39,7 +39,6 @@ public final class AjouterTopoForm {
             traiterNom( nom, topo );
             traiterDescription( description, topo );
             traiterLieu( lieu, topo );
-            resultat = "Création du topo réussie !";
         } catch ( Exception e ) {
             resultat = "Echec de la création de topo : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
             e.printStackTrace();

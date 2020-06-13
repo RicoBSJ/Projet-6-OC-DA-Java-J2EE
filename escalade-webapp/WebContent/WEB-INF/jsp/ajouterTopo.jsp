@@ -38,7 +38,7 @@
 			</c:if>
                 <br />
 
-                <input type="submit" value="Inscription" class="sansLabel" />
+                <input type="submit" value="Enregistrer topo" class="sansLabel" />
                 <br />
                 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
