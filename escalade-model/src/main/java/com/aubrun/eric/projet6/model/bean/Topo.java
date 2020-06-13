@@ -30,6 +30,8 @@ public class Topo {
     private String      lieu;
     @Column( name = "dateParution" )
     private Date        dateParution;
+    @Column( name = "disponible" )
+    private Boolean     disponible;
     @ManyToOne
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
@@ -77,6 +79,14 @@ public class Topo {
 
     public void setDateParution( Date dateParution ) {
         this.dateParution = dateParution;
+    }
+
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible( Boolean disponible ) {
+        this.disponible = disponible;
     }
 
     public Site getSite() {

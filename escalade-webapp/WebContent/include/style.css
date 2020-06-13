@@ -187,7 +187,7 @@ nav a:hover {
 section {
 	display: flex;
 	margin-bottom: 20px;
-	flex-direction: column;
+	flex-direction: row;
 }
 
 article, aside {
@@ -337,7 +337,7 @@ p {
 .grid2 ul li.resultats-listeStations {
 	float: left;
 	width: 47%;
-	margin: 0;
+	margin: 0px 20px 0px 0px;
 	padding: 5px 0px 5px 0px;
 	list-style-type: none;
 	border-bottom: 1px solid #f4f3f3;
@@ -407,7 +407,7 @@ h3.nomStationListe a {
 .results-right {
 	display: flex;
 	float: left;
-	width: 10%;
+	width: 63%;
 	padding: 0px 0px 0px 0px;
 	flex-wrap: nowrap;
 }

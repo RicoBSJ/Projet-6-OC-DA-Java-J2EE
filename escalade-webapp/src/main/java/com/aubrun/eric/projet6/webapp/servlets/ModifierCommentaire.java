@@ -23,7 +23,6 @@ public class ModifierCommentaire extends HttpServlet {
     public static final String ATT_FORM           = "form";
     public static final String ATT_SESSION_USER   = "sessionUtilisateur";
     public static final String VUE                = "/WEB-INF/jsp/modifierCommentaire.jsp";
-    public static final String VUE_DETAILS_SITE   = "/WEB-INF/jsp/detailsSite.jsp";
 
     private CommentaireService commentaireService = new CommentaireService();
 
@@ -59,12 +58,12 @@ public class ModifierCommentaire extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-        Integer id = Integer.parseInt( request.getParameter( "id" ) );
+        Integer idCommentaire = Integer.parseInt( request.getParameter( "id" ) );
         Commentaire commentaire = form.modifierCommentaire( request );
         commentaire.setUtilisateur( connectedUser );
-        commentaireService.modifyComment( id, commentaire );
+        commentaireService.modifyComment( idCommentaire, commentaire );
         request.setAttribute( "commentaire", commentaireService.findDetails( commentaire.getIdCommentaire() ) );
 
-        this.getServletContext().getRequestDispatcher( VUE_DETAILS_SITE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

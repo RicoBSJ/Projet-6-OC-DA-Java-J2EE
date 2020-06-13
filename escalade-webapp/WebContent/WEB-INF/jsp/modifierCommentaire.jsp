@@ -14,11 +14,12 @@
 			<legend>Modifier un commentaire</legend>
 			<p>Vous pouvez modifier un commentaire via ce formulaire.</p>
 
-			<input type="hidden" value="${commentaire.idCommentaire}">
+			<input type="hidden" value="${commentaire.idCommentaire}" name="id">
 			<label for="titre">Modification du titre <span class="requis">*</span></label>
-			<input name="titre" type="text" value="${commentaire.titre}">
+			<input name="titre" type="text" value="${commentaire.titre}"><br><br>
+			<span class="erreur">${form.erreurs['titre']}</span>
 			<label for="contenu">Modification de commentaire <span class="requis">*</span></label>
-			<textarea name="contenu">${commentaire.contenu}</textarea>
+			<textarea name="contenu">${commentaire.contenu}</textarea><br>
 			<span class="erreur">${form.erreurs['contenu']}</span>
 			<br /> <input type="submit" value="Envoyer" class="sansLabel" /> <input type="reset"
 				value="Remettre à zéro" /> <br />
