@@ -180,7 +180,6 @@ public class TopoDAO {
         try {
             session.getTransaction().begin();
             session.update( topo );
-            topo.setDisponible( false );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
