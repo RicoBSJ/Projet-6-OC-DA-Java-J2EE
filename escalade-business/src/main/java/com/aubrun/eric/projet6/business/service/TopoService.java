@@ -36,7 +36,6 @@ public class TopoService {
 
     public void addTopo( Topo createTopo ) {
 
-        topo.setDisponible( true );
         topoDAO.ajouterTopo( createTopo );
     }
 
@@ -55,4 +54,9 @@ public class TopoService {
         topoDAO.modifierTopo( topoToModify );
     }
 
+    public void reserveTopo( Topo reservedTopo ) {
+
+        topoDAO.reserverTopo( reservedTopo );
+        topo.setDisponible( false );
+    }
 }

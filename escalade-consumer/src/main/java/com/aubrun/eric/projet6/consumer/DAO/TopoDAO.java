@@ -172,4 +172,21 @@ public class TopoDAO {
             session.getTransaction().rollback();
         }
     }
+
+    public void reserverTopo( Topo topo ) {
+
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.update( topo );
+            topo.setDisponible( false );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+    }
 }
