@@ -7,7 +7,7 @@
     </head>
     <body>
     	<c:import url="/include/menu.jsp"></c:import>
-        <form method="post" action="inscription">
+        <form method="post" action="ajouterTopo">
             <fieldset>
                 <legend>Ajouter un topo</legend>
                 <p>Vous pouvez vous ajouter un topo via ce formulaire.</p>
@@ -29,13 +29,6 @@
                 <label for="dateParution">Date de parution du topo <span class="requis">*</span></label>
 				<input type="date" id="dateParution" name="dateParution" value="<c:out value="${topo.dateParution}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['dateParution']}</span>
-                <br />
-                
-			<c:if test="${topo.disponible eq false}">
-                <label for="disponible">Disponibilité du topo <span class="requis">*</span></label>
-				<input type="bool" id="disponible" name="disponible" value="<c:out value="${topo.disponible}"/>" size="20" maxlength="20" />
-				<span class="erreur">${form.erreurs['disponible']}</span>
-			</c:if>
                 <br />
 
                 <input type="submit" value="Enregistrer topo" class="sansLabel" />

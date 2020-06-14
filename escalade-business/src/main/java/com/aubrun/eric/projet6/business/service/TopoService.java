@@ -12,6 +12,7 @@ public class TopoService {
 
     private TopoDAO        topoDAO        = new TopoDAO();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+    private Topo           topo           = new Topo();
 
     public List<Topo> findAll() {
 
@@ -28,12 +29,14 @@ public class TopoService {
     }
 
     public List<Topo> findDetailsToposUser( Integer id ) {
+
         Utilisateur utilisateur = utilisateurDAO.afficherParId( id );
         return topoDAO.recupererToposDeLUtilisateur( utilisateur );
     }
 
     public void addTopo( Topo createTopo ) {
 
+        topo.setDisponible( true );
         topoDAO.ajouterTopo( createTopo );
     }
 
