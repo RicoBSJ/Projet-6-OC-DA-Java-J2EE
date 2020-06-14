@@ -60,6 +60,27 @@ public class TopoDAO {
         return topos;
     }
 
+    public List<Topo> recupererToposDisponible( Boolean toposDisponibles ) {
+
+        Session session = factory.getCurrentSession();
+        List<Topo> topos = null;
+
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT t FROM Topo t WHERE t.toposDisponibles=?1";
+            Query<Topo> query = session.createQuery( q );
+            query.setParameter( 1, toposDisponibles );
+            topos = query.getResultList();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return topos;
+    }
+
     public Topo afficherDetails( Integer id ) {
 
         Session session = factory.getCurrentSession();
@@ -70,6 +91,27 @@ public class TopoDAO {
             String q = "SELECT t FROM Topo t WHERE t.id=?1";
             TypedQuery<Topo> query = session.createQuery( q, Topo.class );
             query.setParameter( 1, id );
+            topo = query.getSingleResult();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return topo;
+    }
+
+    public Topo afficherToposParDisponibilite( Boolean toposDisponibles ) {
+
+        Session session = factory.getCurrentSession();
+        Topo topo = null;
+
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT t FROM Topo t WHERE t.toposDisponibles=?1";
+            TypedQuery<Topo> query = session.createQuery( q, Topo.class );
+            query.setParameter( 1, toposDisponibles );
             topo = query.getSingleResult();
             session.getTransaction().commit();
 

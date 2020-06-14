@@ -33,12 +33,15 @@ public class ReserverTopo extends HttpServlet {
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
-        if ( connectedUser == null ) {
+        Topo reserveTopo = new Topo();
+
+        if ( connectedUser == null || !connectedUser.getMembre() || !reserveTopo.getDisponible() ) {
 
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
 
+        request.setAttribute( "topos", topoService.findToposByAvailability( reserveTopo.getDisponible() ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

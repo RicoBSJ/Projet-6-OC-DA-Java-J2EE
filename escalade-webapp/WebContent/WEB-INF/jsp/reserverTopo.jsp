@@ -10,8 +10,8 @@
 	<c:import url="/include/menu.jsp"></c:import>
 	<div id="corps">
 		<fieldset>
-			<legend>Liste des topos de l'utilisateur connecté</legend>
-			<c:if test="${!empty sessionScope.sessionUtilisateur} && ${ topo.disponible == true }">
+			<legend>Liste des topos disponibles</legend>
+			<c:if test="${!empty sessionScope.sessionUtilisateur}">
 			<table>
                 <tr>
                     <th>Nom</th>
@@ -32,6 +32,7 @@
                     <td><c:out value="${ topo.dateParution }"></c:out></td>
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
+                    <td><c:out value="${ topo.disponible }"></c:out></td>
                 </tr>
                 </c:forEach>
             </table>

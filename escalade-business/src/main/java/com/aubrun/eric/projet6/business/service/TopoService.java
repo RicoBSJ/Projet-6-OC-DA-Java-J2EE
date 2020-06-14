@@ -34,6 +34,12 @@ public class TopoService {
         return topoDAO.recupererToposDeLUtilisateur( utilisateur );
     }
 
+    public List<Topo> findToposByAvailability( Boolean availableTopos ) {
+
+        Topo topos = topoDAO.afficherToposParDisponibilite( availableTopos );
+        return topoDAO.recupererToposDisponible( topos.getDisponible() );
+    }
+
     public void addTopo( Topo createTopo ) {
 
         topoDAO.ajouterTopo( createTopo );
