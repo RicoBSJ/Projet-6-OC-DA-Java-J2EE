@@ -29,11 +29,11 @@ public class ReserverTopo extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
         HttpSession session = request.getSession();
-
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-
         Topo reserveTopo = new Topo();
+        reserveTopo.setId( id );
 
         if ( connectedUser == null || !connectedUser.getMembre() || !reserveTopo.getDisponible() ) {
 
