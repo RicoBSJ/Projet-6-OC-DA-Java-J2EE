@@ -12,13 +12,13 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.TopoService;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
-@WebServlet( "/afficherTopo" )
-public class AfficherTopo extends HttpServlet {
+@WebServlet( "/afficherToposUtilisateur" )
+public class AfficherToposUtilisateur extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE              = "/WEB-INF/jsp/afficherTopo.jsp";
+    public static final String VUE              = "/WEB-INF/jsp/afficherToposUtilisateur.jsp";
 
     private TopoService        topoService      = new TopoService();
 

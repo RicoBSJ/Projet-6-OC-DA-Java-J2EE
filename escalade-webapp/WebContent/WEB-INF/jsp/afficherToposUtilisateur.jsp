@@ -47,6 +47,7 @@
 		</fieldset>
 	</div>
 	<p>
+		<a href="<c:url value="/afficherToposDisponibles?id=${ topo.id }" />">Afficher topos disponibles</a><br><br>
 		<a href="<c:url value="/accueil"/>">Retour à l'accueil</a>
 	</p>
 </body>

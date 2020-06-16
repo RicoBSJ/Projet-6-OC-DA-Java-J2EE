@@ -17,14 +17,13 @@
 					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
 				</c:if>
-				<li><a href="<c:url value="/listeUtilisateurs" />">Utilisateurs</a></li>
+				<li><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
 				<li><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
 				<c:if test="${!empty sessionScope.sessionUtilisateur}">
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 					<li><a href="<c:url value="/creationSite" />">Création site</a></li>
-					<li><a href="<c:url value="/afficherTopo" />">Topo(s)</a></li>
-					<li><a href="<c:url value="/ajouterTopo" />">Ajouter un topo</a></li>
-					<li><a href="<c:url value="/reserverTopo" />">Reserver un topo</a></li>
+					<li><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
+					<li><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponibles</a></li>
 					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 				</c:if>
 			</ul>

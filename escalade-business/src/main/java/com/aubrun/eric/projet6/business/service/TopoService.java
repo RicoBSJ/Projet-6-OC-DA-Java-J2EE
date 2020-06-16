@@ -37,7 +37,11 @@ public class TopoService {
     public List<Topo> findToposByAvailability( Boolean availableTopos ) {
 
         Topo topos = topoDAO.afficherToposParDisponibilite( availableTopos );
-        return topoDAO.recupererToposDisponible( topos.getDisponible() );
+        if ( !topos.getDisponible() == true ) {
+            return null;
+        } else {
+            return topoDAO.recupererToposDisponibles( topos.getId() );
+        }
     }
 
     public void addTopo( Topo createTopo ) {

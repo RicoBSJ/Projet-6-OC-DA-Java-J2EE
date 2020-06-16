@@ -32,6 +32,7 @@
                     <td><c:out value="${ topo.dateParution }"></c:out></td>
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
+                    <td><c:out value="${ topo.disponible }"></c:out></td>
                 </tr>
                 </c:forEach>
             </table>
