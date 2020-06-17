@@ -34,14 +34,15 @@ public class TopoService {
         return topoDAO.recupererToposDeLUtilisateur( utilisateur );
     }
 
-    public List<Topo> findToposByAvailability( Boolean availableTopos ) {
+    public List<Topo> findToposByAvailability( Boolean toposDisponibles ) {
 
-        Topo topos = topoDAO.afficherToposParDisponibilite( availableTopos );
-        if ( !topos.getDisponible() == true ) {
-            return null;
-        } else {
-            return topoDAO.recupererToposDisponibles( topos.getId() );
+        List<Topo> topos = topoDAO.recupererTopos();
+        for ( Topo s : topos ) {
+            if ( s.getDisponible() == true ) {
+                topos = topoDAO.recupererToposDisponibles( toposDisponibles );
+            }
         }
+        return topos;
     }
 
     public void addTopo( Topo createTopo ) {

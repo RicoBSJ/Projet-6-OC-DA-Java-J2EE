@@ -11,7 +11,7 @@
 	<div id="corps">
 		<fieldset>
 			<legend>Liste des topos disponibles</legend>
-			<c:if test="${topo.disponible == true}">
+			<c:if test="${!empty sessionScope.sessionUtilisateur}">
 			<table>
                 <tr>
                     <th>Nom</th>
@@ -20,7 +20,7 @@
                     <th>Date de parution</th>
                     <th>Site du topo</th>
                     <th>Utilisateur</th>
-                    <th>Reservation</th>
+                    <th>Disponibilité</th>
                 </tr>
                 <c:forEach items="${ topos }" var="topo">
                 <%-- Simple test de parité sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
@@ -32,7 +32,14 @@
                     <td><c:out value="${ topo.dateParution }"></c:out></td>
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
-                    <td><c:out value="${ topo.disponible }"></c:out></td>
+                	<c:choose>
+				         <c:when test="${ topo.disponible == true }">
+				            <td><a href="<c:url value="/reserverTopo"/>">Retour à l'accueil</a></td>
+				         </c:when>
+				         <c:otherwise>
+				            <td>Non disponible</td>
+				         </c:otherwise>
+      				</c:choose>
                 </tr>
                 </c:forEach>
             </table>
