@@ -15,11 +15,12 @@
 				<label for="nom">Nom de topo <span class="requis">*</span></label>
 				<input type="text" id="nom" name="nom" value="<c:out value="${topo.nom}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['nom']}</span>
-                <br />
+                <br><br>
 				
                 <label for="description">Description du topo <span class="requis">*</span></label>
-				<textarea name="description">${topo.description}</textarea><br>
+				<textarea name="description">${topo.description}</textarea>
 				<span class="erreur">${form.erreurs['description']}</span>
+				<br />
 
                 <label for="lieu">Lieu du topo <span class="requis">*</span></label>
 				<input type="text" id="lieu" name="lieu" value="<c:out value="${topo.lieu}"/>" size="20" maxlength="20" />
@@ -29,6 +30,11 @@
                 <label for="dateParution">Date de parution du topo <span class="requis">*</span></label>
 				<input type="date" id="dateParution" name="dateParution" value="<c:out value="${topo.dateParution}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['dateParution']}</span>
+                <br />
+                
+                <label for="site">Site du topo <span class="requis">*</span></label>
+				<input type="text" id="site" name="site" value="<c:out value="${topo.site}"/>" size="20" maxlength="20" />
+				<span class="erreur">${form.erreurs['site']}</span>
                 <br />
 
                 <input type="submit" value="Enregistrer topo" class="sansLabel" />
