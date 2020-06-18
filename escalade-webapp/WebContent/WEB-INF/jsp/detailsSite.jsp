@@ -17,15 +17,17 @@
 			<br>
 			<a><h5>Officiel Les amis de l'escalade</h5></a>
 		</c:if>
-		<c:choose>
-			<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
-				<form action="taguerUnSiteOfficiel" method="post">
-					<input type="hidden" value="${ site.id }" name="idSite"> <input
-						type="submit" name="tag"
-						value="Taguer ce site comme site officiel" />
-				</form>
-			</c:when>
-		</c:choose>
+		<c:if test="${!empty sessionScope.sessionUtilisateur}">
+			<form action="taguerUnSiteOfficiel" method="post">
+				<input type="hidden" value="${ site.id }" name="idSite">
+				<input type="submit" name="tag" value="Taguer ce site comme site officiel" />
+			</form>
+			<a href="<c:url value="/ajouterTopo" />">Ajouter un topo</a>
+<!-- 			<form action="ajouterTopo" method="post"> -->
+<%-- 				<input type="hidden" value="${ utilisateur.id }" name="id"> --%>
+<!-- 				<input type="submit" name="addTopo" value="Ajouter un topo" /> -->
+<!-- 			</form> -->
+		</c:if>
 		<c:if test="${ site.officiel == true }">
 			<a><h5>Ce site est tagué comme site officiel</h5></a>
 		</c:if>

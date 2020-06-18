@@ -23,7 +23,6 @@
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 					<li><a href="<c:url value="/creationSite" />">Création site</a></li>
 					<li><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
-					<li><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponibles</a></li>
 					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 				</c:if>
 			</ul>

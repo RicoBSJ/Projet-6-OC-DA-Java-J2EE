@@ -48,5 +48,4 @@ public class CommentaireService {
         commentaire.setDate( new Date() );
         commentaireDAO.modifierCommentaire( commentaire );
     }
-
 }

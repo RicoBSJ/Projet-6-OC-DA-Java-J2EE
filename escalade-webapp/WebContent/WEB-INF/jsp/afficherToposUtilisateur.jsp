@@ -47,7 +47,7 @@
 		</fieldset>
 	</div>
 	<p>
-		<a href="<c:url value="/ajouterTopo?id=${ topo.id }" />">Ajouter un topo</a><br><br>
+		<a href="<c:url value="/ajouterTopo?id=${ utilisateur.id }" />">Ajouter un topo</a><br><br>
 		<a href="<c:url value="/accueil"/>">Retour à l'accueil</a>
 	</p>
 </body>
