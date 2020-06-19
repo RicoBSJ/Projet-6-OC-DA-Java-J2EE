@@ -22,11 +22,6 @@
 				<input type="hidden" value="${ site.id }" name="idSite">
 				<input type="submit" name="tag" value="Taguer ce site comme site officiel" />
 			</form>
-			<a href="<c:url value="/ajouterTopo" />">Ajouter un topo</a>
-<!-- 			<form action="ajouterTopo" method="post"> -->
-<%-- 				<input type="hidden" value="${ utilisateur.id }" name="id"> --%>
-<!-- 				<input type="submit" name="addTopo" value="Ajouter un topo" /> -->
-<!-- 			</form> -->
 		</c:if>
 		<c:if test="${ site.officiel == true }">
 			<a><h5>Ce site est tagué comme site officiel</h5></a>
@@ -49,8 +44,7 @@
 					<h5>Commentaires</h5>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<form action="ajouterCommentaire" method="post">
-							<input type="submit" name="addComment"
-								value="Ajouter un commentaire" />
+							<input type="submit" name="addComment" value="Ajouter un commentaire" />
 						</form>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
@@ -76,6 +70,41 @@
 								<input type="hidden" value="${ site.id }" name="idSite">
 								<input type="submit" name="delComment" value="Supprimer ce commentaire" />
 							</form>
+						</c:if>
+					</c:forEach>
+					<h5>Topos</h5>
+					<c:if test="${!empty sessionScope.sessionUtilisateur}">
+						<form action="ajouterTopo" method="post">
+							<input type="submit" name="addTopo" value="Ajouter un topo" />
+						</form>
+					</c:if>
+					<c:forEach var="topos" items="${ topo.site }">
+						<div class="massifListe">
+							<h5>${topo.utilisateur.prenom}</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${topo.utilisateur.nom}</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${topo.nom}:</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${ topo.description }</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${ topo.lieu }</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${ topo.dateParution }</h5>
+						</div>
+						<div class="massifListe">
+							<h5>${ topo.disponible }</h5>
+						</div>
+						<br>
+						<div class="massifListe">${ commentaire.contenu }</div>
+						<br>
+						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
+							<a href="<c:url value="/ajouterTopo?id=${topo.id}" />">Ajouter un topo</a>
 						</c:if>
 					</c:forEach>
 				</div>

@@ -45,10 +45,8 @@ public class TopoService {
         return topos;
     }
 
-    public void addTopo( Integer idUser, Topo createTopo ) {
+    public void addTopo( Topo createTopo ) {
 
-        Utilisateur utilisateur = utilisateurDAO.afficherParId( idUser );
-        createTopo.setUtilisateur( utilisateur );
         topoDAO.ajouterTopo( createTopo );
     }
 

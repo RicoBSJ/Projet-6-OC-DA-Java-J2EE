@@ -36,9 +36,6 @@
 				<input type="text" id="site" name="site" value="<c:out value="${topo.site}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['site']}</span>
                 <br />
-
-                <input type="submit" value="Enregistrer topo" class="sansLabel" />
-                <br />
                 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 

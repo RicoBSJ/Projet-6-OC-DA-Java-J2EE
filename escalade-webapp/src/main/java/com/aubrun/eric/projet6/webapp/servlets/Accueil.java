@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.business.service.SiteService;
+import com.aubrun.eric.projet6.business.service.TopoService;
 
 @WebServlet( "/accueil" )
 public class Accueil extends HttpServlet {
@@ -21,6 +22,7 @@ public class Accueil extends HttpServlet {
 
     private SiteService        siteService        = new SiteService();
     private CommentaireService commentaireService = new CommentaireService();
+    private TopoService 	   topoService 		  = new TopoService();
 
     public Accueil() {
         super();
@@ -31,6 +33,7 @@ public class Accueil extends HttpServlet {
 
         request.setAttribute( "sites", siteService.findAll() );
         request.setAttribute( "commentaires", commentaireService.findAll() );
+        request.setAttribute( "topos", topoService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
