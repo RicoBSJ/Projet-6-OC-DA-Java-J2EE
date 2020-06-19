@@ -37,8 +37,14 @@
 					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
-					<img src="${ site.photos[0].cheminPhoto }" alt="Site"
-						title="Détails du site" />
+					<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" />
+						<div class="results-right">
+							<div class="infosStations">
+								<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
+								<span class="value">Orientation <span> ${ site.orientation }</span></span>
+								<span class="value"><span>Cotation </span> ${ site.cotation }</span>
+							</div>
+						</div><br><br><br><br><br>
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div>
 					<h5>Commentaires</h5>
@@ -60,7 +66,7 @@
 						<div class="massifListe">
 							<h5>${ commentaire.titre }</h5>
 						</div>
-						<br>
+						<br><br>
 						<div class="massifListe">${ commentaire.contenu }</div>
 						<br>
 						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
@@ -72,49 +78,6 @@
 							</form>
 						</c:if>
 					</c:forEach>
-					<h5>Topos</h5>
-					<c:if test="${!empty sessionScope.sessionUtilisateur}">
-						<form action="ajouterTopo" method="post">
-							<input type="submit" name="addTopo" value="Ajouter un topo" />
-						</form>
-					</c:if>
-					<c:forEach var="topos" items="${ topo.site }">
-						<div class="massifListe">
-							<h5>${topo.utilisateur.prenom}</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${topo.utilisateur.nom}</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${topo.nom}:</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${ topo.description }</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${ topo.lieu }</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${ topo.dateParution }</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${ topo.disponible }</h5>
-						</div>
-						<br>
-						<div class="massifListe">${ commentaire.contenu }</div>
-						<br>
-						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
-							<a href="<c:url value="/ajouterTopo?id=${topo.id}" />">Ajouter un topo</a>
-						</c:if>
-					</c:forEach>
-				</div>
-
-				<div class="results-right">
-					<div class="infosStations">
-						<span class="value"><span>${ site.hauteur } </span> de
-							hauteur</span> <span class="value">Orientation <span> ${ site.orientation }</span></span>
-						<span class="value"><span>Cotation </span> ${ site.cotation }</span>
-					</div>
 				</div>
 			</article>
 		</section>

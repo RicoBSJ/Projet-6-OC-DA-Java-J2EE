@@ -37,6 +37,9 @@
 				<span class="erreur">${form.erreurs['site']}</span>
                 <br />
                 
+                <input type="submit" value="Valider"  />
+                <input type="reset" value="Remettre à zéro" /> <br />
+                
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 
             </fieldset>

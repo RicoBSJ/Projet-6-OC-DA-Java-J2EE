@@ -2,7 +2,6 @@ package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,7 @@ public class AjouterTopo extends HttpServlet {
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-    	AjouterTopoForm form = new AjouterTopoForm();
+        AjouterTopoForm form = new AjouterTopoForm();
         HttpSession session = request.getSession();
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
@@ -58,7 +57,8 @@ public class AjouterTopo extends HttpServlet {
         }
 
         Topo createTopo = form.ajouterTopo( request );
-        topoService.addTopo( createTopo );
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
+        topoService.addTopo( id, createTopo );
         request.setAttribute( "topos", topoService.findDetailsToposUser( connectedUser.getId() ) );
 
         request.setAttribute( ATT_FORM, form );

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<form action="modifierCommentaire" method="post" enctype="multipart/form-data">
+	<form action="modifierCommentaire" method="post">
 		<fieldset>
 			<legend>Modifier un commentaire</legend>
 			<p>Vous pouvez modifier un commentaire via ce formulaire.</p>

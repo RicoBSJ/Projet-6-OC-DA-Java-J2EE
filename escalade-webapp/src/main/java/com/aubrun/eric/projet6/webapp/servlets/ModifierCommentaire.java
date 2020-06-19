@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.ModifierCommentaireForm;
 
 @WebServlet( "/modifierCommentaire" )
 public class ModifierCommentaire extends HttpServlet {
@@ -45,9 +44,6 @@ public class ModifierCommentaire extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        /* Préparation de l'objet formulaire */
-        ModifierCommentaireForm form = new ModifierCommentaireForm();
-
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
@@ -59,10 +55,11 @@ public class ModifierCommentaire extends HttpServlet {
             throw new RuntimeException();
         }
         Integer idCommentaire = Integer.parseInt( request.getParameter( "id" ) );
-        Commentaire commentaire = form.modifierCommentaire( request );
+        Commentaire commentaire = new Commentaire();
+        commentaire.setTitre( request.getParameter( "titre" ) );
+        commentaire.setContenu( request.getParameter( "contenu" ) );
         commentaire.setUtilisateur( connectedUser );
         commentaireService.modifyComment( idCommentaire, commentaire );
-        request.setAttribute( "commentaire", commentaireService.findDetails( commentaire.getIdCommentaire() ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
