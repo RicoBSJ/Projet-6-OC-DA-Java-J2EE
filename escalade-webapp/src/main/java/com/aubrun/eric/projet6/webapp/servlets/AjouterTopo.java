@@ -38,7 +38,7 @@ public class AjouterTopo extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
+        request.setAttribute( "topos", topoService.findAll() );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
@@ -59,7 +59,6 @@ public class AjouterTopo extends HttpServlet {
         Topo createTopo = form.ajouterTopo( request );
         Integer id = Integer.parseInt( request.getParameter( "id" ) );
         topoService.addTopo( id, createTopo );
-        request.setAttribute( "topos", topoService.findDetailsToposUser( connectedUser.getId() ) );
 
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, createTopo );
