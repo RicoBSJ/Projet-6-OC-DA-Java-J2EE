@@ -26,21 +26,6 @@ public class AjouterCommentaire extends HttpServlet {
 
     private CommentaireService commentaireService = new CommentaireService();
 
-    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* Affichage de la page d'inscription */
-
-        HttpSession session = request.getSession();
-
-        Utilisateur utilisateur = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-
-        if ( utilisateur == null ) {
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
-        }
-
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-    }
-
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
@@ -49,8 +34,7 @@ public class AjouterCommentaire extends HttpServlet {
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
-        if ( connectedUser == null ) {
-
+        if ( connectedUser == null || !connectedUser.getMembre() ) {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }

@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.CommentaireDAO;
+import com.aubrun.eric.projet6.consumer.DAO.SiteDAO;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.SearchFormCom;
 
 public class CommentaireService {
 
     private CommentaireDAO commentaireDAO = new CommentaireDAO();
+    private SiteDAO        siteDAO        = new SiteDAO();
 
     public List<Commentaire> findAll() {
 
