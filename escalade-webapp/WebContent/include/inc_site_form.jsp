@@ -3,7 +3,7 @@
 
             <fieldset>
                 <legend>Inscription</legend>
-                <p>Vous pouvez vous inscrire via ce formulaire.</p>
+                <p>Vous pouvez vous créer un site via ce formulaire.</p>
                 
 				<label for="nomSite">Nom du site <span class="requis">*</span></label>
 				<input type="text" id="nomSite" name="nomSite" value="<c:out value="${utilisateur.nom}"/>" size="30" maxlength="30" />
