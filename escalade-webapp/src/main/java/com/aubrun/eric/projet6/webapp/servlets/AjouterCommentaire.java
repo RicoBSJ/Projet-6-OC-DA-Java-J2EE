@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.AjouterCommentaireForm;
 
 @WebServlet( "/ajouterCommentaire" )
 public class AjouterCommentaire extends HttpServlet {
@@ -45,9 +44,6 @@ public class AjouterCommentaire extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        /* Préparation de l'objet formulaire */
-        AjouterCommentaireForm form = new AjouterCommentaireForm();
-
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
@@ -59,7 +55,7 @@ public class AjouterCommentaire extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Commentaire commentaire = form.ajouterCommentaire( request );
+        Commentaire commentaire = new Commentaire();
         commentaire.setUtilisateur( connectedUser );
         commentaire.setDate( new Date() );
         commentaireService.addCommentaire( commentaire );
