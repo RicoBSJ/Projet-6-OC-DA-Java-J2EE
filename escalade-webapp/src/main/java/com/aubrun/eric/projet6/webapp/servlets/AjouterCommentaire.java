@@ -59,7 +59,7 @@ public class AjouterCommentaire extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Commentaire commentaire = form.ajouterCommentaire( request );
+        Commentaire commentaire = new Commentaire();
         commentaire.setTitre( request.getParameter( "titre" ) );
         commentaire.setContenu( request.getParameter( "contenu" ) );
         commentaire.setUtilisateur( connectedUser );

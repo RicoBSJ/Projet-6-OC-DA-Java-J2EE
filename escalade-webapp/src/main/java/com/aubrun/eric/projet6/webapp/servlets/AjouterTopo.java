@@ -57,7 +57,7 @@ public class AjouterTopo extends HttpServlet {
         }
 
         Integer idSite = Integer.parseInt( request.getParameter( "id" ) );
-        Topo topo = form.ajouterTopo( request );
+        Topo topo = new Topo();
         topo.setNom( request.getParameter( "nom" ) );
         topo.setDescription( request.getParameter( "description" ) );
         topo.setLieu( request.getParameter( "lieu" ) );
