@@ -56,12 +56,16 @@ public class AjouterTopo extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Topo createTopo = form.ajouterTopo( request );
-        Integer id = Integer.parseInt( request.getParameter( "id" ) );
-        topoService.addTopo( id, createTopo );
+        Integer idSite = Integer.parseInt( request.getParameter( "id" ) );
+        Topo topo = form.ajouterTopo( request );
+        topo.setNom( request.getParameter( "nom" ) );
+        topo.setDescription( request.getParameter( "description" ) );
+        topo.setLieu( request.getParameter( "lieu" ) );
+        topo.setUtilisateur( connectedUser );
+        topoService.addTopo( idSite, topo );
 
         request.setAttribute( ATT_FORM, form );
-        request.setAttribute( ATT_USER, createTopo );
+        request.setAttribute( ATT_USER, topo );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

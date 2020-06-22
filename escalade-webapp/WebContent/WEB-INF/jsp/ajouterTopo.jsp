@@ -13,6 +13,7 @@
                 <legend>Ajouter un topo</legend>
                 <p>Vous pouvez vous ajouter un topo via ce formulaire.</p>
 				<br>
+				<input type="hidden" value="${topo.id}" name="id">
 				<label for="nom">Nom de topo <span class="requis">*</span></label>
 				<input type="text" id="nom" name="nom" value="<c:out value="${topo.nom}"/>" size="20" maxlength="20" />
 				<span class="erreur">${form.erreurs['nom']}</span>
