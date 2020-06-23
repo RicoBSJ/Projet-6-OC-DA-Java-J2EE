@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.TopoService;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.AjouterTopoForm;
 
 @WebServlet( "/ajouterTopo" )
 public class AjouterTopo extends HttpServlet {
@@ -45,7 +45,6 @@ public class AjouterTopo extends HttpServlet {
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        AjouterTopoForm form = new AjouterTopoForm();
         HttpSession session = request.getSession();
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
@@ -56,16 +55,13 @@ public class AjouterTopo extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Integer idSite = Integer.parseInt( request.getParameter( "id" ) );
         Topo topo = new Topo();
         topo.setNom( request.getParameter( "nom" ) );
         topo.setDescription( request.getParameter( "description" ) );
         topo.setLieu( request.getParameter( "lieu" ) );
+        topo.setDateParution( new Date() );
         topo.setUtilisateur( connectedUser );
-        topoService.addTopo( idSite, topo );
-
-        request.setAttribute( ATT_FORM, form );
-        request.setAttribute( ATT_USER, topo );
+        topoService.addTopo( topo );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

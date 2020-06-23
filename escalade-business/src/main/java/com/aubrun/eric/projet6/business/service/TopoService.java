@@ -45,15 +45,9 @@ public class TopoService {
         return topos;
     }
 
-    public void addTopo( Integer id, Topo createTopo ) {
+    public void addTopo( Topo createTopo ) {
 
-        Topo topo = topoDAO.afficherDetails( id );
-        topo.setNom( createTopo.getNom() );
-        topo.setDescription( createTopo.getDescription() );
-        topo.setLieu( createTopo.getLieu() );
-        topo.setDateParution( createTopo.getDateParution() );
-        topo.setDisponible( createTopo.getDisponible() );
-        topoDAO.ajouterTopo( topo );
+        topoDAO.ajouterTopo( createTopo );
     }
 
     public void deleteTopo( Integer idTopo ) {
