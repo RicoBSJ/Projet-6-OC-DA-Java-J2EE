@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.business.service.TopoService;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
@@ -25,6 +26,7 @@ public class AjouterTopo extends HttpServlet {
     public static final String VUE              = "/WEB-INF/jsp/ajouterTopo.jsp";
 
     private TopoService        topoService      = new TopoService();
+    private SiteService        siteService      = new SiteService();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -62,7 +64,7 @@ public class AjouterTopo extends HttpServlet {
         topo.setDateParution( new Date() );
         topo.setUtilisateur( connectedUser );
         topoService.addTopo( topo );
-
+        request.setAttribute( "sites", siteService.findAll() );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

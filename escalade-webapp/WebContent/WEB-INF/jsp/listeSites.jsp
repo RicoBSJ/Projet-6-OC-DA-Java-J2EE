@@ -2,32 +2,38 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Liste des sites</title>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"></c:url>" />
+        <title>Liste des sites existants</title>
+        <link type="text/css" rel="stylesheet" href="<c:url value="/include/style.css"/>" />
     </head>
     <body>
-        <c:import url="/include/menu.jsp"></c:import>
+        <c:import url="/include/menu.jsp" />
         <div id="corps">
-        <fieldset>
-        <legend>Liste des sites</legend>
+        <c:choose>
+            <%-- Si aucun site n'existe en session, affichage d'un message par défaut. --%>
+            <c:when test="${ empty sessionScope.sites }">
+                <p class="erreur">Aucun site enregistré.</p>
+            </c:when>
+            <%-- Sinon, affichage du tableau. --%>
+            <c:otherwise>
             <table>
                 <tr>
                     <th>Nom</th>
                     <th>Pays</th>
-                    <th>Region</th>
+                    <th>Region</th>               
                 </tr>
-                <c:forEach items="${ sites }" var="site">
+                <%-- Parcours de la Map des sites en session, et utilisation de l'objet varStatus. --%>
+                <c:forEach items="${ sessionScope.sites }" var="mapSites" varStatus="boucle">
                 <%-- Simple test de parité sur l'index de parcours, pour alterner la couleur de fond de chaque ligne du tableau. --%>
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
-                    <%-- Affichage des propriétés du bean Utilisateur, qui est stocké en tant que valeur de l'entrée courante de la map --%>
-                    <td><c:out value="${ site.nom }"></c:out></td>
-                    <td><c:out value="${ site.pays }"></c:out></td>
-                    <td><c:out value="${ site.region }"></c:out></td>
+                    <%-- Affichage des propriétés du bean Site, qui est stocké en tant que valeur de l'entrée courante de la map --%>
+                    <td><c:out value="${ mapSites.value.nom }"/></td>
+                    <td><c:out value="${ mapSites.value.pays }"/></td>
+                    <td><c:out value="${ mapSites.value.region }"/></td>
                 </tr>
                 </c:forEach>
             </table>
-        </fieldset>
+            </c:otherwise>
+        </c:choose>
         </div>
-        <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
     </body>
 </html>
