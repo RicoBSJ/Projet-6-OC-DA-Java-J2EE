@@ -52,6 +52,8 @@
 					<h5>Commentaires</h5>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<form action="ajouterCommentaire" method="post">
+							<input type="hidden" value="${ commentaire.idCommentaire }" name="id">
+							<input type="hidden" value="${ site.id }" name="idSite">
 							<input type="submit" name="addComment" value="Ajouter un commentaire" />
 						</form>
 					</c:if>

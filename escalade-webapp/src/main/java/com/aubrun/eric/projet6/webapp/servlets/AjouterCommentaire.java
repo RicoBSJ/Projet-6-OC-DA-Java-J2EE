@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.AjouterCommentaireForm;
 
 @WebServlet( "/ajouterCommentaire" )
 public class AjouterCommentaire extends HttpServlet {
@@ -22,6 +21,7 @@ public class AjouterCommentaire extends HttpServlet {
     public static final String ATT_COMMENTAIRE    = "commentaire";
     public static final String ATT_FORM           = "form";
     public static final String ATT_SESSION_USER   = "sessionUtilisateur";
+    public static final String ATT_SESSION_SITE   = "sessionSite";
     public static final String VUE                = "/WEB-INF/jsp/ajouterCommentaire.jsp";
 
     private CommentaireService commentaireService = new CommentaireService();
@@ -47,8 +47,6 @@ public class AjouterCommentaire extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        AjouterCommentaireForm form = new AjouterCommentaireForm();
-
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
@@ -60,11 +58,11 @@ public class AjouterCommentaire extends HttpServlet {
         }
 
         Commentaire commentaire = new Commentaire();
+        commentaire.getSite();
         commentaire.setTitre( request.getParameter( "titre" ) );
         commentaire.setContenu( request.getParameter( "contenu" ) );
         commentaire.setUtilisateur( connectedUser );
         commentaireService.addCommentaire( commentaire );
-        request.setAttribute( ATT_FORM, form );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

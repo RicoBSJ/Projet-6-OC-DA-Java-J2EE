@@ -13,6 +13,7 @@
 			<p>Vous pouvez ajouter un commentaire via ce formulaire.</p><br>
 			
 			<input type="hidden" value="${commentaire.idCommentaire}" name="id">
+			<input type="hidden" value="${commentaire.site.id}" name="idSite">
 			<label for="titre">Ajout d'un titre <span class="requis">*</span></label>
 			<input type="text" id="titre" name="titre" value="<c:out value="${commentaire.titre}"/>" size="30" maxlength="60" />
 			<span class="erreur">${form.erreurs['titre']}</span>

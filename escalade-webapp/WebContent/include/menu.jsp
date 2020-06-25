@@ -18,7 +18,6 @@
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
 				</c:if>
 				<li><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
-				<li><a href="<c:url value="/listeSites" />">Liste sites</a></li>
 				<li><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
 				<c:if test="${!empty sessionScope.sessionUtilisateur}">
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
