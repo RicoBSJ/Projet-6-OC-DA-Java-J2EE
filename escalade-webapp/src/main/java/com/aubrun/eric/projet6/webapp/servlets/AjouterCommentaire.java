@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.CommentaireService;
+import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
+import com.aubrun.eric.projet6.model.bean.Site;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/ajouterCommentaire" )
@@ -25,12 +28,12 @@ public class AjouterCommentaire extends HttpServlet {
     public static final String VUE                = "/WEB-INF/jsp/ajouterCommentaire.jsp";
 
     private CommentaireService commentaireService = new CommentaireService();
+    private SiteService        siteService        = new SiteService();
 
-    public void doGett( HttpServletRequest request, HttpServletResponse response )
+    public void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        Integer id = Integer.parseInt( request.getParameter( "id" ) );
-
+        Integer idSite = Integer.parseInt( request.getParameter( "idSite" ) );
         HttpSession session = request.getSession();
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
@@ -39,7 +42,7 @@ public class AjouterCommentaire extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-        request.setAttribute( "commentaire", commentaireService.findDetails( id ) );
+        request.setAttribute( "idSite", idSite );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 
     }
@@ -56,12 +59,14 @@ public class AjouterCommentaire extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
+        Integer idSite = Integer.parseInt( request.getParameter( "idSite" ) );
         Commentaire commentaire = new Commentaire();
-        commentaire.getSite();
+        Site siteComment = siteService.findDetails( idSite );
+        commentaire.setSite( siteComment );
         commentaire.setTitre( request.getParameter( "titre" ) );
         commentaire.setContenu( request.getParameter( "contenu" ) );
         commentaire.setUtilisateur( connectedUser );
+        commentaire.setDate( new Date() );
         commentaireService.addCommentaire( commentaire );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

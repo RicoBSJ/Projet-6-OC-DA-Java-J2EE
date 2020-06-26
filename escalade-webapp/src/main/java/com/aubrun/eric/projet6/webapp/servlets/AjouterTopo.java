@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.business.service.TopoService;
+import com.aubrun.eric.projet6.model.bean.Site;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -40,7 +40,7 @@ public class AjouterTopo extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-        request.setAttribute( "topos", topoService.findAll() );
+        request.setAttribute( "sites", siteService.findAll() );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
@@ -56,15 +56,16 @@ public class AjouterTopo extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
+        Integer idSite = Integer.parseInt( request.getParameter( "idSite" ) );
         Topo topo = new Topo();
+        Site site = siteService.findDetails( idSite );
+        topo.setSite( site );
         topo.setNom( request.getParameter( "nom" ) );
         topo.setDescription( request.getParameter( "description" ) );
         topo.setLieu( request.getParameter( "lieu" ) );
-        topo.setDateParution( new Date() );
+        // topo.setDateParution( request.getParameter( "date" ) );
         topo.setUtilisateur( connectedUser );
         topoService.addTopo( topo );
-        request.setAttribute( "sites", siteService.findAll() );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }
