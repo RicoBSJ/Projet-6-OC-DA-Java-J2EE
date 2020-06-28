@@ -32,9 +32,9 @@
 				<span class="erreur">${form.erreurs['dateParution']}</span>
                 <br><br>
                 </c:if>
-                <%-- Si et seulement si la Map des sites en session n'est pas vide, alors on propose un choix à l'utilisateur --%>
+                
                 <c:if test="${ !empty sessionScope.sessionUtilisateur }">
-                   <label for="choixNouveauClient">Nouveau site ? <span class="requis">*</span></label>
+                   <label for="choixNouveauSite">Nouveau site ? <span class="requis">*</span></label>
                    <input type="radio" id="choixNouveauSite" name="choixNouveauSite" value="nouveauSite" checked /> Oui
                    <input type="radio" id="choixNouveauSite" name="choixNouveauSite" value="ancienSite" /> Non
                    <br/><br />
@@ -43,17 +43,13 @@
                    <div id="nouveauSite">
                       <a href="<c:url value="/creationSite" />">Création site</a>
                    </div>
-                <%-- Si et seulement si la Map des sites en session n'est pas vide, alors on crée la liste déroulante --%>
                 <c:if test="${ !empty sessionScope.sessionUtilisateur }">
                     <div id="ancienSite">
                         <select name="idSite" id="listeSites">
                             <option value="">Choisissez un site...</option>
-                            <%-- Boucle sur la map des sites --%>
-                            <c:forEach items="${ sites }" var="site">
-                            <%--  L'expression EL ${mapClients.value} permet de cibler l'objet Client stocké en tant que valeur dans la Map, 
-                                  et on cible ensuite simplement ses propriétés nom et prenom comme on le ferait avec n'importe quel bean. --%>
-                            <option value="${ site.id }">${ site.nom } ${ site.pays }</option>
-                            </c:forEach>
+                            	<c:forEach items="${ sites }" var="site">
+                            		<option value="${ site.id }">${ site.nom } ${ site.pays }</option>
+                            	</c:forEach>
                         </select>
                     </div>
                 </c:if>

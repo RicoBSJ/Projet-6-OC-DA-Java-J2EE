@@ -1,6 +1,7 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,7 +64,7 @@ public class AjouterTopo extends HttpServlet {
         topo.setNom( request.getParameter( "nom" ) );
         topo.setDescription( request.getParameter( "description" ) );
         topo.setLieu( request.getParameter( "lieu" ) );
-        // topo.setDateParution( request.getParameter( "date" ) );
+        topo.setDateParution( new Date() );
         topo.setUtilisateur( connectedUser );
         topoService.addTopo( topo );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );

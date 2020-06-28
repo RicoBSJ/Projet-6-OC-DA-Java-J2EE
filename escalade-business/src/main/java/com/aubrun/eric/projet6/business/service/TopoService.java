@@ -65,6 +65,17 @@ public class TopoService {
         topoDAO.modifierTopo( topoToModify );
     }
 
+    public void topoState( Integer idTopo ) {
+
+        Topo topo = topoDAO.afficherDetails( idTopo );
+        if ( topo.getDisponible() == true ) {
+            topoDAO.modifierTopo( topo );
+        } else {
+            topo.setDisponible( true );
+        }
+        topoDAO.modifierTopo( topo );
+    }
+
     public void reserveTopo( Topo reservedTopo ) {
 
         topoDAO.reserverTopo( reservedTopo );

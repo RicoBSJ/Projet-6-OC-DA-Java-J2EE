@@ -51,7 +51,7 @@
 					<div class="massifListe">${ site.description }</div>
 					<h5>Commentaires</h5>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
-					<a href="<c:url value="/ajouterCommentaire?idSite=${site.id}" />">Ajouter un commentaire</a>
+						<a href="<c:url value="/ajouterCommentaire?idSite=${site.id}" />">Ajouter un commentaire</a>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
 						<div class="massifListe">
