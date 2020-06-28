@@ -40,6 +40,7 @@ public class EtatTopo extends HttpServlet {
         Integer idTopo = Integer.parseInt( request.getParameter( "idTopo" ) );
         topoService.topoState( idTopo );
         request.setAttribute( "topo", topoService.findDetails( idTopo ) );
+        request.setAttribute( "topos", topoService.findDetailsToposUser( connectedUser.getId() ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

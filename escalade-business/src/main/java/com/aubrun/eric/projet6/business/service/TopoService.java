@@ -69,7 +69,7 @@ public class TopoService {
 
         Topo topo = topoDAO.afficherDetails( idTopo );
         if ( topo.getDisponible() == true ) {
-            return;
+            topo.setDisponible( false );
         } else {
             topo.setDisponible( true );
         }

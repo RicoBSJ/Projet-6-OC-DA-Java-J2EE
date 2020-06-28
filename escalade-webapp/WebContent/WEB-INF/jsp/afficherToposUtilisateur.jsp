@@ -32,11 +32,19 @@
                     <td><c:out value="${ topo.dateParution }"></c:out></td>
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
-					<td><c:if test="${topo.disponible == true}">Disponible</c:if>
+					<td><c:if test="${topo.disponible == true}">
 					<form action="etatTopo" method="post">
 						<input type="hidden" value="${ topo.id }" name="idTopo">
-						<input type="submit" name="tag" value="Changer l'état du topo" />
-					</form></td>
+						<input type="submit" name="tag" value="Disponible" />
+					</form>
+					</c:if>
+					<c:if test="${topo.disponible == false}">
+					<form action="etatTopo" method="post">
+						<input type="hidden" value="${ topo.id }" name="idTopo">
+						<input type="submit" name="tag" value="Non Disponible" />
+					</form>
+					</c:if>
+					</td>
                 </tr>
                 </c:forEach>
             </table>
