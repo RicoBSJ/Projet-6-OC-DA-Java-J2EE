@@ -2,6 +2,7 @@ package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import com.aubrun.eric.projet6.business.service.TopoService;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
-import com.aubrun.eric.projet6.webapp.forms.ReserverTopoForm;
 
 @WebServlet( "/reserverTopo" )
 public class ReserverTopo extends HttpServlet {
@@ -25,25 +25,6 @@ public class ReserverTopo extends HttpServlet {
     public static final String VUE              = "/WEB-INF/jsp/reserverTopo.jsp";
 
     private TopoService        topoService      = new TopoService();
-
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
-
-        Integer id = Integer.parseInt( request.getParameter( "id" ) );
-        HttpSession session = request.getSession();
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-        Topo reserveTopo = new Topo();
-        reserveTopo.setId( id );
-
-        if ( connectedUser == null || !connectedUser.getMembre() || !reserveTopo.getDisponible() ) {
-
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
-        }
-
-        request.setAttribute( "topos", topoService.findToposByAvailability( reserveTopo.getDisponible() ) );
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-    }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -58,11 +39,10 @@ public class ReserverTopo extends HttpServlet {
             throw new RuntimeException();
         }
 
-        ReserverTopoForm form = new ReserverTopoForm();
-        Topo reservedTopo = form.reserverTopo( request );
+        Integer idTopo = Integer.parseInt(request.getParameter("idTopo"));
+        Topo reservedTopo = topoService.findDetails(idTopo);
         topoService.reserveTopo( reservedTopo );
 
-        request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, reservedTopo );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
