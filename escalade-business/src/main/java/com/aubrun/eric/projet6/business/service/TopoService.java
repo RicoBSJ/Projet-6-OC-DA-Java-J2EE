@@ -34,12 +34,12 @@ public class TopoService {
         return topoDAO.recupererToposDeLUtilisateur( utilisateur );
     }
 
-    public List<Topo> findToposByAvailability( Boolean toposDisponibles ) {
+    public List<Topo> findToposByAvailability( Topo toposAvailable ) {
 
         List<Topo> topos = topoDAO.recupererTopos();
         for ( Topo s : topos ) {
             if ( s.getDisponible() == true ) {
-                topos = topoDAO.recupererToposDisponibles( toposDisponibles );
+                topos = topoDAO.recupererToposDisponibles( toposAvailable );
             }
         }
         return topos;

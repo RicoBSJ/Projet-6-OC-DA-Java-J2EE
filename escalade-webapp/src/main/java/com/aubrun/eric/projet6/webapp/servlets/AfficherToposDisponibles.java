@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.TopoService;
+import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/afficherToposDisponibles" )
@@ -22,7 +23,7 @@ public class AfficherToposDisponibles extends HttpServlet {
 
     private TopoService        topoService      = new TopoService();
 
-    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+    protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
@@ -35,16 +36,10 @@ public class AfficherToposDisponibles extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Boolean dispo = Boolean.parseBoolean( request.getParameter( "disponible" ) );
-        request.setAttribute( "topos", topoService.findToposByAvailability( dispo ) );
+        Integer id = Integer.parseInt( "idTopo" );
+        Topo topoDispo = topoService.findDetails( id );
+        request.setAttribute( "topos", topoService.findToposByAvailability( topoDispo ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
-
-    protected void doPost( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
-
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-    }
-
 }
