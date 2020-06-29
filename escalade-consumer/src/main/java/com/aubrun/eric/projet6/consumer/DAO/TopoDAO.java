@@ -60,7 +60,7 @@ public class TopoDAO {
         return topos;
     }
 
-    public List<Topo> recupererToposDisponibles( Topo toposDisponibles ) {
+    public List<Topo> recupererToposDisponibles( Boolean toposDisponibles ) {
 
         Session session = factory.getCurrentSession();
         List<Topo> topos = null;

@@ -23,6 +23,12 @@ public class AfficherToposDisponibles extends HttpServlet {
 
     private TopoService        topoService      = new TopoService();
 
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
+
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
@@ -36,9 +42,9 @@ public class AfficherToposDisponibles extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Integer id = Integer.parseInt( "idTopo" );
-        Topo topoDispo = topoService.findDetails( id );
-        request.setAttribute( "topos", topoService.findToposByAvailability( topoDispo ) );
+        Integer idTopo = Integer.parseInt( "idTopo" );
+        Topo topoDispo = topoService.findDetails( idTopo );
+        request.setAttribute( "topos", topoService.findToposByAvailability( topoDispo.getDisponible() ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
