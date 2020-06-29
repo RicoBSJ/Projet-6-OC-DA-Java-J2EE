@@ -32,14 +32,13 @@
                     <td><c:out value="${ topo.dateParution }"></c:out></td>
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
-                	<c:choose>
-				         <c:when test="${ topo.disponible == true }">
-				            <td><a href="<c:url value="/reserverTopo"/>">Retour à l'accueil</a></td>
-				         </c:when>
-				         <c:otherwise>
-				            <td>Non disponible</td>
-				         </c:otherwise>
-      				</c:choose>
+      				<td><c:if test="${topo.disponible == true}">
+					<form action="reserverTopo" method="post">
+						<input type="hidden" value="${ topos }" name="toposAvailable">
+						<input type="submit" name="tag" value="Réservable" />
+					</form>
+					</c:if>
+					</td>
                 </tr>
                 </c:forEach>
             </table>
