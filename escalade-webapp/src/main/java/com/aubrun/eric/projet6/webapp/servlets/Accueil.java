@@ -33,6 +33,7 @@ public class Accueil extends HttpServlet {
 
         request.setAttribute( "sites", siteService.findAll() );
         request.setAttribute( "commentaires", commentaireService.findAll() );
+        request.setAttribute("topos", topoService.findAll());
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
