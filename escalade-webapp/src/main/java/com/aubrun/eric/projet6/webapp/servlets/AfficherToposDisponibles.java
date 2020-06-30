@@ -26,6 +26,20 @@ public class AfficherToposDisponibles extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+
+        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
+
+        if ( connectedUser == null ) {
+
+            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
+            throw new RuntimeException();
+        }
+
+        Integer idTopo = Integer.parseInt( request.getParameter( "idTopo" ) );
+        Topo topoDispo = topoService.findDetails( idTopo );
+        request.setAttribute( "topos", topoService.findToposByAvailability( topoDispo ) );
+
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
@@ -41,10 +55,6 @@ public class AfficherToposDisponibles extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
-        Integer idTopo = Integer.parseInt( "idTopo" );
-        Topo topoDispo = topoService.findDetails( idTopo );
-        request.setAttribute( "topos", topoService.findToposByAvailability( topoDispo.getDisponible() ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
