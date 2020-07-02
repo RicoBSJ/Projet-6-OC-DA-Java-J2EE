@@ -43,16 +43,6 @@ public class AfficherToposUtilisateur extends HttpServlet {
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-
-        if ( connectedUser == null ) {
-
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
-        }
-
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 

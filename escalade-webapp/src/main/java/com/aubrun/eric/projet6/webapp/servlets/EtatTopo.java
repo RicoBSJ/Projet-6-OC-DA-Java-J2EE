@@ -23,6 +23,12 @@ public class EtatTopo extends HttpServlet {
 
     private TopoService        topoService      = new TopoService();
 
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
+
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
@@ -43,5 +49,4 @@ public class EtatTopo extends HttpServlet {
         request.setAttribute( "topos", topoService.findDetailsToposUser( connectedUser.getId() ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
-
 }

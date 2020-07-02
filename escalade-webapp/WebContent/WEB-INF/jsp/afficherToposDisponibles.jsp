@@ -11,7 +11,7 @@
 	<div id="corps">
 		<fieldset>
 			<legend>Liste des topos disponibles</legend>
-			<c:if test="${topo.disponible == true}">
+			<c:if test="${!empty sessionScope.sessionUtilisateur}">
 			<table>
                 <tr>
                     <th>Nom</th>
@@ -34,9 +34,12 @@
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
       				<td><c:if test="${topo.disponible == true}">
 					<form action="reserverTopo" method="post">
-						<input type="hidden" value="${ topo.id }" name="idTopo">
-						<input type="hidden" value="${ topo.disponible }" name="toposDisponibles">
 						<input type="submit" name="tag" value="Réservable" />
+					</form>
+					</c:if>
+					<c:if test="${topo.disponible == false}">
+					<form action="afficherToposDisponibles" method="post">
+						<input type="submit" name="tag" value="Non Réservable" />
 					</form>
 					</c:if>
 					</td>

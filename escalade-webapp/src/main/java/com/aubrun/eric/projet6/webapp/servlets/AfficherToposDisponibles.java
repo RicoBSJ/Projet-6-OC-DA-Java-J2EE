@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.TopoService;
-import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/afficherToposDisponibles" )
@@ -36,25 +35,13 @@ public class AfficherToposDisponibles extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Integer idTopo = Integer.parseInt( request.getParameter( "idTopo" ) );
-        Topo topoDispo = topoService.findDetails( idTopo );
-        request.setAttribute( "topos", topoService.findToposByAvailability( topoDispo ) );
+        request.setAttribute( "topos", topoService.findToposByAvailability() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-
-        if ( connectedUser == null ) {
-
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
-        }
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
