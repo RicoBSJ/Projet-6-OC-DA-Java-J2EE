@@ -36,13 +36,7 @@ public class TopoService {
 
     public List<Topo> findToposByAvailability() {
 
-        List<Topo> topos = topoDAO.recupererTopos();
-        for ( Topo s : topos ) {
-            if ( s.getDisponible() == true ) {
-                topoDAO.recupererToposDisponibles( topos );
-            }
-        }
-        return topos;
+        return topoDAO.recupererToposDisponibles();
     }
 
     public void addTopo( Topo createTopo ) {
@@ -79,6 +73,5 @@ public class TopoService {
     public void reserveTopo( Topo reservedTopo ) {
 
         topoDAO.reserverTopo( reservedTopo );
-        topo.setDisponible( false );
     }
 }

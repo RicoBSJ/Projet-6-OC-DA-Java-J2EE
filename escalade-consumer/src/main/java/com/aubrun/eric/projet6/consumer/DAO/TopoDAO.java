@@ -60,16 +60,15 @@ public class TopoDAO {
         return topos;
     }
 
-    public List<Topo> recupererToposDisponibles( List<Topo> toposDisponibles ) {
+    public List<Topo> recupererToposDisponibles() {
 
         Session session = factory.getCurrentSession();
         List<Topo> topos = null;
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT t FROM Topo t WHERE t.toposDisponibles=?1";
+            String q = "SELECT t FROM Topo t WHERE t.disponible=true";
             Query<Topo> query = session.createQuery( q );
-            query.setParameter( 1, toposDisponibles );
             topos = query.getResultList();
             session.getTransaction().commit();
 

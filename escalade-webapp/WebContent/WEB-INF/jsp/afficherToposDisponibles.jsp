@@ -38,9 +38,7 @@
 					</form>
 					</c:if>
 					<c:if test="${topo.disponible == false}">
-					<form action="afficherToposDisponibles" method="post">
-						<input type="submit" name="tag" value="Non Réservable" />
-					</form>
+						<a>Non disponible</a>
 					</c:if>
 					</td>
                 </tr>
