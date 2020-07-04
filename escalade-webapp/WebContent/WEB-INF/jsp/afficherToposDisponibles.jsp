@@ -34,6 +34,8 @@
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
       				<td><c:if test="${topo.disponible == true}">
 					<form action="reserverTopo" method="post">
+						<input type="hidden" value="${topo.id}" name="idTopo">
+						<input type="hidden" value="${topo.utilisateur.id}" name="idUser">
 						<input type="submit" name="tag" value="Faire la demande" />
 					</form>
 					</c:if>

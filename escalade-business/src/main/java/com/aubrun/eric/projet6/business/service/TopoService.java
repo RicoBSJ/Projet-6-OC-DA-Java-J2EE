@@ -69,9 +69,4 @@ public class TopoService {
         }
         topoDAO.modifierTopo( topo );
     }
-
-    public void reserveTopo( Topo reservedTopo ) {
-
-        topoDAO.reserverTopo( reservedTopo );
-    }
 }

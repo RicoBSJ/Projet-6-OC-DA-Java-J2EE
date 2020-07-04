@@ -18,6 +18,7 @@
 		<mapping class="com.aubrun.eric.projet6.model.bean.Bloc" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Commentaire" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Longueur" />
+		<mapping class="com.aubrun.eric.projet6.model.bean.Message" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Photo" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Reservation" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Secteur" />
