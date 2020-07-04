@@ -7,11 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table
@@ -23,16 +20,13 @@ public class Message {
     private Integer     id;
     @Column( name = "message" )
     private String      message;
-    @OneToOne( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_destinataire" )
+    @ManyToOne( cascade = { CascadeType.ALL } )
+    @JoinColumn( name = "destinataire" )
     private Utilisateur destinataire;
-    @OneToOne( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_emetteur" )
+    @ManyToOne( cascade = { CascadeType.ALL } )
+    @JoinColumn( name = "emetteur" )
     private Utilisateur emetteur;
-    @OneToOne( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
+    @ManyToOne( cascade = { CascadeType.ALL } )
     @JoinColumn( name = "id_topo" )
     private Topo        topo;
 

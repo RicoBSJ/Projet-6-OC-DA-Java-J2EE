@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.MessageService;
 import com.aubrun.eric.projet6.business.service.TopoService;
-import com.aubrun.eric.projet6.business.service.UtilisateurService;
 import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
@@ -19,16 +18,16 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 @WebServlet( "/reserverTopo" )
 public class ReserverTopo extends HttpServlet {
 
-    private static final long  serialVersionUID   = 1L;
+    private static final long  serialVersionUID = 1L;
 
-    public static final String ATT_USER           = "utilisateur";
-    public static final String ATT_FORM           = "form";
-    public static final String ATT_SESSION_USER   = "sessionUtilisateur";
-    public static final String VUE                = "/WEB-INF/jsp/reserverTopo.jsp";
+    public static final String ATT_USER         = "utilisateur";
+    public static final String ATT_FORM         = "form";
+    public static final String ATT_SESSION_USER = "sessionUtilisateur";
+    public static final String VUE              = "/WEB-INF/jsp/reserverTopo.jsp";
 
-    private TopoService        topoService        = new TopoService();
-    private UtilisateurService utilisateurService = new UtilisateurService();
-    private MessageService     messageService     = new MessageService();
+    private TopoService        topoService      = new TopoService();
+    // private UtilisateurService utilisateurService = new UtilisateurService();
+    private MessageService     messageService   = new MessageService();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -49,12 +48,10 @@ public class ReserverTopo extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Integer id = Integer.parseInt( request.getParameter( "idTopo" ) );
-        Integer idUser = Integer.parseInt( request.getParameter( "idUser" ) );
+        Integer id = Integer.parseInt( request.getParameter( "idDispo" ) );
         Message message = new Message();
         Topo reservedTopo = topoService.findDetails( id );
-        Utilisateur destinataire = utilisateurService.findById( idUser );
-        message.setDestinataire( destinataire );
+        message.getId();
         message.setEmetteur( connectedUser );
         message.setTopo( reservedTopo );
         messageService.reserveMessage( message );

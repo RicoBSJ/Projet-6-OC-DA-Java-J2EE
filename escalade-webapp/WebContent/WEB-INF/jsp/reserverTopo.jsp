@@ -14,8 +14,6 @@
 			<p>Vous pouvez faire une demande de réservation de topo via ce formulaire.</p>
 			<br>
 
-			<input type="hidden" value="${topo.id}" name="idTopo">
-			<input type="hidden" value="${topo.utilisateur.id}" name="idUser">
 			<label for="destinataire">Propriétaire du topo <span class="requis">*</span></label>
 			<input name="destinataire" type="text" value="${message.destinataire}"><br><br>
 			<span class="erreur">${form.erreurs['destinataire']}</span>
@@ -39,6 +37,8 @@
 		</fieldset>
 	</form>
 	<p>
+		<a href="<c:url value="/afficherToposDisponibles"/>">Retour à l'affichage des topos disponibles</a>
+		<br><br>
 		<a href="<c:url value="/accueil"/>">Retour à l'accueil</a>
 	</p>
 </body>

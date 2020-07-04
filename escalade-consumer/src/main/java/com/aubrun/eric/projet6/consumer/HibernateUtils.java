@@ -19,8 +19,8 @@ public class HibernateUtils {
 
             // Create a metadata sources using the specified service registry.
             Metadata metadata = new MetadataSources( serviceRegistry ).getMetadataBuilder().build();
-
             return metadata.getSessionFactoryBuilder().build();
+
         } catch ( Throwable ex ) {
 
             System.err.println( "Initial SessionFactory creation failed." + ex );

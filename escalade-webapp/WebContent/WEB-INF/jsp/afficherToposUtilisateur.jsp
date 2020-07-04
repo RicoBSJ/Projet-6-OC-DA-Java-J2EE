@@ -34,13 +34,13 @@
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
 					<td><c:if test="${topo.disponible == true}">
 					<form action="etatTopo" method="post">
-						<input type="hidden" value="${ topo.id }" name="idTopo">
+						<input type="hidden" value="${ topo.id }" name="idDispo">
 						<input type="submit" name="tag" value="Disponible" />
 					</form>
 					</c:if>
 					<c:if test="${topo.disponible == false}">
 					<form action="etatTopo" method="post">
-						<input type="hidden" value="${ topo.id }" name="idTopo">
+						<input type="hidden" value="${ topo.id }" name="idNotDispo">
 						<input type="submit" name="tag" value="Non Disponible" />
 					</form>
 					</c:if>
