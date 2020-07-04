@@ -34,11 +34,8 @@
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
       				<td><c:if test="${topo.disponible == true}">
 					<form action="reserverTopo" method="post">
-						<input type="submit" name="tag" value="Réservable" />
+						<input type="submit" name="tag" value="Faire la demande" />
 					</form>
-					</c:if>
-					<c:if test="${topo.disponible == false}">
-						<a>Non disponible</a>
 					</c:if>
 					</td>
                 </tr>

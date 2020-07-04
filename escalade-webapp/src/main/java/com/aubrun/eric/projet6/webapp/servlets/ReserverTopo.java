@@ -2,7 +2,6 @@ package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.TopoService;
+import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -39,8 +39,9 @@ public class ReserverTopo extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Integer idTopo = Integer.parseInt(request.getParameter("idTopo"));
-        Topo reservedTopo = topoService.findDetails(idTopo);
+        Integer id = Integer.parseInt( request.getParameter( "idTopo" ) );
+        Message message = new Message();
+        Topo reservedTopo = topoService.findDetails( id );
         topoService.reserveTopo( reservedTopo );
 
         request.setAttribute( ATT_USER, reservedTopo );
