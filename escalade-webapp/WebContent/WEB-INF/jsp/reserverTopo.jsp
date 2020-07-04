@@ -14,6 +14,7 @@
 			<p>Vous pouvez faire une demande de réservation de topo via ce formulaire.</p>
 			<br>
 
+			<input type="hidden" value="${topo.id}" name="idDispo">
 			<label for="destinataire">Propriétaire du topo <span class="requis">*</span></label>
 			<input name="destinataire" type="text" value="${message.destinataire}"><br><br>
 			<span class="erreur">${form.erreurs['destinataire']}</span>
