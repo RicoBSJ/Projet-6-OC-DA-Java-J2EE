@@ -15,20 +15,20 @@
 			<br>
 
 			<input type="hidden" value="${topo.id}" name="idDispo">
-			<label for="destinataire">Propriétaire du topo <span class="requis">*</span></label>
-			<input name="destinataire" type="text" value="${message.destinataire}"><br><br>
+			<label for="destinataire">Propriétaire du topo </label>
+			<input name="destinataire" type="text" value="<c:out value="${message.destinataire.nom}"/>"><br><br>
 			<span class="erreur">${form.erreurs['destinataire']}</span>
 			
-			<label for="emetteur">Emetteur de la demande de réservation <span class="requis">*</span></label>
-			<input name="emetteur" type="text" value="${message.emetteur}"><br><br>
+			<label for="emetteur">Emetteur de la demande de réservation </label>
+			<input name="emetteur" type="text" value="<c:out value="${message.emetteur.nom}"/>"><br><br>
 			<span class="erreur">${form.erreurs['emetteur']}</span>
 			
-			<label for="topo">Topo <span class="requis">*</span></label>
-			<input name="topo" type="text" value="${message.topo}"><br><br>
+			<label for="topo">Topo </label>
+			<input name="topo" type="text" value="<c:out value="${message.topo.nom}"/>"><br><br>
 			<span class="erreur">${form.erreurs['topo']}</span>
 			
 			<label for="message">Message <span class="requis">*</span></label>
-			<textarea name="message">${message.message}</textarea><br>
+			<textarea name="message"></textarea><br><br>
 			<span class="erreur">${form.erreurs['message']}</span>
 
 			<input type="submit" value="Valider" /> <input type="reset"

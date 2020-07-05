@@ -12,18 +12,20 @@
 		<fieldset>
 			<legend>Ajout de commentaire</legend>
 			<p>Vous pouvez ajouter un commentaire via ce formulaire.</p>
-			<br> <input type="hidden" value="${idSite}" name="idSite">
+			<br>
+			<input type="hidden" value="${idSite}" name="idSite">
+			
 			<label for="titre">Ajout d'un titre <span class="requis">*</span></label>
-			<input type="text" id="titre" name="titre" value="" size="30"
-				maxlength="60" /> <span class="erreur">${form.erreurs['titre']}</span>
-			<br> <br> <label for="contenu">Ajout de commentaire
-				<span class="requis">*</span>
-			</label>
+			<input type="text" id="titre" name="titre" value="" size="30" maxlength="60" />
+			<span class="erreur">${form.erreurs['titre']}</span>
+			<br><br>
+			
+			<label for="contenu">Ajout de commentaire <span class="requis">*</span></label>
 			<textarea name="contenu"></textarea>
-			<br> <span class="erreur">${form.erreurs['contenu']}</span> <br>
+			<span class="erreur">${form.erreurs['contenu']}</span>
+			<br><br>
 
-			<input type="submit" value="Valider" /> <input type="reset"
-				value="Remettre à zéro" />
+			<input type="submit" value="Valider" /> <input type="reset" value="Remettre à zéro" />
 
 			<p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
 		</fieldset>

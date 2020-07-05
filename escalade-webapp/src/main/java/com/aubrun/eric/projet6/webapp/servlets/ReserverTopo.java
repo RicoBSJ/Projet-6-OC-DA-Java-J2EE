@@ -26,7 +26,6 @@ public class ReserverTopo extends HttpServlet {
     public static final String VUE              = "/WEB-INF/jsp/reserverTopo.jsp";
 
     private TopoService        topoService      = new TopoService();
-    // private UtilisateurService utilisateurService = new UtilisateurService();
     private MessageService     messageService   = new MessageService();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
@@ -51,7 +50,6 @@ public class ReserverTopo extends HttpServlet {
         Integer id = Integer.parseInt( request.getParameter( "idDispo" ) );
         Message message = new Message();
         Topo reservedTopo = topoService.findDetails( id );
-        message.getId();
         message.setEmetteur( connectedUser );
         message.setTopo( reservedTopo );
         messageService.reserveMessage( message );
