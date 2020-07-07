@@ -188,7 +188,7 @@ public class MessageDAO {
 
         try {
             session.getTransaction().begin();
-            session.merge( message );
+            session.save( message );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
