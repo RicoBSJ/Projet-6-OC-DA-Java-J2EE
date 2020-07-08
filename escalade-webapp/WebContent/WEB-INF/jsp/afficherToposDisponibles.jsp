@@ -35,7 +35,6 @@
       				<td><c:if test="${topo.disponible == true}">
 					<form action="messageDeReservation" method="post">
 						<input type="hidden" value="${topo.id}" name="idDispo">
-						<input type="hidden" value="${topo.utilisateur.id}" name="idDest">
 						<input type="submit" name="tag" value="Faire la demande" />
 					</form>
 					</c:if>

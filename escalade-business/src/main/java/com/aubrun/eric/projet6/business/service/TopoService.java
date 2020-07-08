@@ -12,7 +12,6 @@ public class TopoService {
 
     private TopoDAO        topoDAO        = new TopoDAO();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-    private Topo           topo           = new Topo();
 
     public List<Topo> findAll() {
 

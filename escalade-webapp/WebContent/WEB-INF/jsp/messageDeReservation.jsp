@@ -8,14 +8,13 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<form action="reserverTopo" method="post">
+	<form action="messageDeReservation" method="post">
 		<fieldset>
 			<legend>Message de réservation d'un topo</legend>
 			<p>Vous pouvez faire une demande de réservation de topo via ce formulaire.</p>
 			<br>
 			
-			<input type="hidden" value="${message.topo.id}" name="idDispo">
-			<input type="hidden" value="${message.destinataire.id}" name="idDest">
+			<input type="hidden" value="${topo.id}" name="idDispo">
 
 			<label for="message">Message <span class="requis">*</span></label>
 			<textarea name="message"></textarea>

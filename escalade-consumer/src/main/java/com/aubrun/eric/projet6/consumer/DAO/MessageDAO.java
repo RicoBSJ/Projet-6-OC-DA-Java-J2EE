@@ -182,7 +182,7 @@ public class MessageDAO {
         }
     }
 
-    public void reserverMessage( Message message ) {
+    public void reservationMessage( Message message ) {
 
         Session session = factory.getCurrentSession();
 
