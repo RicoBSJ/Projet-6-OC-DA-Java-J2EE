@@ -60,9 +60,6 @@ public class MessageService {
 
     public void reserveMessage( Message reservedMessage ) {
 
-        Message message = new Message();
-        reservedMessage.setDestinataire(message.getDestinataire());
-        reservedMessage.setMessage( message.getMessage());
         messageDAO.reservationMessage( reservedMessage );
     }
 }
