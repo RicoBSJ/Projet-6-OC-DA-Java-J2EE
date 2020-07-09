@@ -63,9 +63,7 @@ public class MessageDeReservation extends HttpServlet {
         Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
         Message reservedMessage = new Message();
         Topo topoDispo = topoService.findDetails( idTopo );
-        reservedMessage.getDestinataire();
         reservedMessage.setTopo( topoDispo );
-        reservedMessage.setMessage( request.getParameter( "message" ) );
         reservedMessage.setEmetteur( connectedUser );
         messageService.reserveMessage( reservedMessage );
 

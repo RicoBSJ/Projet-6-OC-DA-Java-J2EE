@@ -12,7 +12,6 @@ public class MessageService {
 
     private MessageDAO     messageDAO     = new MessageDAO();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-    private Message        message        = new Message();
 
     public List<Message> findAll() {
 
@@ -61,6 +60,9 @@ public class MessageService {
 
     public void reserveMessage( Message reservedMessage ) {
 
+        Message message = new Message();
+        reservedMessage.setDestinataire(message.getDestinataire());
+        reservedMessage.setMessage( message.getMessage());
         messageDAO.reservationMessage( reservedMessage );
     }
 }
