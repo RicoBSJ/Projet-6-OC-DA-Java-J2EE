@@ -33,11 +33,7 @@
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
       				<td><c:if test="${topo.disponible == true}">
-					<form action="messageDeReservation" method="post">
-						<input type="hidden" value="${topo.id}" name="idDispo">
-						<input type="hidden" value="${topo.utilisateur.id}" name="idUtil">
-						<input type="submit" name="tag" value="Faire la demande" />
-					</form>
+      				<a href="<c:url value="/messageDeReservation?idDispo=${topo.id}" />">Réserver le topo</a>
 					</c:if>
 					</td>
                 </tr>

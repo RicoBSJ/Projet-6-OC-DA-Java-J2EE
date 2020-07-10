@@ -24,14 +24,13 @@ public class MessageDeReservation extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "/WEB-INF/jsp/messageDeReservation.jsp";
+    public static final String VUE_DISPO        = "/WEB-INF/jsp/afficherToposDisponibles.jsp";
 
     private MessageService     messageService   = new MessageService();
     private TopoService        topoService      = new TopoService();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-
-        Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
 
         HttpSession session = request.getSession();
 
@@ -43,7 +42,9 @@ public class MessageDeReservation extends HttpServlet {
             throw new RuntimeException();
         }
 
-        request.setAttribute( "idDispo", idTopo );
+        Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
+        Topo topoDispo = topoService.findDetails( idTopo );
+        request.setAttribute( "topo", topoDispo );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
@@ -59,17 +60,15 @@ public class MessageDeReservation extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
         Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
-        Message reservedMessage = new Message();
         Topo topoDispo = topoService.findDetails( idTopo );
+        Message reservedMessage = new Message();
         reservedMessage.setEmetteur( connectedUser );
         reservedMessage.setMessage( request.getParameter( "message" ) );
+        reservedMessage.setDestinataire( topoDispo.getUtilisateur() );
         reservedMessage.setTopo( topoDispo );
         messageService.reserveMessage( reservedMessage );
 
-        request.setAttribute( ATT_MESSAGE, reservedMessage );
-
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE_DISPO ).forward( request, response );
     }
 }
