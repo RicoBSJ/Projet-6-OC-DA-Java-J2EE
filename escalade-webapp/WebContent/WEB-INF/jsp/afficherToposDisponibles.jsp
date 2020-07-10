@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Liste des utilisateurs existants</title>
+<title>Liste des topos disponibles</title>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/include/style.css"></c:url>" />
 </head>
@@ -39,7 +39,7 @@
                 </tr>
                 </c:forEach>
             </table>
-			</c:if>
+            </c:if>
 		</fieldset>
 	</div>
 	<p>

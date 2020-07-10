@@ -23,7 +23,7 @@ public class MessageDeReservation extends HttpServlet {
     public static final String ATT_MESSAGE      = "message";
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE              = "/WEB-INF/jsp/messageDeReservation.jsp";
+    public static final String VUE_MESSAGE      = "/WEB-INF/jsp/messageDeReservation.jsp";
     public static final String VUE_DISPO        = "/WEB-INF/jsp/afficherToposDisponibles.jsp";
 
     private MessageService     messageService   = new MessageService();
@@ -45,7 +45,7 @@ public class MessageDeReservation extends HttpServlet {
         Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
         Topo topoDispo = topoService.findDetails( idTopo );
         request.setAttribute( "topo", topoDispo );
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
@@ -68,6 +68,8 @@ public class MessageDeReservation extends HttpServlet {
         reservedMessage.setDestinataire( topoDispo.getUtilisateur() );
         reservedMessage.setTopo( topoDispo );
         messageService.reserveMessage( reservedMessage );
+
+        request.setAttribute( "topos", topoService.findToposByAvailability() );
 
         this.getServletContext().getRequestDispatcher( VUE_DISPO ).forward( request, response );
     }
