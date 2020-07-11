@@ -17,6 +17,7 @@
                     <th>Emetteur</th>
                     <th>Message</th>
                     <th>Topo</th>
+                    <th>Réservation</th>
                 </tr>
                 <c:forEach items="${ messages }" var="message">
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
@@ -25,7 +26,7 @@
                     <td><c:out value="${ message.topo }"></c:out></td>
 					<td><c:if test="${topo.disponible == true}">
 					<form action="accepterDemandeReservation" method="post">
-						<input type="hidden" value="${ topo.id }" name="idDispo">
+						<input type="hidden" value="${ message.id }" name="message">
 						<input type="submit" name="tag" value="Accepter la demande de réservation de topo" />
 					</form>
 					</c:if>
