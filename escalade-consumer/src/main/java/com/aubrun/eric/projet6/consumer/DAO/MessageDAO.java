@@ -13,7 +13,6 @@ import org.hibernate.query.Query;
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
 import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
-import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class MessageDAO {
 
@@ -39,16 +38,16 @@ public class MessageDAO {
         return messages;
     }
 
-    public List<Message> recupererMessagesDeLUtilisateur( Utilisateur utilisateur ) {
+    public List<Message> recupererMessagesUtilisateur( Message destinataire ) {
 
         Session session = factory.getCurrentSession();
         List<Message> messages = null;
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT t FROM Message t WHERE t.utilisateur=?1";
+            String q = "SELECT t FROM Message t WHERE t.destinataire=?1";
             Query<Message> query = session.createQuery( q );
-            query.setParameter( 1, utilisateur );
+            query.setParameter( 1, destinataire );
             messages = query.getResultList();
             session.getTransaction().commit();
 
@@ -183,6 +182,22 @@ public class MessageDAO {
     }
 
     public void reservationMessage( Message message ) {
+
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.save( message );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+    }
+
+    public void accepterDemande( Message message ) {
 
         Session session = factory.getCurrentSession();
 

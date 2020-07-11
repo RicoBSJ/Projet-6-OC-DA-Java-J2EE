@@ -7,7 +7,6 @@ import com.aubrun.eric.projet6.consumer.DAO.TopoDAO;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
-import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class MessageService {
 
@@ -31,8 +30,8 @@ public class MessageService {
 
     public List<Message> findDetailsMessagesUser( Integer id ) {
 
-        Utilisateur utilisateur = utilisateurDAO.afficherParId( id );
-        return messageDAO.recupererMessagesDeLUtilisateur( utilisateur );
+        Message user = messageDAO.afficherDetails( id );
+        return messageDAO.recupererMessagesUtilisateur( user );
     }
 
     public List<Message> findMessagesByAvailability() {
@@ -61,6 +60,11 @@ public class MessageService {
     }
 
     public void reserveMessage( Message reservedMessage ) {
+
+        messageDAO.reservationMessage( reservedMessage );
+    }
+
+    public void acceptRequest( Message reservedMessage ) {
 
         messageDAO.reservationMessage( reservedMessage );
     }
