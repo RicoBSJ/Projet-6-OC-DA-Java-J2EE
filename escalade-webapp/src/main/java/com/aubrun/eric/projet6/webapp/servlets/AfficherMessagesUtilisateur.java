@@ -38,6 +38,10 @@ public class AfficherMessagesUtilisateur extends HttpServlet {
             throw new RuntimeException();
         }
 
+        Integer id = Integer.parseInt( request.getParameter( "message" ) );
+        List<Message> message = messageService.findDetailsMessagesUser( id );
+        request.setAttribute( VUE_MESSAGE, message );
+
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
@@ -53,10 +57,6 @@ public class AfficherMessagesUtilisateur extends HttpServlet {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }
-
-        Integer id = Integer.parseInt( request.getParameter( "message" ) );
-        List<Message> message = messageService.findDetailsMessagesUser( id );
-        request.setAttribute( VUE_MESSAGE, message );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
