@@ -35,7 +35,8 @@ public class TopoService {
 
     public List<Topo> findToposByAvailability() {
 
-        return topoDAO.recupererToposDisponibles();
+        topoDAO.recupererToposDisponibles();
+        return topoDAO.retirerToposUtilisateur();
     }
 
     public void addTopo( Topo createTopo ) {

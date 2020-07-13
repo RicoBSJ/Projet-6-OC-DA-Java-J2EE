@@ -80,6 +80,27 @@ public class TopoDAO {
         return topos;
     }
 
+    public List<Topo> retirerToposUtilisateur() {
+
+        Session session = factory.getCurrentSession();
+        List<Topo> topos = null;
+
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT t FROM Topo t WHERE t.id_user != id_utilisateur";
+            // SELECT * FROM A LEFT JOIN B ON A.key = B.key WHERE B.key IS NULL
+            Query<Topo> query = session.createQuery( q );
+            topos = query.getResultList();
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return topos;
+    }
+
     public Topo afficherDetails( Integer id ) {
 
         Session session = factory.getCurrentSession();

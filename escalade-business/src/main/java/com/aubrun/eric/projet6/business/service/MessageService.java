@@ -3,16 +3,12 @@ package com.aubrun.eric.projet6.business.service;
 import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.MessageDAO;
-import com.aubrun.eric.projet6.consumer.DAO.TopoDAO;
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
 
 public class MessageService {
 
-    private MessageDAO     messageDAO     = new MessageDAO();
-    private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-    private TopoDAO        topoDAO        = new TopoDAO();
+    private MessageDAO messageDAO = new MessageDAO();
 
     public List<Message> findAll() {
 
