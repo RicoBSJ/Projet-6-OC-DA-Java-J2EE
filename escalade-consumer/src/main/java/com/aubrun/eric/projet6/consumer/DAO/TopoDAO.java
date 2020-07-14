@@ -67,8 +67,9 @@ public class TopoDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT y FROM Topo y LEFT JOIN Utilisateur u ON y.utilisateur = u.id WHERE y.disponible = true";
-            // SELECT * FROM A LEFT JOIN B ON A.key = B.key WHERE B.key IS NULL
+            String q = "SELECT y FROM Topo y WHERE y.disponible = true";
+            // String q = "SELECT y FROM Topo y WHERE y.utilisateur.id != :id
+            // AND y.disponible = true";
             Query<Topo> query = session.createQuery( q );
             topos = query.getResultList();
             session.getTransaction().commit();
