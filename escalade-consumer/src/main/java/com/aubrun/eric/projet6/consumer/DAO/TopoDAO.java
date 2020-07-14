@@ -39,7 +39,7 @@ public class TopoDAO {
         return topos;
     }
 
-    public List<Topo> recupererToposDeLUtilisateur( Utilisateur utilisateur ) {
+    public List<Topo> recupererToposUtilisateur( Utilisateur utilisateur ) {
 
         Session session = factory.getCurrentSession();
         List<Topo> topos = null;
@@ -67,27 +67,7 @@ public class TopoDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT t FROM Topo t WHERE t.disponible=true";
-            Query<Topo> query = session.createQuery( q );
-            topos = query.getResultList();
-            session.getTransaction().commit();
-
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
-        }
-        return topos;
-    }
-
-    public List<Topo> retirerToposUtilisateur() {
-
-        Session session = factory.getCurrentSession();
-        List<Topo> topos = null;
-
-        try {
-            session.getTransaction().begin();
-            String q = "SELECT t FROM Topo t WHERE t.id_user != id_utilisateur";
+            String q = "SELECT y FROM Topo y LEFT JOIN Utilisateur u ON y.utilisateur = u.id WHERE y.disponible = true";
             // SELECT * FROM A LEFT JOIN B ON A.key = B.key WHERE B.key IS NULL
             Query<Topo> query = session.createQuery( q );
             topos = query.getResultList();

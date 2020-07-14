@@ -30,13 +30,12 @@ public class TopoService {
     public List<Topo> findDetailsToposUser( Integer id ) {
 
         Utilisateur utilisateur = utilisateurDAO.afficherParId( id );
-        return topoDAO.recupererToposDeLUtilisateur( utilisateur );
+        return topoDAO.recupererToposUtilisateur( utilisateur );
     }
 
     public List<Topo> findToposByAvailability() {
 
-        topoDAO.recupererToposDisponibles();
-        return topoDAO.retirerToposUtilisateur();
+        return topoDAO.recupererToposDisponibles();
     }
 
     public void addTopo( Topo createTopo ) {
