@@ -33,7 +33,7 @@
                     <td><c:out value="${ topo.site.nom }"></c:out></td>
                     <td><c:out value="${ topo.utilisateur.nom }"></c:out></td>
       				<td><c:if test="${topo.disponible == true}">
-      				<a href="<c:url value="/messageDeReservation?idDispo=${topo.id}" />">Réserver le topo</a>
+      					<a href="<c:url value="/messageDeReservation?idDispo=${topo.id}" />">Réserver le topo</a>
 					</c:if>
 					</td>
                 </tr>

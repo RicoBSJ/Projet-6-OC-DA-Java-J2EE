@@ -11,9 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.MessageService;
 import com.aubrun.eric.projet6.business.service.TopoService;
-import com.aubrun.eric.projet6.consumer.DAO.TopoDAO;
-import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
-import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/accepterDemandeReservation" )
@@ -25,8 +22,6 @@ public class AccepterDemandeReservation extends HttpServlet {
     public static final String VUE_MESSAGE      = "message";
     public static final String VUE              = "/WEB-INF/jsp/afficherToposDisponibles.jsp";
 
-    private TopoDAO            topoDAO          = new TopoDAO();
-    private UtilisateurDAO     utilisateurDAO   = new UtilisateurDAO();
     private MessageService     messageService   = new MessageService();
     private TopoService        topoService      = new TopoService();
 
@@ -45,9 +40,6 @@ public class AccepterDemandeReservation extends HttpServlet {
 
         Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
         Integer id = Integer.parseInt( request.getParameter( "idUser" ) );
-        Topo topo = topoDAO.afficherDetails( idTopo );
-        Utilisateur user = utilisateurDAO.afficherParId( id );
-        topo.setUtilisateur( user );
         messageService.acceptRequest( id, idTopo );
 
         request.setAttribute( "topos", topoService.findToposByAvailability() );
