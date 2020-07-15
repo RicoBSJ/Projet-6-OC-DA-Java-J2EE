@@ -2,13 +2,14 @@ package com.aubrun.eric.projet6.model.bean;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
@@ -32,11 +33,11 @@ public class Topo {
     private Date        dateParution;
     @Column( name = "disponible" )
     private Boolean     disponible;
-    @ManyToOne
+    @OneToOne( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private Site        site;
-    @ManyToOne
+    @OneToOne( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_utilisateur" )
     private Utilisateur utilisateur;

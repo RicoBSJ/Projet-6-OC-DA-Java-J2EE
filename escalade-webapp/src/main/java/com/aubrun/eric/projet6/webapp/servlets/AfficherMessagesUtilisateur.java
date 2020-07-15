@@ -1,7 +1,6 @@
 package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.MessageService;
-import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/afficherMessagesUtilisateur" )
@@ -38,26 +36,7 @@ public class AfficherMessagesUtilisateur extends HttpServlet {
             throw new RuntimeException();
         }
 
-        Integer id = Integer.parseInt( request.getParameter( "message" ) );
-        List<Message> message = messageService.findDetailsMessagesUser( id );
-        request.setAttribute( VUE_MESSAGE, message );
-
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
-    }
-
-    protected void doPost( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-
-        if ( connectedUser == null ) {
-
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
-        }
-
+        request.setAttribute( "messages", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }
