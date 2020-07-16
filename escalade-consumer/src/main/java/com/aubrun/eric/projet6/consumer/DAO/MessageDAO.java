@@ -13,7 +13,6 @@ import org.hibernate.query.Query;
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
 import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
-import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class MessageDAO {
@@ -179,13 +178,13 @@ public class MessageDAO {
         }
     }
 
-    public void accepterDemande( Topo topo ) {
+    public void accepterDemande( Message message ) {
 
         Session session = factory.getCurrentSession();
 
         try {
             session.getTransaction().begin();
-            session.save( topo );
+            session.save( message );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {

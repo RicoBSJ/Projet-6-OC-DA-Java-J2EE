@@ -3,18 +3,15 @@ package com.aubrun.eric.projet6.business.service;
 import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.MessageDAO;
-import com.aubrun.eric.projet6.consumer.DAO.TopoDAO;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
-import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class MessageService {
 
     private MessageDAO     messageDAO     = new MessageDAO();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-    private TopoDAO        topoDAO        = new TopoDAO();
 
     public List<Message> findAll() {
 
@@ -61,12 +58,8 @@ public class MessageService {
         messageDAO.reservationMessage( reservedMessage );
     }
 
-    public void acceptRequest( Integer idUser, Integer idTopo ) {
+    public void acceptRequest( Message message ) {
 
-        Utilisateur user = utilisateurDAO.afficherParId( idUser );
-        Topo topoUser = topoDAO.afficherDetails( idTopo );
-        topoUser.setUtilisateur( user );
-        topoUser.setDisponible( false );
-        messageDAO.accepterDemande( topoUser );
+        messageDAO.accepterDemande( message );
     }
 }

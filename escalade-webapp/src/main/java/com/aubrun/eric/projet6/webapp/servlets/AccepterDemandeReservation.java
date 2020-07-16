@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.MessageService;
 import com.aubrun.eric.projet6.business.service.TopoService;
+import com.aubrun.eric.projet6.consumer.DAO.TopoDAO;
+import com.aubrun.eric.projet6.model.bean.Message;
+import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 @WebServlet( "/accepterDemandeReservation" )
@@ -24,6 +27,28 @@ public class AccepterDemandeReservation extends HttpServlet {
 
     private MessageService     messageService   = new MessageService();
     private TopoService        topoService      = new TopoService();
+    private TopoDAO            topoDAO          = new TopoDAO();
+
+    protected void doGet( HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+
+        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
+
+        if ( connectedUser == null ) {
+
+            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
+            throw new RuntimeException();
+        }
+
+        Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
+        Topo topoUser = topoDAO.afficherDetails( idTopo );
+
+        request.setAttribute( "topo", topoUser );
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -39,8 +64,14 @@ public class AccepterDemandeReservation extends HttpServlet {
         }
 
         Integer idTopo = Integer.parseInt( request.getParameter( "idDispo" ) );
-        Integer id = Integer.parseInt( request.getParameter( "idUser" ) );
-        messageService.acceptRequest( id, idTopo );
+        Topo topoUser = topoService.findDetails( idTopo );
+        Message message = new Message();
+        topoUser.setDisponible( false );
+        message.setEmetteur( connectedUser );
+        message.setDestinataire( topoUser.getUtilisateur() );
+        message.setTopo( topoUser );
+
+        messageService.acceptRequest( message );
 
         request.setAttribute( "topos", topoService.findToposByAvailability() );
 
