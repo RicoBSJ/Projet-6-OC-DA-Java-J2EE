@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.CommentaireDAO;
 import com.aubrun.eric.projet6.model.bean.Commentaire;
-import com.aubrun.eric.projet6.model.bean.SearchFormCom;
 
 public class CommentaireService {
 
@@ -34,11 +33,6 @@ public class CommentaireService {
 
         Commentaire comment = commentaireDAO.afficherDetails( idCommentaire );
         commentaireDAO.supprimerCommentaire( comment );
-    }
-
-    public List<Commentaire> searchCommentaire( SearchFormCom searchFormCom ) {
-
-        return commentaireDAO.recherche( searchFormCom );
     }
 
     public void modifyComment( Integer id, Commentaire commentToModify ) {

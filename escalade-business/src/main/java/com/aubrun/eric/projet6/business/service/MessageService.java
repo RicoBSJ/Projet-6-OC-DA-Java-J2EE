@@ -5,7 +5,6 @@ import java.util.List;
 import com.aubrun.eric.projet6.consumer.DAO.MessageDAO;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
 import com.aubrun.eric.projet6.model.bean.Message;
-import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class MessageService {
@@ -41,11 +40,6 @@ public class MessageService {
     public void deleteMessage( Integer idMessage ) {
 
         messageDAO.supprimerMessage( idMessage );
-    }
-
-    public List<Message> searchMessage( SearchFormMessage searchFormMessage ) {
-
-        return messageDAO.recherche( searchFormMessage );
     }
 
     public void modifyMessage( Message messageToModify ) {

@@ -24,9 +24,10 @@
                     <td><c:out value="${ message.emetteur.nom }"></c:out></td>
                     <td><c:out value="${ message.message }"></c:out></td>
                     <td><c:out value="${ message.topo.nom }"></c:out></td>
-					<td><c:if test="${message.topo.disponible == true}">
-						<a href="<c:url value="/accepterDemandeReservation?idDispo=${message.topo.id}" />">Accepter la demande de réservation de topo</a>
-					</c:if>
+                    <td><form action="etatTopo" method="post">
+						<input type="hidden" value="${ message.topo.id }" name="idTopo">
+						<input type="submit" name="tag" value="Accepter le demande de réservation" />
+					</form>
 					</td>
                 </tr>
                 </c:forEach>

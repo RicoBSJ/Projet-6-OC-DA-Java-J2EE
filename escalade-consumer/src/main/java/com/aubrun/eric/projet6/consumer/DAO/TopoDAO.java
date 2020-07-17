@@ -1,8 +1,6 @@
 package com.aubrun.eric.projet6.consumer.DAO;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.TypedQuery;
 
@@ -11,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
-import com.aubrun.eric.projet6.model.bean.SearchFormTopo;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -60,17 +57,18 @@ public class TopoDAO {
         return topos;
     }
 
-    public List<Topo> recupererToposDisponibles() {
+    public List<Topo> recupererToposDisponibles( Utilisateur userConnected ) {
 
         Session session = factory.getCurrentSession();
         List<Topo> topos = null;
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT y FROM Topo y WHERE y.disponible = true";
+            String q = "SELECT y FROM Topo y WHERE y.disponible = true AND y.utilisateur !=?1";
             // String q = "SELECT y FROM Topo y WHERE y.utilisateur.id != :id
             // AND y.disponible = true";
             Query<Topo> query = session.createQuery( q );
+            query.setParameter( 1, userConnected );
             topos = query.getResultList();
             session.getTransaction().commit();
 
@@ -141,42 +139,6 @@ public class TopoDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-    }
-
-    public List<Topo> recherche( SearchFormTopo searchFormTopo ) {
-        Session session = factory.getCurrentSession();
-        List<Topo> resultat = null;
-        try {
-            Map<String, String> parameters = new HashMap();
-            session.getTransaction().begin();
-            String q = "SELECT t FROM Topo t WHERE 1=1 ";
-            if ( searchFormTopo.getNom() != "" ) {
-                q += "AND t.nom LIKE :nom ";
-                parameters.put( "nom", "%" + searchFormTopo.getNom() + "%" );
-            }
-            if ( searchFormTopo.getDescription() != "" ) {
-                q += "AND t.description LIKE :description ";
-                parameters.put( "description", "%" + searchFormTopo.getDescription() + "%" );
-            }
-            if ( searchFormTopo.getLieu() != "" ) {
-                q += "AND t.cotation LIKE :lieu ";
-                parameters.put( "lieu", "%" + searchFormTopo.getLieu() + "%" );
-            }
-            if ( searchFormTopo.getDateParution() != "" ) {
-                q += "AND t.dateParution LIKE :dateParution ";
-                parameters.put( "dateParution", "%" + searchFormTopo.getDateParution() + "%" );
-            }
-            Query<Topo> query = session.createQuery( q );
-            query.setProperties( parameters );
-            resultat = query.getResultList();
-            session.getTransaction().commit();
-
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
-        }
-        return resultat;
     }
 
     public void modifierTopo( Topo topo ) {

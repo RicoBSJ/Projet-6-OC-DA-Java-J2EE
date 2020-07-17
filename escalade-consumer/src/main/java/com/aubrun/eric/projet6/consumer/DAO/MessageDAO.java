@@ -1,8 +1,6 @@
 package com.aubrun.eric.projet6.consumer.DAO;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.TypedQuery;
 
@@ -12,7 +10,6 @@ import org.hibernate.query.Query;
 
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
 import com.aubrun.eric.projet6.model.bean.Message;
-import com.aubrun.eric.projet6.model.bean.SearchFormMessage;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 public class MessageDAO {
@@ -119,31 +116,6 @@ public class MessageDAO {
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
         }
-    }
-
-    public List<Message> recherche( SearchFormMessage searchFormMessage ) {
-        Session session = factory.getCurrentSession();
-        List<Message> resultat = null;
-        try {
-            Map<String, String> parameters = new HashMap();
-            session.getTransaction().begin();
-            String q = "SELECT t FROM Message t WHERE 1=1 ";
-
-            if ( searchFormMessage.getMessage() != "" ) {
-                q += "AND t.message LIKE :message ";
-                parameters.put( "message", "%" + searchFormMessage.getMessage() + "%" );
-            }
-            Query<Message> query = session.createQuery( q );
-            query.setProperties( parameters );
-            resultat = query.getResultList();
-            session.getTransaction().commit();
-
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
-        }
-        return resultat;
     }
 
     public void modifierMessage( Message message ) {

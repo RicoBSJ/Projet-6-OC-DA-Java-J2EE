@@ -69,7 +69,7 @@ public class MessageDeReservation extends HttpServlet {
         reservedMessage.setTopo( topoDispo );
         messageService.reserveMessage( reservedMessage );
 
-        request.setAttribute( "topos", topoService.findToposByAvailability() );
+        request.setAttribute( "topos", topoService.findToposByAvailability( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_DISPO ).forward( request, response );
     }

@@ -35,7 +35,7 @@ public class AfficherToposDisponibles extends HttpServlet {
             throw new RuntimeException();
         }
 
-        request.setAttribute( "topos", topoService.findToposByAvailability() );
+        request.setAttribute( "topos", topoService.findToposByAvailability( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

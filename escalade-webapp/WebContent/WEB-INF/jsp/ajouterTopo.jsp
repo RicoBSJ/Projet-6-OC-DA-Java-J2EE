@@ -45,7 +45,7 @@
                    </div>
                 <c:if test="${ !empty sessionScope.sessionUtilisateur }">
                     <div id="ancienSite">
-                        <select name="idSite" id="listeSites">
+                        <select name="idSite" id="idSite">
                             <option value="">Choisissez un site...</option>
                             	<c:forEach items="${ sites }" var="site">
                             		<option value="${ site.id }">${ site.nom } ${ site.pays }</option>

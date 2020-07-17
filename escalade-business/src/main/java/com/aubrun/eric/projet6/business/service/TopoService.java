@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.TopoDAO;
 import com.aubrun.eric.projet6.consumer.DAO.UtilisateurDAO;
-import com.aubrun.eric.projet6.model.bean.SearchFormTopo;
 import com.aubrun.eric.projet6.model.bean.Topo;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
@@ -33,9 +32,10 @@ public class TopoService {
         return topoDAO.recupererToposUtilisateur( utilisateur );
     }
 
-    public List<Topo> findToposByAvailability() {
+    public List<Topo> findToposByAvailability( Integer id ) {
 
-        return topoDAO.recupererToposDisponibles();
+        Utilisateur connectedUser = utilisateurDAO.afficherParId( id );
+        return topoDAO.recupererToposDisponibles( connectedUser );
     }
 
     public void addTopo( Topo createTopo ) {
@@ -46,11 +46,6 @@ public class TopoService {
     public void deleteTopo( Integer idTopo ) {
 
         topoDAO.supprimerTopo( idTopo );
-    }
-
-    public List<Topo> searchTopo( SearchFormTopo searchFormTopo ) {
-
-        return topoDAO.recherche( searchFormTopo );
     }
 
     public void modifyTopo( Topo topoToModify ) {
