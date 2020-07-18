@@ -28,7 +28,7 @@ public class CreationSite extends HttpServlet {
     public static final String  ATT_SESSION_USER = "sessionUtilisateur";
     public static final String  VUE              = "/WEB-INF/jsp/creerSite.jsp";
 
-    private static final String CHEMIN           = "chemin";
+    private static final String CHEMIN           = "/Users/ricobsj/fichiers/";
 
     private SiteService         siteService      = new SiteService();
 

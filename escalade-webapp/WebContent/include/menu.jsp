@@ -25,6 +25,7 @@
 					<li><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
 					<li><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a></li>
 					<li><a href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a></li>
+					<li><a href="<c:url value="/test" />">Test</a></li>
 					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 				</c:if>
 			</ul>

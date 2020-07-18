@@ -12,12 +12,17 @@
 			<param-value>/Users/ricobsj/fichiers/</param-value>
 		</init-param>
 		<multipart-config>
-			<location>/Users/ricobsj/fichiers</location>
+			<location>/Users/ricobsj/fichierstmp/</location>
 			<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
 			<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
 			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
 		</multipart-config>
 	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>CreationSite</servlet-name>
+		<url-pattern>/creerSite</url-pattern>
+	</servlet-mapping>
 
 	<jsp-config>
 		<jsp-property-group>
