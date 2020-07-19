@@ -17,23 +17,19 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 import com.aubrun.eric.projet6.webapp.forms.CreationSiteForm;
 import com.aubrun.eric.projet6.webapp.forms.UploadForm;
 
-@WebServlet( "/creationSite" )
+@WebServlet( "/CreationSite" )
 public class CreationSite extends HttpServlet {
 
     private static final long   serialVersionUID = 1L;
-
-    public static final String  ATT_SITE         = "site";
-    public static final String  ATT_PHOTO        = "photo";
-    public static final String  ATT_FORM         = "form";
-    public static final String  ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String  VUE              = "/WEB-INF/jsp/creerSite.jsp";
-
-    private static final String CHEMIN           = "/Users/ricobsj/fichiers/";
-
+    private static final String ATT_SITE         = "site";
+    private static final String ATT_PHOTO        = "photo";
+    private static final String ATT_FORM         = "form";
+    private static final String ATT_SESSION_USER = "sessionUtilisateur";
+    private static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
+    private static final String CHEMIN           = "chemin";
     private SiteService         siteService      = new SiteService();
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* Affichage de la page d'inscription */
 
         HttpSession session = request.getSession();
 
@@ -52,23 +48,27 @@ public class CreationSite extends HttpServlet {
 
         String chemin = this.getServletConfig().getInitParameter( CHEMIN );
 
-        /* Préparation de l'objet formulaire */
         CreationSiteForm form = new CreationSiteForm();
         UploadForm formU = new UploadForm();
-        /* Récupération de la session depuis la requête */
+
         HttpSession session = request.getSession();
 
         Utilisateur utilisateur = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
         if ( utilisateur == null ) {
+
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         } else {
+
             Site site = form.creerSite( request );
             Photo photo = formU.enregistrerFichier( request, chemin );
+
             if ( site.getPhotos() == null ) {
+
                 site.setPhotos( new ArrayList<Photo>() );
             }
+
             site.getPhotos().add( photo );
 
             siteService.addSite( site );

@@ -21,9 +21,8 @@
 	
 	<servlet-mapping>
 		<servlet-name>CreationSite</servlet-name>
-		<url-pattern>/creerSite</url-pattern>
+		<url-pattern>/creationSite</url-pattern>
 	</servlet-mapping>
-
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
