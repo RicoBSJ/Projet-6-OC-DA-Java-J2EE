@@ -26,7 +26,7 @@ public class CreationSite extends HttpServlet {
     private static final String ATT_FORM         = "form";
     private static final String ATT_SESSION_USER = "sessionUtilisateur";
     private static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
-    private static final String CHEMIN           = "chemin";
+    private static final String CHEMIN_FICHIERS  = "/Users/ricobsj/fichiers/";
     private SiteService         siteService      = new SiteService();
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
@@ -46,7 +46,7 @@ public class CreationSite extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        String chemin = this.getServletConfig().getInitParameter( CHEMIN );
+        String chemin = this.getServletConfig().getInitParameter( CHEMIN_FICHIERS );
 
         CreationSiteForm form = new CreationSiteForm();
         UploadForm formU = new UploadForm();

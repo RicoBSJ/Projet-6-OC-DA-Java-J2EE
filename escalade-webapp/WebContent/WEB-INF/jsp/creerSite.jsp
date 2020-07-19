@@ -27,13 +27,13 @@
 				<span class="erreur">${form.erreurs['region']}</span>
                 <br />
                 
-                <label for="description">Description du fichier</label>
-                <input type="text" id="description" name="description" value="<c:out value="${photo.nomPhoto}"/>" />
-                <span class="erreur">${form.erreurs['description']}</span>
+                <label for="nomPhoto">Nom du fichier </label>
+                <input type="text" id="nomPhoto" name="nomPhoto" value="<c:out value="${photo.nomPhoto}"/>" />
+                <span class="erreur">${form.erreurs['nomPhoto']}</span>
                 <br />
 
-                <label for="fichier">Emplacement du fichier <span class="requis">*</span></label>
-                <input type="file" id="fichier" name="fichier" value="<c:out value="${photo.cheminPhoto}"/>" />
+                <label for="cheminPhoto">Emplacement du fichier <span class="requis">*</span></label>
+                <input type="file" id="cheminPhoto" name="cheminPhoto" value="<c:out value="${photo.cheminPhoto}"/>" />
                 <span class="erreur">${form.erreurs['cheminPhoto']}</span>
                 <br />
 				

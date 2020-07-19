@@ -17,12 +17,14 @@ import com.aubrun.eric.projet6.model.bean.Photo;
 
 public final class UploadForm {
 
-    private static final String CHAMP_DESCRIPTION = "description";
-    private static final String CHAMP_FICHIER     = "fichier";
-    private static final int    TAILLE_TAMPON     = 10240;                        // 10
-                                                                                  // ko
+    // private static final String CHAMP_NOM_PHOTO = "description";
+    private static final String CHAMP_NOM_PHOTO    = "nomPhoto";
+    private static final String CHAMP_CHEMIN_PHOTO = "cheminPhoto";
+    // private static final String CHAMP_CHEMIN_PHOTO = "fichier";
+    private static final int    TAILLE_TAMPON      = 10240;                        // 10
+                                                                                   // ko
     private String              resultat;
-    private Map<String, String> erreurs           = new HashMap<String, String>();
+    private Map<String, String> erreurs            = new HashMap<String, String>();
 
     public String getResultat() {
         return resultat;
@@ -37,7 +39,7 @@ public final class UploadForm {
         Photo photo = new Photo();
 
         /* Récupération du champ de description du formulaire */
-        String description = getValeurChamp( request, CHAMP_DESCRIPTION );
+        String description = getValeurChamp( request, CHAMP_NOM_PHOTO );
         /*
          * Récupération du contenu du champ fichier du formulaire. Il faut ici
          * utiliser la méthode getPart(), comme nous l'avions fait dans notre
@@ -46,7 +48,7 @@ public final class UploadForm {
         String nomFichier = null;
         InputStream contenuFichier = null;
         try {
-            Part part = request.getPart( CHAMP_FICHIER );
+            Part part = request.getPart( CHAMP_CHEMIN_PHOTO );
             /*
              * Il faut déterminer s'il s'agit bien d'un champ de type fichier :
              * on délègue cette opération à la méthode utilitaire
@@ -79,7 +81,7 @@ public final class UploadForm {
              * notre servlet d'upload dans le fichier web.xml
              */
             e.printStackTrace();
-            setErreur( CHAMP_FICHIER, "Les données envoyées sont trop volumineuses." );
+            setErreur( CHAMP_CHEMIN_PHOTO, "Les données envoyées sont trop volumineuses." );
         } catch ( IOException e ) {
             /*
              * Exception retournée si une erreur au niveau des répertoires de
@@ -87,7 +89,7 @@ public final class UploadForm {
              * insuffisants, etc.)
              */
             e.printStackTrace();
-            setErreur( CHAMP_FICHIER, "Erreur de configuration du serveur." );
+            setErreur( CHAMP_CHEMIN_PHOTO, "Erreur de configuration du serveur." );
         } catch ( ServletException e ) {
             /*
              * Exception retournée si la requête n'est pas de type
@@ -96,7 +98,7 @@ public final class UploadForm {
              * différent de celui qu'on lui propose... pirate ! :|
              */
             e.printStackTrace();
-            setErreur( CHAMP_FICHIER,
+            setErreur( CHAMP_CHEMIN_PHOTO,
                     "Ce type de requête n'est pas supporté, merci d'utiliser le formulaire prévu pour envoyer votre fichier." );
         }
         /* Si aucune erreur n'est survenue jusqu'à présent */
@@ -105,7 +107,7 @@ public final class UploadForm {
             try {
                 validationDescription( description );
             } catch ( Exception e ) {
-                setErreur( CHAMP_DESCRIPTION, e.getMessage() );
+                setErreur( CHAMP_NOM_PHOTO, e.getMessage() );
             }
             photo.setNomPhoto( description );
 
@@ -113,7 +115,7 @@ public final class UploadForm {
             try {
                 validationFichier( nomFichier, contenuFichier );
             } catch ( Exception e ) {
-                setErreur( CHAMP_FICHIER, e.getMessage() );
+                setErreur( CHAMP_CHEMIN_PHOTO, e.getMessage() );
             }
             photo.setCheminPhoto( nomFichier );
         }
@@ -124,7 +126,7 @@ public final class UploadForm {
             try {
                 ecrireFichier( contenuFichier, nomFichier, chemin );
             } catch ( Exception e ) {
-                setErreur( CHAMP_FICHIER, "Erreur lors de l'écriture du fichier sur le disque." );
+                setErreur( CHAMP_CHEMIN_PHOTO, "Erreur lors de l'écriture du fichier sur le disque." );
             }
         }
         /* Initialisation du résultat global de la validation. */
