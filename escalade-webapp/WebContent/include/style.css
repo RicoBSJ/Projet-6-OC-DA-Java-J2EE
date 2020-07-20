@@ -414,7 +414,8 @@ h3.nomStationListe a {
 
 .infosStations {
 	float: left;
-	margin-top: -140px;
+	margin-top: -40px;
+	display: inherit;
 }
 
 /* .infosStations { */
