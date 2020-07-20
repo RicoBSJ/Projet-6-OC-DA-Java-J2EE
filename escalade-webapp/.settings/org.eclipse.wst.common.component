@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                            
+                                                
+    
     
     
     
@@ -10,7 +11,8 @@
     
     
     <wb-module deploy-name="escalade-webapp">
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -21,7 +23,8 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -32,7 +35,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/WebContent"/>
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -43,7 +47,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -54,34 +59,45 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+                                
+        
         
         <dependent-module archiveName="escalade-business-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/escalade-business/escalade-business">
-                                    
+                                                
+            
             
             <dependency-type>uses</dependency-type>
-                                
+                                            
+        
         
         </dependent-module>
-                        
+                                
+        
         
         <dependent-module archiveName="escalade-consumer-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/escalade-consumer/escalade-consumer">
-                                    
+                                                
+            
             
             <dependency-type>uses</dependency-type>
-                                
+                                            
+        
         
         </dependent-module>
-                        
+                                
+        
         
         <dependent-module archiveName="escalade-model-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/escalade-model/escalade-model">
-                                    
+                                                
+            
             
             <dependency-type>uses</dependency-type>
-                                
+                                            
+        
         
         </dependent-module>
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -92,7 +108,8 @@
         
         
         <property name="context-root" value="escalade-webapp"/>
-                                                                                        
+                                                                                                
+        
         
         
         
@@ -103,7 +120,8 @@
         
         
         <property name="java-output-path" value="/escalade-webapp/target/classes"/>
-                                                                                    
+                                                                                            
+    
     
     
     
@@ -114,7 +132,8 @@
     
     
     </wb-module>
-                                        
+                                            
+
 
 
 

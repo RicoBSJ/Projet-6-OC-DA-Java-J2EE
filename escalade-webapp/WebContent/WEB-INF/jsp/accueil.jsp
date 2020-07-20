@@ -15,7 +15,7 @@
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
-	<main class="container" scope="session">
+	<div class="container" scope="session">
 		<div id="banniere_image">
 			<div id="banniere_description">
 				Retour sur les tout derniers sites d'escalade... <a
@@ -27,10 +27,10 @@
 		</div>
 
 		<section>
-			<article>
-				<ul>
+		<div class="row">
 					<c:forEach var="site" items="${ sites }">
-						<article class="resultats-listeStations">
+					<div align="center">
+					<div class="col-4">
 							<div class="localisationStationListe">
 								<h3 class="nomStationListe">
 									<a href="<c:url value="" />">${ site.nom }</a>
@@ -40,21 +40,20 @@
 							</div>
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite?id=${site.id}" />">
-								<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="30" height="200" />
+								<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="30" height="200"  />
 								</a>
 							</div>
 							<div class="results-right">
 								<div class="infosStations">
-									<span class="value"><span>${ site.hauteur } </span> de
-										hauteur</span> <span class="value">Orientation <span>
-											${ site.orientation }</span></span> <span class="value"><span>Cotation
-									</span> ${ site.cotation }</span>
+									<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
+									<span class="value">Orientation <span>${ site.orientation }</span></span>
+									<span class="value"><span>Cotation</span> ${ site.cotation }</span>
 								</div>
 							</div>
-						</article>
+					</div>
+					</div>
 					</c:forEach>
-				</ul>
-			</article>
+		</div>
 		</section>
 
 		<div>
@@ -117,7 +116,7 @@
 				</div>
 			</div>
 		</footer>
-	</main>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
