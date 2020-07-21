@@ -56,17 +56,11 @@
 		</div>
 		</section>
 
-		<div class="row">
-
-			<div class="col-4">
 			<h1>À propos des Amis de l'Escalade</h1>
-			</div>
-			<div class="col-8">
 			<p id="photo_du_site">
 				<img src="<c:url value="/images/shutterstock_171542741-711x392.jpg" />"
 					alt="Photo du site" />
 			</p>
-			</div>
 			<p>Avec l’objectif de fédérer les licenciés, l’association “Les
 				amis de l’escalade” souhaite développer sa présence en ligne. À ce
 				titre, plusieurs axes d’amélioration ont été identifiés dont la
@@ -82,8 +76,6 @@
 					alt="Flickr" src="<c:url value="/images/flickr.png" />" /> <img
 					alt="RSS" src="<c:url value="/images/rss.png" />" />
 			</p>
-
-		</div>
 
 		<footer>
 			<div id="tweet">
