@@ -23,8 +23,8 @@
 
 /* Eléments principaux de la page */
 body {
-	background: #FFDAB9;
-/* 	background: url('../images/fond_jaune.png'); */
+/* 	background: #FFDAB9; */
+	background: url('../images/Escalade-chamonix3_photos_v2_x4.jpg') no-repeat center;
 	font-family: 'Trebuchet MS', Arial, sans-serif;
 	color: #181818;
 }
@@ -383,9 +383,9 @@ h3.nomStationListe a {
 }
 
 .massifListe {
-	float: left;
+	float: inherit;
 	width: auto;
-	margin: 0px 10px 0px 0px;
+	margin: 0px 23px 0px 0px;
 	color: #666;
 	font-size: 0.8em;
 }

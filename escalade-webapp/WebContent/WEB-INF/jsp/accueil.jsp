@@ -35,20 +35,30 @@
 								<h3 class="nomStationListe">
 									<a href="<c:url value="" />">${ site.nom }</a>
 								</h3>
+								<div class="col">
 								<div class="massifListe">${ site.pays }</div>
 								<div class="massifListe">${ site.region }</div>
+								</div>
 							</div>
+							<div align="center">
+							<div class="col-4">
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite?id=${site.id}" />">
 								<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="30" height="200"  />
 								</a>
 							</div>
+							</div>
+							</div>
+							<div align="center">
+							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
 									<span class="value">Orientation <span>${ site.orientation }</span></span>
 									<span class="value"><span>Cotation</span> ${ site.cotation }</span>
 								</div>
+							</div><br>
+							</div>
 							</div>
 					</div>
 					</div>
