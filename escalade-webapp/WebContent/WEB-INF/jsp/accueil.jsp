@@ -17,12 +17,8 @@
 	<c:import url="/include/menu.jsp"></c:import>
 	<div class="container" scope="session">
 		<div id="banniere_image">
-			<div id="banniere_description">
-				Retour sur les tout derniers sites d'escalade... 
-				<a href="<c:url value="/images/escalade.png" />" class="bouton_rouge">
-				Voir les commentaires
-				<img src="<c:url value="/images/flecheblanchedroite.png" />" alt="" />
-				</a>
+			<div>
+				<a href="<c:url value="/images/escalade.png" />"></a>
 			</div>
 		</div>
 

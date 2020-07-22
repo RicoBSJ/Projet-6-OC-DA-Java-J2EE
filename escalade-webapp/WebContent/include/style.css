@@ -331,7 +331,7 @@ footer h1 {
 }
 
 p {
-	color: blue;
+	color: #1d2124;
 }
 
 .grid2 ul li.resultats-listeStations {
@@ -374,7 +374,7 @@ h3.nomStationListe {
 h3.nomStationListe a {
 	display: inline-block;
 	font-weight: bold;
-	color: #ff6600;
+	color: #1d2124;
 	margin: 0px 0px 5px 0px;
 	padding: 0;
 	font-size: 1.2em;
@@ -417,12 +417,6 @@ h3.nomStationListe a {
 	margin-top: -40px;
 	display: inherit;
 }
-
-/* .infosStations { */
-/* 	flex-direction: row; */
-/* 	display: inline-block; */
-/* 	margin-top: 10px; */
-/* } */
 
 .value {
 	float: left;
