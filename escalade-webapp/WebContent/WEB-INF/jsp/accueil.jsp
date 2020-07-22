@@ -99,20 +99,18 @@
 				</p>
 			</div>
 			<div id="Les_derniers_sites">
-				<h1>Les derniers sites</h1>
+				<h1>Les sites de références</h1>
 				<div id="listes_sites">
 					<ul>
-						<li><a href="<c:url value="/detailsSite" />">Les Têtes
-								Brûlées</a></li>
-						<li><a href="<c:url value="#" />">Les Gazelles</a></li>
-						<li><a href="<c:url value="#" />">Les Warriors</a></li>
-						<li><a href="<c:url value="#" />">Les Irréductibles</a></li>
+						<li><a href="<c:url value="https://www.grimper.com/site-escalade-sites" />">Le site Grimper</a></li>
+						<li><a href="<c:url value="https://www.vertical-magazine.com/" />">Vertical magazine</a></li>
+						<li><a href="<c:url value="https://www.montagnes-magazine.com/" />">Montagne magazine</a></li>
+						
 					</ul>
 					<ul>
-						<li><a href="<c:url value="#" />">Les Acrobates</a></li>
-						<li><a href="<c:url value="#" />">Les Abeilles</a></li>
-						<li><a href="<c:url value="#" />">Les N'importe Quoi</a></li>
-						<li><a href="<c:url value="#" />">Les Fans</a></li>
+						<li><a href="<c:url value="https://www.bigbike-magazine.com/" />">Big bike magazine</a></li>
+						<li><a href="<c:url value="https://www.trekmag.com/" />">trek magazine</a></li>
+						<li><a href="<c:url value="https://27crags.com/" />">27 Crags</a></li>
 					</ul>
 				</div>
 			</div>

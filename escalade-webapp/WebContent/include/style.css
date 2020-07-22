@@ -45,8 +45,6 @@ form .info {
 	color: #E8A22B;
 }
 
-...
-
 /* Tableaux -------------------------------------------------------------------------------------*/
 table {
 	border-collapse: collapse;
@@ -208,17 +206,6 @@ article p {
 	font-size: 0.8em;
 }
 
-aside {
-	flex: 1.2;
-	position: relative;
-	background-color: #706b64;
-	box-shadow: 0px 2px 5px #1c1a19;
-	border-radius: 5px;
-	padding: 10px;
-	color: white;
-	font-size: 0.9em;
-}
-
 #fleche_bulle {
 	position: absolute;
 	top: 100px;
@@ -233,13 +220,13 @@ aside {
 	border: 1px solid #181818;
 }
 
-aside img {
+img {
 	margin-right: 5px;
 }
 
 /* Général ------------------------------------------------------------------------------------- */
 p, legend, label, input {
-	font: normal 8pt verdana, helvetica, sans-serif;
+	font: normal 12pt verdana, helvetica, sans-serif;
 }
 
 fieldset {
@@ -331,7 +318,7 @@ footer h1 {
 }
 
 p {
-	color: #1d2124;
+	color: blue;
 }
 
 .grid2 ul li.resultats-listeStations {
@@ -374,7 +361,7 @@ h3.nomStationListe {
 h3.nomStationListe a {
 	display: inline-block;
 	font-weight: bold;
-	color: #1d2124;
+	color: #ff6600;
 	margin: 0px 0px 5px 0px;
 	padding: 0;
 	font-size: 1.2em;
@@ -386,7 +373,7 @@ h3.nomStationListe a {
 	float: inherit;
 	width: auto;
 	margin: 0px 23px 0px 0px;
-	color: #666;
+	color: #000000;
 	font-size: 0.8em;
 }
 

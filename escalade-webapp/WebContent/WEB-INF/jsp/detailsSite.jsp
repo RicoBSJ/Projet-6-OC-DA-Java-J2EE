@@ -15,6 +15,8 @@
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
 	<div class="container">
+	<div class="row">
+	<div class="col-8">
 		<c:if test="${site.officiel == true}">
 			<br>
 			<a><h5>Officiel Les amis de l'escalade</h5></a>
@@ -81,7 +83,8 @@
 				</div>
 			</article>
 		</section>
-
+	</div>
+	</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
