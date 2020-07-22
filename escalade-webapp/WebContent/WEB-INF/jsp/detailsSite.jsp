@@ -48,29 +48,19 @@
 								<span class="value">Orientation <span> ${ site.orientation }</span></span>
 								<span class="value"><span>Cotation </span> ${ site.cotation }</span>
 							</div>
-						</div><br><br><br><br><br>
+						</div><br>
 					<h5>Description du site</h5>
-					<div class="massifListe">${ site.description }</div>
-					<h5>Commentaires</h5>
+					<div class="massifListe">${ site.description }</div><br>
+					<h5>Commentaires</h5><br>
 					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<a href="<c:url value="/ajouterCommentaire?idSite=${site.id}" />">Ajouter un commentaire</a>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">
 						<div class="massifListe">
-							<h5>${commentaire.utilisateur.prenom}</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${commentaire.utilisateur.nom}</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${commentaire.date}:</h5>
-						</div>
-						<div class="massifListe">
-							<h5>${ commentaire.titre }</h5>
-						</div>
-						<br><br>
+							<br><h5>${commentaire.utilisateur.prenom} ${commentaire.utilisateur.nom}</h5>
+							<h5>${commentaire.titre} ${commentaire.date}:</h5>
+						</div><br>
 						<div class="massifListe">${ commentaire.contenu }</div>
-						<br>
 						<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
 							<a href="<c:url value="/modifierCommentaire?id=${commentaire.idCommentaire}" />">Modifier commentaire</a>
 							<form action="supprimerCommentaire" method="post">

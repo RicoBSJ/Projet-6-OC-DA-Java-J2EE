@@ -75,19 +75,13 @@
 				d’informations. Il permettra de donner de la visibilité́ à
 				l’association afin d’encourager des grimpeurs indépendants à y
 				adhérer.</p>
-			<p>
-				<img alt="Facebook" src="<c:url value="/images/facebook.png" />" />
-				<img alt="Twitter" src="<c:url value="/images/twitter.png" />" /> <img
-					alt="Vimeo" src="<c:url value="/images/vimeo.png" />" /> <img
-					alt="Flickr" src="<c:url value="/images/flickr.png" />" /> <img
-					alt="RSS" src="<c:url value="/images/rss.png" />" />
-			</p>
 
 		<footer>
 			<div id="tweet">
-				<h1>Le dernier tweet</h1>
-				<p>Wow !</p>
-				<p>le 12 mai à 23h12</p>
+				<h1>Ma Home GitHub</h1>
+					<ul>
+						<li><a href="<c:url value="https://github.com/RicoBSJ" />">Rico BSJ</a></li>
+					</ul>
 			</div>
 			<div id="les_dernières_photos">
 				<h1>Les dernières photos</h1>
@@ -109,7 +103,7 @@
 					</ul>
 					<ul>
 						<li><a href="<c:url value="https://www.bigbike-magazine.com/" />">Big bike magazine</a></li>
-						<li><a href="<c:url value="https://www.trekmag.com/" />">trek magazine</a></li>
+						<li><a href="<c:url value="https://www.trekmag.com/" />">Trek magazine</a></li>
 						<li><a href="<c:url value="https://27crags.com/" />">27 Crags</a></li>
 					</ul>
 				</div>
