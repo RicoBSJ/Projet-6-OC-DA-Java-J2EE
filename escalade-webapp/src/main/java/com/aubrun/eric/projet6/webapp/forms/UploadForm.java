@@ -17,10 +17,9 @@ import com.aubrun.eric.projet6.model.bean.Photo;
 
 public final class UploadForm {
 
-    // private static final String CHAMP_NOM_PHOTO = "description";
     private static final String CHAMP_NOM_PHOTO    = "nomPhoto";
     private static final String CHAMP_CHEMIN_PHOTO = "cheminPhoto";
-    // private static final String CHAMP_CHEMIN_PHOTO = "fichier";
+    public static final String  CHEMIN_FICHIERS    = "/Users/ricobsj/fichiers/";
     private static final int    TAILLE_TAMPON      = 10240;                        // 10
                                                                                    // ko
     private String              resultat;
@@ -124,7 +123,7 @@ public final class UploadForm {
         if ( erreurs.isEmpty() ) {
             /* Écriture du fichier sur le disque */
             try {
-                ecrireFichier( contenuFichier, nomFichier, chemin );
+                ecrireFichier( contenuFichier, nomFichier, CHEMIN_FICHIERS );
             } catch ( Exception e ) {
                 setErreur( CHAMP_CHEMIN_PHOTO, "Erreur lors de l'écriture du fichier sur le disque." );
             }

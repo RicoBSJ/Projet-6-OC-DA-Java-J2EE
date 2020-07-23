@@ -40,7 +40,7 @@
 							<div class="col-4">
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite?id=${site.id}" />">
-								<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="30" height="200"  />
+								<img src="${site.photos[0].cheminPhoto}" alt="Site" title="Détails du site" width="30" height="200"  />
 								</a>
 							</div>
 							</div>
