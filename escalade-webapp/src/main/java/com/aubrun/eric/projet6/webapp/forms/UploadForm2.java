@@ -15,15 +15,14 @@ import javax.servlet.http.Part;
 
 import com.aubrun.eric.projet6.model.bean.Photo;
 
-public final class UploadForm {
+public final class UploadForm2 {
+    private static final String CHAMP_DESCRIPTION = "cheminPhoto";
+    private static final String CHAMP_FICHIER     = "nomPhoto";
+    private static final int    TAILLE_TAMPON     = 10240;                        // 10
+                                                                                  // ko
 
-    private static final String CHAMP_NOM_PHOTO    = "nomPhoto";
-    private static final String CHAMP_CHEMIN_PHOTO = "cheminPhoto";
-    public static final String  CHEMIN_FICHIERS    = "/Users/ricobsj/fichiers/";
-    private static final int    TAILLE_TAMPON      = 10240;                        // 10
-                                                                                   // ko
     private String              resultat;
-    private Map<String, String> erreurs            = new HashMap<String, String>();
+    private Map<String, String> erreurs           = new HashMap<String, String>();
 
     public String getResultat() {
         return resultat;
@@ -34,11 +33,12 @@ public final class UploadForm {
     }
 
     public Photo enregistrerFichier( HttpServletRequest request, String chemin ) {
-
-        Photo photo = new Photo();
+        /* Initialisation du bean représentant un fichier */
+        Photo fichier = new Photo();
 
         /* Récupération du champ de description du formulaire */
-        String description = getValeurChamp( request, CHAMP_NOM_PHOTO );
+        String description = getValeurChamp( request, CHAMP_DESCRIPTION );
+
         /*
          * Récupération du contenu du champ fichier du formulaire. Il faut ici
          * utiliser la méthode getPart(), comme nous l'avions fait dans notre
@@ -47,13 +47,14 @@ public final class UploadForm {
         String nomFichier = null;
         InputStream contenuFichier = null;
         try {
-            Part part = request.getPart( CHAMP_CHEMIN_PHOTO );
+            Part part = request.getPart( CHAMP_FICHIER );
             /*
              * Il faut déterminer s'il s'agit bien d'un champ de type fichier :
              * on délègue cette opération à la méthode utilitaire
              * getNomFichier().
              */
             nomFichier = getNomFichier( part );
+
             /*
              * Si la méthode a renvoyé quelque chose, il s'agit donc d'un champ
              * de type fichier (input type="file").
@@ -70,8 +71,10 @@ public final class UploadForm {
                  */
                 nomFichier = nomFichier.substring( nomFichier.lastIndexOf( '/' ) + 1 )
                         .substring( nomFichier.lastIndexOf( '\\' ) + 1 );
+
                 /* Récupération du contenu du fichier */
                 contenuFichier = part.getInputStream();
+
             }
         } catch ( IllegalStateException e ) {
             /*
@@ -80,7 +83,7 @@ public final class UploadForm {
              * notre servlet d'upload dans le fichier web.xml
              */
             e.printStackTrace();
-            setErreur( CHAMP_CHEMIN_PHOTO, "Les données envoyées sont trop volumineuses." );
+            setErreur( CHAMP_FICHIER, "Les données envoyées sont trop volumineuses." );
         } catch ( IOException e ) {
             /*
              * Exception retournée si une erreur au niveau des répertoires de
@@ -88,7 +91,7 @@ public final class UploadForm {
              * insuffisants, etc.)
              */
             e.printStackTrace();
-            setErreur( CHAMP_CHEMIN_PHOTO, "Erreur de configuration du serveur." );
+            setErreur( CHAMP_FICHIER, "Erreur de configuration du serveur." );
         } catch ( ServletException e ) {
             /*
              * Exception retournée si la requête n'est pas de type
@@ -97,37 +100,39 @@ public final class UploadForm {
              * différent de celui qu'on lui propose... pirate ! :|
              */
             e.printStackTrace();
-            setErreur( CHAMP_CHEMIN_PHOTO,
+            setErreur( CHAMP_FICHIER,
                     "Ce type de requête n'est pas supporté, merci d'utiliser le formulaire prévu pour envoyer votre fichier." );
         }
+
         /* Si aucune erreur n'est survenue jusqu'à présent */
         if ( erreurs.isEmpty() ) {
             /* Validation du champ de description. */
             try {
                 validationDescription( description );
             } catch ( Exception e ) {
-                setErreur( CHAMP_NOM_PHOTO, e.getMessage() );
+                setErreur( CHAMP_DESCRIPTION, e.getMessage() );
             }
-            photo.setNomPhoto( description );
+            fichier.setCheminPhoto( description );
 
             /* Validation du champ fichier. */
             try {
                 validationFichier( nomFichier, contenuFichier );
             } catch ( Exception e ) {
-                setErreur( CHAMP_CHEMIN_PHOTO, e.getMessage() );
+                setErreur( CHAMP_FICHIER, e.getMessage() );
             }
-            photo.setCheminPhoto( nomFichier );
+            fichier.setNomPhoto( nomFichier );
         }
 
         /* Si aucune erreur n'est survenue jusqu'à présent */
         if ( erreurs.isEmpty() ) {
             /* Écriture du fichier sur le disque */
             try {
-                ecrireFichier( contenuFichier, nomFichier, CHEMIN_FICHIERS );
+                ecrireFichier( contenuFichier, nomFichier, chemin );
             } catch ( Exception e ) {
-                setErreur( CHAMP_CHEMIN_PHOTO, "Erreur lors de l'écriture du fichier sur le disque." );
+                setErreur( CHAMP_FICHIER, "Erreur lors de l'écriture du fichier sur le disque." );
             }
         }
+
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
             resultat = "Succès de l'envoi du fichier.";
@@ -135,15 +140,16 @@ public final class UploadForm {
             resultat = "Échec de l'envoi du fichier.";
         }
 
-        return photo;
+        return fichier;
     }
 
-    // Valide la description saisie
-
+    /*
+     * Valide la description saisie.
+     */
     private void validationDescription( String description ) throws Exception {
         if ( description != null ) {
-            if ( description.length() < 3 ) {
-                throw new Exception( "La phrase de description du fichier doit contenir au moins 3 caractères." );
+            if ( description.length() < 15 ) {
+                throw new Exception( "La phrase de description du fichier doit contenir au moins 15 caractères." );
             }
         } else {
             throw new Exception( "Merci d'entrer une phrase de description du fichier." );
@@ -217,6 +223,7 @@ public final class UploadForm {
             entree = new BufferedInputStream( contenu, TAILLE_TAMPON );
             sortie = new BufferedOutputStream( new FileOutputStream( new File( chemin + nomFichier ) ),
                     TAILLE_TAMPON );
+
             /*
              * Lit le fichier reçu et écrit son contenu dans un fichier sur le
              * disque.
