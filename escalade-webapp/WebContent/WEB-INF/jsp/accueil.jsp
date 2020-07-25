@@ -18,7 +18,7 @@
 	<div class="container" scope="session">
 		<div id="banniere_image">
 			<div>
-				<a href="<c:url value="/images/escalade.png" />"></a>
+				<a href="<c:url value="../images/escalade.png" />"></a>
 			</div>
 		</div>
 
@@ -62,11 +62,16 @@
 		</div>
 		</section>
 
+			<div class="row">
 			<h1>À propos des Amis de l'Escalade</h1>
+			</div>
+			<div class="row">
 			<p id="photo_du_site">
 				<img src="<c:url value="/images/shutterstock_171542741-711x392.jpg" />"
 					alt="Photo du site" />
 			</p>
+			</div>
+			<div class="row">
 			<p>Avec l’objectif de fédérer les licenciés, l’association “Les
 				amis de l’escalade” souhaite développer sa présence en ligne. À ce
 				titre, plusieurs axes d’amélioration ont été identifiés dont la
@@ -75,8 +80,11 @@
 				d’informations. Il permettra de donner de la visibilité́ à
 				l’association afin d’encourager des grimpeurs indépendants à y
 				adhérer.</p>
+			</div>
 
 		<footer>
+		<div align="center">
+		<div class="row">
 			<div id="tweet">
 				<h1>Ma Home GitHub</h1>
 					<ul>
@@ -108,8 +116,10 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			</div>
 		</footer>
-	</div>
+		</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
