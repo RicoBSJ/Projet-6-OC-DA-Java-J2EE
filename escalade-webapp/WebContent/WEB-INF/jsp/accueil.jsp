@@ -44,9 +44,9 @@
 							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
-									<span class="value"><span>${ longueur.description } </span> longueurs</span>
-									<span class="value"><span>${ voie.description }</span> voies</span>
-									<span class="value"><span>${ secteur.description }</span> secteurs</span>
+								<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
+								<span class="value">Orientation <span> ${ site.orientation }</span></span>
+								<span class="value"><span>Cotation </span> ${ site.cotation }</span>
 								</div>
 							</div><br>
 							</div>
