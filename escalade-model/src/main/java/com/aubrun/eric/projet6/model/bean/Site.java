@@ -50,6 +50,14 @@ public class Site {
     @OneToMany( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
+    private List<Longueur>    longueurs;
+    @OneToMany( cascade = CascadeType.ALL )
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
+    private List<Voie>        voies;
+    @OneToMany( cascade = CascadeType.ALL )
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_site" )
     private List<Commentaire> commentaires;
 
     public Integer getId() {
@@ -146,5 +154,21 @@ public class Site {
 
     public void setCommentaires( List<Commentaire> commentaires ) {
         this.commentaires = commentaires;
+    }
+
+    public List<Longueur> getLongueurs() {
+        return longueurs;
+    }
+
+    public void setLongueurs( List<Longueur> longueurs ) {
+        this.longueurs = longueurs;
+    }
+
+    public List<Voie> getVoies() {
+        return voies;
+    }
+
+    public void setVoies( List<Voie> voies ) {
+        this.voies = voies;
     }
 }

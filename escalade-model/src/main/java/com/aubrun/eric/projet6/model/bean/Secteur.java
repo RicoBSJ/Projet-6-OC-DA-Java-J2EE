@@ -30,6 +30,10 @@ public class Secteur {
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private List<Site> sites;
+    @OneToMany
+    @LazyCollection( LazyCollectionOption.FALSE )
+    @JoinColumn( name = "id_voie" )
+    private List<Voie> voies;
 
     public Integer getId() {
         return id;

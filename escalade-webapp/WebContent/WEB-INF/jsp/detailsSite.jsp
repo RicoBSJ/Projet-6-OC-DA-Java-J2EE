@@ -43,10 +43,10 @@
 				<div class="thumbs-stations">
 					<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" />
 						<div class="results-right">
-							<div class="infosStations">
-								<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
-								<span class="value">Orientation <span> ${ site.orientation }</span></span>
-								<span class="value"><span>Cotation </span> ${ site.cotation }</span>
+							<div class="infosStations" align="center">
+								<span class="value"><span>${ site.secteurs[0].description } </span> secteurs</span>
+								<span class="value"><span>${ site.voies[0].description }</span> voies</span>
+								<span class="value"><span>${ site.longueurs[0].description }</span> longueurs</span>
 							</div>
 						</div><br>
 					<h5>Description du site</h5>
