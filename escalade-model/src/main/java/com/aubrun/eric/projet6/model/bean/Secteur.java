@@ -28,8 +28,8 @@ public class Secteur {
     private String     description;
     @OneToMany
     @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_secteur" )
-    private List<Voie> voies;
+    @JoinColumn( name = "id_site" )
+    private List<Site> sites;
 
     public Integer getId() {
         return id;
@@ -55,11 +55,11 @@ public class Secteur {
         this.description = description;
     }
 
-    public List<Voie> getVoies() {
-        return voies;
+    public List<Site> getSites() {
+        return sites;
     }
 
-    public void setVoies( List<Voie> voies ) {
-        this.voies = voies;
+    public void setSites( List<Site> sites ) {
+        this.sites = sites;
     }
 }

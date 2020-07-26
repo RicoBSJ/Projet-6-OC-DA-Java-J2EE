@@ -16,11 +16,6 @@
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
 	<div class="container" scope="session">
-		<div id="banniere_image">
-			<div>
-				<a href="<c:url value="../images/escalade.png" />"></a>
-			</div>
-		</div>
 
 		<section>
 		<div class="row">
@@ -49,9 +44,9 @@
 							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
-									<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
-									<span class="value">Orientation <span>${ site.orientation }</span></span>
-									<span class="value"><span>Cotation</span> ${ site.cotation }</span>
+									<span class="value"><span>${ longueur.description } </span> longueurs</span>
+									<span class="value"><span>${ voie.description }</span> voies</span>
+									<span class="value"><span>${ secteur.description }</span> secteurs</span>
 								</div>
 							</div><br>
 							</div>
@@ -87,9 +82,11 @@
 		<div class="row">
 			<div id="tweet">
 				<h1>Ma Home GitHub</h1>
+				<div align="left">
 					<ul>
 						<li><a href="<c:url value="https://github.com/RicoBSJ" />">Rico BSJ</a></li>
 					</ul>
+				</div>
 			</div>
 			<div id="les_dernières_photos">
 				<h1>Les dernières photos</h1>
@@ -102,7 +99,7 @@
 			</div>
 			<div id="Les_derniers_sites">
 				<h1>Les sites de références</h1>
-				<div id="listes_sites">
+				<div id="listes_sites" align="left">
 					<ul>
 						<li><a href="<c:url value="https://www.grimper.com/site-escalade-sites" />">Le site Grimper</a></li>
 						<li><a href="<c:url value="https://www.vertical-magazine.com/" />">Vertical magazine</a></li>

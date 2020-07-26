@@ -139,28 +139,28 @@ nav a:hover {
 }
 
 /* Bannière -------------------------------------------------------------------------------------*/
-#banniere_image {
-	margin-top: 10px;
-	height: 300px;
-	border-radius: 5px;
-	background: url('../images/matériel_stage_escalade.png') no-repeat center;
-	position: relative;
-	box-shadow: 0px 4px 4px #1c1a19;
-	margin-bottom: 25px;
-}
 
-#banniere_description {
-	position: absolute;
-	bottom: 0;
-	border-radius: 0px 0px 5px 5px;
-	width: 99.5%;
-	height: 33px;
-	padding-top: 15px;
-	padding-left: 4px;
-	background-color: rgba(24, 24, 24, 0.8);
-	color: white;
-	font-size: 0.8em;
-}
+/* #banniere_image { */
+/* 	margin-top: 10px; */
+/* 	height: 300px; */
+/* 	border-radius: 5px; */
+/* 	background: url('../images/matériel_stage_escalade.png') no-repeat center; */
+/* 	position: relative; */
+/* 	box-shadow: 0px 4px 4px #1c1a19; */
+/* 	margin-bottom: 25px; */
+/* } */
+/* #banniere_description { */
+/* 	position: absolute; */
+/* 	bottom: 0; */
+/* 	border-radius: 0px 0px 5px 5px; */
+/* 	width: 99.5%; */
+/* 	height: 33px; */
+/* 	padding-top: 15px; */
+/* 	padding-left: 4px; */
+/* 	background-color: rgba(24, 24, 24, 0.8); */
+/* 	color: white; */
+/* 	font-size: 0.8em; */
+/* } */
 
 .bouton_rouge {
 	height: 25px;

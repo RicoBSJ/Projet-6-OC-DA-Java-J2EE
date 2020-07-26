@@ -15,13 +15,13 @@
 			<ul>
 				<c:if test="${empty sessionScope.sessionUtilisateur}">
 					<li><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
-					<li><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
-				</c:if>
 				<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 				<li><a href="<c:url value="/connexion" />">Connexion</a></li>
+				</c:if>
 				<c:if test="${!empty sessionScope.sessionUtilisateur}">
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 					<li><a href="<c:url value="/creationSite" />">Création site</a></li>
+					<li><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
 					<li><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
 					<li><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a></li>
 					<li><a href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a></li>
