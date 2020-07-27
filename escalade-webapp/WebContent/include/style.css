@@ -221,7 +221,7 @@ article p {
 }
 
 img {
-	margin-right: 5px;
+	margin-right: 50px;
 }
 
 /* Général ------------------------------------------------------------------------------------- */
@@ -347,7 +347,7 @@ p {
 .localisationStationListe {
 	float: left;
 	width: auto;
-	margin: 5px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 	padding: 5px 5px 0px 0px;
 }
 
@@ -386,7 +386,8 @@ h3.nomStationListe a {
 .thumbs-stations a img {
 	display: flex;
 	flex-direction: row;
-	width: auto;
+	width: 415px;
+	height: 250px;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -421,6 +422,21 @@ h3.nomStationListe a {
 }
 
 .value, .valueLast {
+	display: flow-root;
+	font-weight: bold;
+	width: 100px;
+	height: 40px;
+	font-size: 0.8em;
+	line-height: 1.2em;
+	margin: -210px 5px 0px -64px;
+	padding: 5px;
+	-moz-border-radius: 15px;
+	border: 1px solid #f4f3f3;
+	color: #000;
+	border-radius: 5px;
+}
+
+.values {
 	display: inline-block;
 	font-weight: bold;
 	width: 100%;
@@ -432,6 +448,19 @@ h3.nomStationListe a {
 	-moz-border-radius: 15px;
 	border: 1px solid #f4f3f3;
 	color: #000;
+	border-radius: 5px;
+}
+
+.values {
+	float: left;
+	font-weight: bold;
+	background: rgba(255, 255, 255, 0.5);
+	font-size: 0.8em;
+	line-height: 1.2em;
+	margin: 0px 2px 0px 6px;
+	padding: 5px;
+	-moz-border-radius: 5px;
+	color: #ffffff;
 	border-radius: 5px;
 }
 

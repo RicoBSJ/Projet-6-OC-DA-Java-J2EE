@@ -44,11 +44,54 @@
 							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
-								<span class="value"><span>${ site.secteurs[0].description } </span> secteurs</span>
-								<span class="value"><span>${ site.voies[0].description }</span> voies</span>
-								<span class="value"><span>${ site.longueurs[0].description }</span> longueurs</span>
+									<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
 								</div>
-							</div><br>
+							</div><br><br>
+							</div>
+							</div>
+							<div align="center">
+							<div class="col-4">
+							<div class="results-right">
+								<div class="infosStations">
+									<span class="value">Orientation <span>${ site.orientation }</span></span>
+								</div>
+							</div><br><br>
+							</div>
+							</div>
+							<div align="center">
+							<div class="col-4">
+							<div class="results-right">
+								<div class="infosStations">
+									<span class="value"><span>Cotation </span> ${ site.cotation }</span>
+								</div>
+							</div><br><br>
+							</div>
+							</div>
+							<div align="center">
+							<div class="col-4">
+							<div class="results-right">
+								<div class="infosStations">
+									<span class="value"><span>${ site.secteurs[0].description } </span> secteurs</span>
+								</div>
+							</div><br><br>
+							</div>
+							</div>
+							<div align="center">
+							<div class="col-4">
+							<div class="results-right">
+								<div class="infosStations">
+									<span class="value"><span>${ site.voies[0].description }</span> voies</span>
+								</div>
+							</div><br><br>
+							</div>
+							</div>
+							<div align="center">
+							<div class="col-4">
+							<div class="results-right">
+								<div class="infosStations">
+									<span class="value"><span>${ site.longueurs[0].description }</span> longueurs</span>
+								</div>
+							</div><br><br>
 							</div>
 							</div>
 					</div>
