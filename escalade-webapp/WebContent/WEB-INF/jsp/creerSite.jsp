@@ -51,6 +51,21 @@
 				<input type="text" id="orientation" name="orientation" value="<c:out value="${site.orientation}"/>" size="30" maxlength="60" />
 				<span class="erreur">${form.erreurs['orientation']}</span>
                 <br />
+                
+                <label for="secteur">Nombre de secteurs <span class="requis">*</span></label>
+				<input type="text" id="secteur" name="secteur" value="<c:out value="${secteur.description}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['description']}</span>
+                <br />
+                
+                <label for="voie">Nombre de voie <span class="requis">*</span></label>
+				<input type="text" id="voie" name="voie" value="<c:out value="${voie.description}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['description']}</span>
+                <br />
+                
+                <label for="longueur">Nombre de longueurs <span class="requis">*</span></label>
+				<input type="text" id="longueur" name="longueur" value="<c:out value="${longueur.description}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['description']}</span>
+                <br />
 
 				<input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
