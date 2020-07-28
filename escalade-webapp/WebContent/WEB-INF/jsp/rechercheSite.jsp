@@ -57,7 +57,7 @@
 				<span class="erreur">${form.erreurs['description']}</span>
                 <br />
                 
-                <label for="longueur">Recherche de site par orientation </label>
+                <label for="longueur">Recherche de site par longueur </label>
 				<input type="text" id="longueur" name="longueur" value="<c:out value="${longueur.description}"/>" size="30" maxlength="60" />
 				<span class="erreur">${form.erreurs['description']}</span>
                 <br />

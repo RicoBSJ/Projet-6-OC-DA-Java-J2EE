@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.aubrun.eric.projet6.business.service.SiteService;
 import com.aubrun.eric.projet6.model.bean.SearchForm;
+import com.aubrun.eric.projet6.model.bean.SearchFormLongueur;
+import com.aubrun.eric.projet6.model.bean.SearchFormSecteur;
+import com.aubrun.eric.projet6.model.bean.SearchFormVoie;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 @WebServlet( "/rechercheSite" )
@@ -18,6 +21,9 @@ public class RechercheSite extends HttpServlet {
 
     private static final long  serialVersionUID = 1L;
 
+    public static final String ATT_SECTEURS     = "secteurs";
+    public static final String ATT_VOIES        = "voies";
+    public static final String ATT_LONGUEURS    = "longueurs";
     public static final String ATT_SITES        = "sites";
     public static final String VUE              = "/WEB-INF/jsp/rechercheSite.jsp";
     public static final String VUE_RESULT       = "/WEB-INF/jsp/accueil.jsp";
@@ -33,7 +39,8 @@ public class RechercheSite extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        List<Site> sites = siteService.searchSite( new SearchForm( request ) );
+        List<Site> sites = siteService.searchSite( new SearchForm( request ), new SearchFormSecteur( request ),
+                new SearchFormVoie( request ), new SearchFormLongueur( request ) );
 
         request.setAttribute( ATT_SITES, sites );
 
