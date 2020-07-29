@@ -30,7 +30,7 @@ public class Voie {
     private String         description;
     @OneToMany
     @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_voie" )
+    @JoinColumn( name = "id_longueur" )
     private List<Longueur> longueurs;
 
     public Integer getId() {

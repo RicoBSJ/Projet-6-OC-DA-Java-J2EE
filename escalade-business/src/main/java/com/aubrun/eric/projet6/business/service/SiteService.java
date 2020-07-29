@@ -2,22 +2,13 @@ package com.aubrun.eric.projet6.business.service;
 
 import java.util.List;
 
-import com.aubrun.eric.projet6.consumer.DAO.LongueurDAO;
-import com.aubrun.eric.projet6.consumer.DAO.SecteurDAO;
 import com.aubrun.eric.projet6.consumer.DAO.SiteDAO;
-import com.aubrun.eric.projet6.consumer.DAO.VoieDAO;
 import com.aubrun.eric.projet6.model.bean.SearchForm;
-import com.aubrun.eric.projet6.model.bean.SearchFormLongueur;
-import com.aubrun.eric.projet6.model.bean.SearchFormSecteur;
-import com.aubrun.eric.projet6.model.bean.SearchFormVoie;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteService {
 
-    private SiteDAO     siteDAO     = new SiteDAO();
-    private SecteurDAO  secteurDAO  = new SecteurDAO();
-    private VoieDAO     voieDAO     = new VoieDAO();
-    private LongueurDAO longueurDAO = new LongueurDAO();
+    private SiteDAO siteDAO = new SiteDAO();
 
     public List<Site> findAll() {
 
@@ -43,12 +34,8 @@ public class SiteService {
         siteDAO.supprimerSite( idSite );
     }
 
-    public List<Site> searchSite( SearchForm searchForm, SearchFormSecteur searchFormSecteur,
-            SearchFormVoie searchFormVoie, SearchFormLongueur searchFormLongueur ) {
+    public List<Site> searchSite( SearchForm searchForm ) {
 
-        secteurDAO.recherche( searchFormSecteur );
-        voieDAO.recherche( searchFormVoie );
-        longueurDAO.recherche( searchFormLongueur );
         return siteDAO.recherche( searchForm );
     }
 

@@ -2,7 +2,6 @@ package com.aubrun.eric.projet6.model.bean;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +32,8 @@ public class Commentaire {
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_utilisateur" )
     private Utilisateur utilisateur;
-    @ManyToOne( cascade = { CascadeType.ALL } )
+    @ManyToOne
+    @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private Site        site;
 
