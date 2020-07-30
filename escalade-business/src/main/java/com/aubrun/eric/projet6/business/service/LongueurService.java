@@ -12,6 +12,11 @@ public class LongueurService {
 
     public List<Longueur> searchLenght( SearchFormLongueur searchFormLongueur ) {
 
-        return longueurDAO.recherche( searchFormLongueur );
+        return longueurDAO.rechercheLongueur( searchFormLongueur );
+    }
+
+    public void addLenght( Longueur lenght ) {
+
+        longueurDAO.ajouterLongueur( lenght );
     }
 }

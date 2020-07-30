@@ -16,7 +16,7 @@ public class LongueurDAO {
 
     SessionFactory factory = HibernateUtils.getSessionFactory();
 
-    public List<Longueur> recherche( SearchFormLongueur searchFormLongueur ) {
+    public List<Longueur> rechercheLongueur( SearchFormLongueur searchFormLongueur ) {
         Session session = factory.getCurrentSession();
         List<Longueur> resultat = null;
         try {
@@ -46,5 +46,21 @@ public class LongueurDAO {
             session.getTransaction().rollback();
         }
         return resultat;
+    }
+
+    public void ajouterLongueur( Longueur lenght ) {
+        // TODO Auto-generated method stub
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.save( lenght );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
     }
 }

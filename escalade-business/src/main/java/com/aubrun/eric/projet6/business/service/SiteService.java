@@ -2,13 +2,22 @@ package com.aubrun.eric.projet6.business.service;
 
 import java.util.List;
 
+import com.aubrun.eric.projet6.consumer.DAO.LongueurDAO;
+import com.aubrun.eric.projet6.consumer.DAO.SecteurDAO;
 import com.aubrun.eric.projet6.consumer.DAO.SiteDAO;
+import com.aubrun.eric.projet6.consumer.DAO.VoieDAO;
+import com.aubrun.eric.projet6.model.bean.Longueur;
 import com.aubrun.eric.projet6.model.bean.SearchForm;
+import com.aubrun.eric.projet6.model.bean.Secteur;
 import com.aubrun.eric.projet6.model.bean.Site;
+import com.aubrun.eric.projet6.model.bean.Voie;
 
 public class SiteService {
 
-    private SiteDAO siteDAO = new SiteDAO();
+    private SiteDAO     siteDAO     = new SiteDAO();
+    private SecteurDAO  secteurDAO  = new SecteurDAO();
+    private VoieDAO     voieDAO     = new VoieDAO();
+    private LongueurDAO longueurDAO = new LongueurDAO();
 
     public List<Site> findAll() {
 
@@ -26,6 +35,12 @@ public class SiteService {
 
     public void addSite( Site createSite ) {
 
+        Secteur sector = new Secteur();
+        Voie way = new Voie();
+        Longueur lenght = new Longueur();
+        secteurDAO.ajouterSecteur( sector );
+        voieDAO.ajouterVoie( way );
+        longueurDAO.ajouterLongueur( lenght );
         siteDAO.ajouterSite( createSite );
     }
 

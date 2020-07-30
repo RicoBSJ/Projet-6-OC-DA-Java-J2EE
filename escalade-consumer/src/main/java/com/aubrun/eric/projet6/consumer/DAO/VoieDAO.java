@@ -16,7 +16,7 @@ public class VoieDAO {
 
     SessionFactory factory = HibernateUtils.getSessionFactory();
 
-    public List<Voie> recherche( SearchFormVoie searchFormVoie ) {
+    public List<Voie> rechercheVoie( SearchFormVoie searchFormVoie ) {
         Session session = factory.getCurrentSession();
         List<Voie> resultat = null;
         try {
@@ -46,5 +46,21 @@ public class VoieDAO {
             session.getTransaction().rollback();
         }
         return resultat;
+    }
+
+    public void ajouterVoie( Voie way ) {
+        // TODO Auto-generated method stub
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.save( way );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
     }
 }

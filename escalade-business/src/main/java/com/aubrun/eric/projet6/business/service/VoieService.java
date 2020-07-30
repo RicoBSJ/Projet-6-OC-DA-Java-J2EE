@@ -12,7 +12,11 @@ public class VoieService {
 
     public List<Voie> searchWay( SearchFormVoie searchFormVoie ) {
 
-        return voieDAO.recherche( searchFormVoie );
+        return voieDAO.rechercheVoie( searchFormVoie );
     }
 
+    public void addWay( Voie way ) {
+
+        voieDAO.ajouterVoie( way );
+    }
 }

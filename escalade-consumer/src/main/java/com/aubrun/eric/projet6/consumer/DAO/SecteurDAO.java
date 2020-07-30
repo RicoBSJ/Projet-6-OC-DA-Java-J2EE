@@ -16,7 +16,7 @@ public class SecteurDAO {
 
     SessionFactory factory = HibernateUtils.getSessionFactory();
 
-    public List<Secteur> recherche( SearchFormSecteur searchFormSecteur ) {
+    public List<Secteur> rechercheSecteur( SearchFormSecteur searchFormSecteur ) {
         Session session = factory.getCurrentSession();
         List<Secteur> resultat = null;
         try {
@@ -42,5 +42,21 @@ public class SecteurDAO {
             session.getTransaction().rollback();
         }
         return resultat;
+    }
+
+    public void ajouterSecteur( Secteur sector ) {
+        // TODO Auto-generated method stub
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.save( sector );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
     }
 }

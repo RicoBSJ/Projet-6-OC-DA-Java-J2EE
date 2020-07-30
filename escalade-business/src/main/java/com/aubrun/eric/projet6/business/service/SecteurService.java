@@ -12,6 +12,11 @@ public class SecteurService {
 
     public List<Secteur> searchSector( SearchFormSecteur searchFormSecteur ) {
 
-        return secteurDAO.recherche( searchFormSecteur );
+        return secteurDAO.rechercheSecteur( searchFormSecteur );
+    }
+
+    public void addSector( Secteur sector ) {
+
+        secteurDAO.ajouterSecteur( sector );
     }
 }

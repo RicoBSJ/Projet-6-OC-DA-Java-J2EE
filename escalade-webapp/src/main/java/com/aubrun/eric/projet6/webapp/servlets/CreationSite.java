@@ -87,6 +87,13 @@ public class CreationSite extends HttpServlet {
             }
             site.getPhotos().add( photo );
 
+            // Secteur sector = new Secteur();
+            // Voie way = new Voie();
+            // Longueur lenght = new Longueur();
+            // sector.setDescription( request.getParameter( "description" ) );
+            // way.setDescription( request.getParameter( "description" ) );
+            // lenght.setDescription( request.getParameter( "description" ) );
+
             siteService.addSite( site );
 
             request.setAttribute( ATT_FORM, form );
