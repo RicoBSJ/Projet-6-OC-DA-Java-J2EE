@@ -43,18 +43,12 @@ public class Site {
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
     private List<Photo>       photos;
-    @OneToMany( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_site" )
-    private List<Secteur>     secteurs;
-    @OneToMany( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_site" )
-    private List<Longueur>    longueurs;
-    @OneToMany( cascade = CascadeType.ALL )
-    @LazyCollection( LazyCollectionOption.FALSE )
-    @JoinColumn( name = "id_site" )
-    private List<Voie>        voies;
+    @Column( name = "id_secteurs" )
+    private String            secteurs;
+    @Column( name = "id_longueurs" )
+    private String            longueurs;
+    @Column( name = "id_voies" )
+    private String            voies;
     @OneToMany( cascade = CascadeType.ALL )
     @LazyCollection( LazyCollectionOption.FALSE )
     @JoinColumn( name = "id_site" )
@@ -140,14 +134,6 @@ public class Site {
         this.photos = photos;
     }
 
-    public List<Secteur> getSecteurs() {
-        return secteurs;
-    }
-
-    public void setSecteurs( List<Secteur> secteurs ) {
-        this.secteurs = secteurs;
-    }
-
     public List<Commentaire> getCommentaires() {
         return commentaires;
     }
@@ -156,19 +142,27 @@ public class Site {
         this.commentaires = commentaires;
     }
 
-    public List<Longueur> getLongueurs() {
+    public String getSecteurs() {
+        return secteurs;
+    }
+
+    public void setSecteurs( String secteurs ) {
+        this.secteurs = secteurs;
+    }
+
+    public String getLongueurs() {
         return longueurs;
     }
 
-    public void setLongueurs( List<Longueur> longueurs ) {
+    public void setLongueurs( String longueurs ) {
         this.longueurs = longueurs;
     }
 
-    public List<Voie> getVoies() {
+    public String getVoies() {
         return voies;
     }
 
-    public void setVoies( List<Voie> voies ) {
+    public void setVoies( String voies ) {
         this.voies = voies;
     }
 }

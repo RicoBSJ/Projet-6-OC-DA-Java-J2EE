@@ -12,6 +12,8 @@
                 <legend>Création site</legend>
                 <p>Vous pouvez créer un site via ce formulaire.</p>
                 
+                <input type="hidden" value="${idSite}" name="idSite">
+                
 				<label for="nom">Nom du site <span class="requis">*</span></label>
 				<input type="text" id="nom" name="nom" value="<c:out value="${site.nom}"/>" size="30" maxlength="30" />
 				<span class="erreur">${form.erreurs['nom']}</span>

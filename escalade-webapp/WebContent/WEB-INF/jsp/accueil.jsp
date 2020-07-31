@@ -71,7 +71,7 @@
 							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
-									<span class="value"><span>${ site.secteurs[0].description } </span> secteurs</span>
+									<span class="value"><span>${ site.secteurs } </span> secteurs</span>
 								</div>
 							</div><br><br>
 							</div>
@@ -80,7 +80,7 @@
 							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
-									<span class="value"><span>${ site.voies[0].description }</span> voies</span>
+									<span class="value"><span>${ site.voies }</span> voies</span>
 								</div>
 							</div><br><br>
 							</div>
@@ -89,7 +89,7 @@
 							<div class="col-4">
 							<div class="results-right">
 								<div class="infosStations">
-									<span class="value"><span>${ site.longueurs[0].description }</span> longueurs</span>
+									<span class="value"><span>${ site.longueurs }</span> longueurs</span>
 								</div>
 							</div><br><br>
 							</div>

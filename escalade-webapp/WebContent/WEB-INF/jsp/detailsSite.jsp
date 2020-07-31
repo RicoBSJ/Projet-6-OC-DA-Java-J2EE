@@ -53,13 +53,13 @@
 								<span class="values"><span>Cotation</span> ${ site.cotation }</span>
 							</div>
 							<div class="infosStations" align="center">
-								<span class="values"><span>${ site.secteurs[0].description } </span> secteurs</span>
+								<span class="values"><span>${ site.secteurs } </span> secteurs</span>
 							</div>
 							<div class="infosStations" align="center">
-								<span class="values"><span>${ site.voies[0].description }</span> voies</span>
+								<span class="values"><span>${ site.voies }</span> voies</span>
 							</div>
 							<div class="infosStations" align="center">
-								<span class="values"><span>${ site.longueurs[0].description }</span> longueurs</span>
+								<span class="values"><span>${ site.longueurs }</span> longueurs</span>
 							</div>
 						</div><br>
 					<h5>Description du site</h5>
