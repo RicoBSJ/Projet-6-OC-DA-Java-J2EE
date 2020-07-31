@@ -55,18 +55,18 @@
                 <br />
                 
                 <label for="secteur">Nombre de secteurs <span class="requis">*</span></label>
-				<input type="text" id="secteur" name="secteur" value="<c:out value="${secteur.description}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['description']}</span>
+				<input type="text" id="secteur" name="secteur" value="<c:out value="${site.secteurs}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['secteurs']}</span>
                 <br />
                 
                 <label for="voie">Nombre de voie <span class="requis">*</span></label>
-				<input type="text" id="voie" name="voie" value="<c:out value="${voie.description}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['description']}</span>
+				<input type="text" id="voie" name="voie" value="<c:out value="${site.voies}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['voies']}</span>
                 <br />
                 
                 <label for="longueur">Nombre de longueurs <span class="requis">*</span></label>
-				<input type="text" id="longueur" name="longueur" value="<c:out value="${longueur.description}"/>" size="30" maxlength="60" />
-				<span class="erreur">${form.erreurs['description']}</span>
+				<input type="text" id="longueur" name="longueur" value="<c:out value="${site.longueurs}"/>" size="30" maxlength="60" />
+				<span class="erreur">${form.erreurs['longueurs']}</span>
                 <br />
 
 				<input type="submit" value="Valider"  />

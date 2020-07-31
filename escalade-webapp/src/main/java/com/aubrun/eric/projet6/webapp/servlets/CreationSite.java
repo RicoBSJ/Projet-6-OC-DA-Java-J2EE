@@ -95,7 +95,7 @@ public class CreationSite extends HttpServlet {
             request.setAttribute( ATT_PHOTO, photo );
         }
 
-        this.getServletContext().getRequestDispatcher( VUE_HOME ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 
     private void ecrireFichier( Part part, String nomFichier, String chemin ) throws IOException {

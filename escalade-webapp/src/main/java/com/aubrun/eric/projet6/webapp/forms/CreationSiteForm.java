@@ -5,10 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.aubrun.eric.projet6.model.bean.Longueur;
-import com.aubrun.eric.projet6.model.bean.Secteur;
 import com.aubrun.eric.projet6.model.bean.Site;
-import com.aubrun.eric.projet6.model.bean.Voie;
 
 public final class CreationSiteForm {
 
@@ -46,14 +43,11 @@ public final class CreationSiteForm {
         String cotation = getValeurChamp( request, CHAMP_COTATION );
         String hauteur = getValeurChamp( request, CHAMP_HAUTEUR );
         String orientation = getValeurChamp( request, CHAMP_ORIENTATION );
-        String sector = getValeurChamp( request, CHAMP_SECTEUR );
-        String way = getValeurChamp( request, CHAMP_VOIE );
-        String lenght = getValeurChamp( request, CHAMP_LONGUEUR );
+        String secteurs = getValeurChamp( request, CHAMP_SECTEUR );
+        String voies = getValeurChamp( request, CHAMP_VOIE );
+        String longueurs = getValeurChamp( request, CHAMP_LONGUEUR );
 
         Site site = new Site();
-        Secteur secteur = new Secteur();
-        Voie voie = new Voie();
-        Longueur longueur = new Longueur();
         try {
             traiterNom( nom, site );
             traiterPays( pays, site );
@@ -62,9 +56,9 @@ public final class CreationSiteForm {
             traiterCotation( cotation, site );
             traiterHauteur( hauteur, site );
             traiterOrientation( orientation, site );
-            traiterDescriptSector( sector, secteur );
-            traiterDescriptWay( way, voie );
-            traiterDescriptLenght( lenght, longueur );
+            traiterSecteurs( secteurs, site );
+            traiterVoies( voies, site );
+            traiterLongueurs( longueurs, site );
             resultat = "Création du site réussie !";
         } catch ( Exception e ) {
             resultat = "Echec de la création de site : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
@@ -136,31 +130,31 @@ public final class CreationSiteForm {
         site.setOrientation( orientation );
     }
 
-    private void traiterDescriptSector( String sector, Secteur secteur ) {
+    private void traiterSecteurs( String secteurs, Site site ) {
         try {
-            validationDescriptSector( sector );
+            validationSecteurs( secteurs );
         } catch ( Exception e ) {
             setErreur( CHAMP_SECTEUR, e.getMessage() );
         }
-        secteur.setDescription( sector );
+        site.setSecteurs( secteurs );
     }
 
-    private void traiterDescriptWay( String way, Voie voie ) {
+    private void traiterVoies( String voies, Site site ) {
         try {
-            validationDescriptWay( way );
+            validationVoies( voies );
         } catch ( Exception e ) {
             setErreur( CHAMP_VOIE, e.getMessage() );
         }
-        voie.setDescription( way );
+        site.setVoies( voies );
     }
 
-    private void traiterDescriptLenght( String lenght, Longueur longueur ) {
+    private void traiterLongueurs( String longueurs, Site site ) {
         try {
-            validationDescriptLenght( lenght );
+            validationLongueurs( longueurs );
         } catch ( Exception e ) {
             setErreur( CHAMP_LONGUEUR, e.getMessage() );
         }
-        longueur.setDescription( lenght );
+        site.setLongueurs( longueurs );
     }
 
     private void validationNom( String nom ) throws Exception {
@@ -205,20 +199,20 @@ public final class CreationSiteForm {
         }
     }
 
-    private void validationDescriptSector( String sector ) throws Exception {
-        if ( sector != null && sector.length() < 3 ) {
+    private void validationSecteurs( String secteurs ) throws Exception {
+        if ( secteurs != null && secteurs.length() < 3 ) {
             throw new Exception( "Le secteur du site doit contenir au moins 3 caractères." );
         }
     }
 
-    private void validationDescriptWay( String way ) throws Exception {
-        if ( way != null && way.length() < 3 ) {
+    private void validationVoies( String voies ) throws Exception {
+        if ( voies != null && voies.length() < 3 ) {
             throw new Exception( "La voie du site doit contenir au moins 3 caractères." );
         }
     }
 
-    private void validationDescriptLenght( String lenght ) throws Exception {
-        if ( lenght != null && lenght.length() < 3 ) {
+    private void validationLongueurs( String longueurs ) throws Exception {
+        if ( longueurs != null && longueurs.length() < 3 ) {
             throw new Exception( "L'orientation du site doit contenir au moins 3 caractères." );
         }
     }

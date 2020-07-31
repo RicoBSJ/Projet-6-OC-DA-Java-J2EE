@@ -134,6 +134,18 @@ public class SiteDAO {
                 q += "AND s.orientation LIKE :orientation ";
                 parameters.put( "orientation", "%" + searchForm.getOrientation() + "%" );
             }
+            if ( searchForm.getSecteurs() != "" ) {
+                q += "AND s.secteurs LIKE :secteurs ";
+                parameters.put( "secteurs", "%" + searchForm.getSecteurs() + "%" );
+            }
+            if ( searchForm.getVoies() != "" ) {
+                q += "AND s.voies LIKE :voies ";
+                parameters.put( "voies", "%" + searchForm.getVoies() + "%" );
+            }
+            if ( searchForm.getLongueurs() != "" ) {
+                q += "AND s.longueurs LIKE :longueurs ";
+                parameters.put( "longueurs", "%" + searchForm.getLongueurs() + "%" );
+            }
             Query<Site> query = session.createQuery( q );
             query.setProperties( parameters );
             resultat = query.getResultList();

@@ -41,7 +41,7 @@
 					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
-					<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" />
+					<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="1200" height="600" />
 						<div class="results-right">
 							<div class="infosStations" align="center">
 								<span class="values"><span>${ site.hauteur } </span> de hauteur</span>
