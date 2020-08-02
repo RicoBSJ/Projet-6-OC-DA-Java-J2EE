@@ -50,8 +50,8 @@
 ## Les contraintes fonctionnelles
 
 	- Le vocabulaire de l’escalade doit être utilisé : site, spot, voie, longueur, grimpeur, point ou spit, cotation, topo.
-	- Le site doit être ​responsive.​
-	- Le site doit être sécurisé.
+	- Le site doit être ​responsive : mon site est responsive grace à Bootstrap
+	- Le site doit être sécurisé : les mots de passe enregistrés dans la base de données sont cryptés
 	
 ## Spécificités
 	
@@ -59,6 +59,7 @@
 
 	Cette application a été développé avec :
 	- Eclipse IDE for Enterprise Java Developers (version: 2020-03 (4.15.0))
+	- Apache Maven 3.6.3
 	- Java 8 (version 1.8 Update 251)
 	- Tomcat 9.0.30
 	- PostgreSql 12 (version 10.12 - 10.14)
@@ -66,7 +67,13 @@
 	
 	## Déploiement
 	
-
+	- Vous devez au-préalable télécharger et installer :
+	- Java sur https://www.java.com/fr/download/
+	- Le JDK sur https://www.oracle.com/fr/java/technologies/javase/javase-jdk8-downloads.html
+	- Apache Maven sur https://maven.apache.org/download.cgi (n'oubliez pas d'ajouter la variable d'environnement d'Apache au "Path")
+	- Apache Tomcat sur https://tomcat.apache.org/download-90.cgi
+	- PostgreSQL sur https://www.postgresql.org/download/
+	
 
     ## Lancement de l'application
 
