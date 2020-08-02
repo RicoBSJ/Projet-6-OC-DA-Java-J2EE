@@ -21,7 +21,7 @@
 			<br>
 			<a><h5>Officiel Les amis de l'escalade</h5></a>
 		</c:if>
-		<c:if test="${!empty sessionScope.sessionUtilisateur}">
+		<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
 			<form action="taguerUnSiteOfficiel" method="post">
 				<input type="hidden" value="${ site.id }" name="idSite">
 				<input type="submit" name="tag" value="Taguer ce site comme site officiel" />
@@ -65,7 +65,7 @@
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div><br>
 					<h5>Commentaires</h5><br>
-					<c:if test="${!empty sessionScope.sessionUtilisateur}">
+					<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
 						<a href="<c:url value="/ajouterCommentaire?idSite=${site.id}" />">Ajouter un commentaire</a>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">

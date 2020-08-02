@@ -42,7 +42,11 @@ public class SiteService {
     public void tagOfficialSite( Integer idSite ) {
 
         Site site = siteDAO.afficherDetails( idSite );
-        site.setOfficiel( true );
+        if ( site.getOfficiel() == false ) {
+            site.setOfficiel( true );
+        } else {
+            site.setOfficiel( false );
+        }
         siteDAO.modifierSite( site );
     }
 
