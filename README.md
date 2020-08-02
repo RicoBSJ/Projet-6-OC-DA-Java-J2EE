@@ -58,6 +58,7 @@
 	## Développement
 
 	Cette application a été développé avec :
+	
 	- Eclipse IDE for Enterprise Java Developers (version: 2020-03 (4.15.0))
 	- Apache Maven 3.6.3
 	- Java 8 (version 1.8 Update 251)
@@ -67,7 +68,8 @@
 	
 	## Déploiement
 	
-	- Vous devez au-préalable télécharger et installer :
+	Vous devez au-préalable télécharger et installer :
+	
 	- Java sur https://www.java.com/fr/download/
 	- Le JDK sur https://www.oracle.com/fr/java/technologies/javase/javase-jdk8-downloads.html
 	- Apache Maven sur https://maven.apache.org/download.cgi (n'oubliez pas d'ajouter la variable d'environnement d'Apache au "Path")
