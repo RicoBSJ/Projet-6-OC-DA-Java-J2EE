@@ -14,8 +14,7 @@
 			<p>Vous pouvez faire une demande de réservation de topo via ce formulaire.</p>
 			<br>
 
-			<input type="hidden" value="${message.topo.id}" name="idDispo">
-			<input type="hidden" value="${message.destinataire.id}" name="idUtil">
+			<input type="hidden" value="${topo.id}" name="idDispo">
 
 			<label for="message">Message <span class="requis">*</span></label>
 			<textarea name="message"></textarea>

@@ -40,6 +40,7 @@ public class TopoService {
 
     public void addTopo( Topo createTopo ) {
 
+        createTopo.setDisponible( true );
         topoDAO.ajouterTopo( createTopo );
     }
 
