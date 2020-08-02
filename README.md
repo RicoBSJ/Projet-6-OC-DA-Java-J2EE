@@ -1,14 +1,14 @@
-# Réalisation de l'application "LES AMIS DE L'ESCALADE", Projet 6, dans le cadre de la formation DA JAVA JEE OPENCLASSROOMS
+# Réalisation de l'application web "LES AMIS DE L'ESCALADE", Projet 6, dans le cadre de la formation DA JAVA JEE OPENCLASSROOMS
 
 	Création d'un site communautaire autour de l'escalade pour l'association "Les amis de l'escalade".
 
 # Contexte :
 
 	Avec l’objectif de fédérer les licenciés, l’association “Les amis de l’escalade” souhaite développer
-	sa présence en ligne. À ce titre, plusieurs axes d’amélioration	ont été identifiés dont la création 
+	sa présence en ligne. À ce titre, plusieurs axes d’amélioration ont été identifiés dont la création 
 	d’un site communautaire.
 	Ce site aura pour but la mise en relation et le partage d’informations. Il permettra de donner 
-	de la visibilité l’association afin d’encourager des grimpeurs	indépendants à y adhérer.
+	de la visibilité l’association afin d’encourager des grimpeurs indépendants à y adhérer.
 
 
 ## Les fonctionnalités :
@@ -49,9 +49,9 @@
 	
 ## Les contraintes fonctionnelles
 
-	- Vocabulaire de l'escalade utilisé.
-	- Le site est responsive.
-	- le site est sécurisé. (aucun mot de passe est stocké en clair dans la BDD)
+	- Le vocabulaire de l’escalade doit être utilisé : site, spot, voie, longueur, grimpeur, point ou spit, cotation, topo.
+	- Le site doit être ​responsive.​
+	- Le site doit être sécurisé.
 	
 ## Spécificités
 	
