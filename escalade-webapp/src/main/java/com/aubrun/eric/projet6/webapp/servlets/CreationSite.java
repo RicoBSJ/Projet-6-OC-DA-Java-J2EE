@@ -31,6 +31,7 @@ public class CreationSite extends HttpServlet {
     private static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String  CHEMIN_FICHIERS  = "/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-webapp/WebContent/images/";
     private static final String VUE              = "/WEB-INF/jsp/creerSite.jsp";
+    private static final String VUE_HOME         = "/WEB-INF/jsp/accueil.jsp";
     private static final int    TAILLE_TAMPON    = 10240;
     private SiteService         siteService      = new SiteService();
 
@@ -92,9 +93,11 @@ public class CreationSite extends HttpServlet {
             request.setAttribute( ATT_FORM, form );
             request.setAttribute( ATT_SITE, site );
             request.setAttribute( ATT_PHOTO, photo );
+
+            request.setAttribute( "sites", siteService.findAll() );
         }
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( VUE_HOME ).forward( request, response );
     }
 
     private void ecrireFichier( Part part, String nomFichier, String chemin ) throws IOException {
