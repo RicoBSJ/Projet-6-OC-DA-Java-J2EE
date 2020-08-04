@@ -76,14 +76,14 @@
 	- Apache Tomcat sur https://tomcat.apache.org/download-90.cgi
 	- PostgreSQL sur https://www.postgresql.org/download/
 	- Hibernate sur https://sourceforge.net/projects/hibernate/files/hibernate-orm/5.4.10.Final/hibernate-release-5.4.10.Final.zip/download
+	- Dézippez le package "Projet-6-OC-DA-Java-J2EE"
 	
 	Ceci fait, vous devez lancer pgAdmin4 :
 	
 	- Voici le chemin : PostgreSQL/12/
-	- Il n'est pas nécessaire d'injecter du code SQL pour créer la base de données car hibernate le fait automatiquement à partir du fichier hibernate.cfg.xml
-	- Pour accéder à cette base, vous devez le faire à partir de l'utilisateur postgres, mot de passe postgres. La base de données PostgreSQL se nomme "javaee"
-	- Dézippez le package "Projet-6-OC-DA-Java-J2EE"
-	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier sql "insert_all.sql"
+	- Dans la base de données, créez un utilisateur "postgres", attribuez lui le mot de passe "postgres"
+	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "javaee.sql" que vous trouverez dans le package
+	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "insert_all.sql"
 	- 
 
     ## Le lancement de l'application
