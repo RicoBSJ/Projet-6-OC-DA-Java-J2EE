@@ -84,7 +84,12 @@
 	- Dans la base de données, créez un utilisateur "postgres", attribuez lui le mot de passe "postgres"
 	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "javaee.sql" que vous trouverez dans le package
 	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "insert_all.sql"
-	- 
+	- Ouvrez votre terminal de commande, tapez cd et copiez le chemin d'accès à l'application : ............Faites "ENTRER"
+	- Une fois placé dans le chemin de l'application, tapez "mvn package"
+	- Renez-vous dans le dossier de le chemin suivant : escalade-webapp\target
+	- Copiez le fichier "escalade-webapp.war" généré par l'étape précédente
+	- Rendez-vous dans le dossier apache-tomcat-9.0.30\webapps\ et collez "escalade-webapp.war"
+	- Faites cd .. et exécutez le fichier "startup.bat"
 
     ## Le lancement de l'application
 
