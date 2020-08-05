@@ -111,6 +111,15 @@
     ## Le lancement de l'application
     
     - Ouvrez votre navigateur Internet et tapez "http://localhost:8080/escalade-webapp/accueil" pour lancer l'application
+    
+    ## Pour arrêter Tomcat
+    
+    	- Pour arrêter Tomcat, tapez "./shutdown.sh", votre affichage devrait ressembler à ceci :
+	- Using CATALINA_BASE:   /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_HOME:   /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_TMPDIR: /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/temp
+	- Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+	- Using CLASSPATH:       /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/bin/bootstrap.jar:/Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/bin/tomcat-juli.jar
 
 ## Auteur
 
