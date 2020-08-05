@@ -68,7 +68,7 @@
 	
 	## Les étapes de déploiement de l'application
 	
-	Vous devez au-préalable télécharger et installer :
+	1/Vous devez au-préalable télécharger et installer :
 	
 	- Java sur https://www.java.com/fr/download/
 	- Le JDK sur https://www.oracle.com/fr/java/technologies/javase/javase-jdk8-downloads.html
@@ -78,23 +78,39 @@
 	- Hibernate sur https://sourceforge.net/projects/hibernate/files/hibernate-orm/5.4.10.Final/hibernate-release-5.4.10.Final.zip/download
 	- Dézippez le package "Projet-6-OC-DA-Java-J2EE"
 	
-	Ceci fait, vous devez lancer pgAdmin4 :
+	2/Ceci fait, vous devez lancer pgAdmin4 :
 	
 	- Voici le chemin : PostgreSQL/12/
 	- Dans la base de données, créez un utilisateur "postgres", attribuez lui le mot de passe "postgres"
 	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "javaee.sql" que vous trouverez dans le package
 	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "insert_all.sql"
+	
+	3/A partir du terminal
+	
 	- Ouvrez votre terminal de commande, tapez cd et copiez le chemin d'accès à l'application : ............Faites "ENTRER"
 	- Une fois placé dans le chemin de l'application, tapez "mvn package"
-	- Renez-vous dans le dossier de le chemin suivant : escalade-webapp\target
+	- Rendez-vous dans le chemin suivant : escalade-webapp\target
 	- Copiez le fichier "escalade-webapp.war" généré par l'étape précédente
 	- Rendez-vous dans le dossier apache-tomcat-9.0.30\webapps\ et collez "escalade-webapp.war"
-	- Faites cd .. et exécutez le fichier "startup.bat"
+	
+	4/Démarrage de Tomcat
+	
+	Sur Mac, la démarche est la suivante :
+	- Ouvrez le terminal
+	- Tapez : "sudo su", ce qui a pour effet de vous donner tous les droits en lecture et écriture
+	- Rendez-vous dans le dossier de Tomcat "apache-tomcat-9.0.30\" et tapez : "ls -l"
+	- Tapez "sudo chmod -R 755 apache-tomcat-9.0.30\", rendez-vous dans "\bin" et tapez "./startup.sh"
+	- Si Tomcat démarre, vous devez obtenir à l'affichage quelque chose de semblable à ceci :
+	- Using CATALINA_BASE:   /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_HOME:   /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30
+	- Using CATALINA_TMPDIR: /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/temp
+	- Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+	- Using CLASSPATH:       /Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/bin/bootstrap.jar:/Users/ricobsj/eclipse-workspace/Servers/apache-tomcat-9.0.30/bin/tomcat-juli.jar
+	- Tomcat started.
 
     ## Le lancement de l'application
-
-    Dans le navigateur, entrer l'adresse suivante :
-    http://localhost:8080/escalade-webapp/accueil
+    
+    - Ouvrez votre navigateur Internet et tapez "http://localhost:8080/escalade-webapp/accueil" pour lancer l'application
 
 ## Auteur
 
