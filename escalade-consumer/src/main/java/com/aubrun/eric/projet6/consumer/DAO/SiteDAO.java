@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import com.aubrun.eric.projet6.consumer.HibernateUtils;
-import com.aubrun.eric.projet6.model.bean.SearchForm;
+import com.aubrun.eric.projet6.model.bean.SearchModel;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteDAO {
@@ -99,7 +99,7 @@ public class SiteDAO {
         }
     }
 
-    public List<Site> recherche( SearchForm searchForm ) {
+    public List<Site> recherche( SearchModel searchForm ) {
         Session session = factory.getCurrentSession();
         List<Site> resultat = null;
         try {

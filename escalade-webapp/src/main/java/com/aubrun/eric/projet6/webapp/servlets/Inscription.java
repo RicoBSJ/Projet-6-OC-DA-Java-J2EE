@@ -36,7 +36,6 @@ public class Inscription extends HttpServlet {
 
         Utilisateur utilisateur = form.inscrireUtilisateur( request );
 
-        utilisateur.setMembre( true );
         utilisateurService.registration( utilisateur );
 
         /* Stockage du formulaire et du bean dans l'objet request */

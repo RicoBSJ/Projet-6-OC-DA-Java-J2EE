@@ -31,7 +31,7 @@ public class MessageDeReservation extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-        if ( connectedUser == null || !connectedUser.getMembre() ) {
+        if ( connectedUser == null ) {
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
         }

@@ -1,4 +1,7 @@
-/Users/ricobsj/eclipse-workspace/escalade/escalade-business/src/main/java/org/exemple/demo/business/dto/SiteDto.java
-/Users/ricobsj/eclipse-workspace/escalade/escalade-business/src/main/java/org/exemple/demo/business/SiteService.java
-/Users/ricobsj/eclipse-workspace/escalade/escalade-business/src/main/java/org/exemple/demo/business/dto/SiteDtoMapper.java
-/Users/ricobsj/eclipse-workspace/escalade/escalade-business/src/main/java/org/exemple/demo/business/App.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/service/PhotoService.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/service/CommentaireService.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/service/MessageService.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/service/TopoService.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/service/SiteService.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/App.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-business/src/main/java/com/aubrun/eric/projet6/business/service/UtilisateurService.java

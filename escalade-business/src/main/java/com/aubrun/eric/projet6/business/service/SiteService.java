@@ -3,7 +3,7 @@ package com.aubrun.eric.projet6.business.service;
 import java.util.List;
 
 import com.aubrun.eric.projet6.consumer.DAO.SiteDAO;
-import com.aubrun.eric.projet6.model.bean.SearchForm;
+import com.aubrun.eric.projet6.model.bean.SearchModel;
 import com.aubrun.eric.projet6.model.bean.Site;
 
 public class SiteService {
@@ -34,7 +34,7 @@ public class SiteService {
         siteDAO.supprimerSite( idSite );
     }
 
-    public List<Site> searchSite( SearchForm searchForm ) {
+    public List<Site> searchSite( SearchModel searchForm ) {
 
         return siteDAO.recherche( searchForm );
     }
