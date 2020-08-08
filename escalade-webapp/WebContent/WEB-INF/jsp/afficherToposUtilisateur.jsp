@@ -52,9 +52,7 @@
 		</fieldset>
 	</div>
 	<p>
-		<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
-			<a href="<c:url value="/ajouterTopo?id=${topo.id}" />">Ajouter un topo</a>
-		</c:if><br><br>
+		<a href="<c:url value="/ajouterTopo?id=${topo.id}" />">Ajouter un topo</a><br><br>
 		<a href="<c:url value="/accueil"/>">Retour à l'accueil</a>
 	</p>
 </body>

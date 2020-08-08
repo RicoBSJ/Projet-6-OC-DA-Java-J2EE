@@ -65,7 +65,7 @@
 					<h5>Description du site</h5>
 					<div class="massifListe">${ site.description }</div><br>
 					<h5>Commentaires</h5><br>
-					<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
+					<c:if test="${!empty sessionScope.sessionUtilisateur}">
 						<a href="<c:url value="/ajouterCommentaire?idSite=${site.id}" />">Ajouter un commentaire</a>
 					</c:if>
 					<c:forEach var="commentaire" items="${ site.commentaires }">

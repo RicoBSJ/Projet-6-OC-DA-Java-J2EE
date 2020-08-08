@@ -20,12 +20,22 @@
 				</c:if>
 				<c:if test="${!empty sessionScope.sessionUtilisateur}">
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
+					<c:choose>
+					<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
+						<li><font color="yellow">Membre officiel</font></li>
+					</c:when>
+					<c:otherwise>
+						<li><font color="blue">Utilisateur connecté</font></li>
+					</c:otherwise>
+					</c:choose>
+					
 					<li><a href="<c:url value="/creationSite" />">Création site</a></li>
 					<li><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
 					<li><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
 					<li><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a></li>
 					<li><a href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a></li>
 					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
+					
 				</c:if>
 			</ul>
 		</nav>
