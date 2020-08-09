@@ -22,7 +22,7 @@
 					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 					<c:choose>
 					<c:when test="${sessionScope.sessionUtilisateur.membre == true}">
-						<li><font color="yellow">Membre officiel</font></li>
+						<li><font color="red">Membre officiel</font></li>
 					</c:when>
 					<c:otherwise>
 						<li><font color="blue">Utilisateur connecté</font></li>
