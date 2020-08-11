@@ -15,7 +15,6 @@
 		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.connection.autoReconnect">true</property>
 
-		<mapping class="com.aubrun.eric.projet6.model.bean.Bloc" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Commentaire" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Longueur" />
 		<mapping class="com.aubrun.eric.projet6.model.bean.Message" />
