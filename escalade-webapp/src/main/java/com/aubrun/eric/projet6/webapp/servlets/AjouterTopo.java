@@ -52,7 +52,7 @@ public class AjouterTopo extends HttpServlet {
 
         Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
 
-        if ( connectedUser == null || !connectedUser.getMembre() ) {
+        if ( connectedUser == null ) {
 
             response.setStatus( HttpServletResponse.SC_FORBIDDEN );
             throw new RuntimeException();
