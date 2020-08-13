@@ -100,10 +100,10 @@
 		</div>
 		</section>
 
-			<div class="row">
+			<div class="row" align="center">
 			<h1>À propos des Amis de l'Escalade</h1>
 			</div>
-			<div class="row">
+			<div class="row" align="center">
 			<p id="photo_du_site">
 				<img src="<c:url value="/images/shutterstock_171542741-711x392.jpg" />"
 					alt="Photo du site" />

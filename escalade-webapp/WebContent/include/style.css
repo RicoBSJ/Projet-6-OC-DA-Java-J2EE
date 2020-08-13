@@ -455,7 +455,7 @@ h3.nomStationListe a {
 	}
 	#photo_du_site img {
 		width: 110px;
-		float: right;
+		float: center;
 		margin-left: 15px;
 	}
 	aside p:last-child {
