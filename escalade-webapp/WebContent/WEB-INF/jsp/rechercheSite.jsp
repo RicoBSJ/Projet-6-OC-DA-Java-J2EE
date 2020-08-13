@@ -28,7 +28,7 @@
                 <br />
 
 				<label for="description">Recherche de site par description </label>
-				<input type="text" id="description" name="description" value="<c:out value="${site.description}"/>" size="30" maxlength="30" />
+				<textarea name="description"></textarea>
 				<span class="erreur">${form.erreurs['description']}</span>
                 <br />
                 

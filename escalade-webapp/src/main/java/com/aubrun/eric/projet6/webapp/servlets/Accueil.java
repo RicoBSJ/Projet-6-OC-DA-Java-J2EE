@@ -30,7 +30,6 @@ public class Accueil extends HttpServlet {
             throws ServletException, IOException {
 
         request.setAttribute( "sites", siteService.findAll() );
-        request.setAttribute( "commentaires", commentaireService.findAll() );
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
