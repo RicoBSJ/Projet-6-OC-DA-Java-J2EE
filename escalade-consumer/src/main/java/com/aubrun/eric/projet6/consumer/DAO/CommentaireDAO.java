@@ -42,7 +42,7 @@ public class CommentaireDAO {
 
         try {
             session.getTransaction().begin();
-            String q = "SELECT c FROM Commentaire c ORDER BY c.date ASC WHERE c.idCommentaire=?1";
+            String q = "SELECT c FROM Commentaire c WHERE c.idCommentaire=?1";
             TypedQuery<Commentaire> query = session.createQuery( q, Commentaire.class );
             query.setParameter( 1, idCommentaire );
             commentaire = query.getSingleResult();

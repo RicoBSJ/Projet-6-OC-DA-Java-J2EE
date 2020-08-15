@@ -8,19 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.aubrun.eric.projet6.business.service.CommentaireService;
 import com.aubrun.eric.projet6.business.service.SiteService;
 
 @WebServlet( "/accueil" )
 public class Accueil extends HttpServlet {
 
-    private static final long  serialVersionUID   = 1L;
+    private static final long  serialVersionUID = 1L;
 
     /* Constantes */
-    public static final String VUE                = "/WEB-INF/jsp/accueil.jsp";
+    public static final String VUE              = "/WEB-INF/jsp/accueil.jsp";
 
-    private SiteService        siteService        = new SiteService();
-    private CommentaireService commentaireService = new CommentaireService();
+    private SiteService        siteService      = new SiteService();
 
     public Accueil() {
         super();
