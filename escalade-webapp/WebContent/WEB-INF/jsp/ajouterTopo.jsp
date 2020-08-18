@@ -58,6 +58,7 @@
                 <input type="reset" value="Remettre à zéro" /> <br />
             </form>
             <p><a href="<c:url value="/afficherToposUtilisateur"/>">Retour aux topos de l'utilisateur</a></p>
+            <p><a href="<c:url value="/accueil"/>">Retour à l'accueil</a></p>
         </div>
         
         <%-- Inclusion de la bibliothèque jQuery. Vous trouverez des cours sur JavaScript et jQuery aux adresses suivantes :

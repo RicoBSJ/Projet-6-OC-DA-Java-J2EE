@@ -19,15 +19,16 @@ import com.aubrun.eric.projet6.model.bean.Utilisateur;
 @WebServlet( "/ajouterTopo" )
 public class AjouterTopo extends HttpServlet {
 
-    private static final long  serialVersionUID = 1L;
+    private static final long   serialVersionUID = 1L;
 
-    public static final String ATT_USER         = "utilisateur";
-    public static final String ATT_FORM         = "form";
-    public static final String ATT_SESSION_USER = "sessionUtilisateur";
-    public static final String VUE              = "/WEB-INF/jsp/ajouterTopo.jsp";
+    public static final String  ATT_USER         = "utilisateur";
+    public static final String  ATT_FORM         = "form";
+    public static final String  ATT_SESSION_USER = "sessionUtilisateur";
+    public static final String  VUE              = "/WEB-INF/jsp/ajouterTopo.jsp";
+    private static final String VUE_HOME         = "/WEB-INF/jsp/afficherToposUtilisateur.jsp";
 
-    private TopoService        topoService      = new TopoService();
-    private SiteService        siteService      = new SiteService();
+    private TopoService         topoService      = new TopoService();
+    private SiteService         siteService      = new SiteService();
 
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
@@ -67,6 +68,9 @@ public class AjouterTopo extends HttpServlet {
         topo.setDateParution( new Date() );
         topo.setUtilisateur( connectedUser );
         topoService.addTopo( topo );
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
+        request.setAttribute( "topos", topoService.findDetailsToposUser( connectedUser.getId() ) );
+
+        this.getServletContext().getRequestDispatcher( VUE_HOME ).forward( request, response );
     }
 }

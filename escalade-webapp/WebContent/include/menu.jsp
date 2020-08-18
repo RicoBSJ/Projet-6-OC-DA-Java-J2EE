@@ -14,6 +14,7 @@
 		<nav>
 			<ul>
 				<c:if test="${empty sessionScope.sessionUtilisateur}">
+					<li><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
 					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
 					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
 				</c:if>
