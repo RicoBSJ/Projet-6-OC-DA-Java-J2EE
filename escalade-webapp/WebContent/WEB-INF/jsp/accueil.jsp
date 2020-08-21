@@ -21,7 +21,7 @@
 		<div class="row">
 					<c:forEach var="site" items="${ sites }">
 					<div align="center">
-					<div class="col-4">
+					<div class="col">
 							<div class="localisationStationListe">
 								<h3 class="nomStationListe">
 									<a href="<c:url value="" />">${ site.nom }</a>
@@ -32,7 +32,7 @@
 								</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="thumbs-stations">
 								<a href="<c:url value="/detailsSite?id=${site.id}" />">
 								<img src="${site.photos[0].cheminPhoto}" alt="Site" title="Détails du site" width="30" height="200"  />
@@ -41,7 +41,7 @@
 							</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.hauteur } </span> de hauteur</span>
@@ -50,7 +50,7 @@
 							</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value">Orientation <span>${ site.orientation }</span></span>
@@ -59,7 +59,7 @@
 							</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>Cotation </span> ${ site.cotation }</span>
@@ -68,7 +68,7 @@
 							</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.secteurs } </span> secteurs</span>
@@ -77,7 +77,7 @@
 							</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.voies }</span> voies</span>
@@ -86,7 +86,7 @@
 							</div>
 							</div>
 							<div align="center">
-							<div class="col-4">
+							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.longueurs }</span> longueurs</span>

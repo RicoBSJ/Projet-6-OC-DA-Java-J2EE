@@ -13,9 +13,6 @@ public class CommentaireService {
     public List<Commentaire> findAll() {
 
         List<Commentaire> commentaire = commentaireDAO.recupererCommentaires();
-        for ( Commentaire c : commentaire ) {
-            System.out.println( c );
-        }
         return commentaire;
     }
 

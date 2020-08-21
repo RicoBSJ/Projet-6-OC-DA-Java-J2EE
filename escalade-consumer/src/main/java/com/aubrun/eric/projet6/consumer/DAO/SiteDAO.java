@@ -28,12 +28,9 @@ public class SiteDAO {
             String q = "SELECT s FROM Site s";
             Query<Site> query = session.createQuery( q );
             sites = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return sites;
     }
@@ -49,12 +46,9 @@ public class SiteDAO {
             TypedQuery<Site> query = session.createQuery( q, Site.class );
             query.setParameter( 1, id );
             site = query.getSingleResult();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return site;
     }
@@ -65,7 +59,6 @@ public class SiteDAO {
 
         try {
             session.getTransaction().begin();
-
             Site site = session.get( Site.class, idSite );
             if ( site != null ) {
                 String q = "DELETE FROM Site s " + "WHERE s.id = :siteId";
@@ -84,7 +77,7 @@ public class SiteDAO {
     }
 
     public void ajouterSite( Site site ) {
-        // TODO Auto-generated method stub
+
         Session session = factory.getCurrentSession();
 
         try {
@@ -149,12 +142,9 @@ public class SiteDAO {
             Query<Site> query = session.createQuery( q );
             query.setProperties( parameters );
             resultat = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return resultat;
     }

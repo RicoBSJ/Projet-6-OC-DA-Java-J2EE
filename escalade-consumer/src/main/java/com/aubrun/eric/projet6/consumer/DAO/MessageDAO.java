@@ -26,12 +26,9 @@ public class MessageDAO {
             String q = "SELECT t FROM Message t";
             Query<Message> query = session.createQuery( q );
             messages = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return messages;
     }
@@ -47,12 +44,9 @@ public class MessageDAO {
             Query<Message> query = session.createQuery( q );
             query.setParameter( 1, user );
             messages = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return messages;
     }
@@ -68,12 +62,9 @@ public class MessageDAO {
             TypedQuery<Message> query = session.createQuery( q, Message.class );
             query.setParameter( 1, id );
             message = query.getSingleResult();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return message;
     }

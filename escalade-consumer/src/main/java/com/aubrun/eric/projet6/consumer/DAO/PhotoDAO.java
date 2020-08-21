@@ -13,87 +13,81 @@ import com.aubrun.eric.projet6.model.bean.Photo;
 
 public class PhotoDAO {
 
-	SessionFactory factory = HibernateUtils.getSessionFactory();
+    SessionFactory factory = HibernateUtils.getSessionFactory();
 
-	public List<Photo> recupererPhotos() {
+    public List<Photo> recupererPhotos() {
 
-		Session session = factory.getCurrentSession();
-		List<Photo> photos = null;
+        Session session = factory.getCurrentSession();
+        List<Photo> photos = null;
 
-		try {
-			session.getTransaction().begin();
-			String q = "SELECT p FROM Photo p";
-			Query<Photo> query = session.createQuery(q);
-			photos = query.getResultList();
-			session.getTransaction().commit();
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT p FROM Photo p";
+            Query<Photo> query = session.createQuery( q );
+            photos = query.getResultList();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-		return photos;
-	}
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+        return photos;
+    }
 
-	public Photo afficherDetails(Integer id) {
+    public Photo afficherDetails( Integer id ) {
 
-		Session session = factory.getCurrentSession();
-		Photo photo = null;
+        Session session = factory.getCurrentSession();
+        Photo photo = null;
 
-		try {
-			session.getTransaction().begin();
-			String q = "SELECT p FROM Photo p WHERE p.id=?1";
-			TypedQuery<Photo> query = session.createQuery(q, Photo.class);
-			query.setParameter(1, id);
-			photo = query.getSingleResult();
-			session.getTransaction().commit();
+        try {
+            session.getTransaction().begin();
+            String q = "SELECT p FROM Photo p WHERE p.id=?1";
+            TypedQuery<Photo> query = session.createQuery( q, Photo.class );
+            query.setParameter( 1, id );
+            photo = query.getSingleResult();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-		return photo;
-	}
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+        return photo;
+    }
 
-	public Photo supprimerPhoto(int id) {
+    public Photo supprimerPhoto( int id ) {
 
-		Session session = factory.getCurrentSession();
+        Session session = factory.getCurrentSession();
 
-		try {
-			session.getTransaction().begin();
+        try {
+            session.getTransaction().begin();
 
-			Photo photo = session.get(Photo.class, id);
-			if (photo != null) {
-				String q = "DELETE FROM Photo p " + "WHERE p.id = :photoId";
-				Query<Photo> query = session.createQuery(q);
-				query.setParameter("photoId", id);
-				int result = query.executeUpdate();
-				System.out.println(result);
-			}
+            Photo photo = session.get( Photo.class, id );
+            if ( photo != null ) {
+                String q = "DELETE FROM Photo p " + "WHERE p.id = :photoId";
+                Query<Photo> query = session.createQuery( q );
+                query.setParameter( "photoId", id );
+                int result = query.executeUpdate();
+                System.out.println( result );
+            }
 
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-		return null;
-	}
+            session.getTransaction().commit();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+        return null;
+    }
 
-	public void ajouterPhoto(Photo photo) {
-		// TODO Auto-generated method stub
-		Session session = factory.getCurrentSession();
+    public void ajouterPhoto( Photo photo ) {
+        // TODO Auto-generated method stub
+        Session session = factory.getCurrentSession();
 
-		try {
-			session.getTransaction().begin();
-			session.save(photo);
-			session.getTransaction().commit();
+        try {
+            session.getTransaction().begin();
+            session.save( photo );
+            session.getTransaction().commit();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			// Rollback in case of an error occurred.
-			session.getTransaction().rollback();
-		}
-	}
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        }
+    }
 }

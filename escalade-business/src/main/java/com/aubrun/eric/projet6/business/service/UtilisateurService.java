@@ -15,9 +15,6 @@ public class UtilisateurService {
     public List<Utilisateur> findAll() {
 
         List<Utilisateur> utilisateur = utilisateurDAO.recupererUtilisateurs();
-        for ( Utilisateur u : utilisateur ) {
-            System.out.println( u );
-        }
         return utilisateur;
     }
 

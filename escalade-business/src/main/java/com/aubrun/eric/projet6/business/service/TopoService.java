@@ -15,9 +15,6 @@ public class TopoService {
     public List<Topo> findAll() {
 
         List<Topo> topo = topoDAO.recupererTopos();
-        for ( Topo s : topo ) {
-            System.out.println( s );
-        }
         return topo;
     }
 

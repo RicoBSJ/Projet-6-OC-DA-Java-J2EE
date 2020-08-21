@@ -45,6 +45,11 @@ form .info {
 	color: #E8A22B;
 }
 
+.no-gutter {
+    padding-right:0;
+    padding-left:0;
+}
+
 /* Tableaux -------------------------------------------------------------------------------------*/
 table {
 	border-collapse: collapse;
@@ -386,7 +391,7 @@ h3.nomStationListe a {
 	height: 40px;
 	font-size: 0.8em;
 	line-height: 1.2em;
-	margin: -210px 5px 0px -64px;
+	margin: -210px 5px 0px -150px;
 	padding: 5px;
 	-moz-border-radius: 15px;
 	border: 1px solid #f4f3f3;

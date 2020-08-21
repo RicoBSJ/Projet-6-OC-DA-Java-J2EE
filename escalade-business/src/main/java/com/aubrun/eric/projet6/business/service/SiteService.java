@@ -13,9 +13,6 @@ public class SiteService {
     public List<Site> findAll() {
 
         List<Site> site = siteDAO.recupererSites();
-        for ( Site s : site ) {
-            System.out.println( s );
-        }
         return site;
     }
 

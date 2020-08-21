@@ -26,12 +26,9 @@ public class TopoDAO {
             String q = "SELECT t FROM Topo t";
             Query<Topo> query = session.createQuery( q );
             topos = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return topos;
     }
@@ -47,12 +44,9 @@ public class TopoDAO {
             Query<Topo> query = session.createQuery( q );
             query.setParameter( 1, utilisateur );
             topos = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return topos;
     }
@@ -65,17 +59,12 @@ public class TopoDAO {
         try {
             session.getTransaction().begin();
             String q = "SELECT y FROM Topo y WHERE y.disponible = true AND y.utilisateur !=?1";
-            // String q = "SELECT y FROM Topo y WHERE y.utilisateur.id != :id
-            // AND y.disponible = true";
             Query<Topo> query = session.createQuery( q );
             query.setParameter( 1, userConnected );
             topos = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return topos;
     }
@@ -91,12 +80,9 @@ public class TopoDAO {
             TypedQuery<Topo> query = session.createQuery( q, Topo.class );
             query.setParameter( 1, id );
             topo = query.getSingleResult();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return topo;
     }

@@ -13,10 +13,8 @@
 <title>${ site.nom}</title>
 </head>
 <body>
-	<c:import url="/include/menu.jsp"></c:import>
 	<div class="container">
-	<div class="row">
-	<div class="col-8">
+	<c:import url="/include/menu.jsp"></c:import>
 		<c:if test="${site.officiel == true}">
 			<br>
 			<a><h5>Officiel Les amis de l'escalade</h5></a>
@@ -30,7 +28,8 @@
 		<c:if test="${ site.officiel == true }">
 			<a><h5>Ce site est tagué comme site officiel</h5></a>
 		</c:if>
-		<section>
+		<div class="row">
+		<section class="col-6">
 			<article class="resultats-listeStations">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
@@ -87,8 +86,6 @@
 			</article>
 		</section>
 	</div>
-	</div>
-	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
@@ -100,5 +97,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 		crossorigin="anonymous"></script>
+</div>
 </body>
 </html>

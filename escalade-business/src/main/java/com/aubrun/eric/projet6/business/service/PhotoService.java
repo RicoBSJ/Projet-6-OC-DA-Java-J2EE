@@ -7,31 +7,28 @@ import com.aubrun.eric.projet6.model.bean.Photo;
 
 public class PhotoService {
 
-	private PhotoDAO photoDAO = new PhotoDAO();
+    private PhotoDAO photoDAO = new PhotoDAO();
 
-	public List<Photo> findAll() {
+    public List<Photo> findAll() {
 
-		List<Photo> photo = photoDAO.recupererPhotos();
-		for (Photo s : photo) {
-			System.out.println(s);
-		}
-		return photo;
-	}
+        List<Photo> photo = photoDAO.recupererPhotos();
+        return photo;
+    }
 
-	public Photo findDetails(Integer id) {
+    public Photo findDetails( Integer id ) {
 
-		Photo photo = photoDAO.afficherDetails(id);
-		return photo;
-	}
+        Photo photo = photoDAO.afficherDetails( id );
+        return photo;
+    }
 
-	public void addPhoto(Photo addPhoto) {
+    public void addPhoto( Photo addPhoto ) {
 
-		photoDAO.ajouterPhoto(addPhoto);
-	}
+        photoDAO.ajouterPhoto( addPhoto );
+    }
 
-	public Photo deletePhoto(Integer id) {
+    public Photo deletePhoto( Integer id ) {
 
-		Photo photo = photoDAO.supprimerPhoto(id);
-		return photo;
-	}
+        Photo photo = photoDAO.supprimerPhoto( id );
+        return photo;
+    }
 }

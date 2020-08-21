@@ -25,12 +25,9 @@ public class CommentaireDAO {
             String q = "SELECT c FROM Commentaire c";
             Query<Commentaire> query = session.createQuery( q );
             commentaires = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return commentaires;
     }
@@ -46,12 +43,9 @@ public class CommentaireDAO {
             TypedQuery<Commentaire> query = session.createQuery( q, Commentaire.class );
             query.setParameter( 1, idCommentaire );
             commentaire = query.getSingleResult();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return commentaire;
     }

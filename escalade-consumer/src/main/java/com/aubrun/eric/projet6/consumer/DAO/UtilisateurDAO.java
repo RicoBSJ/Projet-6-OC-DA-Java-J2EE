@@ -25,12 +25,9 @@ public class UtilisateurDAO {
             String q = "SELECT u FROM Utilisateur u";
             Query<Utilisateur> query = session.createQuery( q );
             utilisateurs = query.getResultList();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return utilisateurs;
     }
@@ -46,12 +43,9 @@ public class UtilisateurDAO {
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, id );
             utilisateur = query.getSingleResult();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return utilisateur;
     }
@@ -67,12 +61,9 @@ public class UtilisateurDAO {
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, email );
             utilisateur = query.getSingleResult();
-            session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
-            // Rollback in case of an error occurred.
-            session.getTransaction().rollback();
         }
         return utilisateur;
     }

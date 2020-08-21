@@ -20,6 +20,8 @@ public class Message {
     private Integer     id;
     @Column( name = "message" )
     private String      message;
+    @Column( name = "status" )
+    private String      status;
     @ManyToOne( cascade = { CascadeType.ALL } )
     @JoinColumn( name = "destinataire" )
     private Utilisateur destinataire;

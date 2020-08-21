@@ -15,9 +15,6 @@ public class MessageService {
     public List<Message> findAll() {
 
         List<Message> message = messageDAO.recupererMessages();
-        for ( Message s : message ) {
-            System.out.println( s );
-        }
         return message;
     }
 
