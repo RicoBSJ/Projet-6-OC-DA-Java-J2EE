@@ -18,28 +18,28 @@ public class MessageDAO {
 
     public List<Message> recupererMessages() {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Message> messages = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT t FROM Message t";
             Query<Message> query = session.createQuery( q );
             messages = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return messages;
     }
 
     public List<Message> recupererMessagesUtilisateur( Utilisateur user ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Message> messages = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT t FROM Message t WHERE t.destinataire=?1";
             Query<Message> query = session.createQuery( q );
             query.setParameter( 1, user );
@@ -47,17 +47,18 @@ public class MessageDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return messages;
     }
 
     public Message afficherDetails( Integer id ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Message message = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT t FROM Message t WHERE t.id=?1";
             TypedQuery<Message> query = session.createQuery( q, Message.class );
             query.setParameter( 1, id );
@@ -65,6 +66,8 @@ public class MessageDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return message;
     }
@@ -90,6 +93,8 @@ public class MessageDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -106,6 +111,8 @@ public class MessageDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -122,6 +129,8 @@ public class MessageDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -138,6 +147,8 @@ public class MessageDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -154,6 +165,26 @@ public class MessageDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+    }
+
+    public void refuserDemande( Message message ) {
+
+        Session session = factory.getCurrentSession();
+
+        try {
+            session.getTransaction().begin();
+            session.delete( message );
+            session.getTransaction().commit();
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            // Rollback in case of an error occurred.
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }

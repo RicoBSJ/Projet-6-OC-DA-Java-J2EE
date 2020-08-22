@@ -17,28 +17,28 @@ public class PhotoDAO {
 
     public List<Photo> recupererPhotos() {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Photo> photos = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT p FROM Photo p";
             Query<Photo> query = session.createQuery( q );
             photos = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return photos;
     }
 
     public Photo afficherDetails( Integer id ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Photo photo = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT p FROM Photo p WHERE p.id=?1";
             TypedQuery<Photo> query = session.createQuery( q, Photo.class );
             query.setParameter( 1, id );
@@ -46,6 +46,8 @@ public class PhotoDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return photo;
     }
@@ -71,6 +73,8 @@ public class PhotoDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return null;
     }
@@ -88,6 +92,8 @@ public class PhotoDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }

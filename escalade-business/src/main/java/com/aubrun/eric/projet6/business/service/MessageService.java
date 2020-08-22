@@ -53,4 +53,9 @@ public class MessageService {
 
         messageDAO.accepterDemande( message );
     }
+
+    public void refuseRequest( Message message ) {
+
+        messageDAO.refuserDemande( message );
+    }
 }

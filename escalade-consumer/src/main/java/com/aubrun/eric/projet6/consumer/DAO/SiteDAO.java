@@ -20,28 +20,28 @@ public class SiteDAO {
 
     public List<Site> recupererSites() {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Site> sites = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT s FROM Site s";
             Query<Site> query = session.createQuery( q );
             sites = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return sites;
     }
 
     public Site afficherDetails( Integer id ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Site site = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT s FROM Site s WHERE s.id=?1";
             TypedQuery<Site> query = session.createQuery( q, Site.class );
             query.setParameter( 1, id );
@@ -49,6 +49,8 @@ public class SiteDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return site;
     }
@@ -73,6 +75,8 @@ public class SiteDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -89,15 +93,16 @@ public class SiteDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
     public List<Site> recherche( SearchModel searchForm ) {
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Site> resultat = null;
         try {
             Map<String, String> parameters = new HashMap();
-            session.getTransaction().begin();
             String q = "SELECT s FROM Site s WHERE 1=1 ";
             if ( searchForm.getNom() != "" ) {
                 q += "AND s.nom LIKE :nom ";
@@ -155,13 +160,15 @@ public class SiteDAO {
 
         try {
             session.getTransaction().begin();
-            session.update( site );
+            session.saveOrUpdate( site );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }

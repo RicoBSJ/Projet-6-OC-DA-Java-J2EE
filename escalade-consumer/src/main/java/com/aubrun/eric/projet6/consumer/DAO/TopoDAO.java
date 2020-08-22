@@ -18,28 +18,28 @@ public class TopoDAO {
 
     public List<Topo> recupererTopos() {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Topo> topos = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT t FROM Topo t";
             Query<Topo> query = session.createQuery( q );
             topos = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return topos;
     }
 
     public List<Topo> recupererToposUtilisateur( Utilisateur utilisateur ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Topo> topos = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT t FROM Topo t WHERE t.utilisateur=?1";
             Query<Topo> query = session.createQuery( q );
             query.setParameter( 1, utilisateur );
@@ -47,17 +47,18 @@ public class TopoDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return topos;
     }
 
     public List<Topo> recupererToposDisponibles( Utilisateur userConnected ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Topo> topos = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT y FROM Topo y WHERE y.disponible = true AND y.utilisateur !=?1";
             Query<Topo> query = session.createQuery( q );
             query.setParameter( 1, userConnected );
@@ -65,17 +66,18 @@ public class TopoDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return topos;
     }
 
     public Topo afficherDetails( Integer id ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Topo topo = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT t FROM Topo t WHERE t.id=?1";
             TypedQuery<Topo> query = session.createQuery( q, Topo.class );
             query.setParameter( 1, id );
@@ -83,6 +85,8 @@ public class TopoDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return topo;
     }
@@ -108,6 +112,8 @@ public class TopoDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -124,6 +130,8 @@ public class TopoDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -133,13 +141,15 @@ public class TopoDAO {
 
         try {
             session.getTransaction().begin();
-            session.update( topo );
+            session.saveOrUpdate( topo );
             session.getTransaction().commit();
 
         } catch ( Exception e ) {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -156,6 +166,8 @@ public class TopoDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }

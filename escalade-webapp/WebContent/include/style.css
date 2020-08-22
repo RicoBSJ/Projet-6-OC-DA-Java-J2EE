@@ -23,8 +23,9 @@
 
 /* Eléments principaux de la page */
 body {
-/* 	background: #FFDAB9; */
-	background: url('../images/Escalade-chamonix3_photos_v2_x4.jpg') no-repeat center;
+	/* 	background: #FFDAB9; */
+	background: url('../images/Escalade-chamonix3_photos_v2_x4.jpg')
+		no-repeat center;
 	font-family: 'Trebuchet MS', Arial, sans-serif;
 	color: #181818;
 }
@@ -46,8 +47,8 @@ form .info {
 }
 
 .no-gutter {
-    padding-right:0;
-    padding-left:0;
+	padding-right: 0;
+	padding-left: 0;
 }
 
 /* Tableaux -------------------------------------------------------------------------------------*/
@@ -142,7 +143,6 @@ nav a:hover {
 	color: #760001;
 	border-bottom: 3px solid #760001;
 }
-
 
 /* Corps -------------------------------------------------------------------------------------*/
 section {

@@ -17,28 +17,28 @@ public class UtilisateurDAO {
 
     public List<Utilisateur> recupererUtilisateurs() {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Utilisateur> utilisateurs = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT u FROM Utilisateur u";
             Query<Utilisateur> query = session.createQuery( q );
             utilisateurs = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return utilisateurs;
     }
 
     public Utilisateur afficherParId( Integer id ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Utilisateur utilisateur = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT u FROM Utilisateur u WHERE u.id=?1";
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, id );
@@ -46,17 +46,18 @@ public class UtilisateurDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return utilisateur;
     }
 
     public Utilisateur afficherParEmail( String email ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Utilisateur utilisateur = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT u FROM Utilisateur u WHERE u.email=?1";
             TypedQuery<Utilisateur> query = session.createQuery( q, Utilisateur.class );
             query.setParameter( 1, email );
@@ -64,6 +65,8 @@ public class UtilisateurDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return utilisateur;
     }
@@ -89,6 +92,8 @@ public class UtilisateurDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return null;
     }
@@ -106,6 +111,8 @@ public class UtilisateurDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }

@@ -10,13 +10,11 @@
 	crossorigin="anonymous">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/include/style.css" />" />
-
 <title>Tous les sites de l'escalade</title>
 </head>
 <body>
-	<c:import url="/include/menu.jsp"></c:import>
 	<div class="container" scope="session">
-
+	<c:import url="/include/menu.jsp"></c:import>
 		<section>
 		<div class="row">
 					<c:forEach var="site" items="${ sites }">
@@ -67,7 +65,6 @@
 							</div><br><br>
 							</div>
 							</div>
-							<div align="center">
 							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
@@ -75,8 +72,6 @@
 								</div>
 							</div><br><br>
 							</div>
-							</div>
-							<div align="center">
 							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
@@ -84,15 +79,12 @@
 								</div>
 							</div><br><br>
 							</div>
-							</div>
-							<div align="center">
 							<div class="col">
 							<div class="results-right">
 								<div class="infosStations">
 									<span class="value"><span>${ site.longueurs }</span> longueurs</span>
 								</div>
 							</div><br><br>
-							</div>
 							</div>
 					</div>
 					</div>

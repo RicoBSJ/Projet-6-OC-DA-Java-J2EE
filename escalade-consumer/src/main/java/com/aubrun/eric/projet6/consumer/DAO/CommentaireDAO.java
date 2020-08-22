@@ -17,28 +17,28 @@ public class CommentaireDAO {
 
     public List<Commentaire> recupererCommentaires() {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         List<Commentaire> commentaires = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT c FROM Commentaire c";
             Query<Commentaire> query = session.createQuery( q );
             commentaires = query.getResultList();
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return commentaires;
     }
 
     public Commentaire afficherDetails( Integer idCommentaire ) {
 
-        Session session = factory.getCurrentSession();
+        Session session = factory.openSession();
         Commentaire commentaire = null;
 
         try {
-            session.getTransaction().begin();
             String q = "SELECT c FROM Commentaire c WHERE c.idCommentaire=?1";
             TypedQuery<Commentaire> query = session.createQuery( q, Commentaire.class );
             query.setParameter( 1, idCommentaire );
@@ -46,6 +46,8 @@ public class CommentaireDAO {
 
         } catch ( Exception e ) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return commentaire;
     }
@@ -63,6 +65,8 @@ public class CommentaireDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -79,6 +83,8 @@ public class CommentaireDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
@@ -95,6 +101,8 @@ public class CommentaireDAO {
             e.printStackTrace();
             // Rollback in case of an error occurred.
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 }
