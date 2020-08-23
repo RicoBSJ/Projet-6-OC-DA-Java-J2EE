@@ -6,7 +6,7 @@
 .metadata
 bin/
 tmp/
-target/
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-webapp/target/
 *.tmp
 *.bak
 *.swp
