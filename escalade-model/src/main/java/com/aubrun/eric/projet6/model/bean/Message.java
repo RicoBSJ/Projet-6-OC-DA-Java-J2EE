@@ -21,7 +21,7 @@ public class Message {
     @Column( name = "message" )
     private String      message;
     @Column( name = "status" )
-    private String      status;
+    private Boolean     statut;
     @ManyToOne( cascade = { CascadeType.ALL } )
     @JoinColumn( name = "destinataire" )
     private Utilisateur destinataire;
@@ -46,6 +46,14 @@ public class Message {
 
     public void setMessage( String message ) {
         this.message = message;
+    }
+
+    public Boolean getStatut() {
+        return statut;
+    }
+
+    public void setStatut( Boolean statut ) {
+        this.statut = statut;
     }
 
     public Utilisateur getDestinataire() {

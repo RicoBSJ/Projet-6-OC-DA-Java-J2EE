@@ -49,13 +49,17 @@ public class MessageService {
         messageDAO.reservationMessage( reservedMessage );
     }
 
-    public void acceptRequest( Message message ) {
+    public void acceptRequest( Integer id ) {
 
-        messageDAO.accepterDemande( message );
+        Message acceptMessage = messageDAO.afficherDetails( id );
+        acceptMessage.setStatut( true );
+        messageDAO.accepterDemande( acceptMessage );
     }
 
-    public void refuseRequest( Message message ) {
+    public void refuseRequest( Integer id ) {
 
-        messageDAO.refuserDemande( message );
+        Message refuseMessage = messageDAO.afficherDetails( id );
+        refuseMessage.setStatut( false );
+        messageDAO.refuserDemande( refuseMessage );
     }
 }

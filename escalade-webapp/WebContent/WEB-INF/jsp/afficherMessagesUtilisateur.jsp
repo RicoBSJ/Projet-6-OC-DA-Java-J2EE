@@ -25,6 +25,8 @@
                     <th>Message</th>
                     <th>Topo</th>
                     <th>Réservation</th>
+                    <th>Statut</th>
+                    <th>Contact</th>
                 </tr>
                 <c:forEach items="${ messages }" var="message">
                 <tr class="${boucle.index % 2 == 0 ? 'pair' : 'impair'}">
@@ -32,10 +34,27 @@
                     <td><c:out value="${ message.message }"></c:out></td>
                     <td><c:out value="${ message.topo.nom }"></c:out></td>
                     <td>
-                    <form action="etatTopo" method="post">
+                    <form action="accepterDemande" method="post">
 						<input type="hidden" value="${ message.topo.id }" name="idTopo">
-						<input type="submit" name="tag" value="Accepter la demande de réservation" />
+						<input type="hidden" value="${ message.id }" name="id">
+						<input type="submit" name="tag" value="Accepter la demande de réservation"/>
 					</form>
+					<form action="refuserDemande" method="post">
+						<input type="hidden" value="${ message.topo.id }" name="idTopo">
+						<input type="hidden" value="${ message.id }" name="id">
+						<input type="submit" name="tag" value="Refuser la demande de réservation"/>
+					</form>
+					</td>
+					<td><c:if test="${message.statut == true}">
+						<p>Acceptée</p>
+					</c:if>
+					<c:if test="${message.statut == false}">
+						<p>Refusée</p>
+					</c:if>
+					</td>
+					<td><c:if test="${message.statut == true}">
+					<c:out value="${ message.emetteur.email }"></c:out>
+					</c:if>
 					</td>
                 </tr>
                 </c:forEach>
