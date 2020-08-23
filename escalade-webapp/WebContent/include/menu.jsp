@@ -15,35 +15,25 @@
 <body>
 <div id="menu" class="container">
 	<header class="row">
-		<div id="titre_principal" class="col">
-			<div id="logo">
-				<img src="<c:url value="/images/Les_amis_de_l_escalade.png"/>"
-					alt="Logo des amis de l'escalade" />
-				<h1>Les Amis de l'Escalade</h1>
-			</div>
-			<h2>Site développé par RicoBSJ</h2>
-		</div>
-
-		<nav class="col">
-			<ul class="col">
+		<nav>
+			<ul class="list-group list-group-horizontal-sm">
 				<c:if test="${empty sessionScope.sessionUtilisateur}">
-					<li><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
-					<li><a href="<c:url value="/inscription" />">Inscription</a></li>
-					<li><a href="<c:url value="/connexion" />">Connexion</a></li>
+					<li class="list-group-item"><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
+					<li class="list-group-item"><a href="<c:url value="/inscription" />">Inscription</a></li>
+					<li class="list-group-item"><a href="<c:url value="/connexion" />">Connexion</a></li>
 				</c:if>
 				<c:if test="${!empty sessionScope.sessionUtilisateur}">
-					<li>${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
+					<li class="list-group-item">${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
 					<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
-						<li><font color="red">Membre officiel</font></li>
+						<li class="list-group-item"><font color="red">Membre officiel</font></li>
 					</c:if>
-					<li><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
-					<li><a href="<c:url value="/creationSite" />">Création site</a></li>
-					<li><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
-					<li><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
-					<li><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a></li>
-					<li><a href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a></li>
-					<li><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
-					
+					<li class="list-group-item"><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
+					<li class="list-group-item"><a href="<c:url value="/creationSite" />">Création site</a></li>
+					<li class="list-group-item"><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
+					<li class="list-group-item"><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
+					<li class="list-group-item"><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a></li>
+					<li class="list-group-item"><a href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a></li>
+					<li class="list-group-item"><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
 				</c:if>
 			</ul>
 		</nav>

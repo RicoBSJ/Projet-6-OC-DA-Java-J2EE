@@ -29,7 +29,7 @@
 			<a><h5>Ce site est tagué comme site officiel</h5></a>
 		</c:if>
 		<div class="row">
-		<section class="col-6">
+		<section class="col-12">
 			<article class="resultats-listeStations">
 				<div class="localisationStationListe">
 					<h3 class="nomStationListe">
@@ -40,7 +40,7 @@
 					<div class="massifListe">${ site.region }</div>
 				</div>
 				<div class="thumbs-stations">
-					<img src="${ site.photos[0].cheminPhoto }" alt="Site" title="Détails du site" width="1200" height="600" />
+					<img src="${ site.photos[0].cheminPhoto }" class="img-fluid" alt="Site" title="Détails du site" max-width="100%" height="auto"/>
 						<div class="results-right">
 							<div class="infosStations" align="center">
 								<span class="values"><span>${ site.hauteur } </span> de hauteur</span>

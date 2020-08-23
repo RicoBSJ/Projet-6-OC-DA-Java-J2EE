@@ -34,7 +34,11 @@
                     <td>
                     <form action="etatTopo" method="post">
 						<input type="hidden" value="${ message.topo.id }" name="idTopo">
-						<input type="submit" name="tag" value="Accepter le demande de réservation" />
+						<input type="submit" name="tag" value="Accepter la demande de réservation" />
+					</form>
+					<form action="etatTopo" method="post">
+						<input type="hidden" value="${ message.topo.id }" name="idTopo">
+						<input type="submit" name="tag" value="Refuser la demande de réservation" />
 					</form>
 					</td>
                 </tr>
