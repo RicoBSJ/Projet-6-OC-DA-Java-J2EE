@@ -15,27 +15,53 @@
 <body>
 <div id="menu" class="container">
 	<header class="row">
+		<div id="titre_principal">
+			<div id="logo">
+				<img src="<c:url value="/images/Les_amis_de_l_escalade.png"/> "
+					alt="Logo des amis de l'escalade" class="img-fluid"/><br>
+			</div>
+		</div>
 		<nav>
-			<ul class="list-group list-group-horizontal-sm">
-				<c:if test="${empty sessionScope.sessionUtilisateur}">
-					<li class="list-group-item"><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
-					<li class="list-group-item"><a href="<c:url value="/inscription" />">Inscription</a></li>
-					<li class="list-group-item"><a href="<c:url value="/connexion" />">Connexion</a></li>
-				</c:if>
-				<c:if test="${!empty sessionScope.sessionUtilisateur}">
-					<li class="list-group-item">${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
-					<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
-						<li class="list-group-item"><font color="red">Membre officiel</font></li>
-					</c:if>
-					<li class="list-group-item"><a href="<c:url value="/rechercheSite" />">Recherche site</a></li>
-					<li class="list-group-item"><a href="<c:url value="/creationSite" />">Création site</a></li>
-					<li class="list-group-item"><a href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a></li>
-					<li class="list-group-item"><a href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a></li>
-					<li class="list-group-item"><a href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a></li>
-					<li class="list-group-item"><a href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a></li>
-					<li class="list-group-item"><a href="<c:url value="/deconnexion" />">Deconnexion</a></li>
-				</c:if>
-			</ul>
+		<ul class="nav justify-content-center">
+			<c:if test="${empty sessionScope.sessionUtilisateur}">
+  			<li class="nav-item">
+    			<a class="nav-link active" href="<c:url value="/rechercheSite" />">Recherche site</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/inscription" />">Inscription</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/connexion" />">Connexion</a>
+  			</li>
+  			</c:if>
+  			<c:if test="${!empty sessionScope.sessionUtilisateur}">
+				<li class="nav-item">${sessionScope.sessionUtilisateur.prenom} ${sessionScope.sessionUtilisateur.nom}</li>
+			<c:if test="${sessionScope.sessionUtilisateur.membre == true}">
+				<li class="nav-item"><font color="red">Membre officiel</font></li>
+			</c:if>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/rechercheSite" />">Recherche site</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/creationSite" />">Création site</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/listeUtilisateurs" />">Liste Utilisateurs</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/afficherToposUtilisateur" />">Topo(s) utilisateur</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/afficherToposDisponibles" />">Topo(s) disponible(s)</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/afficherMessagesUtilisateur" />">Message(s)</a>
+  			</li>
+  			<li class="nav-item">
+    			<a class="nav-link" href="<c:url value="/deconnexion" />">Deconnexion</a>
+  			</li>
+  			</c:if>
+		</ul>
 		</nav>
 	</header>
 </div>

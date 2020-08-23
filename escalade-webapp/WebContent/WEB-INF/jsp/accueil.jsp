@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/include/style.css" />" />
-<title>Tous les sites de l'escalade</title>
+<title>Les Amis de l'Escalade</title>
 </head>
 <body>
 	<c:import url="/include/menu.jsp"></c:import>
@@ -106,7 +106,7 @@
 		<div align="center">
 		<div class="row">
 			<div id="tweet">
-				<h1>Ma Home GitHub</h1>
+				<h1>Home GitHub du developpeur</h1>
 				<div align="left">
 					<ul>
 						<li><a href="<c:url value="https://github.com/RicoBSJ" />">Rico BSJ</a></li>
