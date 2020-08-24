@@ -54,7 +54,7 @@ public class MessageService {
 
     	topoService.topoState( idTopo );
     	Message acceptMessage = messageDAO.afficherDetails( id );
-        acceptMessage.setStatut( true );
+//        messageDAO.modifierBoolean(acceptMessage.getStatut());
         messageDAO.accepterDemande( acceptMessage );
         messageDAO.supprimerMessage(id);
     }
@@ -64,5 +64,6 @@ public class MessageService {
         Message refuseMessage = messageDAO.afficherDetails( id );
         refuseMessage.setStatut( false );
         messageDAO.refuserDemande( refuseMessage );
+        messageDAO.supprimerMessage(id);
     }
 }

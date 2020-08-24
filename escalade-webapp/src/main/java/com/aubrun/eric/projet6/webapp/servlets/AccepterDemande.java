@@ -32,22 +32,6 @@ public class AccepterDemande extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-
-        Utilisateur connectedUser = (Utilisateur) session.getAttribute( ATT_SESSION_USER );
-
-        if ( connectedUser == null ) {
-
-            response.setStatus( HttpServletResponse.SC_FORBIDDEN );
-            throw new RuntimeException();
-
-        }
-
-        Integer idMessage = Integer.parseInt( request.getParameter( "id" ) );
-
-        request.setAttribute( "topo", messageService.findDetails( idMessage ) );
-        request.setAttribute( "topos", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
-
         this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
     }
 
@@ -70,6 +54,9 @@ public class AccepterDemande extends HttpServlet {
         Topo topoDispo = topoService.findDetails( idTopo );
         Message acceptMessage = messageService.findDetails( idMessage );
         messageService.acceptRequest( topoDispo.getId(), acceptMessage.getId() );
+        
+        request.setAttribute( "message", messageService.findDetails( idMessage ) );
+        request.setAttribute( "message", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
     }
