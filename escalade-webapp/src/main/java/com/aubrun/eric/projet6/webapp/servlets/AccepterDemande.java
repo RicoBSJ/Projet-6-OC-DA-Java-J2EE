@@ -54,7 +54,6 @@ public class AccepterDemande extends HttpServlet {
         Message acceptMessage = messageService.findDetails( id );
         messageService.acceptRequest( topoDispo.getId(), acceptMessage.getId() );
 
-        request.setAttribute( "topo", messageService.findAll() );
         request.setAttribute( "topos", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
