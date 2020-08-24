@@ -47,9 +47,9 @@
 					</td>
 					<td><c:if test="${message.statut == true}">
 						<p>Acceptée</p>
-					</c:if>
 					<c:if test="${message.statut == false}">
 						<p>Refusée</p>
+					</c:if>
 					</c:if>
 					</td>
 					<td><c:if test="${message.statut == true}">

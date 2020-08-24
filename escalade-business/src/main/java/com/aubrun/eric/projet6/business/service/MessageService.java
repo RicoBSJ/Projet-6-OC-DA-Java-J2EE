@@ -11,6 +11,7 @@ public class MessageService {
 
     private MessageDAO     messageDAO     = new MessageDAO();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
+    private TopoService topoService = new TopoService();
 
     public List<Message> findAll() {
 
@@ -49,11 +50,13 @@ public class MessageService {
         messageDAO.reservationMessage( reservedMessage );
     }
 
-    public void acceptRequest( Integer id ) {
+    public void acceptRequest( Integer idTopo, Integer id ) {
 
-        Message acceptMessage = messageDAO.afficherDetails( id );
+    	topoService.topoState( idTopo );
+    	Message acceptMessage = messageDAO.afficherDetails( id );
         acceptMessage.setStatut( true );
         messageDAO.accepterDemande( acceptMessage );
+        messageDAO.supprimerMessage(id);
     }
 
     public void refuseRequest( Integer id ) {

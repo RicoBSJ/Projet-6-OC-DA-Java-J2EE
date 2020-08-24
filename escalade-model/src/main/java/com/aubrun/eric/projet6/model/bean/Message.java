@@ -20,7 +20,7 @@ public class Message {
     private Integer     id;
     @Column( name = "message" )
     private String      message;
-    @Column( name = "status" )
+    @Column( name = "statut" )
     private Boolean     statut;
     @ManyToOne( cascade = { CascadeType.ALL } )
     @JoinColumn( name = "destinataire" )
