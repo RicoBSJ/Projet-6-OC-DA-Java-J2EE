@@ -2,7 +2,6 @@ package com.aubrun.eric.projet6.webapp.servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aubrun.eric.projet6.business.service.MessageService;
-import com.aubrun.eric.projet6.model.bean.Message;
 import com.aubrun.eric.projet6.model.bean.Utilisateur;
 
 /**
@@ -45,11 +43,9 @@ public class RefuserDemande extends HttpServlet {
 
         }
 
-        Integer idMessage = Integer.parseInt( request.getParameter( "id" ) );
-        Message refuseMessage = messageService.findDetails( idMessage );
-        messageService.refuseRequest( refuseMessage.getId() );
-        
-        request.setAttribute( "message", messageService.findDetails( idMessage ) );
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
+        messageService.refuseRequest( id );
+
         request.setAttribute( "message", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );

@@ -11,7 +11,7 @@ public class MessageService {
 
     private MessageDAO     messageDAO     = new MessageDAO();
     private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-    private TopoService topoService = new TopoService();
+    private TopoService    topoService    = new TopoService();
 
     public List<Message> findAll() {
 
@@ -52,18 +52,17 @@ public class MessageService {
 
     public void acceptRequest( Integer idTopo, Integer id ) {
 
-    	topoService.topoState( idTopo );
-    	Message acceptMessage = messageDAO.afficherDetails( id );
-//        messageDAO.modifierBoolean(acceptMessage.getStatut());
+        topoService.topoState( idTopo );
+        Message acceptMessage = messageDAO.afficherDetails( id );
+        acceptMessage.setStatut( true );
         messageDAO.accepterDemande( acceptMessage );
-        messageDAO.supprimerMessage(id);
+        messageDAO.supprimerMessage( id );
     }
 
     public void refuseRequest( Integer id ) {
 
         Message refuseMessage = messageDAO.afficherDetails( id );
         refuseMessage.setStatut( false );
-        messageDAO.refuserDemande( refuseMessage );
-        messageDAO.supprimerMessage(id);
+        messageDAO.supprimerMessage( refuseMessage.getId() );
     }
 }

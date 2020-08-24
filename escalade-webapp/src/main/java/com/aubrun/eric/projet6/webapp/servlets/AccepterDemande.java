@@ -32,7 +32,6 @@ public class AccepterDemande extends HttpServlet {
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
 
-        this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
     }
 
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
@@ -50,13 +49,13 @@ public class AccepterDemande extends HttpServlet {
         }
 
         Integer idTopo = Integer.parseInt( request.getParameter( "idTopo" ) );
-        Integer idMessage = Integer.parseInt( request.getParameter( "id" ) );
+        Integer id = Integer.parseInt( request.getParameter( "id" ) );
         Topo topoDispo = topoService.findDetails( idTopo );
-        Message acceptMessage = messageService.findDetails( idMessage );
+        Message acceptMessage = messageService.findDetails( id );
         messageService.acceptRequest( topoDispo.getId(), acceptMessage.getId() );
-        
-        request.setAttribute( "message", messageService.findDetails( idMessage ) );
-        request.setAttribute( "message", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
+
+        request.setAttribute( "topo", messageService.findAll() );
+        request.setAttribute( "topos", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
     }
