@@ -1,13 +1,9 @@
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Bloc.java
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Voie.java
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Site.java
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/SearchModel.java
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Reservation.java
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Longueur.java
 /Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/App.java
 /Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Message.java
 /Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Commentaire.java
-/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Secteur.java
 /Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Photo.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Site.java
 /Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Utilisateur.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/SearchModel.java
+/Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Reservation.java
 /Users/ricobsj/git/Projet-6-OC-DA-Java-J2EE/escalade-model/src/main/java/com/aubrun/eric/projet6/model/bean/Topo.java
