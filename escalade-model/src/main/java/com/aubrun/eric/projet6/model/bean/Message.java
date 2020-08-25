@@ -48,15 +48,15 @@ public class Message {
         this.message = message;
     }
 
-    public Boolean getStatut() {
-        return statut;
-    }
+	public Boolean getStatut() {
+		return statut;
+	}
 
-    public void setStatut( Boolean statut ) {
-        this.statut = statut;
-    }
+	public void setStatut(Boolean statut) {
+		this.statut = statut;
+	}
 
-    public Utilisateur getDestinataire() {
+	public Utilisateur getDestinataire() {
         return destinataire;
     }
 

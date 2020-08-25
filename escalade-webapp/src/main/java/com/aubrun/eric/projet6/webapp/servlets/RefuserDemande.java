@@ -46,7 +46,7 @@ public class RefuserDemande extends HttpServlet {
         Integer id = Integer.parseInt( request.getParameter( "id" ) );
         messageService.refuseRequest( id );
 
-        request.setAttribute( "message", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
+        request.setAttribute( "messages", messageService.findDetailsMessagesUser( connectedUser.getId() ) );
 
         this.getServletContext().getRequestDispatcher( VUE_MESSAGE ).forward( request, response );
     }

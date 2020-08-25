@@ -45,7 +45,11 @@
 						<input type="submit" name="tag" value="Refuser la demande de réservation"/>
 					</form>
 					</td>
-					<td><c:if test="${message.statut == true}">
+					<td>
+					<c:if test="${message.statut == null}">
+						<p>En attente</p>
+					</c:if>
+					<c:if test="${message.statut == true}">
 						<p>Acceptée</p>
 					</c:if>
 					</td>

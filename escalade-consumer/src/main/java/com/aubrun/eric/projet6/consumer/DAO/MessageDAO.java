@@ -187,30 +187,4 @@ public class MessageDAO {
             session.close();
         }
     }
-    		
-    public void modifierBoolean( Boolean statut ) {
-
-    	 Session session = factory.getCurrentSession();
-
-    	 try {
-    	     session.getTransaction().begin();
-
-    	      Message message = session.get( Message.class, statut );
-    	      if ( message != null ) {
-    	          String q = "UPDATE Message t set t.statut = true";
-    	          Query<Message> query = session.createQuery( q );
-    	          query.setParameter( "statut", statut );
-    	          int result = query.executeUpdate();
-    	          System.out.println( result );
-    	      }
-
-    	      session.getTransaction().commit();
-    	 } catch ( Exception e ) {
-    	      e.printStackTrace();
-    	      // Rollback in case of an error occurred.
-    	      session.getTransaction().rollback();
-    	 } finally {
-    	      session.close();
-    	 }
-   }
 }
