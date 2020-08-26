@@ -23,9 +23,7 @@
 
 /* Eléments principaux de la page */
 body {
-	/* 	background: #FFDAB9; */
-	background: url('../images/Escalade-chamonix3_photos_v2_x4.jpg')
-		no-repeat center;
+	background-color: #ffeb3b2e;
 	font-family: 'Trebuchet MS', Arial, sans-serif;
 	color: #181818;
 }
