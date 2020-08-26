@@ -76,14 +76,14 @@
 	- Apache Tomcat sur https://tomcat.apache.org/download-90.cgi
 	- PostgreSQL sur https://www.postgresql.org/download/
 	- Hibernate sur https://sourceforge.net/projects/hibernate/files/hibernate-orm/5.4.10.Final/hibernate-release-5.4.10.Final.zip/download
-	- Dézippez le package "Projet-6-OC-DA-Java-J2EE"
+	- Dézippez le package "PEscalade_AUBRUN_Eric"
 	
 	2/Ceci fait, vous devez lancer pgAdmin4 :
 	
 	- Voici le chemin : PostgreSQL/12/
 	- Dans la base de données, créez un utilisateur "postgres", attribuez lui le mot de passe "postgres"
-	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "javaee.sql" que vous trouverez dans le package
-	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "insert_all.sql"
+	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "PEscalade_03_Script_SQL_Creation_Base_De_Donnees.sql" que vous trouverez dans le package
+	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "PEscalade_04_Script_SQL_Jeu_De_Donnees.sql"
 	
 	3/A partir du terminal
 	

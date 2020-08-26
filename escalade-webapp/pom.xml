@@ -57,6 +57,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<finalName>escalade-webapp</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
@@ -90,5 +91,18 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webResources>
+						<resource>
+							<directory>${basedir}/WebContent</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
