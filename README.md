@@ -80,7 +80,7 @@
 	
 	2/Ceci fait, vous devez lancer pgAdmin4 :
 	
-	- Voici le chemin : PostgreSQL/12/
+	- Voici le chemin : /Library/PostgreSQL/12/
 	- Dans la base de données, créez un utilisateur "postgres", attribuez lui le mot de passe "postgres"
 	- A partir de la base de données, ouvrez l'éditeur de script et exécutez le fichier "PEscalade_03_Script_SQL_Creation_Base_De_Donnees.sql" que vous trouverez dans le package
 	- Pour alimenter la base de données, vous devez exécuter à partir de l'emplacement "Tables" le fichier "PEscalade_04_Script_SQL_Jeu_De_Donnees.sql"
