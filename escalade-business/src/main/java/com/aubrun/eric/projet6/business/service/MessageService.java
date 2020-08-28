@@ -62,6 +62,7 @@ public class MessageService {
     public void refuseRequest( Integer id ) {
 
         Message refuseMessage = messageDAO.afficherDetails( id );
+        refuseMessage.setStatut(false);
         messageDAO.supprimerMessage( refuseMessage.getId() );
     }
 }

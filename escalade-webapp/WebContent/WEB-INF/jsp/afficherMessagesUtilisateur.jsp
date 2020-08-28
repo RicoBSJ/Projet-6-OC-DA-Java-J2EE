@@ -33,7 +33,7 @@
                     <td><c:out value="${ message.emetteur.nom }"></c:out></td>
                     <td><c:out value="${ message.message }"></c:out></td>
                     <td><c:out value="${ message.topo.nom }"></c:out></td>
-                    <td>
+                    <td><c:if test="${message.statut == null }">
                     <form action="accepterDemande" method="post">
 						<input type="hidden" value="${ message.topo.id }" name="idTopo">
 						<input type="hidden" value="${ message.id }" name="id">
@@ -43,7 +43,7 @@
 						<input type="hidden" value="${ message.topo.id }" name="idTopo">
 						<input type="hidden" value="${ message.id }" name="id">
 						<input type="submit" name="tag" value="Refuser la demande de réservation"/>
-					</form>
+					</form></c:if>
 					</td>
 					<td>
 					<c:if test="${message.statut == null}">
