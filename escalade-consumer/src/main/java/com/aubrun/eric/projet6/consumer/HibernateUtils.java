@@ -14,7 +14,8 @@ public class HibernateUtils {
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the ServiceRegistry from hibernate.cfg.xml
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure( "hibernate.cfg.xml" )
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                    .configure( "hibernate.cfg.xml" )
                     .build();
 
             // Create a metadata sources using the specified service registry.
